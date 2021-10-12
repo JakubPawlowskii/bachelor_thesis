@@ -15,7 +15,7 @@
 
 % Podstawowe ustawienia języka, według którego formatowany będzie dokument
 \usepackage[english]{babel}
-
+\usepackage{csquotes}
 % Pakiet babel dla polskiego języka powoduje konflikt z pakietem amssymb.
 % Polecenie '\lll' definiują oba pakiety - porządana jest druga definicja.
 
@@ -355,6 +355,18 @@
 	leftmargin	=	12mm
 }
 
+
+% ****************************** Biblatex ***********************************************************
+\usepackage[
+    backend=biber,
+    style=numeric,
+	sorting=none
+  ]{biblatex}
+\addbibresource{qliom.bib}
+
+% ***************************************************************************************************
+
+
 % ***************************************************************************************************
 % Inne pakiety
 % ***************************************************************************************************
@@ -402,6 +414,14 @@
 
 % Skrócony symbol  logicznej równoważności
 \newcommand{\IFF}{\leftrightarrow}
+
+% Symbole operatorów spinowych
+\newcommand{\Id}{\mathcal{I}}
+\newcommand{\Sp}{S^{+}}
+\newcommand{\Sm}{S^{-}}
+\newcommand{\Sz}{S^{z}}
+\newcommand{\Sx}{S^{x}}
+\newcommand{\Sy}{S^{y}}
 
 % ***************************************************************************************************
 % Środowiska
@@ -475,29 +495,29 @@
 		\vspace*{\fill}
 	\end{titlingpage}
 	
-        \cleardoublepage
+        \cleardoublepage{}
 		
 	\pagenumbering{Roman}
 	\pagestyle{tableOfContentStyle}
 	\tableofcontents
-	\cleardoublepage
+	\cleardoublepage{}
 		
 	% ***************************************************************************************************
 	% Wstęp
 	% ***************************************************************************************************
 	
 	\pagestyle{custom}
-	\mainmatter
+	\mainmatter{}
 	
 	% ***************************************************************************************************
 	% Rodziały
 	% ***************************************************************************************************
 
 	\input{Chapters/intro.tex}
-	\cleardoublepage
+	\cleardoublepage{}
 
-	% \input{rozdzial1}
-	% \cleardoublepage
+	\input{Chapters/energy_current.tex}
+	\cleardoublepage{}
 
 	% \input{rozdzial2}
 	% \cleardoublepage
@@ -517,11 +537,10 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 	\pagestyle{bibliographyStyle}
-	\bibliographystyle{plabbrv}
-	\bibliography{qliom}
+	\printbibliography{}
 	\thispagestyle{chapterBeginStyle}
         \addcontentsline{toc}{chapter}{Bibliography}
-	\cleardoublepage
+	\cleardoublepage{}
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DODATKI %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
