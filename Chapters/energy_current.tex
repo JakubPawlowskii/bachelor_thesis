@@ -3,9 +3,9 @@
 \label{chap:energy current}
 
 \paragraph{}In order to test our QLIOM finding algorithm and the correctness of its implementation, we investigate the known case of
-energy current in spin\(-1/2\) XXZ model~\autocite*{Mierzejewski2015Approx}. For the sake of completeness, derivation of
-spin energy current for the general XYZ model will be presented, following the definitions in \autocite{Zotos1997}.
-We start with the XYZ Hamiltonian with periodic boundary conditions:
+energy current in Spin\(-1/2\) XXZ model~\autocite*{Mierzejewski2015Approx}. For the sake of completeness, derivation of
+spin energy current for the general XYZ model will be presented, following the definitions in \textcite{Zotos1997}.
+We start with the general XYZ Hamiltonian with periodic boundary conditions:
 \begin{equation}
     H_{XYZ} = \sum_{i=1}^L  \left( J_{x} \Sx_{i}\Sx_{i+1} + J_{x} \Sy_{i}\Sy_{i+1} + J_{z} \Sz_{i}\Sz_{i+1} \right)
 \end{equation}
@@ -17,19 +17,20 @@ where \(h_{i,i+1} = J_{x} \Sx_{i}\Sx_{i+1} + J_{x} \Sy_{i}\Sy_{i+1} + J_{z} \Sz_
 require that \(h_{L,L+1} = h_{L,1}\). The energy operator is a conserved quantity, thus the time evolution of its local density
 is given by the discrete continuity equation:
 \begin{equation}
-    \dv{h_{i,i+1}(t)}{t} + \div{j_{i}^{E}} = 0 
+    \dv{h_{i,i+1}(t)}{t} + \div{j_{i}^{E}(t)} = 0 
     \label{eq:discrete continuity}
 \end{equation}
-where \(\div{j_{i}^E} \equiv j_{i+1}^E - j_{i}^E\). On the other hand, time evolution of an arbitrary operator is determined
+where \(\div{j_{i}^E(t)} \equiv j_{i+1}^E(t) - j_{i}^E(t)\) is the discrete divergence of local energy current and \(h_{i,i+1}(t) = e^{i H_{XYZ}t} h_{i,i+1} e^{-i H_{XYZ} t}\).
+On the other hand, time evolution of an arbitrary operator is determined
 by the Heisenberg equations:
 \begin{equation}
     \dv{h_{i,i+1}(t)}{t} = i \comm{H_{XYZ}}{h_{i,i+1}(t)}
     \label{eq:heisenberg equation}
 \end{equation}
-Combining equations~\ref{eq:discrete continuity} and~\eqref{eq:heisenberg equation} we obtain the defining equations for
+Combining equations~\eqref{eq:discrete continuity} and~\eqref{eq:heisenberg equation} we obtain the defining equations for
 the spin energy current:
 \begin{equation}
-    j_{i+1}^E - j_{i}^E = - i \comm{H_{XYZ}}{h_{i,i+1}(t)} = i \comm{h_{i,i+1}(t)}{H_{XYZ}} = i \sum_{k=1}^L \comm{h_{i,i+1}}{h_{k,k+1}} 
+    j_{i+1}^E - j_{i}^E = - i \comm{H_{XYZ}}{h_{i,i+1}} = i \comm{h_{i,i+1}}{H_{XYZ}} = i \sum_{k=1}^L \comm{h_{i,i+1}}{h_{k,k+1}} 
     \label{eq:energy current defining equation}
 \end{equation}
 Similar equations can be written for any operator being a sum of local operators (\textcolor{blue}{with support 2?}) such as
@@ -43,10 +44,45 @@ equation~\eqref{eq:energy current defining equation}:
     +& J_{y} J_{z}\comm{\Sy_{i}\Sy_{i+1}}{\Sz_{k}\Sz_{k+1}} + J_{z} J_{x}\comm{\Sz_{i}\Sz_{i+1}}{\Sx_{k}\Sx_{k+1}} + J_{z} J_{y}\comm{\Sz_{i}\Sz_{i+1}}{\Sy_{k}\Sy_{k+1}}  
 \end{align*}
 By inspection it becomes clear that out of six terms present, only three will need to be directly evaluated, as commutators of the form
-\(xy\) will differ from \(yx\) by a sign and an index change.
+\(\comm{A}{B}\) will differ from \(\comm{B}{A}\) by a sign and an index change.
 
 \begin{align*}
     J_{x} J_{y}\comm{\Sx_{i}\Sx_{i+1}}{\Sy_{k}\Sy_{k+1}} =& J_x J_y \Big(\Sx_i\comm{\Sx_{i+1}}{\Sy_{k}\Sy_{k+1}} + \comm{\Sx_{i}}{\Sy_{k}\Sy_{k+1}} \Sx_{i+1} \Big)\\
     =& J_x J_y \Big( \Sx_i \left( \Sy_k \comm{\Sx_{i+1}}{\Sy_{k+1}} + \comm{\Sx_{i+1}}{\Sy_{k}} \Sy_{k+1}\right) + 
-    \left( \Sy_k \comm{\Sx_{i}}{\Sy_{k+1}} + \comm{\Sx_{i}}{\Sy_{k}} \Sy_{k+1} \Sy_{k+1}\right) \Big)
+    \left( \Sy_k \comm{\Sx_{i}}{\Sy_{k+1}} + \comm{\Sx_{i}}{\Sy_{k}} \Sy_{k+1} \right)\Sx_{i+1} \Big)\\
+    =& i J_x J_y \Big( \delta_{i+1,k+1} \Sx_i \Sy_k \Sz_{i+1} + \delta_{i+1,k} \Sx_i \Sz_{i+1} \Sy_{k+1} + \delta_{i,k+1} \Sy_k \Sz_i \Sx_{i+1} +\delta_{i,k} \Sz_i \Sy_{k+1} \Sx_{i+1}\Big)
 \end{align*}
+Carrying out the calculation of remaining two non-trivial commutators, we arrive at the following equations:
+\begin{align*}
+    J_{z} J_{x}\comm{\Sz_{i}\Sz_{i+1}}{\Sx_{k}\Sx_{k+1}} =& i J_z J_x \Big( \delta_{i+1,k+1} \Sx_k \Sz_i \Sy_{k+1} + \delta_{i+1,k} \Sz_i \Sy_{k} \Sx_{k+1} + \delta_{i,k+1} \Sx_k \Sy_{k+1} \Sz_{i+1} +\delta_{i,k} \Sy_k \Sz_{i+1} \Sx_{k+1}\Big)\\ 
+    J_{y} J_{z}\comm{\Sy_{i}\Sy_{i+1}}{\Sz_{k}\Sz_{k+1}} =& i J_y J_z \Big( \delta_{i+1,k+1} \Sy_i \Sz_k \Sx_{i+1} + \delta_{i,k+1} \Sz_k \Sx_{i} \Sy_{i+1} + \delta_{i+1,k} \Sy_i \Sx_{i+1} \Sz_{k+1} +\delta_{i,k} \Sx_i \Sz_{k+1} \Sy_{i+1}\Big) 
+\end{align*}
+Next step requires us to evaluate the sum over lattice sites to get rid of the Kronecker \(\delta{}\)'s. As before, one of the three parts of calculations is provided in full detail:
+\begin{align*}
+&i\sum_{k=1}^{L}  J_{x} J_{y}\comm{\Sx_{i}\Sx_{i+1}}{\Sy_{k}\Sy_{k+1}} + i\sum_{k=1}^{L} J_{x} J_{y}\comm{\Sy_{i}\Sy_{i+1}}{\Sx_{k}\Sx_{k+1}} = \\
+& - J_x J_y \Big( \cancel{\Sx_i \Sy_i \Sz_{i+1}} +  \Sx_i \Sz_{i+1} \Sy_{i+2} + \Sy_{i-1} \Sz_i \Sx_{i+1} +\bcancel{\Sz_i \Sy_{i+1} \Sx_{i+1}}\Big)\\
+&+  J_x J_y \Big(  \cancel{\Sx_i \Sy_i \Sz_{i+1}} + \Sy_i \Sz_{i+1} \Sx_{i+2} + \Sx_{i-1} \Sz_i \Sy_{i+1} + \bcancel{\Sz_i \Sy_{i+1} \Sx_{i+1}}\Big)\\
+&= J_x J_y \Big( \Sy_i \Sz_{i+1} \Sx_{i+2} - \Sx_i \Sz_{i+1} \Sy_{i+1} - \left(\Sy_{i-1}\Sz_i \Sx_{i+1} - \Sx_{i-1}\Sz_{i}\Sy_{i+1}\right) \Big)\\
+\\
+&i\sum_{k=1}^{L}  J_{x} J_{z}\comm{\Sx_{i}\Sx_{i+1}}{\Sz_{k}\Sz_{k+1}} + i\sum_{k=1}^{L} J_{x} J_{z}\comm{\Sz_{i}\Sz_{i+1}}{\Sx_{k}\Sx_{k+1}} = \\
+&= J_x J_z \Big( \Sx_i \Sy_{i+1} \Sz_{i+2} - \Sz_i \Sy_{i+1} \Sx_{i+2} - \left(\Sx_{i-1}\Sy_i \Sz_{i+1} - \Sz_{i-1}\Sy_{i}\Sx_{i+1}\right) \Big)\\
+\\
+&i\sum_{k=1}^{L}  J_{y} J_{z}\comm{\Sy_{i}\Sy_{i+1}}{\Sz_{k}\Sz_{k+1}} + i\sum_{k=1}^{L} J_{y} J_{z}\comm{\Sz_{i}\Sz_{i+1}}{\Sy_{k}\Sy_{k+1}} = \\
+&= J_y J_z \Big( \Sz_i \Sx_{i+1} \Sy_{i+2} - \Sy_i \Sx_{i+1} \Sz_{i+2} - \left(\Sz_{i-1}\Sx_i \Sy_{i+1} - \Sy_{i-1}\Sx_{i}\Sz_{i+1}\right) \Big)\\
+\end{align*}
+What now remains is to collect these parts and see that we finally arrive at the equation for the local energy current:
+\begin{align}
+    j_i^E &= J_x J_y \left(\Sy_{i-1}\Sz_i \Sx_{i+1} - \Sx_{i-1}\Sz_{i}\Sy_{i+1}\right) \nonumber\\
+    &+ J_x J_z \left(\Sx_{i-1}\Sy_i \Sz_{i+1} - \Sz_{i-1}\Sy_{i}\Sx_{i+1}\right) \nonumber \\
+    &+ J_y J_z \left(\Sz_{i-1}\Sx_i \Sy_{i+1} - \Sy_{i-1}\Sx_{i}\Sz_{i+1}\right) \nonumber \\
+    &= J_x J_y \left(\Sy_{i-1}\Sz_i \Sx_{i+1} - \Sx_{i-1}\Sz_{i}\Sy_{i+1}\right) + \text{cyclic permutations of } \left(x,y,z\right)
+    \label{eq:local energy current}
+\end{align}
+which is precisely the expression from~\textcite{Zotos1997}. Obtaining the energy current operator is now simply the matter of summing over all the lattice sites:
+\begin{equation}
+    J^E = \sum_{i=1}^L j_i^E
+    \label{eq:energy current}
+\end{equation}
+
+However, in this work we are interested in the XXZ model with the Hamiltonian~\eqref{eq:HXXZ}. To this end,
+we need to set \(J_x, J_z = 2J\), \(J_z = \Delta\) and substitute \(\Sx_i = \frac{\Sp_i + \Sm_i}{2}\), \(\Sy_i = \frac{\Sp_i-\Sm_i}{2i}\).
