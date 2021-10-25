@@ -1,0 +1,26 @@
+\chapter{XXZ model}
+\thispagestyle{chapterBeginStyle}
+
+We investigate a one dimensional XXZ Hamiltonian on a one-dimensional lattice of \(L\) sites with periodic boundary conditions.
+Throughout this thesis we will work in units such that \(\hbar = 1\).
+
+Spin operator algebra:
+\begin{align*}
+    &\comm{S_{i}^{\alpha}}{S_{k}^{\beta}} = i  \delta_{i,k}\epsilon_{\alpha \beta \gamma} S_{i}^{\gamma}\\
+    &S_{i}^{\pm} = \Sx_i \pm i \Sy_i\\
+    &\comm{\Sp_i}{\Sp_k} = 2 \delta_{i,k} \Sz_i \\
+    &\comm{\Sz_i}{S^{\pm}_k} = \pm \delta_{i,j} S_{i}^{\pm}
+\end{align*}
+
+\textcolor{blue}{Write about tensor product, Hilbert space structure and such}
+
+\noindent Heisenberg Hamiltonian:
+\begin{equation}
+    H_{XXZ} = J\sum_{j = 1}^{L}\left( S^{+}_{j} S^{-}_{j+1} + S^{-}_{j}S^{+}_{j+1} \right) + \Delta\sum_{j = 1}^{L} S^{z}_{j}S^{z}_{j+1}
+    + \alpha H'
+    \label{eq:HXXZ}
+\end{equation}
+where \(H'\) is the perturbation that breaks integrability for nonzero \(\alpha\):
+\begin{equation}
+    H'=\sum_{j = 1}^{L} S^{z}_{j}S^{z}_{j+2}
+\end{equation}

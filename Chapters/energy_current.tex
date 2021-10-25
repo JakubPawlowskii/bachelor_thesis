@@ -20,7 +20,7 @@ is given by the discrete continuity equation:
     \dv{h_{i,i+1}(t)}{t} + \div{j_{i}^{E}(t)} = 0 
     \label{eq:discrete continuity}
 \end{equation}
-where \(\div{j_{i}^E(t)} \equiv j_{i+1}^E(t) - j_{i}^E(t)\) is the discrete divergence of local energy current and \(h_{i,i+1}(t) = e^{i H_{XYZ}t} h_{i,i+1} e^{-i H_{XYZ} t}\).
+where \(\div{j_{i}^E(t)} \equiv j_{i+1}^E(t) - j_{i}^E(t)\) is the discrete divergence of spin energy current density and \(h_{i,i+1}(t) = e^{i H_{XYZ}t} h_{i,i+1} e^{-i H_{XYZ} t}\).
 On the other hand, time evolution of an arbitrary operator is determined
 by the Heisenberg equations:
 \begin{equation}
@@ -28,13 +28,13 @@ by the Heisenberg equations:
     \label{eq:heisenberg equation}
 \end{equation}
 Combining equations~\eqref{eq:discrete continuity} and~\eqref{eq:heisenberg equation} we obtain the defining equations for
-the spin energy current:
+the spin energy current density:
 \begin{equation}
     j_{i+1}^E - j_{i}^E = - i \comm{H_{XYZ}}{h_{i,i+1}} = i \comm{h_{i,i+1}}{H_{XYZ}} = i \sum_{k=1}^L \comm{h_{i,i+1}}{h_{k,k+1}} 
     \label{eq:energy current defining equation}
 \end{equation}
-Similar equations can be written for any operator being a sum of local operators (\textcolor{blue}{with support 2?}) such as
-the total spin operator or particle number operator in Hubbard model. Equation~\eqref{eq:energy current defining equation} is
+Similar equations can be written for any operator being a sum of local operators such as
+the total spin operator or particle number operator in fermionic models. Equation~\eqref{eq:energy current defining equation} is
 conceptually simple, yet quite tedious to solve due to the amount of commutators present. Luckily, leveraging commutator properties
 to our advantage will allow us to simplify the calculations. Let us begin with inserting the definition of \(h_{i,i+1}\) into 
 equation~\eqref{eq:energy current defining equation}:
@@ -70,19 +70,29 @@ Next step requires us to evaluate the sum over lattice sites to get rid of the K
 &i\sum_{k=1}^{L}  J_{y} J_{z}\comm{\Sy_{i}\Sy_{i+1}}{\Sz_{k}\Sz_{k+1}} + i\sum_{k=1}^{L} J_{y} J_{z}\comm{\Sz_{i}\Sz_{i+1}}{\Sy_{k}\Sy_{k+1}} = \\
 &= J_y J_z \Big( \Sz_i \Sx_{i+1} \Sy_{i+2} - \Sy_i \Sx_{i+1} \Sz_{i+2} - \left(\Sz_{i-1}\Sx_i \Sy_{i+1} - \Sy_{i-1}\Sx_{i}\Sz_{i+1}\right) \Big)\\
 \end{align*}
-What now remains is to collect these parts and see that we finally arrive at the equation for the local energy current:
+What now remains is to collect these parts and see that we finally arrive at the equation for the energy current density:
 \begin{align}
     j_i^E &= J_x J_y \left(\Sy_{i-1}\Sz_i \Sx_{i+1} - \Sx_{i-1}\Sz_{i}\Sy_{i+1}\right) \nonumber\\
     &+ J_x J_z \left(\Sx_{i-1}\Sy_i \Sz_{i+1} - \Sz_{i-1}\Sy_{i}\Sx_{i+1}\right) \nonumber \\
     &+ J_y J_z \left(\Sz_{i-1}\Sx_i \Sy_{i+1} - \Sy_{i-1}\Sx_{i}\Sz_{i+1}\right) \nonumber \\
     &= J_x J_y \left(\Sy_{i-1}\Sz_i \Sx_{i+1} - \Sx_{i-1}\Sz_{i}\Sy_{i+1}\right) + \text{cyclic permutations of } \left(x,y,z\right)
-    \label{eq:local energy current}
+    \label{eq:energy current density}
 \end{align}
 which is precisely the expression from~\textcite{Zotos1997}. Obtaining the energy current operator is now simply the matter of summing over all the lattice sites:
 \begin{equation}
     J^E = \sum_{i=1}^L j_i^E
     \label{eq:energy current}
 \end{equation}
-
 However, in this work we are interested in the XXZ model with the Hamiltonian~\eqref{eq:HXXZ}. To this end,
 we need to set \(J_x, J_z = 2J\), \(J_z = \Delta\) and substitute \(\Sx_i = \frac{\Sp_i + \Sm_i}{2}\), \(\Sy_i = \frac{\Sp_i-\Sm_i}{2i}\).
+After some more lengthy calculations, we finally arrive at the desired form of energy current density operator:
+\begin{align}
+    j_i^E &= i \Big( \underbrace{2J \Sm_{i-1}\Sz_i \Sp_{i+1} + J \Delta \Sz_{i-1}\Sp_i \Sm_{i+1} + J\Delta \Sp_{i-1}\Sm_i\Sz_{i+1}}_{O_i} \\
+    &- \underbrace{\left(2J \Sp_{i-1}\Sz_i \Sm_{i+1} + J\Delta \Sz_{i-1}\Sm_i \Sp_{i+1} + J\Delta \Sm_{i-1}\Sp_{i} \Sz_{i+1} \right)}_{O_i^{\dagger}}\Big) \nonumber \\
+    &= i\left(O_i - O_i^{\dagger}\right)
+    \label{eq:final energy current density}
+\end{align}
+It is evident that the energy current operator \(J^E = \sum_{i=1}^L i \left(O_i - O_i^{\dagger}\right) \) has support of exactly \(3\) consecutive sites.
+
+
+\textcolor{blue}{Tutaj dalej o tym że komutuje z H, stała funkcja autokorelacji i jak zanika przy zaburzeniu. Ale dopiero po rozdziale o algorytmie żeby notacja była ustalona}

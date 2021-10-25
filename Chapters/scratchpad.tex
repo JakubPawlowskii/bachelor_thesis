@@ -3,26 +3,6 @@
 
 In this work we will describe \ldots~\autocite{Mierzejewski2015a}
 
-Throughout this thesis we will work in units such that \(\hbar = 1\).
-
-Spin operator algebra:
-\begin{align*}
-    &\comm{S_{i}^{\alpha}}{S_{k}^{\beta}} = i  \delta_{i,k}\epsilon_{\alpha \beta \gamma} S_{i}^{\gamma}\\
-    &S_{i}^{\pm} = \Sx_i \pm i \Sy_i\\
-    &\comm{\Sp_i}{\Sp_k} = 2 \delta_{i,k} \Sz_i \\
-    &\comm{\Sz_i}{S^{\pm}_k} = \pm \delta_{i,j} S_{i}^{\pm}
-\end{align*}
-
-\noindent Heisenberg Hamiltonian:
-\begin{equation}
-    H_{XXZ} = \frac{1}{2}\sum_{j = 1}^{L}\left( S^{+}_{j} S^{-}_{j+1} + S^{-}_{j}S^{+}_{j+1} \right) + \Delta\sum_{j = 1}^{L} S^{z}_{j}S^{z}_{j+1}
-    + \alpha H'
-    \label{eq:HXXZ}
-\end{equation}
-where \(H'\) is the perturbation that breaks integrability for nonzero \(\alpha\):
-\begin{equation}
-    H'=\sum_{j = 1}^{L} S^{z}_{j}S^{z}_{j+2}
-\end{equation}
 
 
 \noindent Quantity that is plotted in Figures~4--14:
@@ -64,54 +44,6 @@ where \(H'\) is the perturbation that breaks integrability for nonzero \(\alpha\
     \comm{J^E}{\Sz_{tot}} = 0 \text{   where   } \Sz_{tot} = \sum_i \Sz_i
   \end{equation*}
   
-  \section{Model and method}
-  
-  We investigate a one dimensional XXZ Hamiltonian on a lattice of \(L\) sites with periodic boundary conditions.
-  \begin{equation}
-      H = J\sum_{j = 1}^{L}\left( S^{+}_{j} S^{-}_{j+1} + S^{-}_{j}S^{+}_{j+1} \right) + \Delta\sum_{j = 1}^{L} S^{z}_{j}S^{z}_{j+1}
-  \end{equation}
-  We are interested in systematic classification of all local and quasilocal CQs supported on 3 and 4 sites. To this end, 
-  we employ the algorithm first proposed in (relevant citation). Here we will present all derivations in a detailed manner.
-  Consider the space \(\mathcal{B}_L^m\) of local, traceless and translationally invariant observables supported on \(m\) sites, with inner product:
-  \begin{equation}
-      \left(A|B\right) = \frac{1}{2^L}\tr(A^{\dagger}B)
-  \end{equation}
-  i.e. the Hilbert-Schmidt product. Traceless operators have zero overlap with the identity, \(\left(A|\Id\right)=\frac{1}{2^L}\tr(A) = 0\).
-  Now we introduce an orthonormal basis of \({\mathcal{A}_L^m}\):
-  \begin{equation}
-      O_{\underline{s} } = \sum_{j = 1}^L \sigma_{j}^{s_1}\sigma_{j+1}^{s_2}\cdots \sigma_{j+m-1}^{s_m}
-  \end{equation}
-  where \(\sigma^z_j \equiv \sqrt{2}S^{z}_j\), \(\sigma^{\pm}_j \equiv S^{\pm}_j\), \(\sigma^0_j\equiv \Id\), \(\underline{s} = (s_1,s_2,\ldots s_m)\)
-  and \(s_j \in \{+,-,z,0\}\) while \(s_{1,m} \in \{+,-,z\}\). For a fixed m, there are exactly \(N_m = 3\cdot 4^{m-2}\cdot 3\) such operators and they
-  satisfy an orthonormality condition i.e \(\left(O_{\underline{s}}|O_{\underline{s'}}\right) = \delta_{\underline{s},\underline{s'}}\). 
-  
-  We define the infinite time averaging of an operator \(A\in \mathcal{A}_L^m\), employing the Heisenberg picture:
-  \begin{align}
-  \overline{A} = &\lim_{\tau \rightarrow \infty} \frac{1}{\tau} \int dt\, A_{H}(t) =  \nonumber
-  \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \int dt\, e^{i H t}A e^{-i H t} = \\ \nonumber
-  &\sum_{n,m} \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \int dt\, e^{i E_m t}\ket{m}  
-  \matrixel{m}{A}{n}\bra{n}  e^{-i E_n t} = \\ 
-  & \sum_{n,m} \matrixel{m}{A}{n}\ketbra{m}{n} \lim_{\tau \rightarrow \infty} \frac{1}{\tau}
-  \int dt \, e^{i(E_m-E_n)t} =  \sum_{n,m}^{E_n = E_m} \matrixel{m}{A}{n}\ketbra{m}{n}
-  \label{eq:time_avg}
-  \end{align}
-  It is evident from equation~\eqref{eq:time_avg} that large degeneracy of energy spectrum will be important to the
-  structure of time-averaged operators. Moreover, time averaging in such form is an orthogonal projection in the
-  Hilbert space of operators. From that follows a crucial property i.e \(\left(\overline{A}|\overline{B}\right) = 
-  \left(\overline{A}|B\right)\).
-  
-  \textcolor{blue}{Here continues a detailed derivation of the algorithm. And something about fermions.}
-  
-  We conducted preliminary studies for small values of L, without assuming translational invariance. Available resources
-  allowed us to make unrestricted search for \(L = 8,9,10,11,12\) in case of \(m = 3\) and \(L = 8,9,10,11\) in case of
-  \(m = 4\). Nevertheless, operators that maximized stiffness for given \(L\) and \(\Delta\) turned out to be translationally
-  invariant. Therefore, we restrict our considerations to translationally invariant operators only. This allowed us
-  to obtain numerical results for \(L\) up to \(14\) in case of \(m = 3\) and up to \(13\) in case of \(m = 4\).
-  To study the case of  \(L = 16\) we considered a subspace of \(\mathcal{A}_L^m\) spanned by basis operators
-  \(\overline{O}_{\underline{s}}\) that have nonzero coefficients in operator with largest stiffness for \(L = 14\). 
-  Then we diagonalized the resulting \(2\cross 2\) correlation matrix to obtain the stiffness.
-  
-  Operators with corresponding to largest eigenvalues of \(K\) matrix 
   
 \section{Operators with largest stiffness}
 

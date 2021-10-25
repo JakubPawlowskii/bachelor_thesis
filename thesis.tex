@@ -406,6 +406,10 @@
 \makeatletter
 \patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
 \makeatother
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,decorations.pathreplacing}
+
 % ***************************************************************************************************
 % Matematyczne skróty
 % ***************************************************************************************************
@@ -539,14 +543,24 @@
 	
 	\pagestyle{custom}
 	\mainmatter{}
+
 	% ***************************************************************************************************
 	% Rodziały
 	% ***************************************************************************************************
 
 	\input{Chapters/intro.tex}
 	\cleardoublepage{}
+	
+	\input{Chapters/heisenberg.tex}
+	\cleardoublepage{}
+
+	\input{Chapters/iom.tex}
+	\cleardoublepage{}
 
 	\input{Chapters/energy_current.tex}
+	\cleardoublepage{}
+
+	\input{Chapters/numerical.tex}
 	\cleardoublepage{}
 
 	\input{Chapters/scratchpad.tex}
