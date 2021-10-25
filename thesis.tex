@@ -142,7 +142,7 @@
 	\fancyhf{}									% wyczyść stopki i nagłówki
 	\fancyhead[RO]{								% Prawy, nieparzysty nagłówek
 		\hrulefill \hspace{16pt} \large Chapter \thechapter
-		\put(-472.1, 12.1){%
+		\put(-472.1, 13.5){%
 			\makebox(0,0)[l]{%
 				\includegraphics[width=0.05\textwidth]{Figures/pwr-logo}
 			}
@@ -179,7 +179,7 @@
 	\fancyhf{}									% wyczyść stopki i nagłówki
 	\fancyhead[RO]{								% Prawy, nieparzysty nagłówek
 		\hrulefill \hspace{16pt} \large Appendix \thechapter
-		\put(-472.1, 12.1){%
+		\put(-472.1, 13.5){%
 			\makebox(0,0)[l]{%
 				\includegraphics[width=0.05\textwidth]{Figures/pwr-logo}
 			}
@@ -215,7 +215,7 @@
 	\fancyhf{}									% wyczyść stopki i nagłówki
 	\fancyhead[RO]{								% Prawy, nieparzysty nagłówek
 		\hrulefill \hspace{16pt} \large Appendix \thechapter
-		\put(-472.1, 12.1){%
+		\put(-472.1, 13.5){%
 			\makebox(0,0)[l]{%
 				\includegraphics[width=0.05\textwidth]{Figures/pwr-logo}
 			}
@@ -227,7 +227,7 @@
 		}
 	}
 	\fancyhead[LE]{								% Lewy, parzysty nagłówek
-		\large Dodatek \thechapter \hspace{16pt} \hrulefill 
+		\large Appendix \thechapter \hspace{16pt} \hrulefill 
 		\put(-22, 12.1){%
 			\makebox(0,0)[l]{%
 				\includegraphics[width=0.05\textwidth]{Figures/wppt-logo}
@@ -439,6 +439,7 @@
 \newcommand{\Sz}{S^{z}}
 \newcommand{\Sx}{S^{x}}
 \newcommand{\Sy}{S^{y}}
+\newcommand{\hs}[2]{\left(#1|#2\right)}
 
 % ***************************************************************************************************
 % Środowiska
@@ -557,9 +558,6 @@
 	\input{Chapters/iom.tex}
 	\cleardoublepage{}
 
-	\input{Chapters/energy_current.tex}
-	\cleardoublepage{}
-
 	\input{Chapters/numerical.tex}
 	\cleardoublepage{}
 
@@ -580,11 +578,10 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DODATKI %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	
-	% \appendix
-	% \pagestyle{appendixStyle}
-	
-	% \input{dodatek1}
-	% \cleardoublepage
+	\appendix
+	\pagestyle{appendixStyle}
+	\input{Chapters/appendix_energy_current.tex}
+	\cleardoublepage{}
 
 \end{document}
 
