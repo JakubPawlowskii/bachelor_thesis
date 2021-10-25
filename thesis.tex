@@ -396,6 +396,16 @@
 \usepackage{cancel}
 \usepackage{color}
 \renewcommand{\CancelColor}{\color{red}}
+\usepackage{lipsum}
+
+\usepackage{epigraph}
+\setlength\epigraphwidth{16cm}
+\setlength\epigraphrule{0pt}
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
+\makeatother
 % ***************************************************************************************************
 % Matematyczne skróty
 % ***************************************************************************************************
@@ -463,6 +473,16 @@
 \end{small}
 }
 
+\newenvironment{abstract}[1]{%
+	\begin{center}
+		\normalfont\textbf{Abstract}
+	\end{center}
+	\begin{quotation} 
+		#1 
+	\end{quotation}
+}{%
+\vspace{1cm}
+}
 
 % ***************************************************************************************************
 % Dokument
@@ -496,12 +516,20 @@
 			\end{picture}
 		\end{center}	
 		\vspace*{\fill}
-	\end{titlingpage}
-	
-        \cleardoublepage{}
-		
+	\end{titlingpage}		
 	\pagenumbering{Roman}
+	
 	\pagestyle{tableOfContentStyle}
+	\vspace*{6cm}
+	\abstract{\lipsum[10]}
+	\newpage
+
+	\vspace*{6cm}
+	\begin{center}
+	\epigraph{\normalsize''\lipsum[8]''}{\vspace*{0.5cm}\large\textup{\textsc{Gall Anonim}}}
+	\end{center}
+	\newpage
+
 	\tableofcontents
 	\cleardoublepage{}
 		
@@ -511,7 +539,6 @@
 	
 	\pagestyle{custom}
 	\mainmatter{}
-	
 	% ***************************************************************************************************
 	% Rodziały
 	% ***************************************************************************************************
