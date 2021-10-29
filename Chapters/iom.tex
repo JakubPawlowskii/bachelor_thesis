@@ -122,9 +122,9 @@ that we are able to check.
   This definition is correct, as we work only with finite dimensional Hilbert spaces and taking the trace is an
   linear operation. We require the operators to be traceless, because they have zero overlap with the identity, \(\left(A|\Id\right)=\frac{1}{2^L}\tr(A) = 0\).
   
-  Now we introduce a subspace \(\mathcal{V}_L^m\) of \(m\)-local operators and a direct sum 
+  Now we consider a subspace \(\mathcal{V}_L^m\) of \(m\)-local operators and a direct sum 
   \(\mathcal{V}_L^M = \bigoplus_{m = 1}^M \mathcal{V}_L^m\) being a subspace of operators supported on up to \(M\) sites.
-  We also introduce a basis of \(\mathcal{V}_L^M\) consisting of operators \(O_s\in \mathcal{V}_L^M\)
+  We also define a basis of \(\mathcal{V}_L^M\) consisting of operators \(O_s\in \mathcal{V}_L^M\)
   satisfying the following properties:
   \begin{align*}
     & \hs{O_s}{O_{t}} = \delta_{s,t} \tag{\text{orthonormality}}\\
@@ -132,42 +132,69 @@ that we are able to check.
     & \big(\forall A \in \mathcal{V}_L \big) \big( A = A^m + A^{\perp} = \sum_s \hs{O_s}{A} O_s + A^{\perp}\big) ,
      \text{ such that } \big(\forall s\big) \big( \hs{O_s}{A^{\perp}} = 0\big) 
   \end{align*}
-  
+  We then introduce a finite time averaging of an operator \(A\in \mathcal{V}_L^M\), employing the Heisenberg picture~\autocite{Mierzejewski2015Approx}:
+  \begin{align}
+    \bar{A}^{\tau} = &\frac{1}{\tau} \int_0^{\tau} \mathrm{d}t\, A_{H}(t) = \frac{1}{\tau} \int_0^{\tau} \mathrm{d}t\, e^{i H t}A e^{-i H t}   
+    =\sum_{m,n} \frac{1}{\tau} \int_0^{\tau} \mathrm{d}t\, e^{i E_m t}\ket{m} \matrixel{m}{A}{n}\bra{n}  e^{-i E_n t} = \nonumber\\ 
+     =&\sum_{m,n} A_{mn}\ketbra{m}{n} \frac{1}{\tau} \int_0^{\tau} \mathrm{d}t \, e^{i(E_m-E_n)t} =
+    \sum_{m,n} A_{mn}\ketbra{m}{n} \frac{1}{\tau} \frac{1}{i\left(E_m-E_n\right)}\left(e^{i\left(E_m-E_n\right)\tau}-1\right) \nonumber \\
+    =& \sum_{m,n} A_{mn}\ketbra{m}{n} 
+    e^{i\left(E_m-E_n\right)\tau/2}\times \frac{\sin{\left(\left(E_m-E_n\right)\tau\right)}}{\tau\left(E_m-E_n\right)}
+    \label{eq:time_avg}
+  \end{align}
+  What this procedure does is essentially a cut off \textcolor{blue}{figure ilustrating the cut off} of for matrix elements determined by the value of \(E_m-E_n\) in relation
+  to the averaging time \(\tau\). However, this expression is quite complicated and therefore we introduce a simplified time
+  averaging (henceforth time averaging) via the following equation:
+  \begin{equation}
+    \bar{A}^{\tau} \equiv \sum_{m,n} \theta\left(\frac{1}{\tau} - \abs{E_m-E_n}\right) A_{mn} \ketbra{m}{n} 
+    = \sum_{m,n} \theta_{mn}^{\tau} A_{mn} \ketbra{m}{n}
+    \label{eq:simple time avg}
+  \end{equation}
+where \(\theta\) is the Heaviside step function. Going to the infinite time limit we obtain the time averaging 
+from~\textcite{Mierzejewski2015a}:
+\begin{equation}
+  \bar{A} = \lim_{\tau \to \infty} \bar{A}^{\tau} = \sum_{ \substack{m,n\\E_m=E_n} } A_{mn} \ketbra{m}{n}
+  \label{eq:inf time avg}
+\end{equation}
 
-  % Now we introduce an orthonormal basis of \({\mathcal{A}_L^m}\):
-  % \begin{equation}
-  %     O_{\underline{s} } = \sum_{j = 1}^L \sigma_{j}^{s_1}\sigma_{j+1}^{s_2}\cdots \sigma_{j+m-1}^{s_m}
-  % \end{equation}
-  % where \(\sigma^z_j \equiv \sqrt{2}S^{z}_j\), \(\sigma^{\pm}_j \equiv S^{\pm}_j\), \(\sigma^0_j\equiv \Id\), \(\underline{s} = (s_1,s_2,\ldots s_m)\)
-  % and \(s_j \in \{+,-,z,0\}\) while \(s_{1,m} \in \{+,-,z\}\). For a fixed m, there are exactly \(N_m = 3\cdot 4^{m-2}\cdot 3\) such operators and they
-  % satisfy an orthonormality condition i.e \(\left(O_{\underline{s}}|O_{\underline{s'}}\right) = \delta_{\underline{s},\underline{s'}}\). 
-  
-  % We define the infinite time averaging of an operator \(A\in \mathcal{A}_L^m\), employing the Heisenberg picture:
-  % \begin{align}
-  % \overline{A} = &\lim_{\tau \rightarrow \infty} \frac{1}{\tau} \int dt\, A_{H}(t) =  \nonumber
-  % \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \int dt\, e^{i H t}A e^{-i H t} = \\ \nonumber
-  % &\sum_{n,m} \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \int dt\, e^{i E_m t}\ket{m}  
-  % \matrixel{m}{A}{n}\bra{n}  e^{-i E_n t} = \\ 
-  % & \sum_{n,m} \matrixel{m}{A}{n}\ketbra{m}{n} \lim_{\tau \rightarrow \infty} \frac{1}{\tau}
-  % \int dt \, e^{i(E_m-E_n)t} =  \sum_{n,m}^{E_n = E_m} \matrixel{m}{A}{n}\ketbra{m}{n}
-  % \label{eq:time_avg}
-  % \end{align}
-  % It is evident from equation~\eqref{eq:time_avg} that large degeneracy of energy spectrum will be important to the
+Observing that \(\left(\theta_{mn}^{\tau}\right)^2 = \theta_{mn}^{\tau}\) and \(\left(\bar{A}^{\tau}\right)_{mn} = 
+\theta_{mn}^{\tau} A_{mn}\) we can easily show some crucial properties of the time averaging:
+\begin{align}
+   \hs{\bar{A}^{\tau}}{\bar{B}^{\tau}} &= \frac{1}{2^L} \sum_{mn} \left(\bar{A}^{\tau}\right)_{mn} 
+  \left(\bar{B}^{\tau}\right)_{mn}^{\ast} = \frac{1}{2^L} \sum_{mn} \left(\theta_{mn}^{\tau}\right)^2 A_{mn} B_{mn}^{\ast} \nonumber\\
+  &= \frac{1}{2^L} \sum_{mn} \left(\theta_{mn}^{\tau}\right) A_{mn} B_{mn}^{\ast} = 
+  \hs{A}{\bar{B}^{\tau}} = \hs{\bar{A}^{\tau}}{B} \\
+  \overline{\left(\bar{A}^{\tau}\right)}^{\tau} &= \left(\theta_{mn}^{\tau}\right)^2 A_{mn} = \theta_{mn}^{\tau} A_{mn} = \left(\bar{A}^{\tau}\right)
+\end{align}
+for any \(A,B \in \mathcal{V}_L\). These two facts reveal an interesting interpretation of the time averaging, namely that it can be
+thought of as an orthogonal projection in vector space \(\mathcal{V}_L\).
+  %It is evident from equation~\eqref{eq:time_avg} that large degeneracy of energy spectrum will be important to the
   % structure of time-averaged operators. Moreover, time averaging in such form is an orthogonal projection in the
   % Hilbert space of operators. From that follows a crucial property i.e \(\left(\overline{A}|\overline{B}\right) = 
   % \left(\overline{A}|B\right)\).
   
-  \textcolor{blue}{Here continues a detailed derivation of the algorithm.}
-  Operators with corresponding to largest eigenvalues of \(K\) matrix 
+  % \textcolor{blue}{Here continues a detailed derivation of the algorithm.}
+  % Operators with corresponding to largest eigenvalues of \(K\) matrix 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \section{Case of \(M = 3\) in the XXZ model}
+  Now we introduce an orthonormal basis of \({\mathcal{A}_L^m}\):
+  \begin{equation}
+      O_{\underline{s} } = \sum_{j = 1}^L \sigma_{j}^{s_1}\sigma_{j+1}^{s_2}\cdots \sigma_{j+m-1}^{s_m}
+  \end{equation}
+  where \(\sigma^z_j \equiv \sqrt{2}S^{z}_j\), \(\sigma^{\pm}_j \equiv S^{\pm}_j\), \(\sigma^0_j\equiv \Id\), \(\underline{s} = (s_1,s_2,\ldots s_m)\)
+  and \(s_j \in \{+,-,z,0\}\) while \(s_{1,m} \in \{+,-,z\}\). For a fixed m, there are exactly \(N_m = 3\cdot 4^{m-2}\cdot 3\) such operators and they
+  satisfy an orthonormality condition i.e \(\left(O_{\underline{s}}|O_{\underline{s'}}\right) = \delta_{\underline{s},\underline{s'}}\). 
   
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   \section{Spectral function\label{sec:spectral function}}
 
   \paragraph{}One may ask a question, why are local (and quasilocal) IOMs actually important. To answer this
   question in a convincing manner we will follow the discussion in~\textcite{Vidmar2021} and
   introduce spectral functions. Suppose that we have an observable  
-
+  \begin{equation}
+    \left(\bar{A}^{\tau} \mid \bar{B}^{\tau}\right)=\lim _{\varepsilon \searrow 0} \int_{-\frac{1}{\tau}}^{\frac{1}{\tau}} \mathrm{d} \omega \frac{1}{2 \pi} \int_{-\infty}^{\infty} \mathrm{d} t e^{i \omega t-|t| \varepsilon} \frac{\left\langle A^{\dagger} B(t)\right\rangle}{L}
+    \end{equation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Commuting QLIOM: Spin energy current}
