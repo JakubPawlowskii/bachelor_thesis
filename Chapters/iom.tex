@@ -167,6 +167,8 @@ from~\textcite{Mierzejewski2015a}:
   \bar{A} = \lim_{\tau \to \infty} \bar{A}^{\tau} = \sum_{ \substack{m,n\\E_m=E_n} } A_{mn} \ketbra{m}{n}
   \label{eq:inf time avg}
 \end{equation}
+The quantity \(\hs{\bar{A}}{\bar{A}}\) is called the stiffness of operator \(A\) and corresponds to the infinite time limit
+of its autocorrelation function.
 
 Observing that \({\left(\theta_{mn}^{\tau}\right)}^2 = \theta_{mn}^{\tau}\) and \({\left(\bar{A}^{\tau}\right)}_{mn} =
 \theta_{mn}^{\tau} A_{mn}\) we can easily show some crucial properties of the time averaging:
@@ -219,11 +221,11 @@ will be shown in Section~\ref{sec:example}. Next, we find time averages of all b
 \end{equation}
 This matrix is Hermitian by design. However, we assume that it is real and symmetric, 
 as usually considered operators are of the form \(O+O^{\dagger}\) or \(i\left(O-O^{\dagger}\right)\).
-Therefore, the spectral theorem guarantees existence of an unitary matrix \(U\) that
-diagonalizes it. In other words, \(D = UK^{\tau}U^{\dagger}\) is diagonal and we have the following relations:
+Therefore, the spectral theorem guarantees existence of an orthogonal matrix \(U\) that
+diagonalizes it. In other words, \(D = UK^{\tau}U^{T}\) is diagonal and we have the following relations:
 \begin{align}
   &\sum_{s, t} U_{n s} K_{s t}^{\tau} U_{t m}^{T}=\delta_{nm} \lambda_{n} \in \RR,\;\;\; \lambda_n \text{ --- eigenvalue of }K^{\tau} \nonumber \\
-  &UU^{\dagger} = U^{\dagger}U = \mathbb{1} \implies \sum_{s} U_{ns}U_{sm}^{T} = \delta_{mn}\nonumber\\
+  &UU^{T} = U^{T}U = \mathbb{1} \implies \sum_{s} U_{ns}U_{sm}^{T} = \delta_{mn}\nonumber\\
   & U K = D U \implies \sum_s U_{ns} K_{st}^{\tau} = \sum_s  \delta_{ns} \lambda_s U_{st} = \lambda_n U_{nt}\label{eq:properties}
 \end{align} 
 With the help of the \(U\) matrix (eigenvectors of \(K^{\tau}\)) we can define a new set of rotated operators that
@@ -300,8 +302,31 @@ case, that is largest system size for exact diagonalization that we were able to
 
 
 \paragraph{Proof of corectness}
+Suppose we have an operator \(\mathcal{V}_L^M \ni A = \sum_s u_s O_s \), where \(u_s \in \RR \) for all \(s\).
+We can identify this operator from \(\mathcal{V}_L^M\) with a vector \( \vec{u} \in \RR^{\dim{\mathcal{V}_L^M}}\). Using this picture,
+the stiffness of \(A\) can be calculated as follows:
+\begin{equation}
+  \hs{\bar{A}}{\bar{A}} = \sum_{s,t} u_s \hs{\bar{O}_s}{\bar{O}_t} u_t = \sum_{s,t} u_s K_{st} u_t = 
+   \vec{u}^{T} K \vec{u}  
+\end{equation} 
+Thus, a problem in quantum mechanics is reduced to a problem in linear algebra.
+Because all eigenvalues of \(K\) matrix are real, we can sort the corresponding operators (defined with columns of \(U\) matrix,
+i.e.\;eigenvectors of \(K\)) by their magnitude. We then say that the larger the eigenvalue, the `better' the integral of motion is.
+But can we be sure, that the maximal eigenvalue obtained from the algorithm corresponds to the `best' possible integral of motion?
+To put it another way, if the procedure detects neither local nor quasilocal integrals of motion, does that necessarily mean they
+do not exist for a given system? The answer to this question lies within the subsequent
+\begin{proposition}
+Let \(\lambda \) be the maximal eigenvalue of \(K\) and \(\vec{u}\) the corresponding eigenvector. Then the following equality holds:
+\begin{equation*}
+  \lambda = \max_{\vec{v}\in \RR^{\dim{\mathcal{V}_L^M}}}{\vec{v}^{T} K \vec{v}}
+\end{equation*}
+and the maximum is realized by \(\vec{u} \).
+\end{proposition}
+\begin{proof}
+  Assume the contrary\ldots
+\end{proof}
 
-\textcolor{blue}{here the proof that best IOM from the algorithm is the best possible IOM}
+
 We will end this section with a short summary on support of \(Q_n\):
 \begin{align}
   & Q_n = Q_n^M + Q_n^{\perp}\nonumber\\
