@@ -299,7 +299,14 @@ In principle, to asses the character of an integral of motion, we need to examin
 To achieve this, we execute this algorithm for a few accessible values of \(L\) and then proceed with finite size scaling.
 However, in this thesis we will examine both the \(L\to \infty \) case and \(L = 14\)
 case, that is largest system size for exact diagonalization that we were able to attain.
-
+We will end the discussion about the algorithm with a short summary on support of \(Q_n\):
+\begin{align}
+  & Q_n = Q_n^M + Q_n^{\perp}\nonumber\\
+  & \norm{Q_n}^2 = \lambda_n \nonumber\\
+  & \norm{Q_n^M}^2 = \lambda_n^2 \nonumber\\
+  & \norm{Q_n^{\perp}}^2 = \lambda_n - \lambda_n^2
+  \label{eq:summary of support}
+\end{align}
 
 \paragraph{Proof of corectness}
 Suppose we have an operator \(\mathcal{V}_L^M \ni A = \sum_s u_s O_s \), where \(u_s \in \RR \) for all \(s\).
@@ -316,25 +323,24 @@ But can we be sure, that the maximal eigenvalue obtained from the algorithm corr
 To put it another way, if the procedure detects neither local nor quasilocal integrals of motion, does that necessarily mean they
 do not exist for a given system? The answer to this question lies within the subsequent
 \begin{proposition}
-Let \(\lambda \) be the maximal eigenvalue of \(K\) and \(\vec{u}\) the corresponding eigenvector. Then the following equality holds:
+Let \(\lambda \) be the maximal eigenvalue of \(K\). Then the following equality holds:
 \begin{equation*}
-  \lambda = \max_{\vec{v}\in \RR^{\dim{\mathcal{V}_L^M}}}{\vec{v}^{T} K \vec{v}}
+  \lambda = \max_{  \substack{\vec{v}\in \RR^{\dim{\mathcal{V}_L^M}}\\\norm{v} = 1}  }{\vec{v}^{T} K \vec{v}}
 \end{equation*}
-and the maximum is realized by \(\vec{u} \).
 \end{proposition}
 \begin{proof}
-  Assume the contrary\ldots
+  Assume the converse, i.e. there exists such \(\vec{u} \in \RR^{\dim{\mathcal{V}_L^M}}\) that \(\vec{u}^T K \vec{u} > \lambda\)
+  and \(\norm{u} = 1\).
+  Let \(\{\vec{v}_n\}_n\) be a orthonormal basis consisting of eigenvectors of \(K\). We can express \(\vec{u}\) in this basis as
+  \(\sum_n u_n \vec{v}_n\) for \(u_n \in \RR\). Then we have:
+  \begin{align*}    
+    \vec{u}^T K \vec{u} &= \left( \sum_n u_n \vec{v}_n^{T} \right) K  \left( \sum_m u_m \vec{v}_m \right) 
+    = \sum_{n,m} u_n u_m \lambda_m \underbrace{\vec{v}_n^{T} \vec{v}_m}_{\delta_{mn}} \\
+    &= \sum_n u_n^2 \lambda_n \leq \sum_n u_n^2 \lambda = \lambda \sum_n u_n^2 = \lambda   
+  \end{align*}
+  Obtained contradiction concludes the proof.
 \end{proof}
 
-
-We will end this section with a short summary on support of \(Q_n\):
-\begin{align}
-  & Q_n = Q_n^M + Q_n^{\perp}\nonumber\\
-  & \norm{Q_n}^2 = \lambda_n \nonumber\\
-  & \norm{Q_n^M}^2 = \lambda_n^2 \nonumber\\
-  & \norm{Q_n^{\perp}}^2 = \lambda_n - \lambda_n^2
-  \label{eq:summary of support}
-\end{align}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Spectral functions and Mazur bound\label{sec:spectral function}}
