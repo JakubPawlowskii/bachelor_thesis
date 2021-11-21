@@ -1,7 +1,7 @@
 \chapter{Integrals of motion}
 \thispagestyle{chapterBeginStyle}
 
-\paragraph{}The problem of our interest is the systematic classification of all local and quasilocal integrals of
+The problem of our interest is the systematic classification of all local and quasilocal integrals of
 motion (LIOMs and QLIOMs) supported on \( m \in \NN \) sites in a model given by 1-D tight-binding Hamiltonian \(H\). 
 To this end, we employ the algorithm first proposed in~\textcite{Mierzejewski2015a}. It allows us to classify integrals
 of motions for a given system size \(L\). After doing so for accessible values of \(L\), we then carry out finite size scaling
@@ -16,14 +16,14 @@ so all derivations are presented in full detail, together with a simple proof of
 \section{Preliminaries}
 
 \paragraph{Space of observables}Consider the vector space \(\mathcal{V}_L\) of traceless and translationally invariant
-observables, acting on a Hilbert space of dimension \(2^L\). We can define an inner product on this space:
+observables, acting on a Hilbert space of dimension \(D\). We can define an inner product on this space:
 \begin{equation}
-  \hs{A}{B} = \frac{1}{2^L}\tr(A^{\dagger}B) = \frac{1}{2^L} \sum_{mn} A_{nm}B_{nm}^{\ast}
+  \hs{A}{B} = \frac{1}{D}\tr(A^{\dagger}B) = \frac{1}{D} \sum_{mn} A_{nm}B_{nm}^{\ast}
 \end{equation}
 i.e.\;the Hilbert-Schmidt product, where \(A_{nm} = \matrixel{n}{A}{m}\) and \(H\ket{n} = E_n \ket{n}\). Moreover,
 we define the Hilbert-Schmidt norm of an operator to be \(\norm{A} = \sqrt{\hs{A}{A}}\).
 These definitions are correct, as we work only with finite dimensional Hilbert spaces and taking the trace is an
-linear operation. We require the operators to be traceless, because they have zero overlap with the identity, \(\left(A|\Id\right)=\frac{1}{2^L}\tr(A) = 0\).
+linear operation. We require the operators to be traceless, because they have zero overlap with the identity, \(\left(A|\Id\right)=\frac{1}{D}\tr(A) = 0\).
 Now we consider a subspace \(\mathcal{V}_L^m\) of \(m\)-local operators and a direct sum
 \(\mathcal{V}_L^M = \bigoplus_{m = 1}^M \mathcal{V}_L^m\) being a subspace of operators supported on up to \(M\) sites.
 We also define a basis of \(\mathcal{V}_L^M\) consisting of operators \(O_s\in \mathcal{V}_L^M\)
@@ -150,10 +150,10 @@ We now introduce a finite time averaging of an operator \(A\in \mathcal{V}_L^M\)
   e^{i\left(E_m-E_n\right)\tau/2}\times \frac{\sin{\left(\left(E_m-E_n\right)\tau\right)}}{\tau\left(E_m-E_n\right)}
   \label{eq:time_avg}
 \end{align}
-What this procedure does is essentially a cut off \textcolor{blue}{figure illustrating the cut off} of for matrix elements determined by the value of \(E_m-E_n\) in relation
+What this procedure does is essentially a cut off (cf. Figure~\ref{fig:cutoff}) of for matrix elements determined by the value of \(E_m-E_n\) in relation
 to the averaging time \(\tau{}\). However, this expression is quite complicated and therefore we replace it with a simplified time
 averaging (henceforth time averaging):
-\begin{definition}
+\begin{definition}[Simplified time averaging]
   \begin{equation}
     \bar{A}^{\tau} \equiv \sum_{m,n} \theta\left(\frac{1}{\tau} - \abs{E_m-E_n}\right) A_{mn} \ketbra{m}{n}
     = \sum_{m,n} \theta_{mn}^{\tau} A_{mn} \ketbra{m}{n}
@@ -169,6 +169,17 @@ from~\textcite{Mierzejewski2015a}:
 \end{equation}
 The quantity \(\hs{\bar{A}}{\bar{A}}\) is called the stiffness of operator \(A\) and corresponds to the infinite time limit
 of its autocorrelation function.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\textwidth]{Figures/cutoff_flat.pdf}
+  \caption{Illustration of averaging procedure as defined by equation~\eqref{def:simple time avg}. The sum
+  of matrix elements is restricted by the theta function to the region between the two red lines. In the case
+  of operator in question, we see that only the matrix elements corresponding to differences of energies
+  very close to zero contribute to the time average. }
+  \label{fig:cutoff}
+\end{figure}
+
 
 Observing that \({\left(\theta_{mn}^{\tau}\right)}^2 = \theta_{mn}^{\tau}\) and \({\left(\bar{A}^{\tau}\right)}_{mn} =
 \theta_{mn}^{\tau} A_{mn}\) we can easily show some crucial properties of the time averaging:
@@ -186,9 +197,9 @@ Observing that \({\left(\theta_{mn}^{\tau}\right)}^2 = \theta_{mn}^{\tau}\) and 
 
 \begin{proof}
   \begin{align*}
-    \hs{\bar{A}^{\tau}}{\bar{B}^{\tau}}  & = \frac{1}{2^L} \sum_{mn} {\left(\bar{A}^{\tau}\right)}_{mn}
-    {\left(\bar{B}^{\tau}\right)}_{mn}^{\ast} = \frac{1}{2^L} \sum_{mn} {\left(\theta_{mn}^{\tau}\right)}^2 A_{mn} B_{mn}^{\ast} \nonumber{}               \\
-    & = \frac{1}{2^L} \sum_{mn} \left(\theta_{mn}^{\tau}\right) A_{mn} B_{mn}^{\ast} =
+    \hs{\bar{A}^{\tau}}{\bar{B}^{\tau}}  & = \frac{1}{D} \sum_{mn} {\left(\bar{A}^{\tau}\right)}_{mn}
+    {\left(\bar{B}^{\tau}\right)}_{mn}^{\ast} = \frac{1}{D} \sum_{mn} {\left(\theta_{mn}^{\tau}\right)}^2 A_{mn} B_{mn}^{\ast} \nonumber{}               \\
+    & = \frac{1}{D} \sum_{mn} \left(\theta_{mn}^{\tau}\right) A_{mn} B_{mn}^{\ast} =
     \hs{A}{\bar{B}^{\tau}} = \hs{\bar{A}^{\tau}}{B}                                                                                                        \\
     \overline{\left(\bar{A}^{\tau}\right)}^{\tau} & = {\left(\theta_{mn}^{\tau}\right)}^2 A_{mn} = \theta_{mn}^{\tau} A_{mn} = \left(\bar{A}^{\tau}\right)
   \end{align*}
@@ -286,12 +297,12 @@ Corollary~\ref{corr:psd} gives \(\lambda_n \in \left[0,1\right]\).
 From now on, we will focus on the case \(\tau \to \infty \), as it guarantees that \(\bar{O_s}\)'s and hence \(Q_n\)'s
 commute with the Hamiltonian. 
 Consequently, we finally arrive at a classification scheme for the support of \(Q_n\)'s.
-\begin{definition}
+\begin{definition}[Classification of IOMs]
   An integral of motion \(Q_n\) is called:
   \begin{itemize}
     \item local: \(\lambda_n = 1 \implies \norm{Q_n^{\perp}} = 0 \implies Q_n \in \mathcal{V}^M_L\)
     \item quasilocal: \(\lambda_n \in \left(0,1\right) \implies \norm{Q_n^{\perp}} > 0 \implies Q_n \in \mathcal{V}_L \)
-    \item generic: \(\lambda_n = 0 \implies \norm{Q_n} = 0\)
+    \item generic nonlocal: \(\lambda_n = 0 \implies \norm{Q_n} = 0\)
   \end{itemize}
 \end{definition}
 The procedure outlined above works for a fixed system size \(L\).
@@ -344,20 +355,65 @@ Let \(\lambda \) be the maximal eigenvalue of \(K\). Then the following equality
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Spectral functions and Mazur bound\label{sec:spectral function}}
+After we have learned about local and quasilocal IOMs and how to find them, it is perhaps the 
+time to ask why are they actually important? To answer this question in a convincing manner we 
+will follow the discussion in~\textcite{Vidmar2021} and introduce the concept of spectral
+functions. 
 
-\paragraph{}One may ask a question, why are local (and quasilocal) IOMs actually important. To answer this
-question in a convincing manner we will follow the discussion in~\textcite{Vidmar2021} and
-introduce spectral functions. Suppose that we have an observable
+Suppose that we have an observable \(A\) and we are interested in studying its time
+evolution. An obvious choice would be to calculate its autocorrelation function
+\((A(t)|A)\), where the time dependence of \(A(t)\) is understood
+via the Heisenberg picture i.e.\ \(A(t) = \exp\left(i H t\right) A
+\exp\left(-i H t\right)\). However, this quantity is rather unpleasant to work with.
+Instead, we will investigating the Fourier transform of autocorrelation function, formally
+defined as:
+\begin{definition}[Spectral function]  
+  \begin{equation*}
+  S(\omega) =  \lim _{\varepsilon \searrow 0} \frac{1}{2 \pi} \int_{-\infty}^{\infty} \mathrm{d} t 
+  \; e^{i \omega t-|t| \varepsilon}\hs{A(t)}{A}
+  \end{equation*}
+  \label{def:spectral function}
+\end{definition}
+The limit in the definition is present in order to ensure proper convergence of the integral
+and \(\omega{}\) corresponds to \(\frac{1}{\tau}\) from earlier discussion.
+To connect this quantity with numerical calculations and to smoothen out any fluctuations, we
+can once again integrate it, but this time over a finite frequency window:
 \begin{equation}
-  \left(\bar{A}^{\tau} \mid \bar{B}^{\tau}\right)=\lim _{\varepsilon \searrow 0} \int_{-\frac{1}{\tau}}^{\frac{1}{\tau}} \mathrm{d} \omega \frac{1}{2 \pi} \int_{-\infty}^{\infty} \mathrm{d} t e^{i \omega t-|t| \varepsilon} \frac{\left\langle A^{\dagger} B(t)\right\rangle}{L}
+  I(\omega) = \int_{-\omega}^{\omega} \mathrm{d}\omega' \; S(\omega') = 
+  \frac{1}{D} \sum_{m,n} \theta\left(\omega - |E_m-E_n|\right) A_{mn}^2
 \end{equation}
+It turns out that this quantity is equal to the square of Hilbert-Schmidt norm of time
+averaged operator \(\bar{A}^{\frac{1}{\omega}}\), which fits nicely within the previously
+discussed framework. Because all observables of interest are traceless and
+normalized to unity, we have this two important limits
+\begin{align}
+  \lim_{\omega \to \infty } I(\omega) &= \frac{1}{D}\sum_{m,n} A_{mn}^2 = \norm*{A}^2 = 1\\
+  \lim_{\omega \to 0^+ } I(\omega) &= \frac{1}{D} \sum_{ \substack{m,n\\E_m=E_n} } A_{mn}^2 = \norm*{\bar{A}}^2
+\end{align}
+\textcolor{blue}{Czy spróbować przedstawić pełen wyprowadzanie mazur
+bound?}
 
-\textcolor{blue}{Combine the discussion of spectral functions with the fact that LIOMs obtained from the algorith by construction
-saturate the Mazur bound}
+Let us now imagine that we know a complete set of orthonormal (Q)LIOMs 
+\(\hs{Q_{\alpha}}{Q_{\beta}} \propto \delta_{\alpha\beta}\). It was shown 
+by~\textcite{Mazur1969} that the stiffness \(D_{A}\) of arbitrary observable \(A\) has its origin
+in the projection on these \(Q_{\alpha}\)'s:
+\begin{equation}
+  D_A = \sum_{\alpha} D_{\alpha} = \sum_{\alpha} \frac{\hs{A}{Q_{\alpha}}^2}
+  {\hs{Q_{\alpha}}{Q_{\alpha}}}
+  \label{eq:mazur equality}
+\end{equation}
+If we know only a subset of the full set of (Q)LIOMs, this equality turns into 
+a very useful lower bound for stiffness, called the\textit{Mazur bound}.
+
+\textcolor{blue}{infinite DC conductivity as an example}
+\textcolor{blue}{then how spectral function relates to it}
+\textcolor{blue}{and then that our operators saturate Mazur bound by construction i.e. form
+a complete set of QLIOMs}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Case of \(M = 3\) in the XXZ model\label{sec:example}}
+\section{Case of operators supported on up to \(3\) sites in the XXZ model\label{sec:example}}
 After explaining how and why to look for LIOMs and QLIOMs, let us now turn to an example.
 
 
@@ -366,8 +422,7 @@ Decomposition into 4 mutually orthogonal sectors
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Commuting LIOM: Spin energy current}
-
-\paragraph{}In order to test our (Q)LIOM finding algorithm and the correctness of its implementation, we investigate the known case of
+In order to test our (Q)LIOM finding algorithm and the correctness of its implementation, we investigate the known case of
 energy current in Spin\(-1/2\) XXZ model~\autocite*{Mierzejewski2015Approx}. For the sake of completeness, derivation of
 spin energy current for the general XYZ model will be presented, following the definitions in \textcite{Zotos1997}.
 We start with the general XYZ Hamiltonian with periodic boundary conditions:
@@ -412,4 +467,6 @@ Obtaining the energy current operator is now simply the matter of summing over a
   \label{eq:energy current}
 \end{equation}
 
-\textcolor{blue}{Tutaj dalej o tym że komutuje z H, stała funkcja autokorelacji i jak zanika przy zaburzeniu. Ale dopiero po rozdziale o algorytmie żeby notacja była ustalona}
+\textcolor{blue}{Tutaj dalej o tym że komutuje z H, stała funkcja autokorelacji i 
+jak zanika przy zaburzeniu. Ale dopiero po rozdziale o algorytmie żeby notacja była ustalona.
+I o tym że lorenzian i że exp zanik.}
