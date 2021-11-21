@@ -274,3 +274,7 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+
+# Gnuplot in tikz files
+*.table
+*.gnuplot
