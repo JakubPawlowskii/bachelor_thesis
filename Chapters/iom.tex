@@ -16,13 +16,15 @@ so all derivations are presented in full detail, together with a simple proof of
 \section{Preliminaries}
 
 \paragraph{Space of observables}Consider the vector space \(\mathcal{V}_L\) of traceless and translationally invariant
-observables, acting on a Hilbert space of dimension \(D\). We can define an inner product on this space:
+observables, acting on a Hilbert space of dimension \(\mathcal{D}\). We can define an inner product on this space:
 \begin{equation}
-  \hs{A}{B} = \frac{1}{D}\tr(A^{\dagger}B) = \frac{1}{D} \sum_{mn} A_{nm}B_{nm}^{\ast}
+  \hs{A}{B} = \frac{1}{\mathcal{D}}\tr(A^{\dagger}B) = \frac{1}{\mathcal{D}} \sum_{mn} A_{nm}B_{nm}^{\ast}
 \end{equation}
-i.e.\;the Hilbert-Schmidt product, where \(A_{nm} = \matrixel{n}{A}{m}\) and \(H\ket{n} = E_n \ket{n}\). Moreover,
-we define the Hilbert-Schmidt norm of an operator to be \(\norm{A} = \sqrt{\hs{A}{A}}\).
-These definitions are correct, as we work only with finite dimensional Hilbert spaces and taking the trace is an
+i.e.\;the Hilbert-Schmidt product, where \(A_{nm} = \matrixel{n}{A}{m}\) and \(H\ket{n} = E_n \ket{n}\).
+Moreover, we define the Hilbert-Schmidt norm of an operator to be \(\norm{A} = \sqrt{\hs{A}{A}}\).
+This product corresponds to the infinite temperature limit of averaging over a suitable ensemble (either
+canonical or grand canonical).
+Presented definitions are correct, as we work only with finite dimensional Hilbert spaces and taking the trace is an
 linear operation. We require the operators to be traceless, because they have zero overlap with the identity, \(\left(A|\Id\right)=\frac{1}{D}\tr(A) = 0\).
 Now we consider a subspace \(\mathcal{V}_L^m\) of \(m\)-local operators and a direct sum
 \(\mathcal{V}_L^M = \bigoplus_{m = 1}^M \mathcal{V}_L^m\) being a subspace of operators supported on up to \(M\) sites.
@@ -197,9 +199,9 @@ Observing that \({\left(\theta_{mn}^{\tau}\right)}^2 = \theta_{mn}^{\tau}\) and 
 
 \begin{proof}
   \begin{align*}
-    \hs{\bar{A}^{\tau}}{\bar{B}^{\tau}}  & = \frac{1}{D} \sum_{mn} {\left(\bar{A}^{\tau}\right)}_{mn}
-    {\left(\bar{B}^{\tau}\right)}_{mn}^{\ast} = \frac{1}{D} \sum_{mn} {\left(\theta_{mn}^{\tau}\right)}^2 A_{mn} B_{mn}^{\ast} \nonumber{}               \\
-    & = \frac{1}{D} \sum_{mn} \left(\theta_{mn}^{\tau}\right) A_{mn} B_{mn}^{\ast} =
+    \hs{\bar{A}^{\tau}}{\bar{B}^{\tau}}  & = \frac{1}{\mathcal{D}} \sum_{mn} {\left(\bar{A}^{\tau}\right)}_{mn}
+    {\left(\bar{B}^{\tau}\right)}_{mn}^{\ast} = \frac{1}{\mathcal{D}} \sum_{mn} {\left(\theta_{mn}^{\tau}\right)}^2 A_{mn} B_{mn}^{\ast} \nonumber{}               \\
+    & = \frac{1}{\mathcal{D}} \sum_{mn} \left(\theta_{mn}^{\tau}\right) A_{mn} B_{mn}^{\ast} =
     \hs{A}{\bar{B}^{\tau}} = \hs{\bar{A}^{\tau}}{B}                                                                                                        \\
     \overline{\left(\bar{A}^{\tau}\right)}^{\tau} & = {\left(\theta_{mn}^{\tau}\right)}^2 A_{mn} = \theta_{mn}^{\tau} A_{mn} = \left(\bar{A}^{\tau}\right)
   \end{align*}
@@ -354,13 +356,14 @@ Let \(\lambda \) be the maximal eigenvalue of \(K\). Then the following equality
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Spectral functions and Mazur bound\label{sec:spectral function}}
-After we have learned about local and quasilocal IOMs and how to find them, it is perhaps the 
+\section{Spectral function and Mazur bound\label{sec:spectral function}}
+
+\paragraph{Spectral function}After we have learned about local and quasilocal IOMs and how to find them, it is perhaps the 
 time to ask why are they actually important? To answer this question in a convincing manner we 
 will follow the discussion in~\textcite{Vidmar2021} and introduce the concept of spectral
 functions. 
 
-Suppose that we have an observable \(A\) and we are interested in studying its time
+Suppose that we have an observable \(A \in \mathcal{V}_L^M\) and we are interested in studying its time
 evolution. An obvious choice would be to calculate its autocorrelation function
 \((A(t)|A)\), where the time dependence of \(A(t)\) is understood
 via the Heisenberg picture i.e.\ \(A(t) = \exp\left(i H t\right) A
@@ -369,7 +372,7 @@ Instead, we will investigating the Fourier transform of autocorrelation function
 defined as:
 \begin{definition}[Spectral function]  
   \begin{equation*}
-  S(\omega) =  \lim _{\varepsilon \searrow 0} \frac{1}{2 \pi} \int_{-\infty}^{\infty} \mathrm{d} t 
+  S(\omega) =  \lim _{\varepsilon \to 0^+} \frac{1}{2 \pi} \int_{-\infty}^{\infty} \mathrm{d} t 
   \; e^{i \omega t-|t| \varepsilon}\hs{A(t)}{A}
   \end{equation*}
   \label{def:spectral function}
@@ -387,28 +390,151 @@ averaged operator \(\bar{A}^{\frac{1}{\omega}}\), which fits nicely within the p
 discussed framework. Because all observables of interest are traceless and
 normalized to unity, we have this two important limits
 \begin{align}
-  \lim_{\omega \to \infty } I(\omega) &= \frac{1}{D}\sum_{m,n} A_{mn}^2 = \norm*{A}^2 = 1\\
-  \lim_{\omega \to 0^+ } I(\omega) &= \frac{1}{D} \sum_{ \substack{m,n\\E_m=E_n} } A_{mn}^2 = \norm*{\bar{A}}^2
+  \lim_{\omega \to \infty } I(\omega) &= \frac{1}{\mathcal{D}}\sum_{m,n} A_{mn}^2 = \norm*{A}^2 = 1\\
+  \lim_{\omega \to 0^+ } I(\omega) &= \frac{1}{\mathcal{D}} \sum_{ \substack{m,n\\E_m=E_n} } A_{mn}^2 = \norm*{\bar{A}}^2
 \end{align}
-\textcolor{blue}{Czy spróbować przedstawić pełen wyprowadzanie mazur
-bound?}
 
-Let us now imagine that we know a complete set of orthonormal (Q)LIOMs 
-\(\hs{Q_{\alpha}}{Q_{\beta}} \propto \delta_{\alpha\beta}\). It was shown 
-by~\textcite{Mazur1969} that the stiffness \(D_{A}\) of arbitrary observable \(A\) has its origin
-in the projection on these \(Q_{\alpha}\)'s:
+For frequencies small (long times) in comparison with system's characteristic energy
+scale, spectral function of an observable \(A \in \mathcal{V}_L^M\) attains the following approximation:
 \begin{equation}
-  D_A = \sum_{\alpha} D_{\alpha} = \sum_{\alpha} \frac{\hs{A}{Q_{\alpha}}^2}
-  {\hs{Q_{\alpha}}{Q_{\alpha}}}
+  S(\omega \ll  J) \simeq  D_{A} \delta(\omega)
+  \label{eq:spectral approximation}
+\end{equation}
+where \(D_A = \lim_{\omega\to 0^+} I(\omega)\) is the stiffness of an observable.
+Let us now imagine that we have a complete set of orthogonal (Q)LIOMs 
+\(\hs{Q_{n}}{Q_{m}} \propto \delta_{nm}\). It was shown 
+by~\textcite{Mazur1969,Suzuki1971} that the stiffness \(D_{A}\) of arbitrary observable \(A\) has its origin
+in the projections on these \(Q_{n}\):
+\begin{equation}
+  D_A = \sum_{n} D_{n} = \sum_{n} \frac{\hs{A}{Q_{n}}^2}
+  {\hs{Q_{n}}{Q_{n}}}
   \label{eq:mazur equality}
 \end{equation}
-If we know only a subset of the full set of (Q)LIOMs, this equality turns into 
-a very useful lower bound for stiffness, called the\textit{Mazur bound}.
+Therefore, by calculating the overlap between our observable and all the (Q)LIOMs, we can infer about the long time
+behavior of its spectral function and thus its autocorrelation function. Because autocorrelation function of
+LIOMs is constant, its Fourier transform is a Dirac delta, which explains the form of 
+equation~\eqref{eq:spectral approximation}. 
 
-\textcolor{blue}{infinite DC conductivity as an example}
-\textcolor{blue}{then how spectral function relates to it}
-\textcolor{blue}{and then that our operators saturate Mazur bound by construction i.e. form
-a complete set of QLIOMs}
+\paragraph{Mazur bound} If we know only a subset of the full set of (Q)LIOMs, this equality turns into 
+a very useful lower bound for stiffness, called the \textit{Mazur bound}. We will now proceed with a derivation
+of this bound for the case of one (Q)LIOM, in the spirit of a more modern discussion from~\textcite{Ilievski2016a}.
+\begin{proposition}[Mazur bound for a single (Q)LIOM]
+  Let \(A\in \mathcal{V}_L^M\) be an arbitrary observable and \(Q\) be a (quasi)local conserved quantity. Then the following inequality
+  holds:
+  \begin{equation*}
+    D_{A} = \hs{\bar{A}}{\bar{A}} \geq \frac{\hs{A}{Q}^2}{\hs{Q}{Q}}
+  \end{equation*}
+  \label{prop:single mazur}
+\end{proposition}
+
+\begin{proof}
+  We define a new observable \(\mathcal{A} = \bar{A} - \alpha Q\) for \(\alpha \in \RR\).
+  Obviously, square of the norm of this quantity is positive i.e. \(\norm*{\mathcal{A}}^2 = 
+  \tr(\mathcal{A}\mathcal{A})/\mathcal{D} \geq 0\). On the other hand, we can carry out an
+  explicit computation of the norm:
+  \begin{align*}
+  \norm*{\mathcal{A}}^2 &= \hs{\bar{A}-\alpha Q}{\bar{A}-\alpha Q} = \hs{\bar{A}}{\bar{A}} - 
+  \hs{\bar{A}}{Q} - \alpha \hs{Q}{\bar{A}} + \alpha^2 \hs{Q}{Q} \\
+  &= \hs{\bar{A}}{\bar{A}} - 2\alpha \hs{A}{Q} + \alpha^2 \hs{Q}{Q} \geq 0
+  \end{align*}
+  Between the first and the second line we have used the fact that \(\hs{\bar{A}}{\bar{B}} = 
+  \hs{\bar{A}}{B} = \hs{A}{\bar{B}}\)(cf. Proposition~\ref{prop:projection}) and \(\bar{Q} = Q\) 
+  for a conserved quantity. Let us now substitute \(\alpha = \frac{\hs{A}{Q}}{\hs{Q}{Q}}\) to the
+  above inequality.
+  \begin{align*}
+    D_A = \hs{\bar{A}}{\bar{A}} &\geq 2 \frac{\hs{A}{Q}}{\hs{Q}{Q}} \hs{A}{Q} - \frac{\hs{A}{Q}^2}{\hs{Q}{Q}^2}\hs{Q}{Q}
+    = \frac{\hs{A}{Q}^2}{\hs{Q}{Q}}
+  \end{align*}
+  \label{proof:single mazur}  
+\end{proof}
+It is perhaps worth noting, that the derivation Mazur bound for a single (Q)LIOM is equivalent to the proof of
+the Cauchy-Schwarz inequality, found in any linear algebra textbook. By following exactly the same procedure, 
+we can easily generalize this results to a set of orthogonal conserved quantities \(\{Q_{n}\}\):
+\begin{equation}
+  D_A = \hs{\bar{A}}{\bar{A}} \geq \sum_{n} \frac{\hs{A}{Q_n}^2}{\hs{Q_n}{Q_n}}
+\end{equation}
+
+We have already seen that Mazur inequality turns into an equality, if the set \(\{Q_n\}\) is complete. However,
+up until a few years ago, it was not clear how to systematically identify such a complete set in interacting models.
+This have changed with the work of~\textcite{Mierzejewski2015a}, where the algorithm described in details
+in Section~\ref{sec:algorithm} was first proposed. We will now show that the following proposition holds:
+
+\begin{proposition}[Saturation of Mazur bound]
+  The set \(\{Q_n\}\) of (Q)LIOMs obtained from the algorithm in Section~\ref{sec:algorithm} is complete,
+  that is it saturates the Mazur bound. 
+\label{prop:saturation}
+\end{proposition}
+\begin{proof}
+  Consider once again an arbitrary observable \(\mathcal{V}_L^M \ni A = \sum_s a_s O_s,\; 
+  (\forall s) (a_s \in \RR)\). We are interested in computing its stiffness \(D_A = \hs{\bar{A}}{\bar{A}}\), 
+  where \(\bar{A} = \sum_s a_s \bar{O}_s\). Inverting the relation~\eqref{eq:new operators}, we can write 
+  \(\bar{O_s} = \sum_n U_{sn}^T Q_n = \sum_n U_{ns} Q_n\) and thus the following:
+  \begin{equation*}
+    \bar{A} = \sum_s a_s \bar{O}_s = \sum_s a_s \sum_n U_{ns} Q_n =
+    \sum_n \underbrace{\left(\sum_s a_s U_{ns}\right)}_{v_n} Q_n = \sum_n v_n Q_n
+  \end{equation*}
+  Now, let us express the overlap \(\hs{\bar{A}}{Q_k}\) in two ways:
+  \begin{enumerate}
+    \item \(\hs{\bar{A}}{Q_k} = \sum_n v_n \underbrace{\hs{Q_n}{Q_k}}_{=\lambda_n \delta_{nk}} = v_k \lambda_k\)
+    \item \(\hs{\bar{A}}{Q_k} = \hs{A}{\bar{Q_k}} = \hs{A}{Q_k}\)
+  \end{enumerate}
+  We are finally ready to make a direct calculation of stiffness of \(A\):
+  \begin{align*}
+    D_A = \hs{\bar{A}}{\bar{A}} &= \sum_{nk} v_n v_k \hs{Q_n}{Q_k} = \sum_{nk} v_n v_k \delta_{nk} \lambda_{k} = 
+    \sum_{\substack{n\\\lambda_n > 0}} v_n^2 \lambda_n \\
+    &= \sum_{\substack{n\\\lambda_n > 0}} v_n^2 \lambda_n^2 \frac{1}{\lambda_n} = 
+    \sum_{\substack{n\\\lambda_n > 0}} \frac{\hs{A}{Q_n}^2}{\hs{Q_n}{Q_n}}
+  \end{align*}
+  Therefore, the Mazur bound is saturated by our construction and the proof is concluded.
+\end{proof}
+
+We will finish the section with an example of an application of Mazur bound. To this end, we can 
+consider the topic of ballistic linear response~\autocite{Ilievski2016a}. Let \(J\) be an extensive current,
+for example the spin current. From Kubo linear response theory
+we have the following well-known expression for the real (non-dissipative) part of dynamical
+spin conductivity~\autocite{Zotos1996}:
+\begin{equation}
+  \sigma'(\omega) = 2 \pi D_J \delta(\omega) + \sigma_J^{reg}(\omega)
+\label{eq:conductivity}
+\end{equation}
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[scale=1.4]
+    \colorlet{col1}{blue!30}
+  
+   \begin{scope}[smooth,draw=gray!20,y=0.3989422804cm]
+        \filldraw[fill=col1] plot[id=f1, domain=-1.5:1.5,samples=100] function {6*exp(-6*x*x)};
+        \draw[black] plot[id=f2,domain=-1.5:1.5,samples=100]
+            function {6*exp(-6*x*x)};
+    \end{scope}
+    \draw[->] (-1.5,0) -- (1.5,0) node [right] {$x$};
+    \draw[->] (-1.5,0) -- (-1.5,2.5) node [midway,rotate=90,yshift=6pt] {spin density};
+    \draw[<->] (-0.37,1) -- (0.37,1) node [midway, yshift=6pt] {$\gamma$};
+  
+    \begin{scope}[smooth,draw=gray!20,y=0.3989422804cm]  
+      \draw[black] plot[id=f3,domain=2.35:5.35,samples=100] function {0.7};    
+      \draw[black] plot[id=f4,domain=2.35:5.35,samples=100] function {x};    
+      \draw[black] plot[id=f5,domain=2.35:5.35,samples=100] function {sqrt(x)};    
+    \end{scope}  
+    
+    \draw[->] (2.35,0) -- (5.35,0) node [right] {$t$};
+    \draw[->] (2.35,0) -- (2.35,2.5) node [right] {$\gamma$};
+    \node[draw=none] at (3.35,1.6) {$\gamma \propto t$};
+    \node[draw=none] at (3.45,0.95) {$\gamma \propto \sqrt{t}$};
+    \node[draw=none] at (3.6,0.4) {$\gamma = const$};
+    \node[draw=none] (localized) at (6,0.3) {localized};
+    \node[draw=none,above of=localized,node distance=27pt] (diffusive) {diffusive};
+    \node[draw=none,above of=diffusive,node distance=45pt] (ballistic) {ballistic};
+  \end{tikzpicture}  
+  \caption{Illustration of different types of transport. On the left panel, we have some initial spin
+  density characterized by width \(\gamma\). On the right panel, we have the dependence of \(\gamma\)
+  on time in three different cases.}
+  \label{fig:spin transport}
+\end{figure}
+
+If there exists a (quasi)local conserved quantity \(Q\) such that \(\hs{J}{Q}>0\), the Mazur bound
+implies that \(D_J > 0\). Such nonzero value of spin current stiffness is an indicator of \textit{ballistic}
+DC transport (cf. Figure~\ref{fig:spin transport}) --- \(\sigma'(0)\) diverges.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
