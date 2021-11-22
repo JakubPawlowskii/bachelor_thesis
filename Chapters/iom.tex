@@ -539,15 +539,24 @@ DC transport (cf. Figure~\ref{fig:spin transport}) --- \(\sigma'(0)\) diverges.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Case of operators supported on up to \(3\) sites in the XXZ model\label{sec:example}}
-After explaining how and why to look for LIOMs and QLIOMs, let us now turn to an example.
+\section{(Q)LIOMs supported on up to \(3\) sites in the XXZ model\label{sec:example}}
+
+After explaining how and why to look for LIOMs and QLIOMs, let us now turn to a more concrete
+example of spin-\(1/2\) XXZ model on one dimensional lattice of \(L\) sites with periodic
+boundary conditions, introduced already in Section~\ref{sec:xxz}. In the subsequent
+considerations we will be based on the work of~\textcite{Mierzejewski2015a}.
+
+Having chosen a concrete model, we can now give an explicit definition of a basis
+of a space of \(m\)-local observables \(\mathcal{V}_L^m\). It is composed of operators
+of the form:
+\begin{equation}
+  O_{\underline{s}}=\sum_{j} \sigma_{j}^{s_{1}} \sigma_{j+1}^{s_{2}} \cdots \sigma_{j+m-1}^{s_{m}}
+\end{equation}
 
 
 Decomposition into 4 mutually orthogonal sectors
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Commuting LIOM: Spin energy current}
+\subsection{Commuting LIOM: Spin energy current}
 In order to test our (Q)LIOM finding algorithm and the correctness of its implementation, we investigate the known case of
 energy current in Spin\(-1/2\) XXZ model~\autocite*{Mierzejewski2015Approx}. For the sake of completeness, derivation of
 spin energy current for the general XYZ model will be presented, following the definitions in \textcite{Zotos1997}.
