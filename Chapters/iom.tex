@@ -7,13 +7,13 @@ To this end, we employ the algorithm first proposed in~\textcite{Mierzejewski201
 of motions for a given system size \(L\). After doing so for accessible values of \(L\), we then carry out finite size scaling
 to obtain information about the thermodynamic limit \(L \to \infty \). 
 
-In our description and notation used, we will  follow
+In our description and notation used, we follow
 the works of~\textcite{Mierzejewski2015a,Mierzejewski2015Approx,Mierzejewski2018}.
 The aim of this thesis is to provide a pedagogical introduction to the topic,
 so all derivations are presented in full detail, together with a simple proof of correctness for the algorithm.
-
+The importance of (Q)LIOMs is made clear by invoking the concept of spectral functions and Mazur bound. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Preliminaries}
+\section{Preliminaries \label{sec:prelim}}
 
 \paragraph{Space of observables}Consider the vector space \(\mathcal{V}_L\) of traceless and translationally invariant
 observables, acting on a Hilbert space of dimension \(\mathcal{D}\). We can define an inner product on this space:
@@ -231,9 +231,10 @@ To answer this question, we fix \(0\leq M \leq L/2\) and construct a basis \(\{O
 will be shown in Section~\ref{sec:example}. Next, we find time averages of all basis operators and build a matrix
 \begin{equation}
   K_{st}^{\tau} = \hs{\bar{O_s}^{\tau}}{\bar{O_t}^{\tau}}
+  \label{eq:stiffness matrix}
 \end{equation}
-This matrix is Hermitian by design. However, we assume that it is real and symmetric, 
-as usually considered operators are of the form \(O+O^{\dagger}\) or \(i\left(O-O^{\dagger}\right)\).
+This matrix is Hermitian by design. However, the models we usually
+consider posses time-reversal symmetry, and so we may assume that it is real and symmetric.
 Therefore, the spectral theorem guarantees existence of an orthogonal matrix \(U\) that
 diagonalizes it. In other words, \(D = UK^{\tau}U^{T}\) is diagonal and we have the following relations:
 \begin{align}
@@ -306,6 +307,7 @@ Consequently, we finally arrive at a classification scheme for the support of \(
     \item quasilocal: \(\lambda_n \in \left(0,1\right) \implies \norm{Q_n^{\perp}} > 0 \implies Q_n \in \mathcal{V}_L \)
     \item generic nonlocal: \(\lambda_n = 0 \implies \norm{Q_n} = 0\)
   \end{itemize}
+  \label{def:classification}
 \end{definition}
 The procedure outlined above works for a fixed system size \(L\).
 In principle, to asses the character of an integral of motion, we need to examine how \(\lambda_n\) behaves in the thermodynamic limit.
@@ -411,7 +413,10 @@ in the projections on these \(Q_{n}\):
   \label{eq:mazur equality}
 \end{equation}
 Therefore, by calculating the overlap between our observable and all the (Q)LIOMs, we can infer about the long time
-behavior of its spectral function and thus its autocorrelation function. Because autocorrelation function of
+behavior of its spectral function and thus its autocorrelation function. It is here that the
+importance of (Q)LIOMs becomes evident, as the overlap with generic nonlocal conserved quantities
+vanishes in the thermodynamic limit~\autocite{Zotos1997}.
+Because autocorrelation function of
 LIOMs is constant, its Fourier transform is a Dirac delta, which explains the form of 
 equation~\eqref{eq:spectral approximation}. 
 
@@ -447,7 +452,7 @@ of this bound for the case of one (Q)LIOM, in the spirit of a more modern discus
   \end{align*}
   \label{proof:single mazur}  
 \end{proof}
-It is perhaps worth noting, that the derivation Mazur bound for a single (Q)LIOM is equivalent to the proof of
+It is perhaps worth noting, that the derivation Mazur bound for a single (Q)LIOM is almost equivalent to the proof of
 the Cauchy-Schwarz inequality, found in any linear algebra textbook. By following exactly the same procedure, 
 we can easily generalize this results to a set of orthogonal conserved quantities \(\{Q_{n}\}\):
 \begin{equation}
@@ -531,10 +536,9 @@ spin conductivity~\autocite{Zotos1996}:
   on time in three different cases.}
   \label{fig:spin transport}
 \end{figure}
-
 If there exists a (quasi)local conserved quantity \(Q\) such that \(\hs{J}{Q}>0\), the Mazur bound
 implies that \(D_J > 0\). Such nonzero value of spin current stiffness is an indicator of \textit{ballistic}
-DC transport (cf. Figure~\ref{fig:spin transport}) --- \(\sigma'(0)\) diverges.
+DC transport (i.e.\ without scattering, cf. Figure~\ref{fig:spin transport}) --- \(\sigma'(0)\) diverges. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -550,15 +554,64 @@ Having chosen a concrete model, we can now give an explicit definition of a basi
 of a space of \(m\)-local observables \(\mathcal{V}_L^m\). It is composed of operators
 of the form:
 \begin{equation}
-  O_{\underline{s}}=\sum_{j} \sigma_{j}^{s_{1}} \sigma_{j+1}^{s_{2}} \cdots \sigma_{j+m-1}^{s_{m}}
+  O_{\underline{s}}=\sum_{j=1}^L \sigma_{j}^{s_{1}} \sigma_{j+1}^{s_{2}} \cdots 
+  \sigma_{j+m-1}^{s_{m}}
+  \label{eq:basis operator}
 \end{equation}
+In the expression above we have \(\sigma_j^z \equiv \sqrt{2} S^z_j\),
+\(\sigma_j^{\pm} \equiv S_j^{\pm}\), \(\sigma^{0} \equiv \Id{}\) and
+ \(\underline{s} = \left(s_1, s_2,\ldots, s_m\right)\) where \(s_j \in \{+,-,z,0\}\) for
+ \(j \in \{2,3,\ldots,m-1\}\). For first and last operator in a sequence we have 
+ \(s_{1,m} \in \{+,-,z\}\), because an identity there would correspond to an \(m-1\)-local
+ operator.\newline
+ \textcolor{blue}{why no 1/L in my HS product? how it relates to slightly different
+ definitions of sigmas? Operators constructed as in paper are normalized, here aren't}
+As a matter of mathematical precision, the notation for \(O_{\underline{s}}\) used here 
+(and frequently in physics literature) is a bit of simplification. It is important to remember
+that implicitly, there are tensor products between \(\sigma_j\)'s, i.e.\ we have the following:
+\begin{equation}
+  O_{\underline{s}}=\sum_{j=1}^L \underbrace{\Id \otimes \cdots
+       \otimes \Id}_{j-1} \otimes \; \sigma_{j}^{s_{1}} \otimes \sigma_{j+1}^{s_{2}} \otimes
+        \cdots \otimes \sigma_{j+m-1}^{s_{m}} \otimes 
+        \underbrace{\Id \otimes \cdots \otimes \Id}_{L-j-m+1}
+\end{equation}
+The single site identity operators ensure that the dimension of matrix of the operator is right.
+A simple combinatorial observation shows us, that there are \(N_m = 3\cdot 4^{m-2}\cdot 2\) operators
+constituting a \(m\)-local basis (for \(m = 1\) we have \(N_1 = 3\)). Moreover, they are orthogonal (\textcolor{blue}{orthonormal?}) 
+\textit{by design}, i.e.\ \(\hs{O_{\underline{s}}}{O_{\underline{k}}} \propto
+\delta_{\underline{s},\underline{k}}\).
+\newline
+\textcolor{blue}{Here proof of orthogonality(orthonormality), maybe an Appendix?}
+\newline
+Fixing \(M>0\) (usually \(M<L\)), we can construct the basis of traceless operators spanning
+the space \(\mathcal{V}_L^M = \bigoplus_{m=1}^{M} \mathcal{V}_L^m\). From the properties of 
+direct sum of linear spaces we now that its cardinality is \(D_M = \sum_{m=1}^{M} N_m = 
+ 3 \cdot 4^{M-1}\). Such construction can be implemented in practice by considering
+ all possible \(M\)-digit numbers written in base \(4\) (as there are \(4\) `building blocks':
+  \(S^{\pm},S^{z},\Id{}\)). 
 
+Having put together this basis, we can now proceed with the rest of the (Q)LIOM finding algorithm.
+However, before that it is beneficial to discuss the influence of symmetries of system in question,
+the XXZ model. They allow us to decompose the matrix \(K\) 
+(cf.~\eqref{eq:stiffness matrix}) and thus reduce the computational effort. First and perhaps
+the most important one is implied by the fact already discussed in Section~\ref{sec:prelim} ---
+conservation of magnetization. We could restrict our considerations to a subspaces
+of \(\mathcal{V}_L^M\) comprised of operators such that \(\comm{S_{tot}^z}{O_{\underline{s}}} = 0\).
+Yet, we will not be able to make use of that symmetry here, as in this work we are interested
+precisely in the \textit{noncommuting} operators, i.e\ precisely those that break this symmetry.
+Furthermore, the XXZ model is time-reversal invariant, so the \(K\) matrix is real and symmetric.
+Therefore, we can divide our operators into two orthogonal subspaces, either real or imaginary.
+Those subspaces are then spanned by operators of the form 
+\(O_{\underline{s}}+O^{\dagger}_{\underline{s}}\) or 
+\(i(O_{\underline{s}}-O^{\dagger}_{\underline{s}})\) respectively. There is also one more
+useful symmetry, namely the \(\ZZ_2\) spin-flip symmetry, however it remains out scope of
+this thesis.
 
-Decomposition into 4 mutually orthogonal sectors
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Commuting LIOM: Spin energy current}
 In order to test our (Q)LIOM finding algorithm and the correctness of its implementation, we investigate the known case of
-energy current in Spin\(-1/2\) XXZ model~\autocite*{Mierzejewski2015Approx}. For the sake of completeness, derivation of
+energy current in Spin\(-1/2\) XXZ model~\autocite*{Mierzejewski2015Approx} and see whether it is detected or not.
+For the sake of completeness, derivation of
 spin energy current for the general XYZ model will be presented, following the definitions in \textcite{Zotos1997}.
 We start with the general XYZ Hamiltonian with periodic boundary conditions:
 \begin{equation}
@@ -596,12 +649,28 @@ is shown in Appendix~\ref{app:spin energy current derivation}. For the XXZ model
         & - \underbrace{\left(2J \Sp_{i-1}\Sz_i \Sm_{i+1} + J\Delta \Sz_{i-1}\Sm_i \Sp_{i+1} + J\Delta \Sm_{i-1}\Sp_{i} \Sz_{i+1} \right)}_{O_i^{\dagger}}\Big) \nonumber \\
         & = i\left(O_i - O_i^{\dagger}\right)
 \end{align*}
+Thus we see that it is an imaginary operator.
 Obtaining the energy current operator is now simply the matter of summing over all the lattice sites:
 \begin{equation}
   J^E = \sum_{i=1}^L j_i^E
   \label{eq:energy current}
 \end{equation}
+As the energy current commutes with the Hamiltonian, it does not undergo time evolution
+and its autocorrelation function \(\hs{J^E(t)}{J^E(0)}\) is constant. Therefore, the corresponding
+spectral function is proportional to Dirac delta.
 
-\textcolor{blue}{Tutaj dalej o tym że komutuje z H, stała funkcja autokorelacji i 
-jak zanika przy zaburzeniu. Ale dopiero po rozdziale o algorytmie żeby notacja była ustalona.
-I o tym że lorenzian i że exp zanik.}
+After restricting our algorithm to the case of imaginary
+operators, we obtain the following:
+\begin{equation}
+    J^E = \sum_i^L i\left[\beta_1 \left(\Sm_{i-1}\Sz_{i}\Sp_{i+1}\right) + \beta_2 \left(\Sz_{i-1}\Sp_{i}\Sm_{i+1}+\Sp_{i-1}\Sm_{i}\Sz_{i+1}\right)\right] + \text{H.c.}
+\end{equation}
+where the coefficients \(\beta_1,\beta_2\) are such that the operator is properly
+normalized. This is precisely the energy current operator as derived above.
+\textcolor{blue}{Here insert the plot of lambdas for energy current and different L}.
+After taking the thermodynamic limit of the eigenvalue of \(K\) matrix 
+corresponding to the energy current, we see that it equals precisely to unity. Thus, according
+to Definition~\ref{def:classification}, it is a local integral of motion. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Noncommuting (Q)LIOMs}
+

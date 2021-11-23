@@ -52,9 +52,9 @@
 % Dodatkowe wsparcie dla środowiska mathbb, które nie wspiera domyślnie cyfr (\mathbb{})
 \usepackage{bbold}
 
+
 % Fixes/improves amsmath
 \usepackage{mathtools}
-
 
 
 % ***************************************************************************************************
@@ -168,6 +168,23 @@
 	}
 	\fancyfoot[LE,RO]{							% Stopki
 		\thepage
+	}  {
+		"name": "lualatex",
+		"command": "lualatex",
+		"args": [
+			"-synctex=1",
+			"-interaction=nonstopmode",
+			"-file-line-error",
+			"-pdf",
+			"%DOC%"
+		]
+	},
+	{
+		"name": "biber",
+		"command": "biber",
+		"args": [
+			"%DOCFILE%"
+		]
 	}
 	\renewcommand{\headrulewidth}{0pt}			% Grubość linii w nagłówku
 	\renewcommand{\footrulewidth}{0.2pt}		% Grubość linii w stopce
@@ -435,7 +452,7 @@
 \newcommand{\IFF}{\leftrightarrow}
 
 % Symbole operatorów spinowych
-\newcommand{\Id}{\mathcal{I}}
+\newcommand{\Id}{\mathbb{1}}
 \newcommand{\Sp}{S^{+}}
 \newcommand{\Sm}{S^{-}}
 \newcommand{\Sz}{S^{z}}
