@@ -113,10 +113,11 @@ In Section~\ref{sec:algorithm}, a precise definition of locality and quasilocali
 
 \paragraph{Noncommutativity}In the case of XXZ model (also in general XYZ model) the Hamiltonian preserves the total \(z\)-component of spin,
 or in other words, it commutes with the total spin operator of the form:
-\begin{equation*}
+\begin{equation}
   \Sz_{tot} = \sum_{i = 1}^{L} \Sz_i
-\end{equation*}
-This fact allows us to decompose the full Hilbert space into parts consisting of states with the same total \(z\)-component
+  \label{eq:magnetization}
+\end{equation}
+The resulting \(U(1)\) symmetry allows us to decompose the full Hilbert space into parts consisting of states with the same total \(z\)-component
 of spin. In more mathematical terms, we have the following:
 \begin{equation*}
   \mathcal{H} = \bigoplus_{i = 0}^{L} \mathcal{H}_i \text{, where } \big(\forall \ket{\psi} \in \mathcal{H}_i \big) \big(\Sz_{tot} \ket{\psi} = \frac{1}{2}(i-L) \ket{\psi} \big)
@@ -136,8 +137,8 @@ commuting IOM, we can restrict ourselves to the fixed spin subspace and thus gre
 computational complexity, allowing us to investigate larger systems. Such operators, for example
 spin energy current, have already been studied~\autocite{Mierzejewski2015Approx}. Therefore,
 the main focus of this work is the investigation of existence and properties of much less known
-noncommuting IOMs. This forces us to remain in full Hilbert space and restricts system sizes
-that we are able to check.
+noncommuting IOMs, which do not posses the \(U(1)\) symmetry of Hamiltonian. 
+This forces us to remain in full Hilbert space and restricts system sizes that we are able to check.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -170,7 +171,9 @@ from~\textcite{Mierzejewski2015a}:
   \label{eq:inf time avg}
 \end{equation}
 The quantity \(\hs{\bar{A}}{\bar{A}}\) is called the stiffness of operator \(A\) and corresponds to the infinite time limit
-of its autocorrelation function.
+of its autocorrelation function. In order to carry out the time averaging we need to express the operator
+in the basis of energy eigenstates and thus we need to perform exact diagonalization of the Hamiltonian.
+This is one of the main limiting factors of this procedure.
 
 \begin{figure}[htbp]
   \centering
@@ -470,25 +473,25 @@ in Section~\ref{sec:algorithm} was first proposed. We will now show that the fol
 \label{prop:saturation}
 \end{proposition}
 \begin{proof}
-  Consider once again an arbitrary observable \(\mathcal{V}_L^M \ni A = \sum_s a_s O_s,\; 
-  (\forall s) (a_s \in \RR)\). We are interested in computing its stiffness \(D_A = \hs{\bar{A}}{\bar{A}}\), 
-  where \(\bar{A} = \sum_s a_s \bar{O}_s\). Inverting the relation~\eqref{eq:new operators}, we can write 
-  \(\bar{O_s} = \sum_n U_{sn}^T Q_n = \sum_n U_{ns} Q_n\) and thus the following:
+  Consider once again an arbitrary observable \(\mathcal{V}_L^M \ni A = \sum_n a_n O_n,\; 
+  (\forall n) (a_n \in \RR)\). We are interested in computing its stiffness \(D_A = \hs{\bar{A}}{\bar{A}}\), 
+  where \(\bar{A} = \sum_n a_n \bar{O}_n\). Inverting the relation~\eqref{eq:new operators}, we can write 
+  \(\bar{O_n} = \sum_s U_{ns}^T Q_s = \sum_s U_{sn} Q_s\) and thus the following:
   \begin{equation*}
-    \bar{A} = \sum_s a_s \bar{O}_s = \sum_s a_s \sum_n U_{ns} Q_n =
-    \sum_n \underbrace{\left(\sum_s a_s U_{ns}\right)}_{v_n} Q_n = \sum_n v_n Q_n
+    \bar{A} = \sum_n a_n \bar{O}_n = \sum_n a_n \sum_s U_{sn} Q_s =
+    \sum_s \underbrace{\left(\sum_n a_n U_{sn}\right)}_{v_s} Q_s = \sum_s v_s Q_s
   \end{equation*}
   Now, let us express the overlap \(\hs{\bar{A}}{Q_k}\) in two ways:
   \begin{enumerate}
-    \item \(\hs{\bar{A}}{Q_k} = \sum_n v_n \underbrace{\hs{Q_n}{Q_k}}_{=\lambda_n \delta_{nk}} = v_k \lambda_k\)
+    \item \(\hs{\bar{A}}{Q_k} = \sum_s v_s \underbrace{\hs{Q_s}{Q_k}}_{=\lambda_s \delta_{sk}} = v_k \lambda_k\)
     \item \(\hs{\bar{A}}{Q_k} = \hs{A}{\bar{Q_k}} = \hs{A}{Q_k}\)
   \end{enumerate}
   We are finally ready to make a direct calculation of stiffness of \(A\):
   \begin{align*}
-    D_A = \hs{\bar{A}}{\bar{A}} &= \sum_{nk} v_n v_k \hs{Q_n}{Q_k} = \sum_{nk} v_n v_k \delta_{nk} \lambda_{k} = 
-    \sum_{\substack{n\\\lambda_n > 0}} v_n^2 \lambda_n \\
-    &= \sum_{\substack{n\\\lambda_n > 0}} v_n^2 \lambda_n^2 \frac{1}{\lambda_n} = 
-    \sum_{\substack{n\\\lambda_n > 0}} \frac{\hs{A}{Q_n}^2}{\hs{Q_n}{Q_n}}
+    D_A = \hs{\bar{A}}{\bar{A}} &= \sum_{sk} v_s v_k \hs{Q_s}{Q_k} = \sum_{sk} v_s v_k \delta_{sk} \lambda_{k} = 
+    \sum_{\substack{s\\\lambda_s > 0}} v_s^2 \lambda_s \\
+    &= \sum_{\substack{s\\\lambda_s > 0}} v_s^2 \lambda_s^2 \frac{1}{\lambda_s} = 
+    \sum_{\substack{s\\\lambda_s > 0}} \frac{\hs{A}{Q_s}^2}{\hs{Q_s}{Q_s}}
   \end{align*}
   Therefore, the Mazur bound is saturated by our construction and the proof is concluded.
 \end{proof}
@@ -605,7 +608,8 @@ Those subspaces are then spanned by operators of the form
 \(O_{\underline{s}}+O^{\dagger}_{\underline{s}}\) or 
 \(i(O_{\underline{s}}-O^{\dagger}_{\underline{s}})\) respectively. There is also one more
 useful symmetry, namely the \(\ZZ_2\) spin-flip symmetry, however it remains out scope of
-this thesis.
+this thesis. 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Commuting LIOM: Spin energy current}
@@ -658,7 +662,13 @@ Obtaining the energy current operator is now simply the matter of summing over a
 As the energy current commutes with the Hamiltonian, it does not undergo time evolution
 and its autocorrelation function \(\hs{J^E(t)}{J^E(0)}\) is constant. Therefore, the corresponding
 spectral function is proportional to Dirac delta.
-
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.45\textwidth]{Figures/current_int.pdf}
+  \caption{Eigenvalues of generalized stiffness matrix corresponding to the energy current
+  operator as a function of inverse system size. Solid line is the extrapolation to thermodynamic
+  limit. Calculations performed for \(\Delta=1.0\).}\label{fig: current integrable}
+\end{figure}
 After restricting our algorithm to the case of imaginary
 operators, we obtain the following:
 \begin{equation}
@@ -666,11 +676,71 @@ operators, we obtain the following:
 \end{equation}
 where the coefficients \(\beta_1,\beta_2\) are such that the operator is properly
 normalized. This is precisely the energy current operator as derived above.
-\textcolor{blue}{Here insert the plot of lambdas for energy current and different L}.
 After taking the thermodynamic limit of the eigenvalue of \(K\) matrix 
-corresponding to the energy current, we see that it equals precisely to unity. Thus, according
-to Definition~\ref{def:classification}, it is a local integral of motion. 
+corresponding to the energy current, we see that it equals precisely one (Figure~\ref{fig: current integrable}).
+Thus, according to Definition~\ref{def:classification}, it is a local integral of motion. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Noncommuting (Q)LIOMs}
+Having checked the correctness of the algorithm and its implementation, we can now proceed with the
+main topic of this thesis, that is investigating the \textit{noncommuting} integrals of motion. 
+We conducted preliminary studies for small values of system size \(L\), without assuming
+translational invariance. Available resources allowed us to make unrestricted search for
+ \(L \in \set{8,9,10,11,12}\). Nevertheless, noncommuting operators that maximized stiffness for given 
+ \(L\) and \(\Delta \) turned out to be translationally invariant. Therefore, we restrict our further 
+considerations to translationally invariant operators only. This allowed us to obtain numerical
+results for \(L\) up to \(14\). We will focus on two concrete cases of operators, corresponding
+to largest eigenvalues of generalized stiffness matrix for values of anisotropy
+parameter \(\Delta=1.0\) and \(\Delta=0.5\) respectively.
 
+For the case of \(\Delta=1.0\), the XXZ model reduces to the isotropic XXX model possessing full
+\(SU(2)\) symmetry:
+\begin{equation}
+  H_{XXX} = \frac{J}{2} \sum_{i=1}^L \left(\Sx_i \Sx_{i+1} + \Sy_i \Sy_{i+1} + \Sz_i \Sz_{i+1}\right)
+\end{equation}
+As a consequence of this symmetry, conservation of total magnetization 
+(\(\Sz_{tot}\) operator~\eqref{eq:magnetization}) implies the conservation of analogously defined \(\Sx_{tot}\)
+and \(\Sy_{tot}\) and therefore their linear combination, i.e.\ the following quantity:
+\begin{equation}
+    \hat{O}_{1} =  \frac{1}{\sqrt{L}}\sum_{i=1}^{L} \Sp_{i} + \text{H.c.}
+    \label{eq:delta 1.0}
+\end{equation}
+where the prefactor is introduced for the sake of normalization. Operator \(\hat{O}_1\) is an example of a real operator.
+
+The case of \(\Delta=0.5\) is much more difficult. It was shown by~\textcite{zadnik2016} that for 
+special values of anisotropy parameter \(\Delta \in S = \set[\Big]{\cos\left(\frac{2l}{2k-1}
+\pi\right)}_{k,l\in \NN,\, l<k}\) one can use semicyclic irreducible representations
+of quantum group \(U_q(\mathfrak{sl}_2)\) to generate a set of quasilocal integrals of 
+motion that do not preserve magnetization. Even though the set \(S\) is a dense subset
+of the interval \([-1,1]\) i.e.\ the gapless regime of XXZ spin-\(1/2\) chain, it is not
+symmetric with respect to \(\Delta=0\). For example, considered here value of anisotropy parameter
+\(\Delta=0.5\) does not belong to this set, whereas \(\Delta=-0.5\) do. However, it can be shown
+that there exist an unitary operator \(U\), which action is equivalent to flipping the sign 
+of parameter \(\Delta\), that is \(UH_{XXZ}(\Delta)U = -H_{XXZ}(-\Delta)\). From that follows,
+that if \(Q\) is a conserved quantity for \(\Delta\), then \(\tilde{Q} = UQU\) is a conserved
+quantity for \(-\Delta\). Detailed discussed of this topic is far beyond the scope of this thesis
+and can be found in~\autocite{zadnik2016,Prosen2014c}. It turns out, that for \(\Delta=0.5\) the actions of this operator
+produces a simple factor of \((-1)^i\) in the integral of motion:
+\begin{equation}
+  \hat{O}_{2} =\frac{1}{\sqrt{L}} \sum_{i=1}^{L} {(-1)}^i \left( \Sp_{i}\Sp_{i+1}\Sp_{i+2}\right) + \text{H.c.}
+  \label{eq:delta 0.5}
+\end{equation}  
+This is once again a real operator.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.45\textwidth]{Figures/nocomm_int.pdf}
+  \caption{Eigenvalues of generalized stiffness matrix corresponding to the two noncommuting
+    integrals of motion, as a function of inverse system size. Solid lines represent the extrapolation
+    to the thermodynamic limit. Note that the operator \(\hat{O}_2\) exhibits quasilocality
+    and its stiffness in the thermodynamic limit is \(\lambda_{L\to\infty} \approx
+    0.44\).}
+  \label{fig: noncommuting integrable}
+\end{figure}
+
+Both \(\hat{O}_1\) and \(\hat{O}_2\) are noncommuting (Q)LIOMs, what can be seen easily from the
+fact that they consist of just \(\Sp\) operators (not counting the Hermitian conjugate). Conducting
+an analysis with the help of the algorithm we indeed find these two operators among eigenvectors
+of the generalized stiffness matrix. Corresponding eigenvalues and their thermodynamic limit
+are shown in Figure~\ref{fig: noncommuting integrable}. Comparing it with Definition~\ref{def:classification}
+we see that \(\hat{O}_1\) is a local integral of motion, whereas \(\hat{O}_2\) is a quasilocal integral of motion. 

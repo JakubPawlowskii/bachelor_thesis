@@ -23,7 +23,7 @@
 \selectlanguage{english}
 
 % Kodowanie dokumentu
-\usepackage[utf8]{inputenc}
+% \usepackage[utf8]{inputenc}
 
 % Dowolny rozmiar czcionek, kodowanie znaków
 \usepackage{lmodern}
@@ -167,25 +167,8 @@
 		}
 	}
 	\fancyfoot[LE,RO]{							% Stopki
-		\thepage
-	}  {
-		"name": "lualatex",
-		"command": "lualatex",
-		"args": [
-			"-synctex=1",
-			"-interaction=nonstopmode",
-			"-file-line-error",
-			"-pdf",
-			"%DOC%"
-		]
-	},
-	{
-		"name": "biber",
-		"command": "biber",
-		"args": [
-			"%DOCFILE%"
-		]
-	}
+		\thepage{}
+	}  
 	\renewcommand{\headrulewidth}{0pt}			% Grubość linii w nagłówku
 	\renewcommand{\footrulewidth}{0.2pt}		% Grubość linii w stopce
 }
@@ -287,7 +270,7 @@
 \usepackage{titlesec}
 
 % Formatowanie tytułów rozdziałów
-\titleformat{\chapter}[hang]					% kształt
+\titleformat{\chapter}[frame]					% kształt
 {
 	\vspace{-10ex}
 	\Huge
@@ -460,6 +443,7 @@
 \newcommand{\Sy}{S^{y}}
 \newcommand{\hs}[2]{\left(#1 \middle| #2\right)}
 
+\DeclarePairedDelimiterX\set[1]\lbrace\rbrace{\def\given{\;\delimsize\vert\;}#1}
 % ***************************************************************************************************
 % Środowiska
 % ***************************************************************************************************
