@@ -40,7 +40,7 @@ Next step requires us to evaluate the sum over lattice sites to get rid of the K
 \end{align*}
 What now remains is to collect these parts and see that we finally arrive at the equation for the energy current density:
 \begin{align}
-    j_i^E &= J_x J_y \left(\Sy_{i-1}\Sz_i \Sx_{i+1} - \Sx_{i-1}\Sz_{i}\Sy_{i+1}\right) \nonumber\\
+    j_i^E &= J_x J_y \left(\Sy_{i-1}\Sz_i \Sx_{i+1} - \Sx_{i-1}\Sz_{i}\Sy_{i+1}\right) \nonumber \\
     &+ J_x J_z \left(\Sx_{i-1}\Sy_i \Sz_{i+1} - \Sz_{i-1}\Sy_{i}\Sx_{i+1}\right) \nonumber \\
     &+ J_y J_z \left(\Sz_{i-1}\Sx_i \Sy_{i+1} - \Sy_{i-1}\Sx_{i}\Sz_{i+1}\right) \nonumber \\
     &= J_x J_y \left(\Sy_{i-1}\Sz_i \Sx_{i+1} - \Sx_{i-1}\Sz_{i}\Sy_{i+1}\right) + \text{cyclic permutations of } \left(x,y,z\right)
@@ -48,10 +48,10 @@ What now remains is to collect these parts and see that we finally arrive at the
 \end{align}
 which is precisely the expression from~\textcite{Zotos1997}. 
 However, in this work we are interested in the XXZ model with the Hamiltonian~\eqref{eq:HXXZ}. To this end,
-we need to set \(J_x, J_z = 2J\), \(J_z = \Delta\) and substitute \(\Sx_i = \frac{\Sp_i + \Sm_i}{2}\), \(\Sy_i = \frac{\Sp_i-\Sm_i}{2i}\).
+we need to set \(J_x, J_z = 2J\), \(J_z = \Delta \) and substitute \(\Sx_i = \frac{\Sp_i + \Sm_i}{2}\), \(\Sy_i = \frac{\Sp_i-\Sm_i}{2i}\).
 After some more lengthy calculations, we finally arrive at the desired form of energy current density operator:
 \begin{align}
-    j_i^E &= i \Big( \underbrace{2J \Sm_{i-1}\Sz_i \Sp_{i+1} + J \Delta \Sz_{i-1}\Sp_i \Sm_{i+1} + J\Delta \Sp_{i-1}\Sm_i\Sz_{i+1}}_{O_i} \\
+    j_i^E &= i \Big( \underbrace{2J \Sm_{i-1}\Sz_i \Sp_{i+1} + J \Delta \Sz_{i-1}\Sp_i \Sm_{i+1} + J\Delta \Sp_{i-1}\Sm_i\Sz_{i+1}}_{O_i} \nonumber \\
     &- \underbrace{\left(2J \Sp_{i-1}\Sz_i \Sm_{i+1} + J\Delta \Sz_{i-1}\Sm_i \Sp_{i+1} + J\Delta \Sm_{i-1}\Sp_{i} \Sz_{i+1} \right)}_{O_i^{\dagger}}\Big) \nonumber \\
     &= i\left(O_i - O_i^{\dagger}\right)
     \label{eq:final energy current density}

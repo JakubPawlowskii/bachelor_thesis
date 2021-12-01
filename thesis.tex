@@ -233,14 +233,14 @@
 				\includegraphics[width=0.05\textwidth]{Figures/wppt-logo}
 			}
 		}
-		\put(-210,5.5){%
+		\put(-220,5.5){%
 			\makebox(0,0)[l]{%
 				\small Faculty of Fundamental Problems of Technology
 			}
 		}
 	}
 	\fancyfoot[LE,RO]{							% Stopki
-		\thepage
+		\thepage{}
 	}
 	\renewcommand{\headrulewidth}{0pt}			% Grubość linii w nagłówku
 	\renewcommand{\footrulewidth}{0.2pt}		% Grubość linii w stopce
@@ -270,13 +270,13 @@
 \usepackage{titlesec}
 
 % Formatowanie tytułów rozdziałów
-\titleformat{\chapter}[frame]					% kształt
+\titleformat{\chapter}[hang]					% kształt
 {
-	\vspace{-10ex}
+	\vspace{-15ex}
 	\Huge
 	\bfseries
 }												% formatowanie tekstu modyfikowanego elementu
-{}												% etykieta występująca przed tekstem modyfikowanego elementu, niewidoczna w spisie treści
+{\thechapter}												% etykieta występująca przed tekstem modyfikowanego elementu, niewidoczna w spisie treści
 {
 	10pt
 }												% odstęp formatowanego tytułu od lewego marginesu/etykiety
@@ -286,7 +286,7 @@
 }												% formatowanie elementów przed modyfikowanym tytułem
 [
 \vspace{2ex}
-%\rule{\textwidth}{0.4pt}
+% \rule{\textwidth}{0.4pt}
 %\vspace{-4ex}
 ]												% dodatkowe formatowanie stosowane poniżej modyfikowanego tytułu
 
@@ -308,7 +308,7 @@
 	\Large
 	\bfseries
 }												% formatowanie elementów przed modyfikowanym tytułem
-
+\title{}
 % ***************************************************************************************************
 % Linki
 % ***************************************************************************************************
@@ -442,8 +442,11 @@
 \newcommand{\Sx}{S^{x}}
 \newcommand{\Sy}{S^{y}}
 \newcommand{\hs}[2]{\left(#1 \middle| #2\right)}
+\newcommand{\dimension}{2^L}
 
 \DeclarePairedDelimiterX\set[1]\lbrace\rbrace{\def\given{\;\delimsize\vert\;}#1}
+
+\renewcommand{\baselinestretch}{1.3} 
 % ***************************************************************************************************
 % Środowiska
 % ***************************************************************************************************
@@ -493,6 +496,7 @@
 }{%
 \vspace{1cm}
 }
+
 
 % ***************************************************************************************************
 % Dokument
@@ -586,6 +590,8 @@
 	\appendix
 	\pagestyle{appendixStyle}
 	\input{Chapters/appendix_energy_current.tex}
+	\cleardoublepage{}
+	\input{Chapters/appendix_orthonormality.tex}
 	\cleardoublepage{}
 
 \end{document}

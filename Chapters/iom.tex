@@ -13,12 +13,12 @@ The aim of this thesis is to provide a pedagogical introduction to the topic,
 so all derivations are presented in full detail, together with a simple proof of correctness for the algorithm.
 The importance of (Q)LIOMs is made clear by invoking the concept of spectral functions and Mazur bound. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Preliminaries \label{sec:prelim}}
+\section{Preliminaries\label{sec:prelim}}
 
 \paragraph{Space of observables}Consider the vector space \(\mathcal{V}_L\) of traceless and translationally invariant
-observables, acting on a Hilbert space of dimension \(\mathcal{D}\). We can define an inner product on this space:
+observables, acting on a Hilbert space of dimension \(\dimension\). We can define an inner product on this space:
 \begin{equation}
-  \hs{A}{B} = \frac{1}{\mathcal{D}}\tr(A^{\dagger}B) = \frac{1}{\mathcal{D}} \sum_{mn} A_{nm}B_{nm}^{\ast}
+  \hs{A}{B} = \frac{1}{\dimension}\tr(A^{\dagger}B) = \frac{1}{\dimension} \sum_{mn} A_{nm}B_{nm}^{\ast}
 \end{equation}
 i.e.\;the Hilbert-Schmidt product, where \(A_{nm} = \matrixel{n}{A}{m}\) and \(H\ket{n} = E_n \ket{n}\).
 Moreover, we define the Hilbert-Schmidt norm of an operator to be \(\norm{A} = \sqrt{\hs{A}{A}}\).
@@ -202,9 +202,9 @@ Observing that \({\left(\theta_{mn}^{\tau}\right)}^2 = \theta_{mn}^{\tau}\) and 
 
 \begin{proof}
   \begin{align*}
-    \hs{\bar{A}^{\tau}}{\bar{B}^{\tau}}  & = \frac{1}{\mathcal{D}} \sum_{mn} {\left(\bar{A}^{\tau}\right)}_{mn}
-    {\left(\bar{B}^{\tau}\right)}_{mn}^{\ast} = \frac{1}{\mathcal{D}} \sum_{mn} {\left(\theta_{mn}^{\tau}\right)}^2 A_{mn} B_{mn}^{\ast} \nonumber{}               \\
-    & = \frac{1}{\mathcal{D}} \sum_{mn} \left(\theta_{mn}^{\tau}\right) A_{mn} B_{mn}^{\ast} =
+    \hs{\bar{A}^{\tau}}{\bar{B}^{\tau}}  & = \frac{1}{\dimension} \sum_{mn} {\left(\bar{A}^{\tau}\right)}_{mn}
+    {\left(\bar{B}^{\tau}\right)}_{mn}^{\ast} = \frac{1}{\dimension} \sum_{mn} {\left(\theta_{mn}^{\tau}\right)}^2 A_{mn} B_{mn}^{\ast} \nonumber{}               \\
+    & = \frac{1}{\dimension} \sum_{mn} \left(\theta_{mn}^{\tau}\right) A_{mn} B_{mn}^{\ast} =
     \hs{A}{\bar{B}^{\tau}} = \hs{\bar{A}^{\tau}}{B}                                                                                                        \\
     \overline{\left(\bar{A}^{\tau}\right)}^{\tau} & = {\left(\theta_{mn}^{\tau}\right)}^2 A_{mn} = \theta_{mn}^{\tau} A_{mn} = \left(\bar{A}^{\tau}\right)
   \end{align*}
@@ -395,8 +395,8 @@ averaged operator \(\bar{A}^{\frac{1}{\omega}}\), which fits nicely within the p
 discussed framework. Because all observables of interest are traceless and
 normalized to unity, we have this two important limits
 \begin{align}
-  \lim_{\omega \to \infty } I(\omega) &= \frac{1}{\mathcal{D}}\sum_{m,n} A_{mn}^2 = \norm*{A}^2 = 1\\
-  \lim_{\omega \to 0^+ } I(\omega) &= \frac{1}{\mathcal{D}} \sum_{ \substack{m,n\\E_m=E_n} } A_{mn}^2 = \norm*{\bar{A}}^2
+  \lim_{\omega \to \infty } I(\omega) &= \frac{1}{\dimension}\sum_{m,n} A_{mn}^2 = \norm*{A}^2 = 1\\
+  \lim_{\omega \to 0^+ } I(\omega) &= \frac{1}{\dimension} \sum_{ \substack{m,n\\E_m=E_n} } A_{mn}^2 = \norm*{\bar{A}}^2
 \end{align}
 
 For frequencies small (long times) in comparison with system's characteristic energy
@@ -438,7 +438,7 @@ of this bound for the case of one (Q)LIOM, in the spirit of a more modern discus
 \begin{proof}
   We define a new observable \(\mathcal{A} = \bar{A} - \alpha Q\) for \(\alpha \in \RR\).
   Obviously, square of the norm of this quantity is positive i.e. \(\norm*{\mathcal{A}}^2 = 
-  \tr(\mathcal{A}\mathcal{A})/\mathcal{D} \geq 0\). On the other hand, we can carry out an
+  \tr(\mathcal{A}\mathcal{A})/\dimension \geq 0\). On the other hand, we can carry out an
   explicit computation of the norm:
   \begin{align*}
   \norm*{\mathcal{A}}^2 &= \hs{\bar{A}-\alpha Q}{\bar{A}-\alpha Q} = \hs{\bar{A}}{\bar{A}} - 
@@ -551,45 +551,43 @@ DC transport (i.e.\ without scattering, cf. Figure~\ref{fig:spin transport}) ---
 After explaining how and why to look for LIOMs and QLIOMs, let us now turn to a more concrete
 example of spin-\(1/2\) XXZ model on one dimensional lattice of \(L\) sites with periodic
 boundary conditions, introduced already in Section~\ref{sec:xxz}. In the subsequent
-considerations we will be based on the work of~\textcite{Mierzejewski2015a}.
+considerations we will base on the work of~\textcite{Mierzejewski2015a}.
 
 Having chosen a concrete model, we can now give an explicit definition of a basis
 of a space of \(m\)-local observables \(\mathcal{V}_L^m\). It is composed of operators
 of the form:
 \begin{equation}
-  O_{\underline{s}}=\sum_{j=1}^L \sigma_{j}^{s_{1}} \sigma_{j+1}^{s_{2}} \cdots 
+  O_{\underline{s},j}=\sigma_{j}^{s_{1}} \sigma_{j+1}^{s_{2}} \cdots 
   \sigma_{j+m-1}^{s_{m}}
   \label{eq:basis operator}
 \end{equation}
-In the expression above we have \(\sigma_j^z \equiv \sqrt{2} S^z_j\),
-\(\sigma_j^{\pm} \equiv S_j^{\pm}\), \(\sigma^{0} \equiv \Id{}\) and
+In the expression above we have \(\sigma_j^z \equiv 2 S^z_j\),
+\(\sigma_j^{\pm} \equiv \sqrt{2} S_j^{\pm}\), \(\sigma^{0}_j \equiv \Id_{2\cross 2}\) and
  \(\underline{s} = \left(s_1, s_2,\ldots, s_m\right)\) where \(s_j \in \{+,-,z,0\}\) for
  \(j \in \{2,3,\ldots,m-1\}\). For first and last operator in a sequence we have 
  \(s_{1,m} \in \{+,-,z\}\), because an identity there would correspond to an \(m-1\)-local
- operator.\newline
- \textcolor{blue}{why no 1/L in my HS product? how it relates to slightly different
- definitions of sigmas? Operators constructed as in paper are normalized, here aren't}
-As a matter of mathematical precision, the notation for \(O_{\underline{s}}\) used here 
+ operator. The index \(j\) indicates first site of the support.
+As a matter of mathematical precision, the notation for \(O_{\underline{s},j}\) used here 
 (and frequently in physics literature) is a bit of simplification. It is important to remember
 that implicitly, there are tensor products between \(\sigma_j\)'s, i.e.\ we have the following:
 \begin{equation}
-  O_{\underline{s}}=\sum_{j=1}^L \underbrace{\Id \otimes \cdots
-       \otimes \Id}_{j-1} \otimes \; \sigma_{j}^{s_{1}} \otimes \sigma_{j+1}^{s_{2}} \otimes
+  O_{\underline{s},j}= \underbrace{\Id_{2\cross 2} \otimes \cdots
+       \otimes \Id_{2\cross 2}}_{j-1} \otimes \; \sigma_{j}^{s_{1}} \otimes \sigma_{j+1}^{s_{2}} \otimes
         \cdots \otimes \sigma_{j+m-1}^{s_{m}} \otimes 
-        \underbrace{\Id \otimes \cdots \otimes \Id}_{L-j-m+1}
+        \underbrace{\Id_{2\cross 2} \otimes \cdots \otimes \Id_{2\cross 2}}_{L-j-m+1}
+        \label{eq:basis with tensors}
 \end{equation}
 The single site identity operators ensure that the dimension of matrix of the operator is right.
-A simple combinatorial observation shows us, that there are \(N_m = 3\cdot 4^{m-2}\cdot 2\) operators
-constituting a \(m\)-local basis (for \(m = 1\) we have \(N_1 = 3\)). Moreover, they are orthogonal (\textcolor{blue}{orthonormal?}) 
-\textit{by design}, i.e.\ \(\hs{O_{\underline{s}}}{O_{\underline{k}}} \propto
-\delta_{\underline{s},\underline{k}}\).
-\newline
-\textcolor{blue}{Here proof of orthogonality(orthonormality), maybe an Appendix?}
-\newline
+A simple combinatorial observation shows us, that there are \(N_m = 3\cdot 4^{m-2}\cdot 2\)
+(excluding shifts i.e.\ different values of \(j\) for the same \(\underline{s}\)) operators
+constituting a \(m\)-local basis (for \(m = 1\) we have \(N_1 = 3\)). Moreover, they are orthonormal
+\textit{by design}, i.e.\ \(\hs{O_{\underline{s},j}}{O_{\underline{s}^{\prime}},j^{\prime}} =
+\delta_{\underline{s},\underline{s}^{\prime}}\delta_{j,j^{\prime}}\) (see Appendix~\ref{app:orthonormality} for proof).
 Fixing \(M>0\) (usually \(M<L\)), we can construct the basis of traceless operators spanning
 the space \(\mathcal{V}_L^M = \bigoplus_{m=1}^{M} \mathcal{V}_L^m\). From the properties of 
 direct sum of linear spaces we now that its cardinality is \(D_M = \sum_{m=1}^{M} N_m = 
- 3 \cdot 4^{M-1}\). Such construction can be implemented in practice by considering
+ 3 \cdot 4^{M-1}\). To include all possible shifts, this value needs to multiplied by
+ the number of sites \(L\). Such construction can be implemented in practice by considering
  all possible \(M\)-digit numbers written in base \(4\) (as there are \(4\) `building blocks':
   \(S^{\pm},S^{z},\Id{}\)). 
 
@@ -600,8 +598,8 @@ the XXZ model. They allow us to decompose the matrix \(K\)
 the most important one is implied by the fact already discussed in Section~\ref{sec:prelim} ---
 conservation of magnetization. We could restrict our considerations to a subspaces
 of \(\mathcal{V}_L^M\) comprised of operators such that \(\comm{S_{tot}^z}{O_{\underline{s}}} = 0\).
-Yet, we will not be able to make use of that symmetry here, as in this work we are interested
-precisely in the \textit{noncommuting} operators, i.e\ precisely those that break this symmetry.
+Yet, we will not be able to make use of that symmetry here, as in this work we are interested 
+in the \textit{noncommuting} operators, i.e\ precisely those that break this symmetry.
 Furthermore, the XXZ model is time-reversal invariant, so the \(K\) matrix is real and symmetric.
 Therefore, we can divide our operators into two orthogonal subspaces, either real or imaginary.
 Those subspaces are then spanned by operators of the form 
@@ -659,7 +657,7 @@ Obtaining the energy current operator is now simply the matter of summing over a
   J^E = \sum_{i=1}^L j_i^E
   \label{eq:energy current}
 \end{equation}
-As the energy current commutes with the Hamiltonian, it does not undergo time evolution
+As the energy current commutes with the Hamiltonian~\autocite{Zotos1997}, it does not undergo time evolution
 and its autocorrelation function \(\hs{J^E(t)}{J^E(0)}\) is constant. Therefore, the corresponding
 spectral function is proportional to Dirac delta.
 \begin{figure}[htbp]
@@ -687,25 +685,32 @@ main topic of this thesis, that is investigating the \textit{noncommuting} integ
 We conducted preliminary studies for small values of system size \(L\), without assuming
 translational invariance. Available resources allowed us to make unrestricted search for
  \(L \in \set{8,9,10,11,12}\). Nevertheless, noncommuting operators that maximized stiffness for given 
- \(L\) and \(\Delta \) turned out to be translationally invariant. Therefore, we restrict our further 
-considerations to translationally invariant operators only. This allowed us to obtain numerical
+ \(L\) and \(\Delta \) turned out to be either translationally invariant or translationally invariant with
+ a sign flip (see \(\hat{O}_2\)~\eqref{eq:delta 0.5}). Therefore, we restrict our further 
+considerations to such operators only. This allowed us to obtain numerical
 results for \(L\) up to \(14\). We will focus on two concrete cases of operators, corresponding
 to largest eigenvalues of generalized stiffness matrix for values of anisotropy
-parameter \(\Delta=1.0\) and \(\Delta=0.5\) respectively.
+parameter \(\Delta=1.0\) and \(\Delta=0.5\) respectively. For this values of
+\( \Delta \) parameter, the many-body energy spectra exhibits massive degeneracies, because
+eigenstates with different \(\Sz_{tot}\) correspond to the same energies~\autocite{Fagotti2014,Mierzejewski2021}.
 
-For the case of \(\Delta=1.0\), the XXZ model reduces to the isotropic XXX model possessing full
+For the case of \(\Delta=1.0\), the XXZ model reduces to the isotropic Heisenberg model possessing full
 \(SU(2)\) symmetry:
 \begin{equation}
-  H_{XXX} = \frac{J}{2} \sum_{i=1}^L \left(\Sx_i \Sx_{i+1} + \Sy_i \Sy_{i+1} + \Sz_i \Sz_{i+1}\right)
+  H = J \sum_{i=1}^L \left(\Sx_i \Sx_{i+1} + \Sy_i \Sy_{i+1} + \Sz_i \Sz_{i+1}\right)
 \end{equation}
 As a consequence of this symmetry, conservation of total magnetization 
 (\(\Sz_{tot}\) operator~\eqref{eq:magnetization}) implies the conservation of analogously defined \(\Sx_{tot}\)
-and \(\Sy_{tot}\) and therefore their linear combination, i.e.\ the following quantity:
+and \(\Sy_{tot}\) and therefore the following quantity:
 \begin{equation}
     \hat{O}_{1} =  \frac{1}{\sqrt{L}}\sum_{i=1}^{L} \Sp_{i} + \text{H.c.}
     \label{eq:delta 1.0}
 \end{equation}
-where the prefactor is introduced for the sake of normalization. Operator \(\hat{O}_1\) is an example of a real operator.
+where the prefactor is introduced for the sake of normalization. Note that
+this operator is actually the \(\Sx_{tot}\), however this form shows that \(\hat{O}_1\) 
+is an example of a real operator. If we were to consider analogously defined imaginary operator,
+we would obtain the \(\Sy_{tot}\), but due to \(SU(2)\) symmetry the results would be the same.
+
 
 The case of \(\Delta=0.5\) is much more difficult. It was shown by~\textcite{zadnik2016} that for 
 special values of anisotropy parameter \(\Delta \in S = \set[\Big]{\cos\left(\frac{2l}{2k-1}
@@ -715,17 +720,19 @@ motion that do not preserve magnetization. Even though the set \(S\) is a dense 
 of the interval \([-1,1]\) i.e.\ the gapless regime of XXZ spin-\(1/2\) chain, it is not
 symmetric with respect to \(\Delta=0\). For example, considered here value of anisotropy parameter
 \(\Delta=0.5\) does not belong to this set, whereas \(\Delta=-0.5\) do. However, it can be shown
-that there exist an unitary operator \(U\), which action is equivalent to flipping the sign 
+that for even system sizes, in thermodynamic limit, there exist an unitary operator 
+\(U = \left(\Id_{2\cross 2}\otimes \tau^z\right)^{\otimes L/2}\), which action is equivalent to flipping the sign 
 of parameter \(\Delta\), that is \(UH_{XXZ}(\Delta)U = -H_{XXZ}(-\Delta)\). From that follows,
 that if \(Q\) is a conserved quantity for \(\Delta\), then \(\tilde{Q} = UQU\) is a conserved
-quantity for \(-\Delta\). Detailed discussed of this topic is far beyond the scope of this thesis
-and can be found in~\autocite{zadnik2016,Prosen2014c}. It turns out, that for \(\Delta=0.5\) the actions of this operator
-produces a simple factor of \((-1)^i\) in the integral of motion:
+quantity for \(-\Delta\). This the reason why we present numerical results only for even 
+values of \(L\). For \(\Delta=0.5\) the actions
+of this operator produces a simple factor of \((-1)^i\) and the operator of interest reads:
 \begin{equation}
   \hat{O}_{2} =\frac{1}{\sqrt{L}} \sum_{i=1}^{L} {(-1)}^i \left( \Sp_{i}\Sp_{i+1}\Sp_{i+2}\right) + \text{H.c.}
   \label{eq:delta 0.5}
 \end{equation}  
-This is once again a real operator.
+This is once again a real operator. Detailed discussed of this topic is far beyond the scope of this thesis
+and can be found in~\autocite{zadnik2016,Prosen2014c}.
 
 \begin{figure}[htbp]
   \centering
@@ -738,9 +745,10 @@ This is once again a real operator.
   \label{fig: noncommuting integrable}
 \end{figure}
 
-Both \(\hat{O}_1\) and \(\hat{O}_2\) are noncommuting (Q)LIOMs, what can be seen easily from the
-fact that they consist of just \(\Sp\) operators (not counting the Hermitian conjugate). Conducting
+Both \(\hat{O}_1\) and \(\hat{O}_2\) are noncommuting operators, what can be seen easily from the
+fact that they consist of products of either just \(\Sp\) operators or \(\Sm\) operators. Conducting
 an analysis with the help of the algorithm we indeed find these two operators among eigenvectors
 of the generalized stiffness matrix. Corresponding eigenvalues and their thermodynamic limit
 are shown in Figure~\ref{fig: noncommuting integrable}. Comparing it with Definition~\ref{def:classification}
-we see that \(\hat{O}_1\) is a local integral of motion, whereas \(\hat{O}_2\) is a quasilocal integral of motion. 
+we see that \(\hat{O}_1\) is a local integral of motion, whereas \(\hat{O}_2\) corresponds to a quasilocal 
+integral of motion in a sense \textcolor{blue}{ref. to definition of quasilocality}. 

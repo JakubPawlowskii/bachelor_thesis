@@ -1,0 +1,138 @@
+\chapter{Proof of orthonormality of basis~\eqref{eq:basis operator}\label{app:orthonormality}}
+\thispagestyle{chapterBeginStyle}
+
+
+We want to prove the following:
+
+\begin{proposition}
+    Let \(\set{O_{\underline{s},j}}\) be a set of operators defined as:
+    \begin{equation}
+        O_{\underline{s},j}= \underbrace{\Id_{2\cross 2} \otimes \cdots
+        \otimes \Id_{2\cross 2}}_{j-1} \otimes \; \sigma_{j}^{s_{1}} \otimes \sigma_{j+1}^{s_{2}} \otimes
+        \cdots \otimes \sigma_{j+m-1}^{s_{m}} \otimes 
+        \underbrace{\Id_{2\cross 2} \otimes \cdots \otimes \Id_{2\cross 2}}_{L-j-m+1}
+    \end{equation}
+    where \(\sigma_j^z \equiv 2 S^z_j\), \(\sigma_j^{\pm} \equiv \sqrt{2} S_j^{\pm}\),
+    \(\sigma^{0}_j \equiv \Id_{2\cross 2}\) and \(\underline{s} = \left(s_1, s_2,\ldots,
+     s_m\right)\) where \(s_j \in \{+,-,z,0\}\) for \(j \in \{2,3,\ldots,m-1\}\), \(s_{1,m} \in \{+,-,z\}\).
+     
+    Then this set is orthonormal, i.e.\ \( \hs{O_{\underline{s},j}}{O_{\underline{s}^{\prime},j^{\prime}}}
+    =\delta_{\underline{s},\underline{s}^{\prime}}\delta_{j,j^{\prime}}\).
+\end{proposition}
+
+\begin{proof}
+    Let \(\tau^{x},\tau^{y},\tau^{z}\) be Pauli matrices as defined in \textcolor{blue}{def. in XXZ model description}
+    In this proof we will make use of the following properties of Pauli matrices:
+    \begin{align}
+        &\tr(\tau^{\alpha}) = 0 \implies \tr(\tau^{\pm}) = \tr(\tau^x \pm i \tau^y) = 0\label{eq:traceless}\\
+        &\tau^{\alpha}\tau^{\beta} = \delta_{\alpha \beta} \Id_{2\cross 2} + i \varepsilon_{\alpha\beta\gamma}
+         \tau^{\gamma}\label{eq:product}\\
+        &\tr(\tau^{\alpha} \tau^{\beta}) = 2\delta_{\alpha\beta}\label{eq:product trace}
+    \end{align}
+    where \(\alpha,\beta,\gamma \in \set{x,y,z}\) and \(\varepsilon_{\alpha\beta\gamma}\) is the Levi-Civita
+    symbol.
+    We will begin with showing orthogonality. Consider the following inner product for 
+    \(\underline{s}\neq \underline{s}^{\prime}\):
+    \begin{align}
+    \hs{O_{\underline{s},j}}{O_{\underline{s^{\prime}},j}} =& \frac{1}{\dimension} 
+    \tr\Big(\left(\Id_{2\cross 2}\right)^{\dagger}\Id_{2\cross 2}\Big) \cdots 
+    \tr\Big(\left(\Id_{2\cross 2}\right)^{\dagger}\Id_{2\cross 2}\Big)
+    \cdot \tr(\left(\sigma_j^{s_1}\right)^{\dagger} \sigma_j^{s_1^{\prime}})\nonumber\\ 
+    &\cdot \tr(\left(\sigma_{j+1}^{s_2}\right)^{\dagger} \sigma_{j+1}^{s_2^{\prime}})
+    \cdots \tr(\left(\sigma_{j+m-1}^{s_m}\right)^{\dagger} \sigma_{j+m-1}^{s_m^{\prime}}) \cdots 
+    \tr\Big(\left(\Id_{2\cross 2}\right)^{\dagger}\Id_{2\cross 2}\Big)
+    \label{eq:orthogonality proof fragment}
+    \end{align}
+    Because \(\underline{s}\neq \underline{s}^{\prime}\), there must be an index \(i\) such that
+    \(s_i\neq s_i^{\prime}\). Because trace is cyclic, we only need to consider four cases:
+    \begin{enumerate}
+        \item {\(s_i = 0\), \(s_i^{\prime} \in \set{z,+,-}\)
+        \begin{align*}
+            \tr(\left(\sigma^{s_i}_{j+i-1}\right)^{\dagger} \sigma^{s_i^{\prime}}_{j+i-1}) \propto
+            \tr(\Id_{2\cross 2 }\tau^{s_i^{\prime}}_{j+i-1}) =
+            \tr(\tau^{s_i^{\prime}}_{j+i-1})  = 0
+        \end{align*}
+        }
+        \item { \(s_i = z\), \(s_i^{\prime} = +\)
+        \begin{align*}
+            \tr(\left(\sigma^{s_i}_{j+i-1}\right)^{\dagger} \sigma^{s_i^{\prime}}_{j+i-1}) \propto  
+            \tr(\tau^{z}_{j+i-1}\tau^{+}_{j+i-1}) =
+            \left[\tr(\tau^{z}_{j+i-1}\tau^{x}_{j+i-1})+i\tr(\tau^{z}_{j+i-1}\tau^{y}_{j+i-1})\right]  
+            = 0
+        \end{align*}
+        }
+        \item { \(s_i = z\), \(s_i^{\prime} = -\)
+        \begin{align*}
+            \tr(\left(\sigma^{s_i}_{j+i-1}\right)^{\dagger} \sigma^{s_i^{\prime}}_{j+i-1}) \propto
+            \tr(\tau^{z}_{j+i-1}\tau^{-}_{j+i-1}) =
+            \left[\tr(\tau^{z}_{j+i-1}\tau^{x}_{j+i-1})-i\tr(\tau^{z}_{j+i-1}\tau^{y}_{j+i-1})\right]  
+            = 0
+        \end{align*}
+        }
+        \item { \(s_i = +\), \(s_i^{\prime} = -\)
+        \begin{align*}
+            \tr(\left(\sigma^{s_i}_{j+i-1}\right)^{\dagger} \sigma^{s_i^{\prime}}_{j+i-1}) \propto&  
+            \tr(\tau^{-}_{j+i-1}\tau^{-}_{j+i-1})
+            = \big[\tr(\tau^{x}_{j+i-1}\tau^{x}_{j+i-1})-\tr(\tau^{y}_{j+i-1}\tau^{y}_{j+i-1})\\
+            -& i\tr(\tau^{x}_{j+i-1}\tau^{y}_{j+i-1}) -i\tr(\tau^{y}_{j+i-1}\tau^{x}_{j+i-1}))\big]\\
+            =&  \big[  \underbrace{\tr(\tau^{x}_{j+i-1}\tau^{x}_{j+i-1})}_{=2}
+            -\underbrace{\tr(\tau^{y}_{j+i-1}\tau^{y}_{j+i-1})}_{=2} \big] = 
+            0
+        \end{align*}
+
+        }
+    \end{enumerate}
+    Therefore \(\hs{O_{\underline{s},j}}{O_{\underline{s^{\prime}},j}} = 0\). It is also easy to see
+    that \(\hs{O_{\underline{s},j}}{O_{\underline{s},j^{\prime}}}=0\), because in this case we would
+    have in~\eqref{eq:orthogonality proof fragment} a term of the form \(\tr(\sigma_{j+i-1}^{s_i} 
+    \Id_{2\cross2}) = \tr(\sigma_{j+i-1}^{s_i}) \propto \tr(\tau_{j+i-1}^{s_i}) = 0\), where
+    the last equality comes from~\eqref{eq:traceless}. Thus the orthogonality
+    is proven and we have \( \hs{O_{\underline{s},j}}{O_{\underline{s}^{\prime},j^{\prime}}}
+    \propto\delta_{\underline{s},\underline{s}^{\prime}}\delta_{j,j^{\prime}}\).
+
+    Now let us show that these operators are normalized:
+    \begin{align}
+        \hs{O_{\underline{s},j}}{O_{\underline{s},j}} =& \frac{1}{\dimension} 
+        \tr\Big(\left(\Id_{2\cross 2}\right)^{\dagger}\Id_{2\cross 2}\Big) \cdots 
+        \tr\Big(\left(\Id_{2\cross 2}\right)^{\dagger}\Id_{2\cross 2}\Big)
+        \cdot \tr(\left(\sigma_j^{s_1}\right)^{\dagger} \sigma_j^{s_1})\nonumber\\ 
+        &\cdot \tr(\left(\sigma_{j+1}^{s_2}\right)^{\dagger} \sigma_{j+1}^{s_2})
+        \cdots \tr(\left(\sigma_{j+m-1}^{s_m}\right)^{\dagger} \sigma_{j+m-1}^{s_m}) \cdots 
+        \tr\Big(\left(\Id_{2\cross 2}\right)^{\dagger}\Id_{2\cross 2}\Big)
+    \end{align}
+    We need to consider four cases \(s_i\in \set{0,z,+,-}\).
+    \begin{enumerate}
+        \item {\(s_i = 0\)
+        \begin{equation*}
+            \tr(\left(\sigma_{j+i-1}^{s_i}\right)^{\dagger} \sigma_{j+i-1}^{s_i}) = \tr(\Id_{2\cross 2}\Id_{2\cross 2}) = 
+            \tr(\Id_{2\cross 2}) = 2
+        \end{equation*}
+        }
+        \item {\(s_i = z\)
+        \begin{equation*}
+            \tr(\left(\sigma_{j+i-1}^{s_i}\right)^{\dagger} \sigma_{j+i-1}^{s_i}) = 4\tr(\Sz_{j+i-1} \Sz_{j+i-1}) = 
+            \tr(\tau_{j+i-1}^{z} \tau_{j+i-1}^{z}) = 2
+        \end{equation*}
+        }
+        \item { \(s_i = +\)
+        \begin{align*}
+            \tr(\left(\sigma_{j+i-1}^{s_i}\right)^{\dagger} \sigma_{j+i-1}^{s_i}) =& \;2\tr(\Sm_{j+i-1} \Sp_{j+i-1}) =
+            \frac{1}{2} \tr(\tau^{-}_{j+i-1}\tau^{+}_{j+i-1})  
+            =\frac{1}{2} \big[\tr(\tau^{x}_{j+i-1}\tau^{x}_{j+i-1})\\
+            +\;&\tr(\tau^{y}_{j+i-1}\tau^{y}_{j+i-1})
+            - i\tr(\tau^{x}_{j+i-1}\tau^{y}_{j+i-1}) -i\tr(\tau^{y}_{j+i-1}\tau^{x}_{j+i-1})\big] \\
+            =&\; \frac{1}{2}\big[  \underbrace{\tr(\tau^{x}_{j+i-1}\tau^{x}_{j+i-1})}_{=2}
+            +\underbrace{\tr(\tau^{y}_{j+i-1}\tau^{y}_{j+i-1})}_{=2} \big] = 2
+        \end{align*}
+        }
+        \item { \(s_i = -\)
+        \begin{align*}
+            \tr(\left(\sigma_{j+i-1}^{s_i}\right)^{\dagger} \sigma_{j+i-1}^{s_i}) =
+             2\tr(\Sp_{j+i-1} \Sm_{j+i-1}) = 2\tr(\Sm_{j+i-1} \Sp_{j+i-1}) = 2 
+        \end{align*}
+        }
+    \end{enumerate}
+    In the end we get that \(\hs{O_{\underline{s},j}}{O_{\underline{s},j}} = \frac{1}{\dimension}\dimension = 1\).
+    Hence \( \hs{O_{\underline{s},j}}{O_{\underline{s}^{\prime},j^{\prime}}}
+    =\delta_{\underline{s},\underline{s}^{\prime}}\delta_{j,j^{\prime}}\) and the proof is finished.
+\end{proof}
