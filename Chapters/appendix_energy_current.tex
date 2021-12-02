@@ -3,58 +3,58 @@
 
 Equation~\eqref{eq:energy current defining equation} is
 conceptually simple, yet quite tedious to solve due to the amount of commutators present. Luckily, leveraging commutator properties
-to our advantage will allow us to simplify the calculations. Let us begin with inserting the definition of \(h_{i,i+1}\) into 
+to our advantage will allow us to simplify the calculations. Let us begin with inserting the definition of \(h_{k,k+1}\) into 
 equation~\eqref{eq:energy current defining equation}:
 \begin{align*}
-    \comm{h_{i,i+1}}{h_{k,k+1}} =& \comm{J_{x} \Sx_{i}\Sx_{i+1} + J_{x} \Sy_{i}\Sy_{i+1} + J_{z} \Sz_{i}\Sz_{i+1}}{J_{x} \Sx_{k}\Sx_{k+1} + J_{x} \Sy_{k}\Sy_{k+1} + J_{z} \Sz_{k}\Sz_{k+1}}\\
-    =& J_{x} J_{y}\comm{\Sx_{i}\Sx_{i+1}}{\Sy_{k}\Sy_{k+1}} + J_{x} J_{z}\comm{\Sx_{i}\Sx_{i+1}}{\Sz_{k}\Sz_{k+1}} + J_{y} J_{x}\comm{\Sy_{i}\Sy_{i+1}}{\Sx_{k}\Sx_{k+1}}\\
-    +& J_{y} J_{z}\comm{\Sy_{i}\Sy_{i+1}}{\Sz_{k}\Sz_{k+1}} + J_{z} J_{x}\comm{\Sz_{i}\Sz_{i+1}}{\Sx_{k}\Sx_{k+1}} + J_{z} J_{y}\comm{\Sz_{i}\Sz_{i+1}}{\Sy_{k}\Sy_{k+1}}  
+    \comm{h_{k,k+1}}{h_{r,r+1}} =& \comm{J_{x} \Sx_{k}\Sx_{k+1} + J_{x} \Sy_{k}\Sy_{k+1} + J_{z} \Sz_{k}\Sz_{k+1}}{J_{x} \Sx_{r}\Sx_{r+1} + J_{x} \Sy_{r}\Sy_{r+1} + J_{z} \Sz_{r}\Sz_{r+1}}\\
+    =& J_{x} J_{y}\comm{\Sx_{k}\Sx_{k+1}}{\Sy_{r}\Sy_{r+1}} + J_{x} J_{z}\comm{\Sx_{k}\Sx_{k+1}}{\Sz_{r}\Sz_{r+1}} + J_{y} J_{x}\comm{\Sy_{k}\Sy_{k+1}}{\Sx_{r}\Sx_{r+1}}\\
+    +& J_{y} J_{z}\comm{\Sy_{k}\Sy_{k+1}}{\Sz_{r}\Sz_{r+1}} + J_{z} J_{x}\comm{\Sz_{k}\Sz_{k+1}}{\Sx_{r}\Sx_{r+1}} + J_{z} J_{y}\comm{\Sz_{k}\Sz_{k+1}}{\Sy_{r}\Sy_{r+1}}  
 \end{align*}
 By inspection it becomes clear that out of six terms present, only three will need to be directly evaluated, as commutators of the form
 \(\comm{A}{B}\) will differ from \(\comm{B}{A}\) by a sign and an index change.
 \begin{align*}
-    J_{x} J_{y}\comm{\Sx_{i}\Sx_{i+1}}{\Sy_{k}\Sy_{k+1}} =& J_x J_y \Big(\Sx_i\comm{\Sx_{i+1}}{\Sy_{k}\Sy_{k+1}} + \comm{\Sx_{i}}{\Sy_{k}\Sy_{k+1}} \Sx_{i+1} \Big)\\
-    =& J_x J_y \Big( \Sx_i \left( \Sy_k \comm{\Sx_{i+1}}{\Sy_{k+1}} + \comm{\Sx_{i+1}}{\Sy_{k}} \Sy_{k+1}\right) + 
-    \left( \Sy_k \comm{\Sx_{i}}{\Sy_{k+1}} + \comm{\Sx_{i}}{\Sy_{k}} \Sy_{k+1} \right)\Sx_{i+1} \Big)\\
-    =& i J_x J_y \Big( \delta_{i+1,k+1} \Sx_i \Sy_k \Sz_{i+1} + \delta_{i+1,k} \Sx_i \Sz_{i+1} \Sy_{k+1} + \delta_{i,k+1} \Sy_k \Sz_i \Sx_{i+1} +\delta_{i,k} \Sz_i \Sy_{k+1} \Sx_{i+1}\Big)
+    J_{x} J_{y}\comm{\Sx_{k}\Sx_{k+1}}{\Sy_{r}\Sy_{r+1}} =& J_x J_y \Big(\Sx_k\comm{\Sx_{k+1}}{\Sy_{r}\Sy_{r+1}} + \comm{\Sx_{k}}{\Sy_{r}\Sy_{r+1}} \Sx_{k+1} \Big)\\
+    =& J_x J_y \Big( \Sx_k \left( \Sy_r \comm{\Sx_{k+1}}{\Sy_{r+1}} + \comm{\Sx_{k+1}}{\Sy_{r}} \Sy_{r+1}\right) + 
+    \left( \Sy_r \comm{\Sx_{k}}{\Sy_{r+1}} + \comm{\Sx_{k}}{\Sy_{r}} \Sy_{r+1} \right)\Sx_{k+1} \Big)\\
+    =& i J_x J_y \Big( \delta_{k+1,r+1} \Sx_k \Sy_r \Sz_{k+1} + \delta_{k+1,r} \Sx_k \Sz_{k+1} \Sy_{r+1} + \delta_{k,r+1} \Sy_r \Sz_k \Sx_{k+1} +\delta_{k,r} \Sz_k \Sy_{r+1} \Sx_{k+1}\Big)
 \end{align*}
 Carrying out the calculation of remaining two non-trivial commutators, we arrive at the following equations:
 \begin{align*}
-    J_{z} J_{x}\comm{\Sz_{i}\Sz_{i+1}}{\Sx_{k}\Sx_{k+1}} =& i J_z J_x \Big( \delta_{i+1,k+1} \Sx_k \Sz_i \Sy_{k+1} + \delta_{i+1,k} \Sz_i \Sy_{k} \Sx_{k+1} + \delta_{i,k+1} \Sx_k \Sy_{k+1} \Sz_{i+1} +\delta_{i,k} \Sy_k \Sz_{i+1} \Sx_{k+1}\Big)\\ 
-    J_{y} J_{z}\comm{\Sy_{i}\Sy_{i+1}}{\Sz_{k}\Sz_{k+1}} =& i J_y J_z \Big( \delta_{i+1,k+1} \Sy_i \Sz_k \Sx_{i+1} + \delta_{i,k+1} \Sz_k \Sx_{i} \Sy_{i+1} + \delta_{i+1,k} \Sy_i \Sx_{i+1} \Sz_{k+1} +\delta_{i,k} \Sx_i \Sz_{k+1} \Sy_{i+1}\Big) 
+    J_{z} J_{x}\comm{\Sz_{k}\Sz_{k+1}}{\Sx_{r}\Sx_{r+1}} =& i J_z J_x \Big( \delta_{k+1,r+1} \Sx_r \Sz_k \Sy_{r+1} + \delta_{k+1,r} \Sz_k \Sy_{r} \Sx_{r+1} + \delta_{k,r+1} \Sx_r \Sy_{r+1} \Sz_{k+1} +\delta_{k,r} \Sy_r \Sz_{k+1} \Sx_{r+1}\Big)\\ 
+    J_{y} J_{z}\comm{\Sy_{k}\Sy_{k+1}}{\Sz_{r}\Sz_{r+1}} =& i J_y J_z \Big( \delta_{k+1,r+1} \Sy_k \Sz_r \Sx_{k+1} + \delta_{k,r+1} \Sz_r \Sx_{k} \Sy_{k+1} + \delta_{k+1,r} \Sy_k \Sx_{k+1} \Sz_{r+1} +\delta_{k,r} \Sx_k \Sz_{r+1} \Sy_{k+1}\Big) 
 \end{align*}
 Next step requires us to evaluate the sum over lattice sites to get rid of the Kronecker \(\delta{}\)'s. As before, one of the three parts of calculations is provided in full detail:
 \begin{align*}
-    &i\sum_{k=1}^{L}  J_{x} J_{y}\comm{\Sx_{i}\Sx_{i+1}}{\Sy_{k}\Sy_{k+1}} + i\sum_{k=1}^{L} J_{x} J_{y}\comm{\Sy_{i}\Sy_{i+1}}{\Sx_{k}\Sx_{k+1}} = \\
-    & - J_x J_y \Big( \cancel{\Sx_i \Sy_i \Sz_{i+1}} +  \Sx_i \Sz_{i+1} \Sy_{i+2} + \Sy_{i-1} \Sz_i \Sx_{i+1} +\bcancel{\Sz_i \Sy_{i+1} \Sx_{i+1}}\Big)\\
-    &+  J_x J_y \Big(  \cancel{\Sx_i \Sy_i \Sz_{i+1}} + \Sy_i \Sz_{i+1} \Sx_{i+2} + \Sx_{i-1} \Sz_i \Sy_{i+1} + \bcancel{\Sz_i \Sy_{i+1} \Sx_{i+1}}\Big)\\
-    &= J_x J_y \Big( \Sy_i \Sz_{i+1} \Sx_{i+2} - \Sx_i \Sz_{i+1} \Sy_{i+1} - \left(\Sy_{i-1}\Sz_i \Sx_{i+1} - \Sx_{i-1}\Sz_{i}\Sy_{i+1}\right) \Big)
+    &i\sum_{r=1}^{L}  J_{x} J_{y}\comm{\Sx_{k}\Sx_{k+1}}{\Sy_{r}\Sy_{r+1}} + i\sum_{r=1}^{L} J_{x} J_{y}\comm{\Sy_{k}\Sy_{k+1}}{\Sx_{r}\Sx_{r+1}} = \\
+    & - J_x J_y \Big( \cancel{\Sx_k \Sy_k \Sz_{k+1}} +  \Sx_k \Sz_{k+1} \Sy_{k+2} + \Sy_{k-1} \Sz_k \Sx_{k+1} +\bcancel{\Sz_k \Sy_{k+1} \Sx_{k+1}}\Big)\\
+    &+  J_x J_y \Big(  \cancel{\Sx_k \Sy_k \Sz_{k+1}} + \Sy_k \Sz_{k+1} \Sx_{k+2} + \Sx_{k-1} \Sz_k \Sy_{k+1} + \bcancel{\Sz_k \Sy_{k+1} \Sx_{k+1}}\Big)\\
+    &= J_x J_y \Big( \Sy_k \Sz_{k+1} \Sx_{k+2} - \Sx_k \Sz_{k+1} \Sy_{k+1} - \left(\Sy_{k-1}\Sz_k \Sx_{k+1} - \Sx_{k-1}\Sz_{k}\Sy_{k+1}\right) \Big)
 \end{align*}
 \begin{align*}
-    &i\sum_{k=1}^{L}  J_{x} J_{z}\comm{\Sx_{i}\Sx_{i+1}}{\Sz_{k}\Sz_{k+1}} + i\sum_{k=1}^{L} J_{x} J_{z}\comm{\Sz_{i}\Sz_{i+1}}{\Sx_{k}\Sx_{k+1}} = \\
-    &= J_x J_z \Big( \Sx_i \Sy_{i+1} \Sz_{i+2} - \Sz_i \Sy_{i+1} \Sx_{i+2} - \left(\Sx_{i-1}\Sy_i \Sz_{i+1} - \Sz_{i-1}\Sy_{i}\Sx_{i+1}\right) \Big)
+    &i\sum_{r=1}^{L}  J_{x} J_{z}\comm{\Sx_{k}\Sx_{k+1}}{\Sz_{r}\Sz_{r+1}} + i\sum_{r=1}^{L} J_{x} J_{z}\comm{\Sz_{k}\Sz_{k+1}}{\Sx_{r}\Sx_{r+1}} = \\
+    &= J_x J_z \Big( \Sx_k \Sy_{k+1} \Sz_{k+2} - \Sz_k \Sy_{k+1} \Sx_{k+2} - \left(\Sx_{k-1}\Sy_k \Sz_{k+1} - \Sz_{k-1}\Sy_{k}\Sx_{k+1}\right) \Big)
 \end{align*}
 \begin{align*}    
-    &i\sum_{k=1}^{L}  J_{y} J_{z}\comm{\Sy_{i}\Sy_{i+1}}{\Sz_{k}\Sz_{k+1}} + i\sum_{k=1}^{L} J_{y} J_{z}\comm{\Sz_{i}\Sz_{i+1}}{\Sy_{k}\Sy_{k+1}} = \\
-    &= J_y J_z \Big( \Sz_i \Sx_{i+1} \Sy_{i+2} - \Sy_i \Sx_{i+1} \Sz_{i+2} - \left(\Sz_{i-1}\Sx_i \Sy_{i+1} - \Sy_{i-1}\Sx_{i}\Sz_{i+1}\right) \Big)
+    &i\sum_{r=1}^{L}  J_{y} J_{z}\comm{\Sy_{k}\Sy_{k+1}}{\Sz_{r}\Sz_{r+1}} + i\sum_{r=1}^{L} J_{y} J_{z}\comm{\Sz_{k}\Sz_{k+1}}{\Sy_{r}\Sy_{r+1}} = \\
+    &= J_y J_z \Big( \Sz_k \Sx_{k+1} \Sy_{k+2} - \Sy_k \Sx_{k+1} \Sz_{k+2} - \left(\Sz_{k-1}\Sx_k \Sy_{k+1} - \Sy_{k-1}\Sx_{k}\Sz_{k+1}\right) \Big)
 \end{align*}
 What now remains is to collect these parts and see that we finally arrive at the equation for the energy current density:
 \begin{align}
-    j_i^E &= J_x J_y \left(\Sy_{i-1}\Sz_i \Sx_{i+1} - \Sx_{i-1}\Sz_{i}\Sy_{i+1}\right) \nonumber \\
-    &+ J_x J_z \left(\Sx_{i-1}\Sy_i \Sz_{i+1} - \Sz_{i-1}\Sy_{i}\Sx_{i+1}\right) \nonumber \\
-    &+ J_y J_z \left(\Sz_{i-1}\Sx_i \Sy_{i+1} - \Sy_{i-1}\Sx_{i}\Sz_{i+1}\right) \nonumber \\
-    &= J_x J_y \left(\Sy_{i-1}\Sz_i \Sx_{i+1} - \Sx_{i-1}\Sz_{i}\Sy_{i+1}\right) + \text{cyclic permutations of } \left(x,y,z\right)
+    j_k^E &= J_x J_y \left(\Sy_{k-1}\Sz_k \Sx_{k+1} - \Sx_{k-1}\Sz_{k}\Sy_{k+1}\right) \nonumber \\
+    &+ J_x J_z \left(\Sx_{k-1}\Sy_k \Sz_{k+1} - \Sz_{k-1}\Sy_{k}\Sx_{k+1}\right) \nonumber \\
+    &+ J_y J_z \left(\Sz_{k-1}\Sx_k \Sy_{k+1} - \Sy_{k-1}\Sx_{k}\Sz_{k+1}\right) \nonumber \\
+    &= J_x J_y \left(\Sy_{k-1}\Sz_k \Sx_{k+1} - \Sx_{k-1}\Sz_{k}\Sy_{k+1}\right) + \text{cyclic permutations of } \left(x,y,z\right)
     \label{eq:energy current density}
 \end{align}
 which is precisely the expression from~\textcite{Zotos1997}. 
 However, in this work we are interested in the XXZ model with the Hamiltonian~\eqref{eq:HXXZ}. To this end,
-we need to set \(J_x, J_z = 2J\), \(J_z = \Delta \) and substitute \(\Sx_i = \frac{\Sp_i + \Sm_i}{2}\), \(\Sy_i = \frac{\Sp_i-\Sm_i}{2i}\).
+we need to set \(J_x, J_z = 2J\), \(J_z = \Delta \) and substitute \(\Sx_k = \frac{\Sp_k + \Sm_k}{2}\), \(\Sy_k = \frac{\Sp_k-\Sm_k}{2i}\).
 After some more lengthy calculations, we finally arrive at the desired form of energy current density operator:
 \begin{align}
-    j_i^E &= i \Big( \underbrace{2J \Sm_{i-1}\Sz_i \Sp_{i+1} + J \Delta \Sz_{i-1}\Sp_i \Sm_{i+1} + J\Delta \Sp_{i-1}\Sm_i\Sz_{i+1}}_{O_i} \nonumber \\
-    &- \underbrace{\left(2J \Sp_{i-1}\Sz_i \Sm_{i+1} + J\Delta \Sz_{i-1}\Sm_i \Sp_{i+1} + J\Delta \Sm_{i-1}\Sp_{i} \Sz_{i+1} \right)}_{O_i^{\dagger}}\Big) \nonumber \\
-    &= i\left(O_i - O_i^{\dagger}\right)
+    j_k^E &= i \Big( \underbrace{2J \Sm_{k-1}\Sz_k \Sp_{k+1} + J \Delta \Sz_{k-1}\Sp_k \Sm_{k+1} + J\Delta \Sp_{k-1}\Sm_k\Sz_{k+1}}_{O_k} \nonumber \\
+    &- \underbrace{\left(2J \Sp_{k-1}\Sz_k \Sm_{k+1} + J\Delta \Sz_{k-1}\Sm_k \Sp_{k+1} + J\Delta \Sm_{k-1}\Sp_{k} \Sz_{k+1} \right)}_{O_k^{\dagger}}\Big) \nonumber \\
+    &= i\left(O_k - O_k^{\dagger}\right)
     \label{eq:final energy current density}
 \end{align}
-It is evident that the energy current operator \(J^E = \sum_{i=1}^L i \left(O_i - O_i^{\dagger}\right) \) has support of exactly \(3\) consecutive sites.
+It is evident that the energy current operator \(J^E = \sum_{k=1}^L i \left(O_k - O_k^{\dagger}\right) \) has support of exactly \(3\) consecutive sites.
 
