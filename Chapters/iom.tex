@@ -9,9 +9,10 @@ to obtain information about the thermodynamic limit \(L \to \infty \).
 
 In our description and notation used, we follow
 the works of~\textcite{Mierzejewski2015a,Mierzejewski2015Approx,Mierzejewski2018}.
-The aim of this thesis is to provide a pedagogical introduction to the topic,
+The aim of this chapter is to provide a pedagogical introduction to the topic,
 so all derivations are presented in full detail, together with a simple proof of correctness for the algorithm.
-The importance of (Q)LIOMs is made clear by invoking the concept of spectral functions and Mazur bound. 
+The importance of (Q)LIOMs is made clear by invoking the concept of spectral functions and Mazur bound.
+Examples of application of the algorithm to the XXZ model conclude this chapter.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Preliminaries\label{sec:prelim}}
 
@@ -428,7 +429,7 @@ To connect this quantity with numerical calculations and to smoothen out any flu
 can once again integrate it, but this time over a finite frequency window:
 \begin{equation}
   I(\omega) = \int_{-\omega}^{\omega} \mathrm{d}\omega' \; S(\omega') = 
-  \frac{1}{D} \sum_{m,n} \theta\left(\omega - |E_m-E_n|\right) A_{mn}^2
+  \frac{1}{\dimension} \sum_{m,n} \theta\left(\omega - |E_m-E_n|\right) A_{mn}^2
 \end{equation}
 It turns out that this quantity is equal to the square of Hilbert-Schmidt norm of time
 averaged operator \(\bar{A}^{\frac{1}{\omega}}\), which fits nicely within the previously
@@ -650,7 +651,7 @@ this thesis.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Commuting LIOM: Spin energy current}
+\subsection{Commuting LIOM: Spin energy current\label{sec:energy current}}
 In order to test our (Q)LIOM finding algorithm and the correctness of its implementation, we investigate the known case of
 energy current in Spin\(-1/2\) XXZ model~\autocite*{Mierzejewski2015Approx} and see whether it is detected or not.
 For the sake of completeness, derivation of
@@ -684,7 +685,7 @@ the spin energy current density:
   \label{eq:energy current defining equation}
 \end{equation}
 Similar equations can be written for any operator being a sum of local operators such as
-the total spin operator or particle number operator in fermionic models. Detailed solution to the equation~\eqref{eq:energy current defining equation}
+the total spin operator or particle number operator in fermionic models. Detailed solution to equation~\eqref{eq:energy current defining equation}
 is shown in Appendix~\ref{app:spin energy current derivation}. For the XXZ model we get the following expression:
 \begin{align*}
   j_k^E & = i \Big( \underbrace{2J \Sm_{k-1}\Sz_k \Sp_{k+1} + J \Delta \Sz_{k-1}\Sp_k \Sm_{k+1} + J\Delta \Sp_{k-1}\Sm_k\Sz_{k+1}}_{O_k}                                  \\
@@ -795,7 +796,7 @@ Definition~\ref{def:classification} we see that \(\hat{O}_1\) is a strictly
 conserved, local integral of motion, whereas \(\hat{O}_2\) is a projection 
 of a quasilocal integral of motion on a basis supported on up to \(3\) sites.
 To further illustrate the concept of quasilocality, we can consider a projection
-of this QLIOM on a basis supported on up to \(4\), which results in an operator of the form 
+of this QLIOM on a basis supported on up to \(4\) sites, which results in an operator of the form 
 \(\hat{O}_2 + \hat{\delta O}\), where \(\hat{\delta O}\) is the complicated \(4\)-local part,
 which exact form is not important. Looking at Figure~\ref{fig: noncommuting integrable} we see
 that stiffness of this new projection is larger that the old one. However, contribution 
