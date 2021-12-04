@@ -428,7 +428,7 @@ and \(\omega{}\) corresponds to \(\frac{1}{\tau}\) from earlier discussion.
 To connect this quantity with numerical calculations and to smoothen out any fluctuations, we
 can once again integrate it, but this time over a finite frequency window:
 \begin{equation}
-  I(\omega) = \int_{-\omega}^{\omega} \mathrm{d}\omega' \; S(\omega') = 
+  I(\omega) = \int_{-\omega}^{\omega} \mathrm{d}\omega^{\prime} \; S(\omega^{\prime}) = 
   \frac{1}{\dimension} \sum_{m,n} \theta\left(\omega - |E_m-E_n|\right) A_{mn}^2
 \end{equation}
 It turns out that this quantity is equal to the square of Hilbert-Schmidt norm of time
@@ -506,7 +506,7 @@ we can easily generalize this results to a set of orthogonal conserved quantitie
 We have already seen that Mazur inequality turns into an equality, if the set \(\{Q_n\}\) is complete. However,
 up until a few years ago, it was not clear how to systematically identify such a complete set in interacting models.
 This have changed with the work of~\textcite{Mierzejewski2015a}, where the algorithm described in details
-in Section~\ref{sec:algorithm} was first proposed. We will now show that the following proposition holds:
+in Section~\ref{sec:algorithm} was first proposed. We will now show that the following proposition holds~\autocite{Mierzejewski2015Approx}:
 
 \begin{proposition}[Saturation of Mazur bound]
   The set \(\{Q_n\}\) of (Q)LIOMs obtained from the algorithm in Section~\ref{sec:algorithm} is complete,

@@ -8,7 +8,7 @@ It is important to note, that the methodology in this chapter follows the work
 of~\textcite{Mierzejewski2015Approx}, however the results about relaxation of noncommuting integrals
 of motion are original and at the moment of writing this thesis not found elsewhere
 in literature. 
-
+\textcolor{blue}{derivation of \(I(\omega)\)? autocorrelation only for \(t>0\)?}
 \section{Adding perturbation to the Hamiltonian}
 We are now going to weakly break integrability by adding a suitable perturbation.
 New Hamiltonian has the following form:
@@ -93,7 +93,8 @@ the perturbation the faster the current decays.
   \centering
   \includegraphics[width=\textwidth]{Figures/current_no_scaling.pdf}
   \caption{Normalized integrated spectral function as a function of cutoff frequency.
-  (a) Results for \(L=14\). (b) Results extrapolated to thermodynamic limit from \(L=11,12,13,14\).
+  (a) Results for \(L=14\). Low frequency limit does not approach 0
+  because of finite size effects. (b) Results extrapolated to thermodynamic limit from \(L=11,12,13,14\).
   Note the expected observation, namely stronger perturbation leads to faster decay.}
   \label{fig:current decay no scaling}
 \end{figure}
@@ -104,35 +105,68 @@ an universal dependence of \(R(\omega,\alpha)\) on \(\omega\) and \(\alpha\):
 \begin{equation}
   R(\omega,\alpha)\simeq \tilde{R}(\omega/\alpha^2)
 \end{equation}
-Moreover, this relation can be well approximation by a one parameter fit
+Moreover, this relation can be reasonably well approximation by a one parameter fit
 (black dashed line on Figure~\ref{fig:current decay scaling}):
-\begin{equation*}
+\begin{equation}
   \tilde{R}(\omega/\alpha^2) \simeq \frac{2}{\pi} \arctan\left(\frac{\omega}{\gamma \alpha^2}\right)
+\label{eq:R arctan}
+\end{equation}
+where \(\gamma \) is the fitting parameter. It implies that the relaxation of energy current
+is exponential in nature. To see this, let us calculate \(I(\omega)\) for such decay
+\(\hs{J^E(t)}{J^E} \propto e^{-\abs{t}/\tau_1}\). Double-sided exponential has well defined Fourier
+transform, so we can drop the \(\epsilon \to 0^{+}\) limit from the integral.
+\begin{align}
+  S(\omega) &\propto \frac{1}{2\pi} \int_{-\infty}^{\infty} \mathrm{d} t\; e^{-\abs{t}/\tau_1} e^{i \omega t} = 
+  \frac{1}{2\pi} \left[\int_{-\infty}^{0} \mathrm{d} t\; e^{(1/\tau_1 + i\omega)t }
+  + \int_{0}^{\infty} \mathrm{d} t\; e^{(-1/\tau_1 + i\omega)t }  \right] \nonumber \\
+  &= \frac{1}{2\pi} \left[\frac{\tau_1}{1+i\omega \tau_1} + \frac{\tau_1}{1-i\omega\tau_1}\right] = 
+  \frac{1}{\pi} \frac{\tau_1}{1+\omega^2\tau_1^2}
+\end{align}
+Integrating \(S(\omega)\) over a frequency window we obtain:
+\begin{equation*}
+  I(\omega) \propto \frac{1}{\pi}\int_{-\omega}^{\omega}\mathrm{d}\omega^{\prime}\; 
+  \frac{\tau_1}{1+\omega^2\tau_1^2} = \frac{2}{\pi} \arctan(\tau_1 \omega)
 \end{equation*}
-where \(\gamma\) in the fitting parameter.
-
-
-\begin{align*}
-  &\hs{Q_{\alpha}(t)}{Q_{\alpha}} = e^{-\frac{t}{\tau_{\alpha}}} \implies 
-  S(\omega) = \sum_{\alpha} D_{\alpha} \frac{1}{\pi}\frac{\tau_{\alpha}}{{\left(\omega \tau_{\alpha}\right)}^2 + 1}\\
-  &\implies I(\omega) = \sum_{\alpha}D_{\alpha}\frac{2}{\pi} \arctan{(\tau_{\alpha}  \omega )}
-\end{align*}
-
-
+which after normalization yields the desired results~\eqref{eq:R arctan}. Furthermore, we learn that the 
+characteristic relaxation time \(\frac{1}{\tau_1} \propto \alpha^2\) and the proportionality
+coefficient is universal and does not depend on \(\alpha\).
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Figures/current_scaling.pdf}
-  \caption{<caption>}
+  \caption{Normalized integrated spectral function as a function of rescaled cutoff frequency.
+  (a) Results for \(L=14\). (b) Results extrapolated to thermodynamic limit from \(L=11,12,13,14\).
+  Dashed black line corresponds to fit~\eqref{eq:R arctan}.}
   \label{fig:current decay scaling}
 \end{figure}
-
+The quadratic scaling shown on Figure~\ref{fig:current decay scaling} is actually not the
+best possible for this set of numerical data. Choosing the rescaling coefficient to be
+\(\frac{3}{2}\) allows for almost perfect collapse of all the curves 
+(see Figure~\ref{fig:current decay perfect scaling}). However, it is expected to be a consequence
+of working with rather small system sizes, because in was shown 
+in~\textcite{Mierzejewski2015Approx} using memory function formalism, that quadratic scaling
+is indeed the appropriate one.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Figures/current_perfect_scaling.pdf}
-  \caption{<caption>}
-  \label{fig:current decay perfect scaling}
+  \caption{Normalized integrated spectral function as a function of 
+  rescaled cutoff frequency. The rescaling coefficient is chosen so as to obtain the 
+  best possible collapse of curves. (a) Results for \(L=14\). (b) Results extrapolated
+   to thermodynamic limit from \(L=11,12,13,14\).}\label{fig:current decay perfect scaling}
 \end{figure}
 
 
 
 \section{Relaxation of noncommuting (Q)LIOMs}
+Let us now proceed with the same analysis, but for the \(\hat{O}_1\) and \(\hat{O_2}\)
+operators.
+
+\textcolor{blue}{What to show here?
+\begin{itemize}
+  \item no scaling, quadratic scaling, linear scaling
+  \item fitting error function, derivation of \(I(\omega)\)
+  \item SU(2) breaking for \(\Delta=1.0\)
+  \item for \(\Delta = 0.5\) too? why?
+  \item loglog plots?
+  \item comparison between SU(2) breaking and integrability breaking
+\end{itemize}
+}
