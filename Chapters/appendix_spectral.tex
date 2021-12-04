@@ -1,3 +1,92 @@
-\chapter{Derivation of integrated spectral\\function\label{app:spectral}}
+\chapter{Derivation of integrated spectral function\label{app:spectral}}
 \thispagestyle{chapterBeginStyle}
+We want to prove equation~\eqref{eq:integrated spectral function}, which gives
+a recipe for numerical calculation of integrated spectral function for arbitrary observable \(A\).
+Our starting point is the definition of spectral function as stated in Definition~\ref{def:spectral function}:
+\begin{align}
+        S(\omega) &=  \lim _{\varepsilon \to 0^+} \frac{1}{2 \pi} \int_{-\infty}^{\infty} \mathrm{d} t 
+        \; e^{i \omega t-|t| \varepsilon}\hs{A(t)}{A} = \lim _{\varepsilon \to 0^+} \frac{1}{2 \pi}
+        \int_{-\infty}^{\infty} \mathrm{d} t \; e^{i \omega t-|t| \varepsilon} \frac{1}{\dimension}
+        \tr\left[\left(e^{iHt}Ae^{-iHt}\right)^{\dagger}A\right] \nonumber\\
+        &=\lim _{\varepsilon \to 0^+} \frac{1}{2 \pi}
+        \int_{-\infty}^{\infty} \mathrm{d} t \; e^{i \omega t-|t| \varepsilon} \frac{1}{\dimension}
+        \tr\left[e^{iHt}\left(\sum_{m} \ketbra{m}{m}\right) 
+        A\left(\sum_{n} \ketbra{n}{n}\right)e^{-iHt}A\right] \nonumber\\
+        &= \frac{1}{\dimension} \frac{1}{2 \pi}\sum_{n,m} \lim _{\varepsilon \to 0^+} 
+        \int_{-\infty}^{\infty} \mathrm{d} t \; e^{i \omega t-|t| \varepsilon}
+        \tr\left[e^{i E_m t}\ketbra{m}{m} A\ketbra{n}{n}e^{-i E_n t}A\right] \nonumber\\
+        &= \frac{1}{\dimension} \frac{1}{2 \pi}\sum_{n,m} A_{mn}  \lim _{\varepsilon \to 0^+} 
+        \int_{-\infty}^{\infty} \mathrm{d} t \; e^{i \omega t-|t| \varepsilon}e^{i (E_m-E_n) t}
+        \sum_{k} \underbrace{\braket{k}{m}}_{=\delta_{km}} \matrixel{n}{A}{k} \nonumber\\
+        &= \frac{1}{\dimension} \frac{1}{2 \pi}\sum_{n,m} \abs{A_{mn}}^2  \underbrace{\lim _{\varepsilon 
+        \to 0^+} \int_{-\infty}^{\infty} \mathrm{d} t \; e^{i \omega t-|t| 
+        \varepsilon}e^{i (E_m-E_n) t}}_{\mathcal{I}}\label{eq:spectral function simplified}
+\end{align}
+Let us now deal with the integral \(\mathcal{I}\):
+\begin{align}
+    \mathcal{I} &= \lim _{\varepsilon \to 0^+} \int_{-\infty}^{\infty} \mathrm{d} t \; 
+    e^{ i (E_m-E_n+\omega)t -|t| \varepsilon} = \lim _{\varepsilon \to 0^+} 
+    \left[\lim_{T_1\to -\infty}\int_{T_1}^{0} \mathrm{d} t \; e^{ i (E_m-E_n+\omega -i \varepsilon)t}+
+    \lim_{T_2\to \infty}\int_{0}^{T_2} \mathrm{d} t \;  e^{ i (E_m-E_n+\omega + i\varepsilon)t}\right] \nonumber\\
+    &= \lim _{\varepsilon \to 0^+} \left[\lim_{T_1\to -\infty} 
+    \frac{1-e^{ i (E_m-E_n+\omega )T_1} e^{\varepsilon T_1}}{i (E_m-E_n+\omega -i \varepsilon)} + 
+    \lim_{T_2\to \infty} \frac{e^{ i (E_m-E_n+\omega )T_2} e^{-\varepsilon T_2}-1}
+    {i (E_m-E_n+\omega +i \varepsilon)}\right] \nonumber \\
+    &= \lim _{\varepsilon \to 0^+} \left[\frac{i}{E_n-E_m-\omega +i \varepsilon} + 
+    \frac{i}{E_m-E_n+\omega +i \varepsilon} \right] = \lim _{\varepsilon \to 0^+}
+    \frac{2\varepsilon}{(E_m-E_n+\omega -i \varepsilon)(E_m-E_n+\omega +i \varepsilon)}\nonumber\\
+    &=\lim _{\varepsilon \to 0^+}
+    \frac{2\varepsilon}{(E_m-E_n+\omega)^2 +\varepsilon^2}
+\end{align}
+Obtained results is a limit of the so called Poisson kernel. This happens to be
+a representations of Dirac delta in form of a limit of a sequence of functions~\autocite{byron1992mathematics}:
+\begin{equation}
+    \lim _{\varepsilon \to 0^+} \frac{1}{\pi} \frac{\varepsilon}{x^2 +\varepsilon^2} = \delta(x) 
+\end{equation}
+Thus we get:
+\begin{equation}
+    \mathcal{I} = \lim _{\varepsilon \to 0^+} \frac{2\varepsilon}{(E_m-E_n+\omega)^2 +\varepsilon^2}
+    = 2\pi \delta(E_m-E_n+\omega)
+\end{equation}
+Inserting this results into equation~\eqref{eq:spectral function simplified} we get:
+\begin{align}
+    S(\omega) &= \frac{1}{\dimension} \frac{1}{2 \pi}\sum_{n,m} \abs{A_{mn}}^2  
+    \lim _{\varepsilon \to 0^+} \int_{-\infty}^{\infty} \mathrm{d} t \; e^{i \omega t-|t| 
+    \varepsilon}e^{i (E_m-E_n) t} = \frac{1}{\dimension}\sum_{n,m} \abs{A_{mn}}^2 \delta(E_m-E_n+\omega)
+\end{align}
+We are now ready to compute the integrated spectral function:
+\begin{align}
+    I(\omega) &= \int_{-\omega}^{\omega} \mathrm{d}\omega^{\prime} S(\omega^{\prime}) =
+    \frac{1}{\dimension}\sum_{n,m} \abs{A_{mn}}^2 \int_{-\omega}^{\omega} \mathrm{d}\omega^{\prime} 
+    \delta(E_m-E_n+\omega^{\prime}) \nonumber \\ &= \frac{1}{\dimension}\sum_{n,m} \abs{A_{mn}}^2
+    \theta(\omega + (E_m-E_n))\theta(\omega - (E_m-E_n)) \nonumber\\
+    &= \frac{1}{\dimension}\sum_{n,m} \abs{A_{mn}}^2\theta(\omega - \abs{E_m-E_n})
+\end{align}
 
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[scale=1.4]
+      \colorlet{col1}{blue!30}
+    %  \begin{scope}[smooth,draw=gray!20,y=0.3989422804cm]
+    %       \filldraw[fill=col1] plot[id=f1, domain=-1.5:1.5,samples=100] function {6*exp(-6*x*x)};
+    %       \draw[black] plot[id=f2,domain=-1.5:1.5,samples=100]
+    %           function {6*exp(-6*x*x)};
+    %   \end{scope}
+      \draw[->] (-3,0) -- (3,0) node [right] {\(\omega^{\prime}\)};
+      \draw[-] (0,0) -- (0,0) node [midway,yshift=-8pt] {\(0\)};
+      \draw[dashed] (-1.5,0) -- (-1.5,2.5) node [midway,yshift=-57pt] {\(-\omega\)};
+      \draw[dashed] (1.5,0) -- (1.5,2.5) node [midway,yshift=-57pt] {\(\omega\)};
+      \draw[-] (2.3,0) -- (2.3,0) node [midway, yshift=30pt] {\(\omega-x < 0\)};
+      \draw[-] (2.3,0) -- (2.3,0) node [midway, yshift=20pt] {\(\omega+x > 0\)};
+      \draw[-] (-2.3,0) -- (-2.3,0) node [midway, yshift=30pt] {\(\omega-x > 0\)};
+      \draw[-] (-2.3,0) -- (-2.3,0) node [midway, yshift=20pt] {\(\omega+x < 0\)};
+      \draw[-] (0,0) -- (0,0) node [midway, yshift=30pt] {\(\omega-x > 0\)};
+      \draw[-] (0,0) -- (0,0) node [midway, yshift=20pt] {\(\omega+x > 0\)};
+    %   \draw[<-] (-1.5,0) -- (1.5,0) node [right] {$x$};
+    %   \draw[<->] (-0.37,1) -- (0.37,1) node [midway, yshift=6pt] {$\gamma$};
+    \end{tikzpicture}  
+    \caption{Illustration of the equality \(\int_{-\omega}^{\omega} \mathrm{d}\omega^{\prime} 
+    \delta(x-\omega^{\prime}) = \theta(\omega + x)\theta(\omega - x) = \theta(\omega-\abs{x})\).}
+    \label{fig:dirac delta}
+  \end{figure}
