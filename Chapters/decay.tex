@@ -8,7 +8,6 @@ It is important to note, that the methodology in this chapter follows the work
 of~\textcite{Mierzejewski2015Approx}, however the results about relaxation of noncommuting integrals
 of motion are original and at the moment of writing this thesis not found elsewhere
 in literature. 
-\textcolor{blue}{derivation of \(I(\omega)\)? autocorrelation only for \(t>0\)?}
 \section{Adding perturbation to the Hamiltonian}
 We are now going to weakly break integrability by adding a suitable perturbation.
 New Hamiltonian has the following form:
@@ -50,7 +49,7 @@ averaging \(\tau\).
 \end{figure}
 
 
-
+\textcolor{blue}{what about \(\hat{O_1},\hat{O}_2\)? They do not exhibit such nice decay}
 
 
 \newpage
@@ -66,7 +65,7 @@ following~\autocite{Mierzejewski2015Approx}:
   R_{\hat{A}}(\omega,\alpha) = \frac{I(\omega,\alpha)}{\lim_{\omega \to 0^{+}} I(\omega,\alpha=0)} = 
   \frac{\sum_{n,m}\theta\left(\omega -\abs{E_n-E_m}\right) \abs*{\matrixel{m}{\hat{A}}{n}}^2}
   {\sum_{\substack{n,m \\ E_n=E_m}} \abs*{\matrixel{m}{\hat{A}}{n}}^2}
-  \label{eq:integrated spectral function}
+  \label{eq:normalized integrated spectral function}
 \end{equation}
 This normalization of \(I(\omega)\) assures that 
 \(\lim_{\omega\to 0^{+}} R_{\hat{A}}(\omega,\alpha) = 0\) and 
@@ -74,7 +73,7 @@ This normalization of \(I(\omega)\) assures that
 for operators in question.
 
 
-\section{Relaxation of energy current}
+\subsection{Relaxation of energy current}
 \textcolor{blue}{\(\Delta=0.5\)?}
 We begin with the case energy current \(J^E\) for \(\Delta = 1.0\), as derived in Section~\ref{sec:energy current}.
 In the integrable parent model it is a conserved quantity, so we have the following:
@@ -156,7 +155,7 @@ is indeed the appropriate one.
 
 
 
-\section{Relaxation of noncommuting (Q)LIOMs}
+\subsection{Relaxation of noncommuting (Q)LIOMs}
 Let us now proceed with the same analysis, but for the \(\hat{O}_1\) and \(\hat{O_2}\)
 operators.
 

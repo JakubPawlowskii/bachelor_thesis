@@ -409,7 +409,7 @@ time to ask why are they actually important? To answer this question in a convin
 will follow the discussion in~\textcite{Vidmar2021} and introduce the concept of spectral
 functions. 
 
-Suppose that we have an observable \(A \in \mathcal{V}_L^M\) and we are interested in studying its time
+Suppose that we have a real observable \(A \in \mathcal{V}_L^M\) and we are interested in studying its time
 evolution. An obvious choice would be to calculate its autocorrelation function
 \((A(t)|A)\), where the time dependence of \(A(t)\) is understood
 via the Heisenberg picture i.e.\ \(A(t) = \exp\left(i H t\right) A
@@ -430,6 +430,7 @@ can once again integrate it, but this time over a finite frequency window:
 \begin{equation}
   I(\omega) = \int_{-\omega}^{\omega} \mathrm{d}\omega^{\prime} \; S(\omega^{\prime}) = 
   \frac{1}{\dimension} \sum_{m,n} \theta\left(\omega - |E_m-E_n|\right) A_{mn}^2
+  \label{eq:integrated spectral function}
 \end{equation}
 It turns out that this quantity is equal to the square of Hilbert-Schmidt norm of time
 averaged operator \(\bar{A}^{\frac{1}{\omega}}\), which fits nicely within the previously
