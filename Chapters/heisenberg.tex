@@ -1,33 +1,86 @@
 \chapter{XXZ model\label{sec:xxz}}
 \thispagestyle{chapterBeginStyle}
+    It is well known, that we can divide magnetic materials into two broad groups: those which
+exhibit magnetic properties in reaction to external magnetic field and those which have a nonzero
+magnetic moment without external field~\autocite{spalek2015}. First group consists of paramagnetic
+and diamagnetic systems. In the former, nonzero net magnetic moment comes from alignment of
+valence electrons' spins in the direction of external magnetic field. In the latter, we deal with
+ an inductive effect in which external field induces magnetic dipoles opposing the field tha have
+induced them. Diamagnetism exists in all materials, however it is usually much weaker than other magnetism related
+effects and thus only detectable in the absence of them. Second group includes ferromagnets, which
+exhibit spontaneous magnetization below Curie temperature, and ferrimagnets, which are 
+composed of two ferromagnetic sublattices with different spontaneous magnetization. There
+ are also antiferromagnets, which are essentially a special case of ferrimagnets in which the two sublattices
+, below the so-called N{\'e}el temperature, have spontaneous magnetizations of equal magnitude
+but opposite directions~\autocite{nolting2018theoretical}.
 
-We investigate a one dimensional XXZ Hamiltonian on a one-dimensional lattice of \(L\) sites with periodic boundary conditions.
-Throughout this thesis we will work in units such that \(\hbar = 1\).
+There are two paradigmatic models of magnetism, namely the Heisenberg model, which describes magnetism
+of localized electrons and their magnetic moments (spins), and the Hubbard model which deals with
+magnetism of delocalized electrons, called the itinerant magnetism. In this thesis we will focus on
+a special case of the former of two models, namely the XXZ model.
 
-Spin operator algebra:
-\begin{align*}
-    &\comm{S_{i}^{\alpha}}{S_{k}^{\beta}} = i  \delta_{i,k}\epsilon_{\alpha \beta \gamma} S_{i}^{\gamma}\\
-    &S_{i}^{\pm} = \Sx_i \pm i \Sy_i\\
-    &\comm{\Sp_i}{\Sp_k} = 2 \delta_{i,k} \Sz_i \\
-    &\comm{\Sz_i}{S^{\pm}_k} = \pm \delta_{i,j} S_{i}^{\pm}
-\end{align*}
 
-\textcolor{blue}{Write about tensor product, Hilbert space structure and such}
+\section{Heisenberg model of magnetism}
+We will now proceed with a derivation and a physical motivation of Heisenberg model,
+which is Dirac exchange interaction.
+Our discussion will be based on the books by~\textcite{spalek2015,Korepin1993} and 
+thesis by~\textcite{Ng2011HeisenbergM}.
+The story begins with two electrons interacting with each other via Coulomb potential.
+An electron can be described by two quantities, its position in space and its spin.
+Two facilitate these two degrees of freedom, we say that \(i\)-th electron's wavefunction
+lives in a Hilbert space which is a tensor product of spacial an spin 
+wavefunction spaces \(\mathcal{H}_i \cong L^2(\RR^3) \otimes \mathfrak{h}_i \), where
+\(L^2(\RR^3)\) is the usual space of square-integrable functions on three-dimensional space
+and \(\mathfrak{h} \cong \CC^2\) is a two-dimensional vector space spanned by
+\(\ket{\uparrow} = \binom{1}{0} \) and \(\ket{\downarrow} = \binom{0}{1}\).
+The combined wavefunction of a composite two-particle system it then an element of
+\(\mathcal{H}_1 \otimes \mathcal{H}_2\), which can be decomposed into spacial and spin
+components, i.e\ \(\mathcal{H}_1 \otimes \mathcal{H}_2 \cong\mathcal{H}_{\mathrm{space}} 
+\otimes \mathcal{H}_{\mathrm{spin}}\), where \(\mathcal{H}_{\mathrm{space}} 
+\cong L^2(\RR^3) \otimes L^2(\RR^3)\) and \(\mathcal{H}_{\mathrm{spin}} \cong
+\mathfrak{h}_1 \otimes \mathfrak{h}_2\). This decomposition is possible because of 
+a canonical isomorphism \(V_1 \otimes V_2 \cong V_2 \otimes V_1\). 
 
-\noindent Heisenberg Hamiltonian:
+Hamiltonian of two interacting electrons is given by:
 \begin{equation}
-    H_{XXZ} = \frac{J}{2}\sum_{j = 1}^{L}\left( S^{+}_{j} S^{-}_{j+1} + S^{-}_{j}S^{+}_{j+1} \right) + J\Delta\sum_{j = 1}^{L} S^{z}_{j}S^{z}_{j+1}
-    + \alpha H'
-    \label{eq:HXXZ}
+    H = \underbrace{-\frac{\hbar^2}{2m} \laplacian_1 + V_1(\bm{r}_1) + 
+    -\frac{\hbar^2}{2m} \laplacian_2 + V_2(\bm{r}_2)}_{\textrm{single particle}}
+     + \underbrace{V(\bm{r}_1,\bm{r}_2)}_{\textrm{interaction}}
 \end{equation}
-where \(H'\) is the perturbation that breaks integrability for nonzero \(\alpha \):
-\begin{equation}
-    H'=\sum_{j = 1}^{L} S^{z}_{j}S^{z}_{j+2}
-\end{equation}
-We set \(J = 1\) and subsequently work in units of \(J\).
+where in case of Coulomb interaction we have \(V(\bm{r}_1,\bm{r}_2)=\frac{e^2}
+{\abs{\bm{r}_1-\bm{r}_2}}\), but this exact expression in not important in this reasoning.
 
-It is perhaps important to note that, between spin operators in the Hamiltonian stands
-the tensor product, not regular composition of operators.
 
-\section{Physical origin of magnetism}
-\section{Algebra of spin operators}
+
+
+
+
+
+
+% We investigate a one dimensional XXZ Hamiltonian on a one-dimensional lattice of \(L\) sites with periodic boundary conditions.
+% Throughout this thesis we will work in units such that \(\hbar = 1\).
+
+% Spin operator algebra:
+% \begin{align*}
+%     &\comm{S_{i}^{\alpha}}{S_{k}^{\beta}} = i  \delta_{i,k}\epsilon_{\alpha \beta \gamma} S_{i}^{\gamma}\\
+%     &S_{i}^{\pm} = \Sx_i \pm i \Sy_i\\
+%     &\comm{\Sp_i}{\Sp_k} = 2 \delta_{i,k} \Sz_i \\
+%     &\comm{\Sz_i}{S^{\pm}_k} = \pm \delta_{i,j} S_{i}^{\pm}
+% \end{align*}
+
+% \textcolor{blue}{Write about tensor product, Hilbert space structure and such}
+
+% \noindent Heisenberg Hamiltonian:
+% \begin{equation}
+%     H_{XXZ} = \frac{J}{2}\sum_{j = 1}^{L}\left( S^{+}_{j} S^{-}_{j+1} + S^{-}_{j}S^{+}_{j+1} \right) + J\Delta\sum_{j = 1}^{L} S^{z}_{j}S^{z}_{j+1}
+%     + \alpha H'
+%     \label{eq:HXXZ}
+% \end{equation}
+% where \(H'\) is the perturbation that breaks integrability for nonzero \(\alpha \):
+% \begin{equation}
+%     H'=\sum_{j = 1}^{L} S^{z}_{j}S^{z}_{j+2}
+% \end{equation}
+% We set \(J = 1\) and subsequently work in units of \(J\).
+
+% It is perhaps important to note that, between spin operators in the Hamiltonian stands
+% the tensor product, not regular composition of operators.
