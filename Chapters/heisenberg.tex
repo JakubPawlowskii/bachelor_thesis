@@ -20,67 +20,154 @@ magnetism of delocalized electrons, called the itinerant magnetism. In this thes
 a special case of the former of two models, namely the XXZ model.
 
 
-\section{Heisenberg model of magnetism}
-We will now proceed with a derivation and a physical motivation of Heisenberg model,
-which is Dirac exchange interaction.
-Our discussion will be based on the books by~\textcite{spalek2015,Korepin1993} and 
+\section{Heisenberg-Dirac exchange interaction}
+We will now proceed with a derivation and a physical motivation of Heisenberg model.
+Our discussion will be based on the books by~\textcite{spalek2015} and 
 thesis by~\textcite{Ng2011HeisenbergM}.
 The story begins with two electrons interacting with each other via Coulomb potential.
 An electron can be described by two quantities, its position in space and its spin.
 Two facilitate these two degrees of freedom, we say that \(i\)-th electron's wavefunction
-lives in a Hilbert space which is a tensor product of spacial an spin 
-wavefunction spaces \(\mathcal{H}_i \cong L^2(\RR^3) \otimes \mathfrak{h}_i \), where
-\(L^2(\RR^3)\) is the usual space of square-integrable functions on three-dimensional space
-and \(\mathfrak{h} \cong \CC^2\) is a two-dimensional vector space spanned by
+lives in a Hilbert space which is a tensor product of spacial 
+wavefunction space \(\mathcal{H}_i \cong L^2(\RR^3) \otimes \mathfrak{h}_i \), where
+\(L^2(\RR^3)\) is the usual space of square-integrable functions on \(\RR^3\),
+and spin wavefunctions space \(\mathfrak{h} \cong \CC^2\) is a two-dimensional vector space spanned by
 \(\ket{\uparrow} = \binom{1}{0} \) and \(\ket{\downarrow} = \binom{0}{1}\).
 The combined wavefunction of a composite two-particle system it then an element of
 \(\mathcal{H}_1 \otimes \mathcal{H}_2\), which can be decomposed into spacial and spin
 components, i.e\ \(\mathcal{H}_1 \otimes \mathcal{H}_2 \cong\mathcal{H}_{\mathrm{space}} 
 \otimes \mathcal{H}_{\mathrm{spin}}\), where \(\mathcal{H}_{\mathrm{space}} 
 \cong L^2(\RR^3) \otimes L^2(\RR^3)\) and \(\mathcal{H}_{\mathrm{spin}} \cong
-\mathfrak{h}_1 \otimes \mathfrak{h}_2\). This decomposition is possible because of 
-a canonical isomorphism \(V_1 \otimes V_2 \cong V_2 \otimes V_1\). 
+\mathfrak{h}_1 \otimes \mathfrak{h}_2\). 
 
 Hamiltonian of two interacting electrons is given by:
 \begin{equation}
-    H = \underbrace{-\frac{\hbar^2}{2m} \laplacian_1 + V_1(\bm{r}_1) + 
-    -\frac{\hbar^2}{2m} \laplacian_2 + V_2(\bm{r}_2)}_{\textrm{single particle}}
+    H_C = \underbrace{-\frac{\hbar^2}{2m} \laplacian_1  
+    -\frac{\hbar^2}{2m} \laplacian_2 }_{\textrm{free particles}}
      + \underbrace{V(\bm{r}_1,\bm{r}_2)}_{\textrm{interaction}}
+     \label{eq:Coulomb Hamiltonian}
 \end{equation}
 where in case of Coulomb interaction we have \(V(\bm{r}_1,\bm{r}_2)=\frac{e^2}
-{\abs{\bm{r}_1-\bm{r}_2}}\), but this exact expression in not important in this reasoning.
+{\abs{\bm{r}_1-\bm{r}_2}}\).
+Formally, this Hamiltonian acts on the space \(\mathcal{H}_1 \otimes \mathcal{H}_2\).
+However, it depends only on the spatial coordinates \(\bm{r}_1,\bm{r}_2\) and not on
+the spin coordinates, so essentially
+its actions is restricted to the \(\mathcal{H}_{\textrm{space}}\) part of the full Hilbert space.
+This is a crucial observation that lead to the development of Heisenberg model. We will now
+seek a way to replace this Hamiltonian by an equivalent one acting only on 
+\(\mathcal{H}_{\textrm{spin}}\).
 
+It is time to invoke the Pauli exclusion principle, which requires the composite wavefunction
+of two electrons to be antisymmetric under exchange of pairs of coordinates (both spatial and
+spin degrees of freedoms are treated like coordinates). Because 
+Hamiltonian~\ref{eq:Coulomb Hamiltonian} does not depend explicitly on spin, the total
+wavefunction \(\psi\) can be expressed as tensor product \(\psi_{\mathrm{space}} 
+\otimes \psi_{\mathrm{spin}} \). Antisymmetric nature of \(\psi\) then requires one 
+of these components to be antisymmetric \((a)\) and the other to be symmetric \((s)\). 
+Spatial wavefunctions are of the form:
+\begin{align}
+    &\psi_{\textrm{space}}^{(s)} = \psi_1(\bm{r}_1)\otimes \psi_2(\bm{r}_2) +
+    \psi_2(\bm{r}_1)\otimes \psi_1(\bm{r}_2) \\
+    &\psi_{\textrm{space}}^{(a)} = \psi_1(\bm{r}_1)\otimes \psi_2(\bm{r}_2) -
+    \psi_2(\bm{r}_1)\otimes \psi_1(\bm{r}_2)
+\end{align}
+where \(\psi_1,\psi_2 \in L^2(\RR^3)\). Spin wavefunctions are elements of \(\CC^2\)
+and are given by:
+\begin{align}
+    &\psi_{\textrm{spin}}^{(s)} = \ket{\uparrow\uparrow},\; 
+    \ket{\uparrow\downarrow} + \ket{\downarrow\uparrow},\; \ket{\downarrow\downarrow} \\
+    &\psi_{\textrm{spin}}^{(a)} = \ket{\uparrow\downarrow}-\ket{\downarrow\uparrow}
+\end{align}
+where \(\ket{\uparrow\uparrow}\) is an usual shorthand notation for \(\ket{\uparrow}_1 \otimes
+\ket{\uparrow}_2\). Moreover, symmetric spin wavefunctions
+constitute a triplet state, whereas antisymmetric one is a singlet state. 
 
+Possible two-electron wavefunctions are thus either \(\varphi=\psi_{\textrm{space}}^{(s)}
+\otimes \psi_{\textrm{spin}}^{(a)}\) or \(\chi = \psi_{\textrm{space}}^{(a)}
+\otimes \psi_{\textrm{spin}}^{(s)}\). Expected value of energy of Coulomb interaction 
+in these states is given by:
+\begin{align}
+    &\expectationvalue{H_C}{\varphi} = \expectationvalue{V}{\psi_{\textrm{space}}^{(s)}} = E^{(s)}\\
+    &\expectationvalue{H_C}{\chi} = \expectationvalue{V}{\psi_{\textrm{space}}^{(a)}} = E^{(a)} 
+\end{align}
+Because \(\psi_{\textrm{space}}^{(a)}\) is symmetric with respect to \((\bm{r}_1-\bm{r}_2)\)
+we have \(E^{(s)}>E^{(a)}\). Therefore, it is energetically
+favourable for our system to pick the total wavefunction that is antisymmetric
+in space and symmetric in spin coordinates.
 
+Under the Coulomb interaction, symmetric and antisymmetric spin wavefunctions are not
+directly distinguished. It is the difference between spatial parts, together with Pauli
+exclusion principle that forces the choice of a triplet state. Let us now do something
+similar, but the other way around. We can formally recast the Coulomb Hamiltonian as a
+spin-spin interaction acting on \(\mathcal{H}_{\textrm{spin}}\) that would distinguish
+between symmetric and antisymmetric spin wavefunctions and thus fix the spatial part.
+Let \(\tau^x,\tau^y,\tau^z\) be the \(2\cross 2\) Pauli matrices:
+\begin{equation}
+\tau^x = \mqty(\pmat{1}),\;\;\;\tau^y = \mqty(\pmat{2}),\;\;\;\tau^z= \mqty(\pmat{3})
+\label{eq:Pauli matrices}
+\end{equation}
+Together with a \(2\cross 2\) identity matrix they form a basis of vector space of
+Hermitian operators acting on a single spin Hilbert space.
+They are traceless and of unit determinant. By direct computation it can be checked that
+they satisfy a particular commutation and anticommutation relations:
+\begin{align}
+    &\comm{\tau^j}{\tau^k} = 2 i \varepsilon_{jkl}\tau^{l}\\
+    &\anticommutator{\tau^j}{\tau^k} = 2 \delta_{jk} \Id_{2\cross2}
+\end{align}
+which in turn leads to the following important property:
+\begin{align}
+        \comm{\tau^{j}}{\tau^{k}} + \anticommutator{\tau^{j}}{\tau^{k}} 
+    &=\left(\tau^{j} \tau^{k}-\tau^{k} \tau^{j}\right)+\left(\tau^{j} \tau^{k}+\tau^{k} 
+    \tau^{j}\right) \nonumber \\
+    i \varepsilon_{j k l} \tau^{l}+\delta^{j k} I &= \tau^{j} \tau^{k}
+\end{align}
+We define an operator:
+\begin{equation}
+    \bm{\tau}_1 \cdot \bm{\tau}_2 = \tau_1^x \otimes \tau_2^x + \tau_1^y \otimes \tau_2^y +
+    \tau_1^z \otimes \tau_2^z  
+\end{equation}
+where subscripts refer to which electron's Hilbert space they act on. 
+Let us now examine how this operator acts on \(\ket{\uparrow\uparrow}\) spin wavefunction:
+\begin{align*}
+    \bm{\tau}_1 \cdot \bm{\tau}_2 \ket{\uparrow\uparrow} &= 
+    \left(\tau_1^x \ket{\uparrow}_1\right) \otimes \left(\tau^x_2 \ket{\uparrow}_2\right) + 
+    \left(\tau_1^y \ket{\uparrow}_1\right) \otimes \left(\tau^y_2 \ket{\uparrow}_2\right) +
+    \left(\tau_1^z \ket{\uparrow}_1\right) \otimes \left(\tau^z_2 \ket{\uparrow}_2\right)\nonumber\\
+    &= \left( \smqty(\pmat{1}) \smqty(1\\0)\right) \otimes \left( \smqty(\pmat{1}) \smqty(1\\0)\right) +
+    \left( \smqty(\pmat{2}) \smqty(1\\0)\right) \otimes \left( \smqty(\pmat{2}) \smqty(1\\0)\right)+
+    \left( \smqty(\pmat{3}) \smqty(1\\0)\right) \otimes \left( \smqty(\pmat{3}) \smqty(1\\0)\right)\\
+    &= \smqty(0\\1) \otimes \smqty(0\\1) + \smqty(0\\i) \otimes \smqty(0\\i) + 
+    \smqty(1\\0) \otimes \smqty(1\\0) = \ket{\uparrow\uparrow}
+\end{align*}
+So \(\ket{\uparrow\uparrow}\) is an eigenvector of \(\bm{\tau}_1 \cdot \bm{\tau}_2\) with
+an eigenvalue \(1\). Carrying out such computations for the three remaining states we get
+that all symmetric states are eigenvectors with eigenvalue \(1\), whereas the
+antisymmetric state is also an eigenvector, but with eigenvalue \(-3\). 
+We could have also obtained this result in a more elegant way by referring directly
+to quantum mechanics and algebra of spin angular momentum~\autocite{Sakurai2017}.
+If we set \(\hbar = 1\) (which from now on will always be the case), we have the usual
+spin vector operators \(\bm{S}_i = \left(\Sx_i,\Sy_i, \Sz_i\right) \) where
+ \(S_i^{\alpha} = \tau_i^{\alpha}/2\).
+Squares of these operators commute with all other \(S_i^{\alpha}\), hence are the
+Casimir operators of their algebras and by Schur's Lemma are proportional to
+the identity~\autocite{Woit2017}.
+The proportionality constant is equal for spin\(-s\) particles to \(s(s+1)\) and thus
+all single spin states are eigenvectors of these operators with eigenvalue \(3/4\). 
+We can also construct square of total spin angular momentum operator
+\(\bm{S}^2 = (\bm{S}_1 + \bm{2}_2)^2\) for which our triplet (total spin \(S=1\)) and singlet
+(total spin \(S=0\)) are eigenvectors with eigenvalue \(S(S+1)\). On the other hand, we 
+can calculate \(\bm{S}^2\) directly to obtain the following equation:
+\begin{equation}
+    S(S+1) = \bm{S}_1^2 + \bm{S}_2^2 + 2\bm{S}_1\cdot \bm{S}_1 = \frac{3}{2} + 2\bm{S}_1\cdot\bm{S}_2
+\end{equation} 
+Rearranging it, replacing \(\bm{S}_i\) by \(\bm{\tau}_i/2\) and inserting appropriate values
+of \(S\) we recreate the previously obtained result on eigenvalues of 
+\(\bm{\tau}_1\cdot\bm{\tau}_2\).
 
-
-
-
-
-% We investigate a one dimensional XXZ Hamiltonian on a one-dimensional lattice of \(L\) sites with periodic boundary conditions.
-% Throughout this thesis we will work in units such that \(\hbar = 1\).
-
-% Spin operator algebra:
-% \begin{align*}
-%     &\comm{S_{i}^{\alpha}}{S_{k}^{\beta}} = i  \delta_{i,k}\epsilon_{\alpha \beta \gamma} S_{i}^{\gamma}\\
-%     &S_{i}^{\pm} = \Sx_i \pm i \Sy_i\\
-%     &\comm{\Sp_i}{\Sp_k} = 2 \delta_{i,k} \Sz_i \\
-%     &\comm{\Sz_i}{S^{\pm}_k} = \pm \delta_{i,j} S_{i}^{\pm}
-% \end{align*}
-
-% \textcolor{blue}{Write about tensor product, Hilbert space structure and such}
-
-% \noindent Heisenberg Hamiltonian:
-% \begin{equation}
-%     H_{XXZ} = \frac{J}{2}\sum_{j = 1}^{L}\left( S^{+}_{j} S^{-}_{j+1} + S^{-}_{j}S^{+}_{j+1} \right) + J\Delta\sum_{j = 1}^{L} S^{z}_{j}S^{z}_{j+1}
-%     + \alpha H'
-%     \label{eq:HXXZ}
-% \end{equation}
-% where \(H'\) is the perturbation that breaks integrability for nonzero \(\alpha \):
-% \begin{equation}
-%     H'=\sum_{j = 1}^{L} S^{z}_{j}S^{z}_{j+2}
-% \end{equation}
-% We set \(J = 1\) and subsequently work in units of \(J\).
-
-% It is perhaps important to note that, between spin operators in the Hamiltonian stands
-% the tensor product, not regular composition of operators.
+After this detour into the world of quantum mechanics of spin, let us return to the problem
+at hand. We have established that triplet states and singlet state are eigenvectors of 
+\(\bm{\tau}_1 \cdot \bm{\tau}_2\) operators with eigenvalues \(1\) and \(-3\) respectively.
+Consider now the following Hamiltonian acting on \(\mathcal{H}_{\textrm{spin}}\):
+\begin{equation}
+    H_S = \frac{3 E^{(s)} + E^{(a)}}{4} + \frac{E^{(s)} - E^{(a)}}{4} \bm{\tau}_1 \cdot \bm{\tau}_2
+    \label{eq:Coulomb recasted}
+\end{equation}
