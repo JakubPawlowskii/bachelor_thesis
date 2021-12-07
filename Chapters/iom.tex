@@ -112,20 +112,20 @@ with increasing support.
 \end{figure}
 In Section~\ref{sec:algorithm}, a precise definition of locality and quasilocality will be stated.
 
-\paragraph{Noncommutativity}In the case of XXZ model (also in general XYZ model) the Hamiltonian preserves the total \(z\)-component of spin,
+\paragraph{Noncommutativity}In the case of XXZ model the Hamiltonian preserves the total \(z\)-component of spin,
 or in other words, it commutes with the total spin operator of the form:
 \begin{equation}
-  \Sz_{tot} = \sum_{i = 1}^{L} \Sz_i
+  \Sz_{tot} = \sum_{j = 1}^{L} \Sz_j
   \label{eq:magnetization}
 \end{equation}
 The resulting \(U(1)\) symmetry allows us to decompose the full Hilbert space into parts consisting of states with the same total \(z\)-component
 of spin. In more mathematical terms, we have the following:
 \begin{equation*}
-  \mathcal{H} = \bigoplus_{i = 0}^{L} \mathcal{H}_i \text{, where } \big(\forall \ket{\psi} \in \mathcal{H}_i \big) \big(\Sz_{tot} \ket{\psi} = \frac{1}{2}(2i-L) \ket{\psi} \big)
+  \mathcal{H} = \bigoplus_{j = 0}^{L} \mathcal{H}_j \text{, where } \big(\forall \ket{\psi} \in \mathcal{H}_j \big) \big(\Sz_{tot} \ket{\psi} = \frac{1}{2}(2j-L) \ket{\psi} \big)
 \end{equation*}
 i.e.\;the full Hilbert space with \(\dim{\mathcal{H}} = 2^L\) can be decomposed into the direct sum of its proper subspaces
-\(\mathcal{H}_i\) such that \(\dim{\mathcal{H}_i} = \binom{L}{i}\) and all states in a given subspace correspond to the same
-eigenvalue of \(\Sz_{tot}\) operator. The index \(i\) denotes the number of sites with spin up.
+\(\mathcal{H}_j\) such that \(\dim{\mathcal{H}_j} = \binom{L}{j}\) and all states in a given subspace correspond to the same
+eigenvalue of \(\Sz_{tot}\) operator. The index \(j\) denotes the number of sites with spin up.
 Now we are ready for
 \begin{definition}
   Let \(O\) be an integral of motion. If \(O\) preserves total \(z\)-component of spin, i.e.
@@ -611,7 +611,7 @@ In the expression above we have \(\sigma_j^z \equiv 2 S^z_j\),
  operator. The index \(j\) indicates first site of the support.
 As a matter of mathematical precision, the notation for \(O_{\underline{s},j}\) used here 
 (and frequently in physics literature) is a bit of simplification. It is important to remember
-that implicitly, there are tensor products between \(\sigma_j\)'s, i.e.\ we have the following:
+that becaues of embedding~\eqref{eq:embedding}, there are tensor products between \(\sigma_j\)'s, i.e.\ we have the following:
 \begin{equation}
   O_{\underline{s},j}= \underbrace{\Id_{2\cross 2} \otimes \cdots
        \otimes \Id_{2\cross 2}}_{j-1} \otimes \; \sigma_{j}^{s_{1}} \otimes \sigma_{j+1}^{s_{2}} \otimes
@@ -657,10 +657,7 @@ In order to test our (Q)LIOM finding algorithm and the correctness of its implem
 energy current in Spin\(-1/2\) XXZ model~\autocite*{Mierzejewski2015Approx} and see whether it is detected or not.
 For the sake of completeness, derivation of
 spin energy current for the general XYZ model will be presented, following the definitions in \textcite{Zotos1997}.
-We start with the general XYZ Hamiltonian with periodic boundary conditions:
-\begin{equation}
-  H_{XYZ} = \sum_{k=1}^L  \left( J_{x} \Sx_{k}\Sx_{k+1} + J_{x} \Sy_{k}\Sy_{k+1} + J_{z} \Sz_{k}\Sz_{k+1} \right)
-\end{equation}
+We start with the general XYZ Hamiltonian with periodic boundary conditions~\eqref{eq:XYZ}.
 It is easy to see that this Hamiltonian can be represented as a sum of operators supported on two consecutive sites:
 \begin{equation}
   H_{XYZ} = \sum_{k=1}^L h_{k,k+1}

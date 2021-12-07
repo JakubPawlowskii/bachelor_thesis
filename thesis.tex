@@ -7,7 +7,7 @@
 
 % Styl dwustronny z domyślną wielkością czcionki 10pt oraz oddzieloną stroną tytułową (titlepage).
 % Domyślnie rodziały rozpoczynają się na stronie prawej (openright).
-\documentclass{book}
+\documentclass[a4paper,11pt,twoside,openright]{book}
 
 % ***************************************************************************************************
 % Ustawienia języka
@@ -97,6 +97,10 @@
 % Ustawienie zadanego stylu dla komentarzy
 % \SetCommentSty{algcomment}
 
+
+% \usepackage{newtxtext}
+% \usepackage{newtxmath}
+
 % Wyśrodkowana tylda
 \usepackage{textcomp}%
 \newcommand{\textapprox}{\raisebox{0.5ex}{\texttildelow}}
@@ -142,12 +146,12 @@
 	\fancyhf{}									% wyczyść stopki i nagłówki
 	\fancyhead[RO]{								% Prawy, nieparzysty nagłówek
 		\hrulefill \hspace{16pt} \large Chapter \thechapter
-		\put(-472.1, 13.5){%
+		\put(-455.4, 13.5){%
 			\makebox(0,0)[l]{%
 				\includegraphics[width=0.05\textwidth]{Figures/pwr-logo}
 			}
 		}
-		\put(-443,5.5){%
+		\put(-426,5.5){%
 			\makebox(0,0)[l]{%
 				\small Wrocław University of Science and Technology
 			}
@@ -155,12 +159,12 @@
 	}
 	\fancyhead[LE]{								% Lewy, parzysty nagłówek
 		\large Chapter \thechapter \hspace{16pt} \hrulefill 
-		\put(-22, 12.1){%
+		\put(-20, 12.1){%
 			\makebox(0,0)[l]{%
 				\includegraphics[width=0.05\textwidth]{Figures/wppt-logo}
 			}
 		}
-		\put(-220,5.5){%
+		\put(-240,5.5){%
 			\makebox(0,0)[l]{%
 				\small Faculty of Fundamental Problems of Technology
 			}
@@ -179,12 +183,12 @@
 	\fancyhf{}									% wyczyść stopki i nagłówki
 	\fancyhead[RO]{								% Prawy, nieparzysty nagłówek
 		\hrulefill \hspace{16pt} \large Appendix \thechapter
-		\put(-472.1, 13.5){%
+		\put(-455.4, 13.5){%
 			\makebox(0,0)[l]{%
 				\includegraphics[width=0.05\textwidth]{Figures/pwr-logo}
 			}
 		}
-		\put(-443,5.5){%
+		\put(-426,5.5){%
 			\makebox(0,0)[l]{%
 				\small Wrocław University of Science and Technology
 			}
@@ -192,12 +196,12 @@
 	}
 	\fancyhead[LE]{								% Lewy, parzysty nagłówek
 		\large Bibliography \hspace{16pt} \hrulefill 
-		\put(-22, 12.1){%
+		\put(-20, 12.1){%
 			\makebox(0,0)[l]{%
 				\includegraphics[width=0.05\textwidth]{Figures/wppt-logo}
 			}
 		}
-		\put(-220,5.5){%
+		\put(-240,5.5){%
 			\makebox(0,0)[l]{%
 				\small Faculty of Fundamental Problems of Technology
 			}
@@ -215,12 +219,12 @@
 	\fancyhf{}									% wyczyść stopki i nagłówki
 	\fancyhead[RO]{								% Prawy, nieparzysty nagłówek
 		\hrulefill \hspace{16pt} \large Appendix \thechapter
-		\put(-472.1, 13.5){%
+		\put(-455.4, 13.5){%
 			\makebox(0,0)[l]{%
 				\includegraphics[width=0.05\textwidth]{Figures/pwr-logo}
 			}
 		}
-		\put(-443,5.5){%
+		\put(-426,5.5){%
 			\makebox(0,0)[l]{%
 				\small Wrocław University of Science and Technology
 			}
@@ -228,12 +232,12 @@
 	}
 	\fancyhead[LE]{								% Lewy, parzysty nagłówek
 		\large Appendix \thechapter \hspace{16pt} \hrulefill 
-		\put(-22, 12.1){%
+		\put(-20, 12.1){%
 			\makebox(0,0)[l]{%
 				\includegraphics[width=0.05\textwidth]{Figures/wppt-logo}
 			}
 		}
-		\put(-220,5.5){%
+		\put(-240,5.5){%
 			\makebox(0,0)[l]{%
 				\small Faculty of Fundamental Problems of Technology
 			}
@@ -410,8 +414,10 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,decorations.pathreplacing}
 
-\usepackage{indentfirst}
+% \usepackage{indentfirst}
 \usepackage{bm}
+\usepackage{quotchap}
+
 % ***************************************************************************************************
 % Matematyczne skróty
 % ***************************************************************************************************
@@ -442,12 +448,43 @@
 \newcommand{\Sz}{S^{z}}
 \newcommand{\Sx}{S^{x}}
 \newcommand{\Sy}{S^{y}}
+
+
 \newcommand{\hs}[2]{\left(#1 \middle| #2\right)}
 \newcommand{\dimension}{2^L}
+\newcommand{\ua}{\uparrow}
+\newcommand{\da}{\downarrow}
+
+\newcommand{\spaa}{\psi_{\textrm{space}}^{(a)}}
+\newcommand{\spas}{\psi_{\textrm{space}}^{(s)}}
+\newcommand{\spia}{\psi_{\textrm{spin}}^{(a)}}
+\newcommand{\spis}{\psi_{\textrm{spin}}^{(s)}}
+\newcommand{\hspi}{\mathcal{H}_{\textrm{spin}}}
+\newcommand{\hspac}{\mathcal{H}_{\textrm{space}}}
+
 
 \DeclarePairedDelimiterX\set[1]\lbrace\rbrace{\def\given{\;\delimsize\vert\;}#1}
 
-\renewcommand{\baselinestretch}{1.3} 
+\renewcommand{\baselinestretch}{1.1} 
+
+
+\definecolor{pinegreen}{RGB}{0,128,128}
+\renewcommand*{\chapterheadstartvskip}{\vspace*{-1\baselineskip}} 
+\renewcommand*{\sectfont}{\bfseries\fontseries{bx}\selectfont}
+\makeatletter
+\let\size@chapter\huge
+\renewcommand*{\chapnumfont}{
+    %\usefont{T1}{jkpvos}{b}{n}
+    \usefont{T1}{pzc}{b}{n}
+    \fontsize{100}{120}\color{pinegreen}\selectfont}
+% default number
+% \renewcommand*{\chapnumfont}{%
+%   \usefont{T1}{\@defaultcnfont}{b}{n}\fontsize{120}{150}\selectfont% Default: 100/130
+%   \color{chaptergrey}}
+\makeatother
+
+
+
 % ***************************************************************************************************
 % Środowiska
 % ***************************************************************************************************
