@@ -26,17 +26,17 @@ Let us now deal with the integral \(\mathcal{I}\):
 \begin{align}
     \mathcal{I} &= \lim _{\varepsilon \to 0^+} \int_{-\infty}^{\infty} \mathrm{d} t \; 
     e^{ i (E_m-E_n+\omega)t -|t| \varepsilon} = \lim _{\varepsilon \to 0^+} 
-    \left[\lim_{T_1\to -\infty}\int_{T_1}^{0} \mathrm{d} t \; e^{ i (E_m-E_n+\omega -i \varepsilon)t}+
-    \lim_{T_2\to \infty}\int_{0}^{T_2} \mathrm{d} t \;  e^{ i (E_m-E_n+\omega + i\varepsilon)t}\right] \nonumber\\
-    &= \lim _{\varepsilon \to 0^+} \left[\lim_{T_1\to -\infty} 
-    \frac{1-e^{ i (E_m-E_n+\omega )T_1} e^{\varepsilon T_1}}{i (E_m-E_n+\omega -i \varepsilon)} + 
-    \lim_{T_2\to \infty} \frac{e^{ i (E_m-E_n+\omega )T_2} e^{-\varepsilon T_2}-1}
-    {i (E_m-E_n+\omega +i \varepsilon)}\right] \nonumber \\
-    &= \lim _{\varepsilon \to 0^+} \left[\frac{i}{E_n-E_m-\omega +i \varepsilon} + 
-    \frac{i}{E_m-E_n+\omega +i \varepsilon} \right] = \lim _{\varepsilon \to 0^+}
-    \frac{2\varepsilon}{(E_m-E_n+\omega -i \varepsilon)(E_m-E_n+\omega +i \varepsilon)}\nonumber\\
-    &=\lim _{\varepsilon \to 0^+}
-    \frac{2\varepsilon}{(E_m-E_n+\omega)^2 +\varepsilon^2}
+    \Bigg[\lim_{T_1\to -\infty}\int_{T_1}^{0} \mathrm{d} t \; e^{ i (E_m-E_n+\omega -i \varepsilon)t}\nonumber\\
+    &+\lim_{T_2\to \infty}\int_{0}^{T_2} \mathrm{d} t \;  e^{ i (E_m-E_n+\omega + i\varepsilon)t}\Bigg]
+    = \lim _{\varepsilon \to 0^+} \Bigg[\lim_{T_1\to -\infty} 
+    \frac{1-e^{ i (E_m-E_n+\omega )T_1} e^{\varepsilon T_1}}{i (E_m-E_n+\omega -i \varepsilon)}\nonumber\\
+     &+ \lim_{T_2\to \infty} \frac{e^{ i (E_m-E_n+\omega )T_2} e^{-\varepsilon T_2}-1}
+    {i (E_m-E_n+\omega +i \varepsilon)}\Bigg]
+    = \lim _{\varepsilon \to 0^+} \left[\frac{i}{E_n-E_m-\omega +i \varepsilon} + 
+    \frac{i}{E_m-E_n+\omega +i \varepsilon} \right]\nonumber\\
+     &= \lim _{\varepsilon \to 0^+}
+    \frac{2\varepsilon}{(E_m-E_n+\omega -i \varepsilon)(E_m-E_n+\omega +i \varepsilon)}
+    =\lim _{\varepsilon \to 0^+} \frac{2\varepsilon}{(E_m-E_n+\omega)^2 +\varepsilon^2}
 \end{align}
 Obtained results is a limit of the so called Poisson kernel. This happens to be
 a representations of Dirac delta in form of a limit of a sequence of functions~\autocite{byron1992mathematics}:
