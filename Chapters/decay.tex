@@ -92,14 +92,14 @@ so the \(\delta\)-peak broadens and \(R_{J^E}(\omega,\alpha=0)\) is no longer eq
 but approaches zero as time increases. We will look simultaneously at two different situations,
 results for \(L=14\) and results extrapolated to thermodynamic limit from \(L=11,12,13,14\). 
 Figure~\ref{fig:current decay no scaling} shows \(R_{J^E}(\alpha,\omega)\) as a
-function of \(\omega\) for different \(\alpha\). We immediately see the expected outcome, as the
+function of \(\omega\) for \(\alpha=0.3,0.4,0.5\). We immediately see the expected outcome, as the
 stronger the perturbation the faster the current decays. The fact that for finite \(L\),
 \(R_{J^E}(\alpha,\omega)\) does not approach \(0\) in \(\omega\to 0^+\) limit is consistent
 with results in Figure~\ref{fig:lioms decay}.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Figures/current_no_scaling.pdf}
-  \caption{Normalized integrated spectral function as a function of cutoff frequency.
+  \caption{Normalized integrated spectral function as a function of cutoff frequency for \(J^E\).
   (a) Results for \(L=14\). Low frequency limit does not approach 0
   because of finite size effects. (b) Results extrapolated to thermodynamic limit from \(L=11,12,13,14\).
   Note the expected observation, namely stronger perturbation leads to faster decay.}
@@ -108,7 +108,7 @@ with results in Figure~\ref{fig:lioms decay}.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{Figures/current_scaling.pdf}
-  \caption{Normalized integrated spectral function as a function of rescaled cutoff frequency.
+  \caption{Normalized integrated spectral function as a function of rescaled cutoff frequency for \(J^E\).
   (a) Results for \(L=14\). (b) Results extrapolated to thermodynamic limit from \(L=11,12,13,14\).
   Dashed black line corresponds to fit~\eqref{eq:R arctan}.}
   \label{fig:current decay scaling}
@@ -119,9 +119,10 @@ show a convincing collapse of curves for different values of perturbation streng
 an universal dependence of \(R(\omega,\alpha)\) on \(\omega\) and \(\alpha\):
 \begin{equation}
   R(\omega,\alpha)\simeq \tilde{R}(\omega/\alpha^2)
+  \label{eq:universal scaling current}
 \end{equation}
 Moreover, this relation can be reasonably well approximation by a one parameter fit
-(black dashed line on Figure~\ref{fig:current decay scaling}):
+(black dashed line in Figure~\ref{fig:current decay scaling}):
 \begin{equation}
   \tilde{R}(\omega/\alpha^2) \simeq \frac{2}{\pi} \arctan\left(\frac{\omega}{\gamma \alpha^2}\right)
 \label{eq:R arctan}
@@ -156,14 +157,68 @@ is indeed the appropriate one.
   \centering
   \includegraphics[width=1.0\textwidth]{Figures/current_perfect_scaling.pdf}
   \caption{Normalized integrated spectral function as a function of 
-  rescaled cutoff frequency. The rescaling coefficient is chosen so as to obtain the 
+  rescaled cutoff frequency for \(J^E\). The rescaling coefficient is chosen so as to obtain the 
   best possible collapse of curves. (a) Results for \(L=14\). (b) Results extrapolated
    to thermodynamic limit from \(L=11,12,13,14\).}\label{fig:current decay perfect scaling}
 \end{figure}
 
 
-
 \subsection{Relaxation of noncommuting (Q)LIOMs}
-Let us now proceed with the same analysis, but for the \(\hat{O}_1\) and \(\hat{O_2}\)
-operators.
+Let us now proceed with the same analysis, but for the \(\hat{O}_1\)~\eqref{eq:delta 1.0} 
+and \(\hat{O}_2\)~\eqref{eq:delta 0.5} operators. Once again we shall look at the largest
+system size available to us, that is \(L = 16\), as well as the case of extrapolation
+to thermodynamic limit from \(L = 10,12,14,16\). Figure~\ref{fig:O12 no scaling} shows
+\(R_{\mu}(\omega,\alpha)\), where \(\mu=1,2\), as a function of \(\omega\) for \(\alpha = 0.05,0.1,0.2\).
+We have used weaker perturbations here, because Figure~\ref{fig:lioms decay} suggested that
+it is enough to achieve vanishing stiffness in thermodynamic limit. Indeed this is the case
+and we observe that \(\lim_{{\omega\to 0^{+}}} R_{\mu}(\omega,\alpha) = 0\) even for finite-size systems.
+Basing on the discussion of energy current decay, next logical step would be to rescale the
+frequency by \(\alpha^2\). In contrast to the energy current, we not see any collapse (see Figure~\ref{fig:O12 quadratic scaling}).
+Therefore, noncommuting operators do not follow the same universal scaling~\eqref{eq:universal scaling current}
+as the energy current. However, as shown in Figure~\ref{fig:O12 linear scaling},
+it turns out that a reasonable collapse, working for both \(\hat{O}_1\) and \(\hat{O}_2\),
+may be observed for a different scaling, namely \(\omega/\alpha\). This suggests another kind
+of relation:
+\begin{equation}
+  R_{\mu}(\omega,\alpha) \simeq \tilde{R}_{\mu}(\omega/\alpha)
+\end{equation}
+Moreover, the collapsed curves can be accurately fitted with an one-parameter error function
+ (black dashed line in Figure~\ref{fig:O12 linear scaling}):
+\begin{equation}
+  \tilde{R}_{\mu}(\omega/\alpha) \simeq \erf\left(\frac{\omega}{\gamma \alpha}\right)
+\end{equation}
+where the fitting parameter in denoted with \(\gamma\). This implies a Gaussian, instead of
+exponential, decay of autocorrelation function, i.e.\ \(\hs{\hat{O}_{\mu}(t)}{\hat{O}_{\mu}}
+\propto \exp(-(t/\tau_{\mu})^2)\).
 
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1.0\textwidth]{Figures/O12_no_scaling.pdf}
+  \caption{Normalized integrated spectral function as a function of cutoff frequency for
+  \(\hat{O}_1\) and \(\hat{O}_2\).
+  (a) Results for \(L=16\) and \(\hat{O}_1\).  (b) Results for \(\hat{O}_1\) extrapolated to
+  thermodynamic limit from \(L=10,12,14,16\). (c) Results for \(L=16\) and \(\hat{O}_2\). 
+  (d) Results for \(\hat{O}_2\) extrapolated to thermodynamic limit from \(L=10,12,14,16\).
+  Note that low frequency limit for finite system does approach \(0\), as expected from 
+  Figure~\ref{fig:lioms decay}.
+  }\label{fig:O12 no scaling}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1.0\textwidth]{Figures/O12_quadratic_scaling.pdf}
+  \caption{}\label{fig:O12 quadratic scaling}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1.0\textwidth]{Figures/O12_linear_scaling.pdf}
+  \caption{}\label{fig:O12 linear scaling}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1.0\textwidth]{Figures/O12_symmetry_breaking.pdf}
+  \caption{}\label{fig:O12 symmetry}
+\end{figure}
