@@ -129,22 +129,22 @@ Moreover, this relation can be reasonably well approximation by a one parameter 
 \end{equation}
 where \(\gamma \) is the fitting parameter. It implies that the relaxation of energy current
 is exponential in nature. To see this, let us calculate \(I(\omega)\) for such decay
-\(\hs{J^E(t)}{J^E} \propto e^{-\abs{t}/\tau_1}\). Double-sided exponential has well defined Fourier
+\(\hs{J^E(t)}{J^E} \propto e^{-\abs{t}/\tau_{J}}\). Double-sided exponential has well defined Fourier
 transform, so we can drop the \(\epsilon \to 0^{+}\) limit from the integral.
 \begin{align}
-  S(\omega) &\propto \frac{1}{2\pi} \int_{-\infty}^{\infty} \mathrm{d} t\; e^{-\abs{t}/\tau_1} e^{i \omega t} = 
-  \frac{1}{2\pi} \left[\int_{-\infty}^{0} \mathrm{d} t\; e^{(1/\tau_1 + i\omega)t }
-  + \int_{0}^{\infty} \mathrm{d} t\; e^{(-1/\tau_1 + i\omega)t }  \right] \nonumber \\
-  &= \frac{1}{2\pi} \left[\frac{\tau_1}{1+i\omega \tau_1} + \frac{\tau_1}{1-i\omega\tau_1}\right] = 
-  \frac{1}{\pi} \frac{\tau_1}{1+\omega^2\tau_1^2}
+  S(\omega) &\propto \frac{1}{2\pi} \int_{-\infty}^{\infty} \mathrm{d} t\; e^{-\abs{t}/\tau_{J}} e^{i \omega t} = 
+  \frac{1}{2\pi} \left[\int_{-\infty}^{0} \mathrm{d} t\; e^{(1/\tau_{J} + i\omega)t }
+  + \int_{0}^{\infty} \mathrm{d} t\; e^{(-1/\tau_{J} + i\omega)t }  \right] \nonumber \\
+  &= \frac{1}{2\pi} \left[\frac{\tau_{J}}{1+i\omega \tau_{J}} + \frac{\tau_{J}}{1-i\omega\tau_{J}}\right] = 
+  \frac{1}{\pi} \frac{\tau_{J}}{1+\omega^2\tau_{J}^2}
 \end{align}
 Integrating \(S(\omega)\) over a frequency window we obtain:
 \begin{equation*}
   I(\omega) \propto \frac{1}{\pi}\int_{-\omega}^{\omega}\mathrm{d}\omega^{\prime}\; 
-  \frac{\tau_1}{1+\omega^2\tau_1^2} = \frac{2}{\pi} \arctan(\tau_1 \omega)
+  \frac{\tau_{J}}{1+\omega^2\tau_{J}^2} = \frac{2}{\pi} \arctan(\tau_{J} \omega)
 \end{equation*}
 which after normalization yields the desired results~\eqref{eq:R arctan}. Furthermore, we learn that the 
-characteristic relaxation time \(\frac{1}{\tau_1} \propto \alpha^2\) and the proportionality
+characteristic relaxation time \(\frac{1}{\tau_{J}} \propto \alpha^2\) and the proportionality
 constant is universal and does not depend on \(\alpha\).
 The quadratic scaling shown on Figure~\ref{fig:current decay scaling} is actually not the
 best possible for this set of numerical data. Choosing the rescaling coefficient to be
@@ -186,12 +186,49 @@ Moreover, the collapsed curves can be accurately fitted with an one-parameter er
  (black dashed line in Figure~\ref{fig:O12 linear scaling}):
 \begin{equation}
   \tilde{R}_{\mu}(\omega/\alpha) \simeq \erf\left(\frac{\omega}{\gamma \alpha}\right)
+  \label{eq:erf fit}
 \end{equation}
-where the fitting parameter in denoted with \(\gamma\). This implies a Gaussian, instead of
+where the fitting parameter in denoted with \(\gamma\) and error function is defined as:
+\begin{equation}
+\erf(x) = \frac{2}{\sqrt{\pi}} \int_{0}^{x} \mathrm{d}t\; e^{-t^2}  
+\end{equation}
+This implies a Gaussian, instead of
 exponential, decay of autocorrelation function, i.e.\ \(\hs{\hat{O}_{\mu}(t)}{\hat{O}_{\mu}}
-\propto \exp(-(t/\tau_{\mu})^2)\).
-
-
+\propto \exp(-(t/\tau_{\mu})^2)\). We can once again make use of integrated spectral function
+to see that this is correct.
+\begin{align}
+  S(\omega) &\propto \frac{1}{2\pi} \int_{-\infty}^{\infty} \mathrm{d}t \; e^{-(t/\tau_{\mu})^2}
+  e^{i\omega t} = \frac{1}{2\pi} \int_{-\infty}^{\infty} \mathrm{d}t \; 
+  \exp\left(-\frac{1}{\tau_{\mu}^2} \left(t-\frac{i\omega\tau_{\mu}}{2}\right)^2 
+  - \frac{\omega^2\tau_{\mu}^2}{4}\right) \nonumber \\
+  &= \exp\left(- \frac{\omega^2\tau_{\mu}^2}{4}\right) \frac{1}{2\pi}
+  \int_{-\infty+\frac{i\omega\tau_{\mu}}{2}}^{\infty+\frac{i\omega\tau_{\mu}}{2}} 
+  \mathrm{d} z\; \exp\left(-\frac{z^2}{\tau_{\mu}^2}\right) \nonumber\\
+  & \triangleq \exp\left(- \frac{\omega^2
+  \tau_{\mu}^2}{4}\right) \frac{1}{2\pi} \int_{-\infty}^{\infty}
+  \mathrm{d} z\; \exp\left(-\frac{z^2}{\tau_{\mu}^2}\right) \nonumber  \\
+  &= \frac{\tau_{\mu}}{2\sqrt{\pi}}e^{-(\omega \tau_{\mu}/2)^2}
+\end{align}
+where between first and second line a change of variables \(z = t-\frac{i \omega \tau_{\mu}}{2}\)
+has been made, and equality marked with \(\triangleq\) can be justified by means of contour
+integration~\autocite{Stein2010}. Now we can easily perform integration over a finite
+frequency window:
+\begin{align}
+  I(\omega) &\propto \frac{\tau_{\mu}}{2\sqrt{\pi}}\int_{-\omega}^{\omega} \mathrm{d}\omega^{\prime}\;
+  e^{-(\omega/\tau_{\mu})^2} = \frac{\tau_{\mu}}{2\sqrt{\pi}}
+  \left[\int_{-\omega}^{0} \mathrm{d}\omega^{\prime} e^{-(\omega\tau_{\mu}/2)^2} + 
+  \int_{0}^{\omega} \mathrm{d}\omega^{\prime} e^{-(\omega\tau_{\mu}/2)^2} \right]\nonumber\\
+  &= \frac{\tau_{\mu}}{2\sqrt{\pi}} \left[ \frac{2}{\tau_{\mu}}\int_{-\frac{\omega\tau_{\mu}}{2}}^{0} 
+  \mathrm{d} x\;  e^{-x^2} + \frac{2}{\tau_{\mu}}\int_{0}^{\frac{\omega\tau_{\mu}}{2}}
+   \mathrm{d}x\; e^{-x^2} \right]\nonumber\\ 
+   &= \frac{1}{\sqrt{\pi}} \left[ \frac{\sqrt{\pi}}{2} \erf\left(\frac{\omega\tau_{\mu}}{2}\right) +
+   \frac{\sqrt{\pi}}{2} \erf\left(\frac{\omega\tau_{\mu}}{2}\right) \right]\nonumber\\
+    &= \erf\left(\frac{\omega\tau_{\mu}}{2}\right)
+\end{align}
+where between first and second lines a change of variables \(x=\omega\tau_{\mu}/2\) has been made.
+We have thus obtained the desired result~\ref{eq:erf fit}. On the contrary to the case of energy
+current, the scaling of decay rate is \(\frac{1}{\tau_{\mu}} \propto \alpha\). The gaussian relaxation
+of noncommuting integrals of motion under weak perturbation is the main finding of this work.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=1.0\textwidth]{Figures/O12_no_scaling.pdf}
