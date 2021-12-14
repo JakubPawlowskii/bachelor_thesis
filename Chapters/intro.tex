@@ -308,4 +308,45 @@ resort to much simpler numerical methods in form of exact diagonalization~\autoc
 
 \section{Classical and Quantum Integrability}
 
+\textcolor{blue}{This is just collection of information, rewrite this!!}
+Before jumping head first into the quantum realm, it is perhaps valuable the state
+the problem of classical integrability and results therein.
+We will consider the problem of integrability in the spirit of classical discussion
+of Liouville and Arnold as presented in a monograph by~\textcite{Gutzwiller1991}.
+
+Consider a phase space \(\mathcal{M}\) equipped with Poisson bracket, and local pair of 
+canonical coordinates \((p_i,q_i)\).  We can form canonical momentum and coordinate vectors as
+follows \(p=(p_1,\ldots,p_n)\) and \(q=(q_1,\ldots,q_n)\).
+Poisson bracket for two functions defined on phase space \(f=f(p,q)\) and \(g=g(p,q)\):
+\begin{equation}
+    \poissonbracket{f}{g} = \sum_{i=1}^{n} \left(\pdv{f}{p_i}\pdv{g}{q_i}
+    - \pdv{f}{q_i}\pdv{f}{p_i}\right)
+\end{equation}
+Canonical commutation relations:
+\begin{equation}
+    \poissonbracket{p_i}{p_j} = \poissonbracket{q_i}{q_j}=0,\;\;\;\;
+    \poissonbracket{p_i}{q_h} = \delta_{ij}
+\end{equation}
+
+Poisson bracket is skew-symmetric, obeys Leibnitz rule and satisfies Jacobi identity:
+\begin{align}
+    \poissonbracket{f}{g} &=-\poissonbracket{g}{f} \nonumber\\
+    \poissonbracket{f}{gh} &= g\poissonbracket{f}{h} + \poissonbracket{f}{g}h\nonumber\\
+    0 &= \poissonbracket{f}{\poissonbracket{g}{h}} + \poissonbracket{g}{\poissonbracket{h}{f}}+
+    \poissonbracket{h}{\poissonbracket{f}{g}}
+\end{align}
+
+Hamilton equations of motion:
+
+\begin{equation}
+\dv{q_i}{t} = \pdv{H}{p_i},\;\;\;\;\;, \dv{p_i}{t} = -\pdv{H}{q_i}
+\end{equation}
+
+Constant of motion:
+\begin{equation}
+    \dv{f}{t}= \sum_{i=1}^{n} \pdv{f}{p_i} \dv{p_i}{t} + \pdv{f}{q_i}\dv{q_i}{t}
+    + \pdv{f}{t} \implies \pdv{f}{t} = \poissonbracket{H}{f}
+\end{equation}
+
+
 \section{Motivation and Outline}

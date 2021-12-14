@@ -46,7 +46,8 @@ We see first hints that the behavior under perturbation for commuting and noncom
 differ. For perturbation strength \(\alpha=0.2\) energy current stiffness does
 not decay in thermodynamic limit for \(\omega \to O^+\) and thus stronger perturbation is needed.
 However, stiffness of operators \(\hat{O}_1,\hat{O}_2\) vanish even for finite size systems
-and smaller perturbations. \textcolor{blue}{Does this make sense? (d)-(i) Increasing nature of
+and smaller perturbations. 
+\textcolor{blue}{Does this make sense? (d)-(i) Increasing nature of
 stiffness is caused by \(\omega\) resolution smaller than energy levels spacings? Leave this or
 delete this?}.
 \begin{figure}[htbp]
@@ -58,9 +59,9 @@ delete this?}.
   \label{fig:lioms decay}
 \end{figure}
 
-
+\newcommand{\figsize}{0.95}
+\setlength{\belowcaptionskip}{0pt}
 \section{Relaxation of known (Q)LIOMs}
-% After establishing the range of perturbation strengths relevant to our problem, we can now
 To investigate how our (Q)LIOMs decay with time, we will apply the formalism of spectral functions
 described in Sections~\ref{sec:spectral function}.
 Since we are interested in the low-\(\omega\) (long times) part of integrated spectral function
@@ -87,6 +88,15 @@ In the integrable parent model it is a conserved quantity, so we have the follow
   \hs{J^E(t)}{J^E} = const \implies S(\omega) \propto \delta(\omega)
   \implies R_{J^E}(\omega,\alpha=0) = 1
 \end{equation*}
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\figsize\textwidth]{Figures/current_no_scaling.pdf}
+  \caption{Normalized integrated spectral function as a function of cutoff frequency for \(J^E\).
+  (a) Results for \(L=14\). Low frequency limit does not approach 0
+  because of finite size effects. (b) Results extrapolated to thermodynamic limit from \(L=11,12,13,14\).
+  Note the expected observation, namely stronger perturbation leads to faster decay.}
+  \label{fig:current decay no scaling}
+\end{figure}
 After moving away from integrable regime, the autocorrelation function starts to decay,
 so the \(\delta\)-peak broadens and \(R_{J^E}(\omega,\alpha=0)\) is no longer equal to one,
 but approaches zero as time increases. We will look simultaneously at two different situations,
@@ -96,18 +106,9 @@ function of \(\omega\) for \(\alpha=0.3,0.4,0.5\). We immediately see the expect
 stronger the perturbation the faster the current decays. The fact that for finite \(L\),
 \(R_{J^E}(\alpha,\omega)\) does not approach \(0\) in \(\omega\to 0^+\) limit is consistent
 with results in Figure~\ref{fig:lioms decay}.
-\begin{figure}[htbp]
+\begin{figure}[ht]
   \centering
-  \includegraphics[width=\textwidth]{Figures/current_no_scaling.pdf}
-  \caption{Normalized integrated spectral function as a function of cutoff frequency for \(J^E\).
-  (a) Results for \(L=14\). Low frequency limit does not approach 0
-  because of finite size effects. (b) Results extrapolated to thermodynamic limit from \(L=11,12,13,14\).
-  Note the expected observation, namely stronger perturbation leads to faster decay.}
-  \label{fig:current decay no scaling}
-\end{figure}
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{Figures/current_scaling.pdf}
+  \includegraphics[width=\figsize\textwidth]{Figures/current_scaling.pdf}
   \caption{Normalized integrated spectral function as a function of rescaled cutoff frequency for \(J^E\).
   (a) Results for \(L=14\). (b) Results extrapolated to thermodynamic limit from \(L=11,12,13,14\).
   Dashed black line corresponds to fit~\eqref{eq:R arctan}.}
@@ -129,22 +130,22 @@ Moreover, this relation can be reasonably well approximation by a one parameter 
 \end{equation}
 where \(\gamma \) is the fitting parameter. It implies that the relaxation of energy current
 is exponential in nature. To see this, let us calculate \(I(\omega)\) for such decay
-\(\hs{J^E(t)}{J^E} \propto e^{-\abs{t}/\tau_{J}}\). Double-sided exponential has well defined Fourier
+\(\hs{J^E(t)}{J^E} \propto e^{-\abs{t}/\tau_{j}}\). Double-sided exponential has well defined Fourier
 transform, so we can drop the \(\epsilon \to 0^{+}\) limit from the integral.
 \begin{align}
-  S(\omega) &\propto \frac{1}{2\pi} \int_{-\infty}^{\infty} \mathrm{d} t\; e^{-\abs{t}/\tau_{J}} e^{i \omega t} = 
-  \frac{1}{2\pi} \left[\int_{-\infty}^{0} \mathrm{d} t\; e^{(1/\tau_{J} + i\omega)t }
-  + \int_{0}^{\infty} \mathrm{d} t\; e^{(-1/\tau_{J} + i\omega)t }  \right] \nonumber \\
-  &= \frac{1}{2\pi} \left[\frac{\tau_{J}}{1+i\omega \tau_{J}} + \frac{\tau_{J}}{1-i\omega\tau_{J}}\right] = 
-  \frac{1}{\pi} \frac{\tau_{J}}{1+\omega^2\tau_{J}^2}
+  S(\omega) &\propto \frac{1}{2\pi} \int_{-\infty}^{\infty} \mathrm{d} t\; e^{-\abs{t}/\tau_{j}} e^{i \omega t} = 
+  \frac{1}{2\pi} \left[\int_{-\infty}^{0} \mathrm{d} t\; e^{(1/\tau_{j} + i\omega)t }
+  + \int_{0}^{\infty} \mathrm{d} t\; e^{(-1/\tau_{j} + i\omega)t }  \right] \nonumber \\
+  &= \frac{1}{2\pi} \left[\frac{\tau_{j}}{1+i\omega \tau_{j}} + \frac{\tau_{j}}{1-i\omega\tau_{j}}\right] = 
+  \frac{1}{\pi} \frac{\tau_{j}}{1+\omega^2\tau_{j}^2}
 \end{align}
 Integrating \(S(\omega)\) over a frequency window we obtain:
 \begin{equation*}
   I(\omega) \propto \frac{1}{\pi}\int_{-\omega}^{\omega}\mathrm{d}\omega^{\prime}\; 
-  \frac{\tau_{J}}{1+\omega^2\tau_{J}^2} = \frac{2}{\pi} \arctan(\tau_{J} \omega)
+  \frac{\tau_{j}}{1+\omega^2\tau_{j}^2} = \frac{2}{\pi} \arctan(\tau_{j} \omega)
 \end{equation*}
 which after normalization yields the desired results~\eqref{eq:R arctan}. Furthermore, we learn that the 
-characteristic relaxation time \(\frac{1}{\tau_{J}} \propto \alpha^2\) and the proportionality
+characteristic relaxation time \(\frac{1}{\tau_{j}} \propto \alpha^2\) and the proportionality
 constant is universal and does not depend on \(\alpha\).
 The quadratic scaling shown on Figure~\ref{fig:current decay scaling} is actually not the
 best possible for this set of numerical data. Choosing the rescaling coefficient to be
@@ -153,9 +154,9 @@ best possible for this set of numerical data. Choosing the rescaling coefficient
 of working with rather small system sizes, because in was shown 
 in~\textcite{Mierzejewski2015Approx} using memory function formalism, that quadratic scaling
 is indeed the appropriate one.
-\begin{figure}[htbp]
+\begin{figure}[ht]
   \centering
-  \includegraphics[width=1.0\textwidth]{Figures/current_perfect_scaling.pdf}
+  \includegraphics[width=\figsize\textwidth]{Figures/current_perfect_scaling.pdf}
   \caption{Normalized integrated spectral function as a function of 
   rescaled cutoff frequency for \(J^E\). The rescaling coefficient is chosen so as to obtain the 
   best possible collapse of curves. (a) Results for \(L=14\). (b) Results extrapolated
@@ -175,20 +176,6 @@ it is enough to achieve vanishing stiffness in thermodynamic limit. Indeed this 
 and we observe that \(\lim_{{\omega\to 0^{+}}} R_{\mu}(\omega,\alpha) = 0\) even for finite-size systems.
 Basing on the discussion of energy current decay, next logical step would be to rescale the
 frequency by \(\alpha^2\).
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=1.0\textwidth]{Figures/O12_no_scaling.pdf}
-  \caption{Normalized integrated spectral function as a function of cutoff frequency for
-  \(\hat{O}_1\) and \(\hat{O}_2\).
-  (a) Results for \(L=16\) and \(\hat{O}_1\).  (b) Results for \(\hat{O}_1\) extrapolated to
-  thermodynamic limit from \(L=10,12,14,16\). (c) Results for \(L=16\) and \(\hat{O}_2\). 
-  (d) Results for \(\hat{O}_2\) extrapolated to thermodynamic limit from \(L=10,12,14,16\).
-  Note that low frequency limit for finite system does approach \(0\), as expected from 
-  Figure~\ref{fig:lioms decay}.
-  }\label{fig:O12 no scaling}
-\end{figure}
-
 In contrast to the energy current, we not see any collapse (see Figure~\ref{fig:O12 quadratic scaling}).
 Therefore, noncommuting operators do not follow the same universal scaling~\eqref{eq:universal scaling current}
 as the energy current. However, as shown in Figure~\ref{fig:O12 linear scaling},
@@ -245,17 +232,6 @@ where between first and second lines a change of variables \(x=\omega\tau_{\mu}/
 We have thus obtained the desired result~\ref{eq:erf fit}. On the contrary to the case of energy
 current, the scaling of decay rate is \(\frac{1}{\tau_{\mu}} \propto \alpha\). This Gaussian relaxation
 of noncommuting integrals of motion under weak perturbation is the main finding of this work.
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=1.0\textwidth]{Figures/O12_quadratic_scaling.pdf}
-  \caption{}\label{fig:O12 quadratic scaling}
-\end{figure}
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=1.0\textwidth]{Figures/O12_linear_scaling.pdf}
-  \caption{}\label{fig:O12 linear scaling}
-\end{figure}
-
 One may ask a question about the origin of this anomalous scaling of characteristic time
 \(\tau\). As noted in Subsection~\ref{subsec:noncomm qlioms}, operators exhibiting such scaling
 are closely related to the massive degeneracies in energy spectrum of \(H_{XXZ}\) for
@@ -275,15 +251,52 @@ under a different perturbation, namely:
 \end{equation}
 This is equivalent to the unperturbed Hamiltonian for \(\Delta^{\prime} = \Delta + \delta\),
 and allows us to eliminate degeneracy while preserving integrability. Results of this procedure
-are shown in Figure~\eqref{eq:O12 symmetry}. We see almost the same behavior as for system
+are shown in Figure~\ref{fig:O12 symmetry}. We see almost the same behavior as for system
 with weakly broken integrability, i.e.\ the relaxation is Gaussian in nature with the
 characteristic decay rate inversly proportional to \(\delta\). It is not the lack of
 integrability but lack of symmetry-related degeneracy, occurring for either \(\alpha\neq 0\)
 or \(\delta\neq 0\), that leads to this anomalous scaling.
-
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\figsize\textwidth]{Figures/O12_no_scaling.pdf}
+  \caption{Normalized integrated spectral function as a function of cutoff frequency for
+  \(\hat{O}_1\) and \(\hat{O}_2\).
+  (a) Results for \(L=16\) and \(\hat{O}_1\).  (b) Results for \(\hat{O}_1\) extrapolated to
+  thermodynamic limit from \(L=10,12,14,16\). (c) Results for \(L=16\) and \(\hat{O}_2\). 
+  (d) Results for \(\hat{O}_2\) extrapolated to thermodynamic limit from \(L=10,12,14,16\).
+  Note that low frequency limit for finite system does approach \(0\), as expected from 
+  Figure~\ref{fig:lioms decay}.
+  }\label{fig:O12 no scaling}
+\end{figure}
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\figsize\textwidth]{Figures/O12_quadratic_scaling.pdf}
+  \caption{Normalized integrated spectral function as a function of rescaled 
+  frequency \(\omega/\alpha^2\) for\(\hat{O}_1\) and \(\hat{O}_2\).
+  (a) Results for \(L=16\) and \(\hat{O}_1\).  (b) Results for \(\hat{O}_1\) extrapolated to
+  thermodynamic limit from \(L=10,12,14,16\). (c) Results for \(L=16\) and \(\hat{O}_2\). 
+  (d) Results for \(\hat{O}_2\) extrapolated to thermodynamic limit from \(L=10,12,14,16\).
+  On the contrary to the energy current, the curves do not collapse.}\label{fig:O12 quadratic scaling}
+\end{figure}
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\figsize\textwidth]{Figures/O12_linear_scaling.pdf}
+  \caption{Normalized integrated spectral function as a function of rescaled 
+  frequency \(\omega/\alpha\) for\(\hat{O}_1\) and \(\hat{O}_2\).
+  (a) Results for \(L=16\) and \(\hat{O}_1\).  (b) Results for \(\hat{O}_1\) extrapolated to
+  thermodynamic limit from \(L=10,12,14,16\). (c) Results for \(L=16\) and \(\hat{O}_2\). 
+  (d) Results for \(\hat{O}_2\) extrapolated to thermodynamic limit from \(L=10,12,14,16\).
+  Note the convincing collapse of the curves for this scaling.}\label{fig:O12 linear scaling}
+\end{figure}
 \textcolor{blue}{what about first-order perturbation theory?}
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=1.0\textwidth]{Figures/O12_symmetry_breaking.pdf}
-  \caption{}\label{fig:O12 symmetry}
+  \includegraphics[width=\figsize\textwidth]{Figures/O12_symmetry_breaking.pdf}
+  \caption{Normalized integrated spectral function as a function of rescaled 
+  frequency \(\omega/\delta\) for\(\hat{O}_1\) and \(\hat{O}_2\). Here the model remains
+  integrable, it only the symmetry that is broken.
+  (a) Results for \(L=16\) and \(\hat{O}_1\).  (b) Results for \(\hat{O}_1\) extrapolated to
+  thermodynamic limit from \(L=10,12,14,16\). (c) Results for \(L=16\) and \(\hat{O}_2\). 
+  (d) Results for \(\hat{O}_2\) extrapolated to thermodynamic limit from \(L=10,12,14,16\).
+  Results are qualitatively similar to full integrability breaking case. }\label{fig:O12 symmetry}
 \end{figure}
