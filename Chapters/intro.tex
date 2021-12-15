@@ -2,6 +2,62 @@
 \thispagestyle{chapterBeginStyle}
 
 
+\section{Classical and quantum integrability}
+
+Before jumping head first into the quantum realm, it is perhaps valuable the state
+the problem of classical integrability and results therein.
+We will consider this topic in the spirit of classical discussion
+of Liouville and Arnold as presented in a monograph by~\textcite{Gutzwiller1991}.
+
+One usually begins the discussion of classical mechanics with the Lagrangian picture and then
+via Legendre transform moves on to the Hamiltonian picture, however we shall skip this
+for brevity and take the Hamiltonian picture as a starting point.
+A dynamical system at every given time \(t\) is described by its momentum \(p\) and
+position \(q\). If we assume our system to have \(n\) degrees of freedoms, then
+its state can be specified as a point in a \(2n\)-dimensional space (\(n\) for momenta and
+\(n\) for coordinates) called the phase space. Dynamics are governed by a function
+of \(H = H(p,q,t)\) called the Hamiltonian, which can be interpreted as the energy,
+and the so-called \textit{Hamitlon-Jacobi equations of motion}
+\begin{equation}
+    \dv{p_j}{t} = -\pdv{H}{q_j},\;\;\;\; \dv{q_j}{t} = \pdv{H}{p_j}
+    \label{eq:Hamilton equations}
+\end{equation} 
+Suppose that we have another function on a phase space, say \(F=F(p,q)\), with
+a property that its value does not vary in time if we take as \(p\) and \(q\) solutions
+of equations~\eqref{eq:Hamilton equations}. This is equivalent to the following condition
+\begin{align}
+    0 = \dv{}{t}F(p,q) &= \pdv{F}{p} \dv{p}{t} + \pdv{F}{q}\dv{q}{t} \nonumber\\
+    &= \pdv{H}{p}\dv{F}{q} - \pdv{H}{q}\dv{F}{p} = \poissonbracket{H}{F}
+\end{align}
+where \(\poissonbracket{\bullet }{\bullet }\) is the Poisson bracket.
+Vanishing of Poisson bracket with Hamiltonian is a necessary condition for \(F\)
+to be called an \textit{integral of motion}. This property has a nice geometric interpretation.
+On the one hand, the vector field \(\left(-\pdv*{H}{q},\pdv*{H}{p}\right)\) in a phase space is
+tangent to surface \(F(p,q) = const\). On the other hand, the vector field 
+\(\left(-\pdv*{F}{q},\pdv*{F}{p}\right)\) is tangent to the energy surface \(H(p,q) = E\).
+The trajectory of a dynamical system in a phase space is then located in the intersection
+of these two surfaces.
+Let us now imagine that we have a set \(\set{F_i}_{i=1,\ldots,k}\) of such conserved
+quantities that are functionally independent (no function from this set can be expressed
+as a function of other functions from this set). It is not yet sufficient to enable us to solve
+the equations of motion. The integrals of motion must also be in \textit{involution},
+which means that for any \(F_i,F_j\in\set{F_i}_{i=1,\ldots,k}\) we have
+\(\poissonbracket{F_i}{F_j} = 0\). Existence of \(k\) integrals of motion restricts
+the dynamics of a system to a \(2n-k\)-dimensional subspace of the phase space, whereas the fact
+that they are in involution guarantees that this subspace has a simple internal structure.
+If there are at least \(n\) such conserved quantities, then a famous theorem by
+Liouville holds, which states a system with \(n\) degrees of freedom with
+\(n\) integrals of motion is integrable by quadratures~\autocite{arnold2013mathematical}.
+Moreover, it was proven with the help of topology that this restricted subspace
+has a shape of an \(n\)-dimensional torus, called the \textit{invariant torus}. In
+general different initial conditions correspond to different invariant tori.
+Integrability in classical mechanics has a very precise definition. However,
+as we shall in a moment, this is not the case in quantum mechanics.
+
+Before we leave the classical world, let us ponder upon one more question.
+What happens to a classical integrable system under small perturbation? More precisely,
+how does the breakdown of invariant tori looks like?
+
 \section{Heisenberg model of magnetism\label{sec:XXZ}}
     It is well known, that we can divide magnetic materials into two broad groups: those which
 exhibit magnetic properties in reaction to external magnetic field and those which have a nonzero
@@ -306,47 +362,3 @@ resort to much simpler numerical methods in form of exact diagonalization~\autoc
     \label{fig:pbc}
 \end{figure}
 
-\section{Classical and Quantum Integrability}
-
-\textcolor{blue}{This is just collection of information, rewrite this!!}
-Before jumping head first into the quantum realm, it is perhaps valuable the state
-the problem of classical integrability and results therein.
-We will consider the problem of integrability in the spirit of classical discussion
-of Liouville and Arnold as presented in a monograph by~\textcite{Gutzwiller1991}.
-
-Consider a phase space \(\mathcal{M}\) equipped with Poisson bracket, and local pair of 
-canonical coordinates \((p_i,q_i)\).  We can form canonical momentum and coordinate vectors as
-follows \(p=(p_1,\ldots,p_n)\) and \(q=(q_1,\ldots,q_n)\).
-Poisson bracket for two functions defined on phase space \(f=f(p,q)\) and \(g=g(p,q)\):
-\begin{equation}
-    \poissonbracket{f}{g} = \sum_{i=1}^{n} \left(\pdv{f}{p_i}\pdv{g}{q_i}
-    - \pdv{f}{q_i}\pdv{f}{p_i}\right)
-\end{equation}
-Canonical commutation relations:
-\begin{equation}
-    \poissonbracket{p_i}{p_j} = \poissonbracket{q_i}{q_j}=0,\;\;\;\;
-    \poissonbracket{p_i}{q_h} = \delta_{ij}
-\end{equation}
-
-Poisson bracket is skew-symmetric, obeys Leibnitz rule and satisfies Jacobi identity:
-\begin{align}
-    \poissonbracket{f}{g} &=-\poissonbracket{g}{f} \nonumber\\
-    \poissonbracket{f}{gh} &= g\poissonbracket{f}{h} + \poissonbracket{f}{g}h\nonumber\\
-    0 &= \poissonbracket{f}{\poissonbracket{g}{h}} + \poissonbracket{g}{\poissonbracket{h}{f}}+
-    \poissonbracket{h}{\poissonbracket{f}{g}}
-\end{align}
-
-Hamilton equations of motion:
-
-\begin{equation}
-\dv{q_i}{t} = \pdv{H}{p_i},\;\;\;\;\;, \dv{p_i}{t} = -\pdv{H}{q_i}
-\end{equation}
-
-Constant of motion:
-\begin{equation}
-    \dv{f}{t}= \sum_{i=1}^{n} \pdv{f}{p_i} \dv{p_i}{t} + \pdv{f}{q_i}\dv{q_i}{t}
-    + \pdv{f}{t} \implies \pdv{f}{t} = \poissonbracket{H}{f}
-\end{equation}
-
-
-\section{Motivation and Outline}
