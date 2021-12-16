@@ -2,9 +2,17 @@
 \thispagestyle{chapterBeginStyle}
 
 
+From all of the long-standing problems that have bothered physicists, the relationship
+between micro and macro world is perhaps the most disputed one. On the one
+hand, we have a remarkably successful theory of statistical mechanics and the seemingly
+irreversible laws of thermodynamics~\autocite{huang1987statistical,Feynman1972}.
+On the other hand, we have a no less successful theory of quantum mechanics,
+which predicts the reversibility of microscopic dynamics~\autocite{landau1991quantum,Sakurai2017}.
+
+
 \section{Classical and quantum integrability}
 
-Before jumping head first into the quantum realm, it is perhaps valuable the state
+\paragraph{Classical integrability}Before jumping head first into the quantum realm, it is perhaps valuable the state
 the problem of classical integrability and results therein.
 We will consider this topic in the spirit of classical discussion
 of Liouville and Arnold as presented in a monograph by~\textcite{Gutzwiller1991}.
@@ -47,16 +55,40 @@ the dynamics of a system to a \(2n-k\)-dimensional subspace of the phase space, 
 that they are in involution guarantees that this subspace has a simple internal structure.
 If there are at least \(n\) such conserved quantities, then a famous theorem by
 Liouville holds, which states a system with \(n\) degrees of freedom with
-\(n\) integrals of motion is integrable by quadratures~\autocite{arnold2013mathematical}.
+\(n\) integrals of motion is integrable by quadratures.
+Then, there exists such a canonical transformation \((p,q)\to (F,\Theta)\), to the
+so-called angle-action variables, that \(H(p,q) = H(F)\) and the equations
+of motions are solved by \(F_j(t) = F_j^0\) and \(\Theta(t)_j = \Omega_j t + \Theta_j(0)\)~\autocite{arnold2013mathematical}.
 Moreover, it was proven with the help of topology that this restricted subspace
 has a shape of an \(n\)-dimensional torus, called the \textit{invariant torus}. In
 general different initial conditions correspond to different invariant tori.
-Integrability in classical mechanics has a very precise definition. However,
-as we shall in a moment, this is not the case in quantum mechanics.
+So we see that integrability in classical mechanics has a very precise definition. However,
+as we shall observe in a moment, this is not the case in quantum mechanics.
 
-Before we leave the classical world, let us ponder upon one more question.
+\paragraph{KAM theorem}Before we leave the classical world, let us ponder upon one more question.
 What happens to a classical integrable system under small perturbation? More precisely,
-how does the breakdown of invariant tori looks like?
+how does the breakdown of invariant tori looks like? The answer to this question lies
+within the remarkable KAM theorem, which was proven by a joint effort
+of~\textcite{Kolmogorov1954,Moser1962,Arnold1963}. For
+a system with finite number of degrees of freedom it specifies, under some assumptions,
+that majority of the invariant tori that occupy\footnote{The more technical term is
+\textit{foliate}.} the phase space survive the influence of small perturbations. This entails
+the possibility of coexistence between chaos and regularity. Eventually, as perturbation grows,
+chaotic regions fill the phase space completely~\autocite{DAlessio2016}. We will end this part
+with a quote from Arnold's book~\autocite{arnold2013mathematical} about the KAM theorem.
+\begin{quotation}
+   \textit{ If an unperturbed system is nondegenerate, then for sufficiently
+small conservative hamiltonian perturbations, most non-resonant invariant
+tori do not vanish, but are only slightly deformed, so that in the phase space
+of the perturbed system, too, there are invariant tori densely filled with phase
+curves winding around them conditionally-periodically, with a number of
+independent frequencies equal to the number of degrees of freedom.
+These invariant tori form a majority in the sense that the measure of the
+complement of their union is small when the perturbation is small.}
+\end{quotation}
+\paragraph{Quantum integrability}
+
+
 
 \section{Heisenberg model of magnetism\label{sec:XXZ}}
     It is well known, that we can divide magnetic materials into two broad groups: those which
