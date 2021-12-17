@@ -130,12 +130,12 @@ Moreover, this relation can be reasonably well approximation by a one parameter 
 \end{equation}
 where \(\gamma \) is the fitting parameter. It implies that the relaxation of energy current
 is exponential in nature. To see this, let us calculate \(I(\omega)\) for such decay
-\(\hs{J^E(t)}{J^E} \propto e^{-\abs{t}/\tau_{j}}\). Double-sided exponential has well defined Fourier
+\(\hs{J^E(t)}{J^E} \propto \mathrm{e}^{-\abs{t}/\tau_{j}}\). Double-sided exponential has well defined Fourier
 transform, so we can drop the \(\epsilon \to 0^{+}\) limit from the integral.
 \begin{align}
-  S(\omega) &\propto \frac{1}{2\pi} \int_{-\infty}^{\infty} \mathrm{d} t\; e^{-\abs{t}/\tau_{j}} e^{i \omega t} = 
-  \frac{1}{2\pi} \left[\int_{-\infty}^{0} \mathrm{d} t\; e^{(1/\tau_{j} + i\omega)t }
-  + \int_{0}^{\infty} \mathrm{d} t\; e^{(-1/\tau_{j} + i\omega)t }  \right] \nonumber \\
+  S(\omega) &\propto \frac{1}{2\pi} \int_{-\infty}^{\infty} \mathrm{d} t\; \mathrm{e}^{-\abs{t}/\tau_{j}} \mathrm{e}^{i \omega t} = 
+  \frac{1}{2\pi} \left[\int_{-\infty}^{0} \mathrm{d} t\; \mathrm{e}^{(1/\tau_{j} + i\omega)t }
+  + \int_{0}^{\infty} \mathrm{d} t\; \mathrm{e}^{(-1/\tau_{j} + i\omega)t }  \right] \nonumber \\
   &= \frac{1}{2\pi} \left[\frac{\tau_{j}}{1+i\omega \tau_{j}} + \frac{\tau_{j}}{1-i\omega\tau_{j}}\right] = 
   \frac{1}{\pi} \frac{\tau_{j}}{1+\omega^2\tau_{j}^2}
 \end{align}
@@ -193,15 +193,15 @@ Moreover, the collapsed curves can be accurately fitted with an one-parameter er
 \end{equation}
 where the fitting parameter in denoted with \(\gamma\) and error function is defined as:
 \begin{equation}
-\erf(x) = \frac{2}{\sqrt{\pi}} \int_{0}^{x} \mathrm{d}t\; e^{-t^2}  
+\erf(x) = \frac{2}{\sqrt{\pi}} \int_{0}^{x} \mathrm{d}t\; \mathrm{e}^{-t^2}  
 \end{equation}
 This implies a Gaussian, instead of
 exponential, decay of autocorrelation function, i.e.\ \(\hs{\hat{O}_{\mu}(t)}{\hat{O}_{\mu}}
 \propto \exp(-(t/\tau_{\mu})^2)\). We can once again make use of integrated spectral function
 to see that this is correct.
 \begin{align}
-  S(\omega) &\propto \frac{1}{2\pi} \int_{-\infty}^{\infty} \mathrm{d}t \; e^{-(t/\tau_{\mu})^2}
-  e^{i\omega t} = \frac{1}{2\pi} \int_{-\infty}^{\infty} \mathrm{d}t \; 
+  S(\omega) &\propto \frac{1}{2\pi} \int_{-\infty}^{\infty} \mathrm{d}t \; \mathrm{e}^{-(t/\tau_{\mu})^2}
+  \mathrm{e}^{i\omega t} = \frac{1}{2\pi} \int_{-\infty}^{\infty} \mathrm{d}t \; 
   \exp\left(-\frac{1}{\tau_{\mu}^2} \left(t-\frac{i\omega\tau_{\mu}}{2}\right)^2 
   - \frac{\omega^2\tau_{\mu}^2}{4}\right) \nonumber \\
   &= \exp\left(- \frac{\omega^2\tau_{\mu}^2}{4}\right) \frac{1}{2\pi}
@@ -210,7 +210,7 @@ to see that this is correct.
   & \triangleq \exp\left(- \frac{\omega^2
   \tau_{\mu}^2}{4}\right) \frac{1}{2\pi} \int_{-\infty}^{\infty}
   \mathrm{d} z\; \exp\left(-\frac{z^2}{\tau_{\mu}^2}\right) \nonumber  \\
-  &= \frac{\tau_{\mu}}{2\sqrt{\pi}}e^{-(\omega \tau_{\mu}/2)^2}
+  &= \frac{\tau_{\mu}}{2\sqrt{\pi}}\mathrm{e}^{-(\omega \tau_{\mu}/2)^2}
 \end{align}
 where between first and second line a change of variables \(z = t-\frac{i \omega \tau_{\mu}}{2}\)
 has been made, and equality marked with \(\triangleq\) can be justified by means of contour
@@ -218,12 +218,12 @@ integration~\autocite{Stein2010}. Now we can easily perform integration over a f
 frequency window:
 \begin{align}
   I(\omega) &\propto \frac{\tau_{\mu}}{2\sqrt{\pi}}\int_{-\omega}^{\omega} \mathrm{d}\omega^{\prime}\;
-  e^{-(\omega/\tau_{\mu})^2} = \frac{\tau_{\mu}}{2\sqrt{\pi}}
-  \left[\int_{-\omega}^{0} \mathrm{d}\omega^{\prime} e^{-(\omega\tau_{\mu}/2)^2} + 
-  \int_{0}^{\omega} \mathrm{d}\omega^{\prime} e^{-(\omega\tau_{\mu}/2)^2} \right]\nonumber\\
+  \mathrm{e}^{-(\omega/\tau_{\mu})^2} = \frac{\tau_{\mu}}{2\sqrt{\pi}}
+  \left[\int_{-\omega}^{0} \mathrm{d}\omega^{\prime} \mathrm{e}^{-(\omega\tau_{\mu}/2)^2} + 
+  \int_{0}^{\omega} \mathrm{d}\omega^{\prime} \mathrm{e}^{-(\omega\tau_{\mu}/2)^2} \right]\nonumber\\
   &= \frac{\tau_{\mu}}{2\sqrt{\pi}} \left[ \frac{2}{\tau_{\mu}}\int_{-\frac{\omega\tau_{\mu}}{2}}^{0} 
-  \mathrm{d} x\;  e^{-x^2} + \frac{2}{\tau_{\mu}}\int_{0}^{\frac{\omega\tau_{\mu}}{2}}
-   \mathrm{d}x\; e^{-x^2} \right]\nonumber\\ 
+  \mathrm{d} x\;  \mathrm{e}^{-x^2} + \frac{2}{\tau_{\mu}}\int_{0}^{\frac{\omega\tau_{\mu}}{2}}
+   \mathrm{d}x\; \mathrm{e}^{-x^2} \right]\nonumber\\ 
    &= \frac{1}{\sqrt{\pi}} \left[ \frac{\sqrt{\pi}}{2} \erf\left(\frac{\omega\tau_{\mu}}{2}\right) +
    \frac{\sqrt{\pi}}{2} \erf\left(\frac{\omega\tau_{\mu}}{2}\right) \right]\nonumber\\
     &= \erf\left(\frac{\omega\tau_{\mu}}{2}\right)

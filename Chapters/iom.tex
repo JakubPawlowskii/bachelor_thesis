@@ -34,7 +34,7 @@ overlap with the identity, \(\left(A|\Id\right)=\frac{1}{D}\tr(A) = 0\).
 Recall from statistical physics, that an average of an observable \(A\) over a canonical ensemble
 in a finite temperature is given by:
 \begin{equation}
-  \langle A \rangle_{\beta} = \frac{\tr(e^{-\beta H}A)}{\tr(e^{-\beta H})}
+  \langle A \rangle_{\beta} = \frac{\tr(\mathrm{e}^{-\beta H}A)}{\tr(\mathrm{e}^{-\beta H})}
 \end{equation}
 where \(\beta = \frac{1}{kT}\).
 Taking the limit \(\beta \to 0\), we obtain that \(\hs{A}{B} =  \langle AB \rangle_{0}\).
@@ -159,12 +159,12 @@ This forces us to remain in full Hilbert space and restricts system sizes that w
 \section{(Q)LIOMs finding algorithm\label{sec:algorithm}}
 We now introduce a finite time averaging of an operator \(A\in \mathcal{V}_L^M\), employing the Heisenberg picture~\autocite{Mierzejewski2015Approx}:
 \begin{align}
-  \bar{A}^{\tau} = & \frac{1}{\tau} \int_0^{\tau} \mathrm{d}t\, A_{H}(t) = \frac{1}{\tau} \int_0^{\tau} \mathrm{d}t\, e^{i H t}A e^{-i H t}
-  =\sum_{m,n} \frac{1}{\tau} \int_0^{\tau} \mathrm{d}t\, e^{i E_m t}\ket{m} \matrixel{m}{A}{n}\bra{n}  e^{-i E_n t} = \nonumber{}           \\
-  =                & \sum_{m,n} A_{mn}\ketbra{m}{n} \frac{1}{\tau} \int_0^{\tau} \mathrm{d}t \, e^{i(E_m-E_n)t} =
-  \sum_{m,n} A_{mn}\ketbra{m}{n} \frac{1}{\tau} \frac{1}{i\left(E_m-E_n\right)}\left(e^{i\left(E_m-E_n\right)\tau}-1\right) \nonumber       \\
+  \bar{A}^{\tau} = & \frac{1}{\tau} \int_0^{\tau} \mathrm{d}t\, A_{H}(t) = \frac{1}{\tau} \int_0^{\tau} \mathrm{d}t\, \mathrm{e}^{i H t}A \mathrm{e}^{-i H t}
+  =\sum_{m,n} \frac{1}{\tau} \int_0^{\tau} \mathrm{d}t\, \mathrm{e}^{i E_m t}\ket{m} \matrixel{m}{A}{n}\bra{n}  \mathrm{e}^{-i E_n t} = \nonumber{}           \\
+  =                & \sum_{m,n} A_{mn}\ketbra{m}{n} \frac{1}{\tau} \int_0^{\tau} \mathrm{d}t \, \mathrm{e}^{i(E_m-E_n)t} =
+  \sum_{m,n} A_{mn}\ketbra{m}{n} \frac{1}{\tau} \frac{1}{i\left(E_m-E_n\right)}\left(\mathrm{e}^{i\left(E_m-E_n\right)\tau}-1\right) \nonumber       \\
   =                & \sum_{m,n} A_{mn}\ketbra{m}{n}
-  e^{i\left(E_m-E_n\right)\tau/2}\times \frac{\sin{\left(\left(E_m-E_n\right)\tau\right)}}{\tau\left(E_m-E_n\right)}
+  \mathrm{e}^{i\left(E_m-E_n\right)\tau/2}\times \frac{\sin{\left(\left(E_m-E_n\right)\tau\right)}}{\tau\left(E_m-E_n\right)}
   \label{eq:time_avg}
 \end{align}
 What this procedure does is essentially a cut off (cf. Figure~\ref{fig:cutoff}) for matrix elements determined by the value of \(E_m-E_n\) in relation
@@ -428,7 +428,7 @@ defined as:
 \begin{definition}[Spectral function]  
   \begin{equation*}
   S(\omega) =  \lim _{\varepsilon \to 0^+} \frac{1}{2 \pi} \int_{-\infty}^{\infty} \mathrm{d} t 
-  \; e^{i \omega t-|t| \varepsilon}\hs{A(t)}{A}
+  \; \mathrm{e}^{i \omega t-|t| \varepsilon}\hs{A(t)}{A}
   \end{equation*}
   \label{def:spectral function}
 \end{definition}
@@ -681,7 +681,7 @@ is given by the discrete continuity equation:
   \dv{h_{k,k+1}(t)}{t} + \div{j_{k}^{E}(t)} = 0
   \label{eq:discrete continuity}
 \end{equation}
-where \(\div{j_{k}^E(t)} \equiv j_{k+1}^E(t) - j_{k}^E(t)\) is the discrete divergence of spin energy current density and \(h_{i,i+1}(t) = e^{i H_{XYZ}t} h_{i,i+1} e^{-i H_{XYZ} t}\).
+where \(\div{j_{k}^E(t)} \equiv j_{k+1}^E(t) - j_{k}^E(t)\) is the discrete divergence of spin energy current density and \(h_{i,i+1}(t) = \mathrm{e}^{i H_{XYZ}t} h_{i,i+1} \mathrm{e}^{-i H_{XYZ} t}\).
 On the other hand, time evolution of an arbitrary operator is determined
 by the Heisenberg equation:
 \begin{equation}

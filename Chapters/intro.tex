@@ -3,14 +3,74 @@
 
 
 From all of the long-standing problems that have bothered physicists, the relationship
-between micro and macro world is perhaps the most disputed one. On the one
+between micro and macro world is perhaps one of the most disputed ones. On the one
 hand, we have a remarkably successful theory of statistical mechanics and the seemingly
 irreversible laws of thermodynamics~\autocite{huang1987statistical,Feynman1972}.
 On the other hand, we have a no less successful theory of quantum mechanics,
 which predicts the reversibility of microscopic dynamics~\autocite{landau1991quantum,Sakurai2017}.
+One can then pose a question, when and why a far-from equilibrium isolated quantum system
+can be accurately described using equilibrium statistical mechanics?
+
+It was already suggested by John von Neumann in 1929 that a proper way of
+thinking about thermalization of quantum systems is by looking at physical
+observables instead of wave functions or density matrices of the whole system~\autocite{Neumann192930}.
+Following the review article by~\textcite{DAlessio2016}, we say that an 
+observable undergoes thermalization if it evolves with time towards the
+prediction of microcanonical ensemble and stays in the vicinity of it for majority
+of future times. The question is, what is necessary for this thermalization to happen?
+To answer it, let us imagine that we have an isolated quantum system in a pure
+state \(\ket{\psi_{\textrm{initial}}}\). We want to investigate evolution
+of some observable \(A\) under time-independent Hamiltonian \(H\) with
+eigenstates \(\ket{n}\) and corresponding energies \(E_n\). Writing the time-dependent
+wave function as \(\ket{\psi(t)}=\sum_{n} C_{n} \mathrm{e}^{-i E_{n} t}\ket{n}\),
+ \(C_n =  \braket{n}{\psi_{\textrm{initial}}}\), we have 
+\begin{align}
+    A(t) & =\matrixel{\psi(t)}{A}{\psi(t)}=\sum_{m, n} C_{m}^{*} C_{n} 
+    \mathrm{e}^{i\left(E_{m}-E_{n}\right) t} A_{m n} \nonumber\\
+    &=\sum_{n}\abs{C_{n}}^{2} A_{nn}+\sum_{n \neq m} C_{m}^{*} C_{n} 
+    \mathrm{e}^{i\left(E_{m}-E_{n}\right) t} A_{m n}\label{eq:time evolution}
+\end{align}
+We immediately see that, assuming lack of degeneracy, long-time average of the off-diagonal
+part must be equal to zero and what remains is the diagonal part.
+This is a prediction of the so-called \textit{diagonal ensemble}~\autocite{Cassidy2011}.
+It basically means that the system `remembers' its initial conditions via the constant
+coefficients \(\abs{C_n}^2\). At first, it is not clear how we could reach the prediction of 
+microcanonical ensemble. Moreover, the time necessary for the second term to vanish 
+in many-body systems could easily exceed the age of our universe~\autocite{DAlessio2016}.
+Nevertheless, such thermal relaxation was observed in experiments with isolated
+cold atomic gasses~\autocite{Rigol2012,Rigol2008854,Hung2010,Kinoshita2006,Hofferberth2007}.
+
+This is where an insight from Random Matrix Theory (RMT), pioneered by~\textcite{Wigner1955}
+in context of nuclear physics, comes into play. He observed that if we were to write
+a Hamiltonian in a generic and not fine-tuned basis, it would essentially be a random matrix
+(subject to symmetry constraints). It can then be shown within RMT formalism~\autocite{mehta2004random},
+that matrix elements of an Hermitian operator \(O\) in eigenbasis of a random Hamiltonian 
+can be written as
+\begin{equation}
+    O_{mn} \approx \bar{O}\delta_{mn} + \sqrt{\frac{\overline{O^2}}{\dimension}}R_{mn}
+    \label{eq:RMT}
+\end{equation}
+where \(\bar{O} = \frac{1}{\dimension}\sum_i O_i\), \(O = \sum_i O_i \ketbra{i}{i}\), \(\dimension\)
+it the dimension of underlying Hilbert space and \(R_{mn}\) is either real or complex (depending on symmetries of the Hamiltonian) random
+variable with zero mean and unit variance. Using equation~\eqref{eq:RMT}, we can then 
+disentangle the prediction of diagonal ensemble from the initial conditions
+\begin{equation}
+    \sum_{n}\abs{C_n}^2 A_{nn} \approx \bar{A}\sum_{n}\abs{C_n}^2 = \bar{A}
+\end{equation}
+obtaining a results consisted with microcanonical ensemble, albeit without energy dependence
+so equivalent to the infinite-temperature limit. Furthermore, off-diagonal elements are exponentially
+small in system size, so it is enough to eliminate phase coherence between matrix elements with
+largest contribution to the expected value, for the second term in equation~\eqref{eq:time evolution}
+to vanish. This can happen on much shorter timescales that would be required for eliminating
+phase coherence between all eigenstates~\autocite{DAlessio2016}.
+
+\textcolor{blue}{tu już o ETH}
 
 
-\section{Classical and quantum integrability}
+However, the topic of this thesis is integrals of motion.
+
+
+\section{Classical and quantum integrability\label{sec:integrability}}
 
 \paragraph{Classical integrability}Before jumping head first into the quantum realm, it is perhaps valuable the state
 the problem of classical integrability and results therein.
@@ -51,7 +111,7 @@ as a function of other functions from this set). It is not yet sufficient to ena
 the equations of motion. The integrals of motion must also be in \textit{involution},
 which means that for any \(F_i,F_j\in\set{F_i}_{i=1,\ldots,k}\) we have
 \(\poissonbracket{F_i}{F_j} = 0\). Existence of \(k\) integrals of motion restricts
-the dynamics of a system to a \(2n-k\)-dimensional subspace of the phase space, whereas the fact
+the dynamics of a system to a \((2n-k)\)-dimensional subspace of the phase space, whereas the fact
 that they are in involution guarantees that this subspace has a simple internal structure.
 If there are at least \(n\) such conserved quantities, then a famous theorem by
 Liouville holds, which states a system with \(n\) degrees of freedom with
@@ -86,7 +146,7 @@ independent frequencies equal to the number of degrees of freedom.
 These invariant tori form a majority in the sense that the measure of the
 complement of their union is small when the perturbation is small.}
 \end{quotation}
-\paragraph{Quantum integrability}
+\paragraph{Quantum integrability} No notion of a phase space.
 
 
 
@@ -117,13 +177,13 @@ thesis by~\textcite{Ng2011HeisenbergM}.
 \subsection{Heisenberg-Dirac exchange interaction}
 \paragraph{Coulomb interaction}The story begins with two electrons interacting with each other via Coulomb potential.
 An electron can be described by two quantities, its position in space and its spin.
-Two facilitate these two degrees of freedom, we say that \(i\)-th electron's wavefunction
+Two facilitate these two degrees of freedom, we say that \(i\)-th electron's wave function
 lives in a Hilbert space which is a tensor product of spacial 
-wavefunctions' space and spin wavefunctions' space, i.e.\ \(\mathcal{H}_i \cong L^2(\RR^3)
+wave functions' space and spin wave functions' space, i.e.\ \(\mathcal{H}_i \cong L^2(\RR^3)
 \otimes \mathfrak{h}_i \), where \(L^2(\RR^3)\) is the usual space of square-integrable functions on
 \(\RR^3\), and \(\mathfrak{h}_i \cong \CC^2\) is a two-dimensional vector space spanned by
 \(\ket{\ua} = \binom{1}{0} \) and \(\ket{\da} = \binom{0}{1}\).
-The combined wavefunction of a composite two-particle system it then an element of
+The combined wave function of a composite two-particle system it then an element of
 \(\mathcal{H}_1 \otimes \mathcal{H}_2\), which can be decomposed into spacial and spin
 components, i.e\ \(\mathcal{H}_1 \otimes \mathcal{H}_2 \cong\mathcal{H}_{\mathrm{space}} 
 \otimes \mathcal{H}_{\mathrm{spin}}\), where \(\mathcal{H}_{\mathrm{space}} 
@@ -137,7 +197,7 @@ Hamiltonian of two interacting electrons is given by:
      + \underbrace{V(\bm{r}_1,\bm{r}_2)}_{\textrm{interaction}}
      \label{eq:Coulomb Hamiltonian}
 \end{equation}
-where in case of Coulomb interaction we have \(V(\bm{r}_1,\bm{r}_2)=\frac{e^2}
+where in case of Coulomb interaction we have \(V(\bm{r}_1,\bm{r}_2)=\frac{\mathrm{e}^2}
 {\abs{\bm{r}_1-\bm{r}_2}}\).
 Formally, this Hamiltonian acts on the space \(\mathcal{H}_1 \otimes \mathcal{H}_2\).
 However, it depends only on the spatial coordinates \(\bm{r}_1,\bm{r}_2\) and not on
@@ -147,21 +207,21 @@ This is a crucial observation that lead to the development of Heisenberg model. 
 seek a way to replace this Hamiltonian by an equivalent one acting only on 
 \(\hspi\).
 
-\paragraph{Two-electron wavefunction}It is time to invoke the Pauli exclusion principle, which requires the composite wavefunction
+\paragraph{Two-electron wave function}It is time to invoke the Pauli exclusion principle, which requires the composite wave function
 of two electrons to be antisymmetric under exchange of pairs of coordinates (both spatial and
 spin degrees of freedoms are treated like coordinates). Because 
 Hamiltonian~\ref{eq:Coulomb Hamiltonian} does not depend explicitly on spin, the total
-wavefunction \(\psi\) can be expressed as tensor product \(\psi_{\mathrm{space}} 
+wave function \(\psi\) can be expressed as tensor product \(\psi_{\mathrm{space}} 
 \otimes \psi_{\mathrm{spin}} \). Antisymmetric nature of \(\psi\) then requires one 
 of these components to be antisymmetric \((a)\) and the other to be symmetric \((s)\). 
-Spatial wavefunctions (unnormalized) are of the form:
+Spatial wave functions (unnormalized) are of the form:
 \begin{align}
     &\spas = \psi_1(\bm{r}_1)\otimes \psi_2(\bm{r}_2) +
     \psi_2(\bm{r}_1)\otimes \psi_1(\bm{r}_2) \\
     &\spaa = \psi_1(\bm{r}_1)\otimes \psi_2(\bm{r}_2) -
     \psi_2(\bm{r}_1)\otimes \psi_1(\bm{r}_2)
 \end{align}
-where \(\psi_1,\psi_2 \in L^2(\RR^3)\). Spin wavefunctions are elements of \(\CC^2 \otimes \CC^2\)
+where \(\psi_1,\psi_2 \in L^2(\RR^3)\). Spin wave functions are elements of \(\CC^2 \otimes \CC^2\)
 and are given by:
 \begin{align}
     &\spis = \ket{\ua\ua},\; 
@@ -169,10 +229,10 @@ and are given by:
     &\spia = \ket{\ua\da}-\ket{\da\ua}
 \end{align}
 where \(\ket{\ua\ua}\) is an usual shorthand notation for \(\ket{\ua}_1 \otimes
-\ket{\ua}_2\). Moreover, symmetric spin wavefunctions
+\ket{\ua}_2\). Moreover, symmetric spin wave functions
 constitute a triplet state, whereas antisymmetric one is a singlet state. 
 
-Possible two-electron wavefunctions are thus either \(\varphi=\spas
+Possible two-electron wave functions are thus either \(\varphi=\spas
 \otimes \spia\) or \(\chi = \spaa
 \otimes \spis\). Expected value of energy of Coulomb interaction 
 in these states is given by:
@@ -182,15 +242,15 @@ in these states is given by:
 \end{align}
 Because \(\spas\) is symmetric with respect to \((\bm{r}_1-\bm{r}_2)\)
 we have \(E^{(s)}>E^{(a)}\). Therefore, it is energetically
-favorable for our system to pick the total wavefunction that is antisymmetric
+favorable for our system to pick the total wave function that is antisymmetric
 in space and symmetric in spin coordinates.
 
-\paragraph{Spin-spin interaction}Under the Coulomb interaction, symmetric and antisymmetric spin wavefunctions are not
+\paragraph{Spin-spin interaction}Under the Coulomb interaction, symmetric and antisymmetric spin wave functions are not
 directly distinguished. It is the difference between spatial parts, together with Pauli
 exclusion principle that forces the choice of a triplet state. Let us now do something
 similar, but the other way around. We can formally recast the Coulomb Hamiltonian as a
 spin-spin interaction acting on \(\hspi\) that would distinguish
-between symmetric and antisymmetric spin wavefunctions and thus fix the spatial part.
+between symmetric and antisymmetric spin wave functions and thus fix the spatial part.
 Let \(\tau^x,\tau^y,\tau^z\) be the \(2\cross 2\) Pauli matrices:
 \begin{equation}
 \tau^x = \mqty(\pmat{1}),\;\;\;\tau^y = \mqty(\pmat{2}),\;\;\;\tau^z= \mqty(\pmat{3})
@@ -217,7 +277,7 @@ We define an operator via a formal dot product:
     \tau_1^z \otimes \tau_2^z  
 \end{equation}
 where subscripts refer to which electron's Hilbert space they act on. 
-Let us now examine how this operator acts on \(\ket{\ua\ua}\) spin wavefunction:
+Let us now examine how this operator acts on \(\ket{\ua\ua}\) spin wave function:
 \begin{align*}
     \bm{\tau}_1 \cdot \bm{\tau}_2 \ket{\ua\ua} &= 
     \left(\tau_1^x \ket{\ua}_1\right) \otimes \left(\tau^x_2 \ket{\ua}_2\right) + 
