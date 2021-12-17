@@ -20,15 +20,15 @@ prediction of microcanonical ensemble and stays in the vicinity of it for majori
 of future times. The question is, what is necessary for this thermalization to happen?
 To answer it, let us imagine that we have an isolated quantum system in a pure
 state \(\ket{\psi_{\textrm{initial}}}\). We want to investigate evolution
-of some observable \(A\) under time-independent Hamiltonian \(H\) with
+of some observable \(O\) under time-independent Hamiltonian \(H\) with
 eigenstates \(\ket{n}\) and corresponding energies \(E_n\). Writing the time-dependent
 wave function as \(\ket{\psi(t)}=\sum_{n} C_{n} \mathrm{e}^{-i E_{n} t}\ket{n}\),
  \(C_n =  \braket{n}{\psi_{\textrm{initial}}}\), we have 
 \begin{align}
-    A(t) & =\matrixel{\psi(t)}{A}{\psi(t)}=\sum_{m, n} C_{m}^{*} C_{n} 
-    \mathrm{e}^{i\left(E_{m}-E_{n}\right) t} A_{m n} \nonumber\\
-    &=\sum_{n}\abs{C_{n}}^{2} A_{nn}+\sum_{n \neq m} C_{m}^{*} C_{n} 
-    \mathrm{e}^{i\left(E_{m}-E_{n}\right) t} A_{m n}\label{eq:time evolution}
+    O(t) & =\matrixel{\psi(t)}{O}{\psi(t)}=\sum_{m, n} C_{m}^{*} C_{n} 
+    \mathrm{e}^{i\left(E_{m}-E_{n}\right) t} O_{m n} \nonumber\\
+    &=\sum_{n}\abs{C_{n}}^{2} O_{nn}+\sum_{n \neq m} C_{m}^{*} C_{n} 
+    \mathrm{e}^{i\left(E_{m}-E_{n}\right) t} O_{m n}\label{eq:time evolution}
 \end{align}
 We immediately see that, assuming lack of degeneracy, long-time average of the off-diagonal
 part must be equal to zero and what remains is the diagonal part.
@@ -64,8 +64,18 @@ largest contribution to the expected value, for the second term in equation~\eqr
 to vanish. This can happen on much shorter timescales that would be required for eliminating
 phase coherence between all eigenstates~\autocite{DAlessio2016}.
 
-\textcolor{blue}{tu już o ETH}
-
+Nonetheless it is not yet enough, as RMT misses two crucial points in order to be able to relate
+it to real systems. First, the expectation values should depend on energy and second, relaxation
+times should be observable dependent. These shortcomings were fixed in groundbreaking works
+of~\textcite{Deutsch19912046,Srednicki1994} giving rise to the \textit{Eigenstate Thermalization Hypothesis} (ETH)
+It is often stated in form of an \textit{ansatz} for matrix elements of observables expressed in
+eigenbasis of a Hamiltonian~\autocite{Srednicki1999}:
+\begin{equation}
+    O_{mn} = O(\bar{E}) \delta_{mn} + \mathrm{e}^{S(\bar{E})/2}f_{O}(\bar{E},\omega)R_{mn}
+    \label{eq:ETH}
+\end{equation}
+where \(\bar{E} = (E_n+E_m)/2\), \(\omega=E_n-E_m\) and \(S(\bar{E})\) is the thermodynamic
+entropy an energy \(\bar{E}\).
 
 However, the topic of this thesis is integrals of motion.
 
