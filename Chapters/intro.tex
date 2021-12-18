@@ -57,7 +57,7 @@ disentangle the prediction of diagonal ensemble from the initial conditions
 \begin{equation}
     \sum_{n}\abs{C_n}^2 A_{nn} \approx \bar{A}\sum_{n}\abs{C_n}^2 = \bar{A}
 \end{equation}
-obtaining a results consisted with microcanonical ensemble, albeit without energy dependence
+obtaining a results consistent with microcanonical ensemble, albeit without energy dependence
 so equivalent to the infinite-temperature limit. Furthermore, off-diagonal elements are exponentially
 small in system size, so it is enough to eliminate phase coherence between matrix elements with
 largest contribution to the expected value, for the second term in equation~\eqref{eq:time evolution}
@@ -75,10 +75,35 @@ eigenbasis of a Hamiltonian~\autocite{Srednicki1999}:
     \label{eq:ETH}
 \end{equation}
 where \(\bar{E} = (E_n+E_m)/2\), \(\omega=E_n-E_m\) and \(S(\bar{E})\) is the thermodynamic
-entropy an energy \(\bar{E}\).
+entropy an energy \(\bar{E}\). Both \(O(\bar{R})\) and \(f_{O}(\bar{E},\omega)\) are smooth
+functions of their parameters and \(O(\bar{E})\) is equivalent to the expected value in microcanonical
+ensemble. Finally, as in RMT, \(R_{mn}\) is a random real or complex variable. At the moment it is
+unknown in general whether the ETH holds for a given observable in a given system,
+however it is expected to be valid for all physical observables~\autocite{DAlessio2016}. 
+Numerical clues for the validity of ETH have been found in many strongly correlated lattice models
+for example hard core bosons, interacting spin chains~\autocite{Santos2010,Rigol2010,Khatami2013,Rigol2009a},
+and fermions~\autocite{Neuenhahn2012,Rigol2009}. For more details on ETH see
+the review by~\textcite{DAlessio2016}, on which this Introduction is based.
 
-However, the topic of this thesis is integrals of motion.
 
+In a generic system exhibiting ETH, after thermalization the expectation values
+of observables can be calculated using density matrix from relevant Gibbs ensembles
+(because of equivalence of ensembles one can use either microcanonical, canonical or
+grand canonical one).
+For example in the canonical ensemble \(\hat{\rho} \propto \mathrm{e}^{H/kT}\)
+and \(\bar{O}\approx \tr(O \hat{\rho})\).
+However, there exists a class of models, called \textit{integrable},
+for which the ETH does not hold. There is no widely accepted definition of quantum
+integrability, but for our purpose it will be enough to characterize such systems by
+existence of an extensive number of local operators \(\set{\hat{I}_k}\) that commute with
+the Hamiltonian and with each  other\footnote{For relevant definitions see Section~\ref{sec:prelim}.}.
+A very brief review of integrability is presented in Section~\ref{sec:integrability}.
+Just as in classical mechanics existence of integrals of motion imposes an constraint on phase
+space available to a system, the lack of thermalization in integrable quantum systems can be
+attributed to the existence of extensive number of conservation laws, instead of only a few like
+in nonintegrable ones (such as energy or momentum).
+
+\textcolor{blue}{GGE}
 
 \section{Classical and quantum integrability\label{sec:integrability}}
 
