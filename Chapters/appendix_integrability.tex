@@ -1,0 +1,83 @@
+\chapter{Classical and quantum integrability\label{app:int}}
+\thispagestyle{chapterBeginStyle}
+
+\paragraph{Classical integrability}Before jumping head first into the quantum realm, it is perhaps valuable the state
+the problem of classical integrability and results therein.
+We will consider this topic in the spirit of classical discussion
+of Liouville and Arnold as presented in a monograph by~\textcite{Gutzwiller1991}.
+
+One usually begins the discussion of classical mechanics with the Lagrangian picture and then
+via Legendre transform moves on to the Hamiltonian picture, however we shall skip this
+for brevity and take the Hamiltonian picture as a starting point.
+A dynamical system at every given time \(t\) is described by its momentum \(p\) and
+position \(q\). If we assume our system to have \(n\) degrees of freedoms, then
+its state can be specified as a point in a \(2n\)-dimensional space (\(n\) for momenta and
+\(n\) for coordinates) called the phase space. Dynamics are governed by a function
+of \(H = H(p,q,t)\) called the Hamiltonian, which can be interpreted as the energy,
+and the so-called \textit{Hamitlon-Jacobi equations of motion}
+\begin{equation}
+    \dv{p_j}{t} = -\pdv{H}{q_j},\;\;\;\; \dv{q_j}{t} = \pdv{H}{p_j}
+    \label{eq:Hamilton equations}
+\end{equation} 
+Suppose that we have another function on a phase space, say \(F=F(p,q)\), with
+a property that its value does not vary in time if we take as \(p\) and \(q\) solutions
+of equations~\eqref{eq:Hamilton equations}. This is equivalent to the following condition
+\begin{align}
+    0 = \dv{}{t}F(p,q) &= \pdv{F}{p} \dv{p}{t} + \pdv{F}{q}\dv{q}{t} \nonumber\\
+    &= \pdv{H}{p}\dv{F}{q} - \pdv{H}{q}\dv{F}{p} = \poissonbracket{H}{F}
+\end{align}
+where \(\poissonbracket{\bullet }{\bullet }\) is the Poisson bracket.
+Vanishing of Poisson bracket with Hamiltonian is a necessary condition for \(F\)
+to be called an \textit{integral of motion}. This property has a nice geometric interpretation.
+On the one hand, the vector field \(\left(-\pdv*{H}{q},\pdv*{H}{p}\right)\) in a phase space is
+tangent to surface \(F(p,q) = const\). On the other hand, the vector field 
+\(\left(-\pdv*{F}{q},\pdv*{F}{p}\right)\) is tangent to the energy surface \(H(p,q) = E\).
+The trajectory of a dynamical system in a phase space is then located in the intersection
+of these two surfaces.
+Let us now imagine that we have a set \(\set{F_i}_{i=1,\ldots,k}\) of such conserved
+quantities that are functionally independent (no function from this set can be expressed
+as a function of other functions from this set). It is not yet sufficient to enable us to solve
+the equations of motion. The integrals of motion must also be in \textit{involution},
+which means that for any \(F_i,F_j\in\set{F_i}_{i=1,\ldots,k}\) we have
+\(\poissonbracket{F_i}{F_j} = 0\). Existence of \(k\) integrals of motion restricts
+the dynamics of a system to a \((2n-k)\)-dimensional subspace of the phase space, whereas the fact
+that they are in involution guarantees that this subspace has a simple internal structure.
+If there are at least \(n\) such conserved quantities, then a famous theorem by
+Liouville holds, which states a system with \(n\) degrees of freedom with
+\(n\) integrals of motion is integrable by quadratures.
+Then, there exists such a canonical transformation \((p,q)\to (F,\Theta)\), to the
+so-called angle-action variables, that \(H(p,q) = H(F)\) and the equations
+of motions are solved by \(F_j(t) = F_j^0\) and \(\Theta(t)_j = \Omega_j t + \Theta_j(0)\)~\autocite{arnold2013mathematical}.
+Moreover, it was proven with the help of topology that this restricted subspace
+has a shape of an \(n\)-dimensional torus, called the \textit{invariant torus}. In
+general different initial conditions correspond to different invariant tori.
+So we see that integrability in classical mechanics has a very precise 
+definition --- differential equations governing time evolution can be solved explicitly
+with the help of action-angle variables. Then, the solutions to equations~\ref{eq:Hamilton equations}
+for integrable of motions exhibit periodic dynamics constrained to some invariant torus.
+On the other hand, solutions for nonintegrable systems, given sufficient time, explore the whole
+phase space.
+
+\paragraph{KAM theorem}Before we leave the classical world, let us ponder upon one more question.
+What happens to a classical integrable system under small perturbation? More precisely,
+how does the breakdown of invariant tori looks like? The answer to this question lies
+within the remarkable KAM theorem, which was proven by a joint effort
+of~\textcite{Kolmogorov1954,Moser1962,Arnold1963}. For
+a system with finite number of degrees of freedom it specifies, under some assumptions,
+that majority of the invariant tori that occupy\footnote{The more technical term is
+\textit{foliate}.} the phase space survive the influence of small perturbations. This entails
+the possibility of coexistence between chaos and regularity. Eventually, as perturbation grows,
+chaotic regions fill the phase space completely~\autocite{DAlessio2016}. We will end this part
+with a quote from Arnold's book~\autocite{arnold2013mathematical} about the KAM theorem.
+\begin{quotation}
+   \textit{ If an unperturbed system is nondegenerate, then for sufficiently
+small conservative hamiltonian perturbations, most non-resonant invariant
+tori do not vanish, but are only slightly deformed, so that in the phase space
+of the perturbed system, too, there are invariant tori densely filled with phase
+curves winding around them conditionally-periodically, with a number of
+independent frequencies equal to the number of degrees of freedom.
+These invariant tori form a majority in the sense that the measure of the
+complement of their union is small when the perturbation is small.}
+\end{quotation}
+\paragraph{Quantum integrability} No notion of a phase space.
+

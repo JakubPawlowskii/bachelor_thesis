@@ -64,29 +64,29 @@ We are now ready to compute the integrated spectral function:
 \end{align}
 
 
-\begin{figure}[htbp]
-    \centering
-    \begin{tikzpicture}[scale=1.4]
-      \colorlet{col1}{blue!30}
-    %  \begin{scope}[smooth,draw=gray!20,y=0.3989422804cm]
-    %       \filldraw[fill=col1] plot[id=f1, domain=-1.5:1.5,samples=100] function {6*exp(-6*x*x)};
-    %       \draw[black] plot[id=f2,domain=-1.5:1.5,samples=100]
-    %           function {6*exp(-6*x*x)};
-    %   \end{scope}
-      \draw[->] (-3,0) -- (3,0) node [right] {\(\omega^{\prime}\)};
-      \draw[-] (0,0) -- (0,0) node [midway,yshift=-8pt] {\(0\)};
-      \draw[dashed] (-1.5,0) -- (-1.5,2.5) node [midway,yshift=-57pt] {\(-\omega\)};
-      \draw[dashed] (1.5,0) -- (1.5,2.5) node [midway,yshift=-57pt] {\(\omega\)};
-      \draw[-] (2.3,0) -- (2.3,0) node [midway, yshift=30pt] {\(\omega-x < 0\)};
-      \draw[-] (2.3,0) -- (2.3,0) node [midway, yshift=20pt] {\(\omega+x > 0\)};
-      \draw[-] (-2.3,0) -- (-2.3,0) node [midway, yshift=30pt] {\(\omega-x > 0\)};
-      \draw[-] (-2.3,0) -- (-2.3,0) node [midway, yshift=20pt] {\(\omega+x < 0\)};
-      \draw[-] (0,0) -- (0,0) node [midway, yshift=30pt] {\(\omega-x > 0\)};
-      \draw[-] (0,0) -- (0,0) node [midway, yshift=20pt] {\(\omega+x > 0\)};
-    %   \draw[<-] (-1.5,0) -- (1.5,0) node [right] {$x$};
-    %   \draw[<->] (-0.37,1) -- (0.37,1) node [midway, yshift=6pt] {$\gamma$};
-    \end{tikzpicture}  
-    \caption{Illustration of the equality \(\int_{-\omega}^{\omega} \mathrm{d}\omega^{\prime} 
-    \delta(x-\omega^{\prime}) = \theta(\omega + x)\theta(\omega - x) = \theta(\omega-\abs{x})\).}
-    \label{fig:dirac delta}
-  \end{figure}
+% \begin{figure}[htbp]
+%     \centering
+%     \begin{tikzpicture}[scale=1.4]
+%       \colorlet{col1}{blue!30}
+%     %  \begin{scope}[smooth,draw=gray!20,y=0.3989422804cm]
+%     %       \filldraw[fill=col1] plot[id=f1, domain=-1.5:1.5,samples=100] function {6*exp(-6*x*x)};
+%     %       \draw[black] plot[id=f2,domain=-1.5:1.5,samples=100]
+%     %           function {6*exp(-6*x*x)};
+%     %   \end{scope}
+%       \draw[->] (-3,0) -- (3,0) node [right] {\(\omega^{\prime}\)};
+%       \draw[-] (0,0) -- (0,0) node [midway,yshift=-8pt] {\(0\)};
+%       \draw[dashed] (-1.5,0) -- (-1.5,2.5) node [midway,yshift=-57pt] {\(-\omega\)};
+%       \draw[dashed] (1.5,0) -- (1.5,2.5) node [midway,yshift=-57pt] {\(\omega\)};
+%       \draw[-] (2.3,0) -- (2.3,0) node [midway, yshift=30pt] {\(\omega-x < 0\)};
+%       \draw[-] (2.3,0) -- (2.3,0) node [midway, yshift=20pt] {\(\omega+x > 0\)};
+%       \draw[-] (-2.3,0) -- (-2.3,0) node [midway, yshift=30pt] {\(\omega-x > 0\)};
+%       \draw[-] (-2.3,0) -- (-2.3,0) node [midway, yshift=20pt] {\(\omega+x < 0\)};
+%       \draw[-] (0,0) -- (0,0) node [midway, yshift=30pt] {\(\omega-x > 0\)};
+%       \draw[-] (0,0) -- (0,0) node [midway, yshift=20pt] {\(\omega+x > 0\)};
+%     %   \draw[<-] (-1.5,0) -- (1.5,0) node [right] {$x$};
+%     %   \draw[<->] (-0.37,1) -- (0.37,1) node [midway, yshift=6pt] {$\gamma$};
+%     \end{tikzpicture}  
+%     \caption{Illustration of the equality \(\int_{-\omega}^{\omega} \mathrm{d}\omega^{\prime} 
+%     \delta(x-\omega^{\prime}) = \theta(\omega + x)\theta(\omega - x) = \theta(\omega-\abs{x})\).}
+%     \label{fig:dirac delta}
+%   \end{figure}
