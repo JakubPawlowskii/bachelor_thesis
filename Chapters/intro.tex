@@ -11,7 +11,7 @@ which predicts the reversibility of microscopic dynamics~\autocite{landau1991qua
 One can then pose a question, when and why a far-from equilibrium isolated quantum system
 can be accurately described using equilibrium statistical mechanics?
 
-It was already suggested by John von Neumann in 1929 that a proper way of
+\paragraph{Eigenstate Thermalization Hypothesis}It was already suggested by John von Neumann in 1929 that a proper way of
 thinking about thermalization of quantum systems is by looking at physical
 observables instead of wave functions or density matrices of the whole system~\autocite{Neumann192930}.
 Following the review article by~\textcite{DAlessio2016}, we say that an 
@@ -75,7 +75,7 @@ eigenbasis of a Hamiltonian~\autocite{Srednicki1999}:
     \label{eq:ETH}
 \end{equation}
 where \(\bar{E} = (E_n+E_m)/2\), \(\omega=E_n-E_m\) and \(S(\bar{E})\) is the thermodynamic
-entropy an energy \(\bar{E}\). Both \(O(\bar{R})\) and \(f_{O}(\bar{E},\omega)\) are smooth
+entropy an energy \(\bar{E}\). Both \(O(\bar{E})\) and \(f_{O}(\bar{E},\omega)\) are smooth
 functions of their parameters and \(O(\bar{E})\) is equivalent to the expected value in microcanonical
 ensemble. Finally, as in RMT, \(R_{mn}\) is a random real or complex variable. At the moment it is
 unknown in general whether the ETH holds for a given observable in a given system,
@@ -86,104 +86,78 @@ and fermions~\autocite{Neuenhahn2012,Rigol2009}. For more details on ETH see
 the review by~\textcite{DAlessio2016}, on which this Introduction is based.
 
 
-In a generic system exhibiting ETH, after thermalization the expectation values
+\paragraph{Generalized Gibbs Ensemble}In a generic system exhibiting ETH, after thermalization the expectation values
 of observables can be calculated using density matrix from relevant Gibbs ensembles
 (because of equivalence of ensembles one can use either microcanonical, canonical or
 grand canonical one).
-For example in the canonical ensemble \(\hat{\rho} \propto \mathrm{e}^{H/kT}\)
+For example in the grand canonical ensemble \(\hat{\rho} \propto \mathrm{e}^{(H-\mu N)/kT}\)
 and \(\bar{O}\approx \tr(O \hat{\rho})\).
-However, there exists a class of models, called \textit{integrable},
+However, there exists a class of models, called \textit{integrable}\footnote{A very brief review of integrability is presented in Appendix~\ref{app:int}.},
 for which the ETH does not hold. There is no widely accepted definition of quantum
 integrability, but for our purpose it will be enough to characterize such systems by
-existence of an extensive number of local operators \(\set{\hat{I}_k}\) that commute with
+existence of an extensive number of (quasi-)local operators \(\set{\hat{I}_k}\) that commute with
 the Hamiltonian and with each  other\footnote{For relevant definitions see Section~\ref{sec:prelim}.}.
-A very brief review of integrability is presented in Section~\ref{sec:integrability}.
 Just as in classical mechanics existence of integrals of motion imposes an constraint on phase
 space available to a system, the lack of thermalization in integrable quantum systems can be
 attributed to the existence of extensive number of conservation laws, instead of only a few like
-in nonintegrable ones (such as energy or momentum).
-
-\textcolor{blue}{GGE}
-
-\section{Classical and quantum integrability\label{sec:integrability}}
-
-\paragraph{Classical integrability}Before jumping head first into the quantum realm, it is perhaps valuable the state
-the problem of classical integrability and results therein.
-We will consider this topic in the spirit of classical discussion
-of Liouville and Arnold as presented in a monograph by~\textcite{Gutzwiller1991}.
-
-One usually begins the discussion of classical mechanics with the Lagrangian picture and then
-via Legendre transform moves on to the Hamiltonian picture, however we shall skip this
-for brevity and take the Hamiltonian picture as a starting point.
-A dynamical system at every given time \(t\) is described by its momentum \(p\) and
-position \(q\). If we assume our system to have \(n\) degrees of freedoms, then
-its state can be specified as a point in a \(2n\)-dimensional space (\(n\) for momenta and
-\(n\) for coordinates) called the phase space. Dynamics are governed by a function
-of \(H = H(p,q,t)\) called the Hamiltonian, which can be interpreted as the energy,
-and the so-called \textit{Hamitlon-Jacobi equations of motion}
+in nonintegrable ones (such as energy or momentum). Remarkably, it was shown by~\textcite{Rigol2007}
+that the usual approach employed in statistical mechanics, namely maximizing many-body entropy
+\(S = k_B \tr(-\hat{\rho}\ln(\hat{\rho}))\) subject to constraints yields a very successful result.
+It is now know as the Generalized Gibbs Ensemble (GGE)
 \begin{equation}
-    \dv{p_j}{t} = -\pdv{H}{q_j},\;\;\;\; \dv{q_j}{t} = \pdv{H}{p_j}
-    \label{eq:Hamilton equations}
-\end{equation} 
-Suppose that we have another function on a phase space, say \(F=F(p,q)\), with
-a property that its value does not vary in time if we take as \(p\) and \(q\) solutions
-of equations~\eqref{eq:Hamilton equations}. This is equivalent to the following condition
-\begin{align}
-    0 = \dv{}{t}F(p,q) &= \pdv{F}{p} \dv{p}{t} + \pdv{F}{q}\dv{q}{t} \nonumber\\
-    &= \pdv{H}{p}\dv{F}{q} - \pdv{H}{q}\dv{F}{p} = \poissonbracket{H}{F}
-\end{align}
-where \(\poissonbracket{\bullet }{\bullet }\) is the Poisson bracket.
-Vanishing of Poisson bracket with Hamiltonian is a necessary condition for \(F\)
-to be called an \textit{integral of motion}. This property has a nice geometric interpretation.
-On the one hand, the vector field \(\left(-\pdv*{H}{q},\pdv*{H}{p}\right)\) in a phase space is
-tangent to surface \(F(p,q) = const\). On the other hand, the vector field 
-\(\left(-\pdv*{F}{q},\pdv*{F}{p}\right)\) is tangent to the energy surface \(H(p,q) = E\).
-The trajectory of a dynamical system in a phase space is then located in the intersection
-of these two surfaces.
-Let us now imagine that we have a set \(\set{F_i}_{i=1,\ldots,k}\) of such conserved
-quantities that are functionally independent (no function from this set can be expressed
-as a function of other functions from this set). It is not yet sufficient to enable us to solve
-the equations of motion. The integrals of motion must also be in \textit{involution},
-which means that for any \(F_i,F_j\in\set{F_i}_{i=1,\ldots,k}\) we have
-\(\poissonbracket{F_i}{F_j} = 0\). Existence of \(k\) integrals of motion restricts
-the dynamics of a system to a \((2n-k)\)-dimensional subspace of the phase space, whereas the fact
-that they are in involution guarantees that this subspace has a simple internal structure.
-If there are at least \(n\) such conserved quantities, then a famous theorem by
-Liouville holds, which states a system with \(n\) degrees of freedom with
-\(n\) integrals of motion is integrable by quadratures.
-Then, there exists such a canonical transformation \((p,q)\to (F,\Theta)\), to the
-so-called angle-action variables, that \(H(p,q) = H(F)\) and the equations
-of motions are solved by \(F_j(t) = F_j^0\) and \(\Theta(t)_j = \Omega_j t + \Theta_j(0)\)~\autocite{arnold2013mathematical}.
-Moreover, it was proven with the help of topology that this restricted subspace
-has a shape of an \(n\)-dimensional torus, called the \textit{invariant torus}. In
-general different initial conditions correspond to different invariant tori.
-So we see that integrability in classical mechanics has a very precise definition. However,
-as we shall observe in a moment, this is not the case in quantum mechanics.
+    \hat{\rho}_{\mathrm{GGE}} = \frac{\exp({-\sum_k \lambda_k \hat{I}_k})}{
+        \tr[\exp({-\sum_k \lambda_k \hat{I}_k})]}  
+\end{equation}
+where \(\hat{I}_k\) are the integrals of motion and \(\lambda_k\) are Lagrange multipliers fixed
+by requiring that \(\tr(\hat{\rho}_{\mathrm{GGE}}\hat{I}_k) = \langle \hat{I}_k\rangle_{t=0}\).
+In generic nonintegrable models where the only integrals of motion are the Hamiltonian and
+particle number operator, GGE reduces to the usual grand canonical ensemble. 
+Many numerical test have been carried out suggesting that integrable system, in general, do not
+relax to thermal equilibrium and that GGE accurately describes properties of few-body
+ observables after thermalization~\autocite{Cassidy2011,Rigol2007,Vidmar2016,Cazalilla2006}.
+Nonetheless, finding agreement with predictions from thermal equilibrium does not necessarily
+mean that the model is nonintegrable, as there are fine-tuned states that relax towards
+predictions of thermal equilibrium despite integrability of underlying 
+system~\autocite{Rigol2012,Rigol2011a,He2012}. 
 
-\paragraph{KAM theorem}Before we leave the classical world, let us ponder upon one more question.
-What happens to a classical integrable system under small perturbation? More precisely,
-how does the breakdown of invariant tori looks like? The answer to this question lies
-within the remarkable KAM theorem, which was proven by a joint effort
-of~\textcite{Kolmogorov1954,Moser1962,Arnold1963}. For
-a system with finite number of degrees of freedom it specifies, under some assumptions,
-that majority of the invariant tori that occupy\footnote{The more technical term is
-\textit{foliate}.} the phase space survive the influence of small perturbations. This entails
-the possibility of coexistence between chaos and regularity. Eventually, as perturbation grows,
-chaotic regions fill the phase space completely~\autocite{DAlessio2016}. We will end this part
-with a quote from Arnold's book~\autocite{arnold2013mathematical} about the KAM theorem.
-\begin{quotation}
-   \textit{ If an unperturbed system is nondegenerate, then for sufficiently
-small conservative hamiltonian perturbations, most non-resonant invariant
-tori do not vanish, but are only slightly deformed, so that in the phase space
-of the perturbed system, too, there are invariant tori densely filled with phase
-curves winding around them conditionally-periodically, with a number of
-independent frequencies equal to the number of degrees of freedom.
-These invariant tori form a majority in the sense that the measure of the
-complement of their union is small when the perturbation is small.}
-\end{quotation}
-\paragraph{Quantum integrability} No notion of a phase space.
+\paragraph{Motivation and outline}As ETH is anticipated to be valid in generic
+nonintegrable systems, so is GGE likely to describe thermalization in generic integrable system.
+However, on the contrary to nonintegrable models, classification of appropriate 
+conserved quantities in integrable models is in general a difficult task~\autocite{DAlessio2016}.
+This problem will be our main interest in Chapter~\ref{chap:iom}, where 
+following~\textcite{Mierzejewski2015a} we will describe in detail an algorithm allowing for
+systematic classification of all conserved quantities in a system given by a tight-binding
+Hamiltonian. As further motivation for the search of integrals of motion, in
+Chapter~\ref{chap:iom} we will also introduce the well-known concept of Mazur 
+bound~\autocite{Mazur1969,Suzuki1971} and a rather new phenomenological tool for studying
+quantum many-body systems --- integrated spectral function~\autocite{Vidmar2021}. 
+As an application of introduced methodology, we will study the energy current and
+two \textit{noncommuting} conserved quantities in paradigmatic spin-\(1/2\) XXZ model.
 
 
+Complete integrability is not a common property in the quantum world.
+Many system requires fine-tuning of their parameters to achieve this, with perhaps a single
+exception given by systems exhibiting many-body localization. Furthermore, we usually
+do not have precise enough control over real-world systems to perform such fine tuning,
+so full integrability is rarely seen (albeit some signatures of it were 
+observed in an experiment~\autocite{Khemani2019}). It is thus desirable to investigate
+\emph{almost} integrable system, where the integrability-breaking perturbation is small.
+In classical systems, the solution to this problem lies within the KAM theorem, however
+no such conclusive result exists in the quantum world (for details see Appendix~\ref{app:int}).
+In such weakly perturbed quantum system the number of conserved quantities must be nonextensive,
+so at least some of them must decay. Investigating long-time behavior of autocorrelation functions of
+aforementioned energy current and two noncommuting observables 
+in spin-(1/2) XXZ model will be the subject of Chapter~\ref{chap:decay}. In case of
+the titular noncommuting integrals of motion we report a novel
+result about linear scaling of relaxation time with perturbation strength and Gaussian,
+instead of the expected exponential, decay of relevant autocorrelation functions~\autocite{mierzejewski2021multiple}.
+ 
+\textcolor{blue}{\fullcite{LeBlond2021}?}
+
+The remainder of this introductory chapter will be devoted to a short introduction
+to the Heisenberg model and its modification, namely the titular XXZ model.
+
+\textcolor{blue}{leave Heisenberg in introduction or separate chapter?}
 
 \section{Heisenberg model of magnetism\label{sec:XXZ}}
     It is well known, that we can divide magnetic materials into two broad groups: those which
