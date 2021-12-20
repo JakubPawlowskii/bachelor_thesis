@@ -79,5 +79,99 @@ independent frequencies equal to the number of degrees of freedom.
 These invariant tori form a majority in the sense that the measure of the
 complement of their union is small when the perturbation is small.}
 \end{quotation}
-\paragraph{Quantum integrability} No notion of a phase space.
+\paragraph{Quantum integrability} After learning about classical integrability, which
+is a very mature subject, one may be surprised that the notion of quantum integrability 
+is still vigorously debated among scientists. A conclusive answer to the question
+`what does it mean for a quantum system to be integrable?' is yet to be found.
+In this paragraph we outline the possible solutions following the reviews
+by~\textcite{Caux2011,Yuzbashyan2013}.
 
+First contrasting difference between classical and quantum mechanics is how we count
+degrees of freedom. In the former, it corresponds to the number of pairs of conjugate variables
+necessary to specify a point in a phase space, each variable admitting a continuum of 
+possible values. In the latter, Heisenberg Uncertainty Principle prevents from 
+constructing quantum equivalent of a classical phase space. Furthermore, allowed energy
+levels very often constitute a discrete set and thus we can employ finite-dimensional
+Hilbert spaces with the dimensionality being the number of degrees of freedom.
+This alone prevents us from straightforward application of classical integrability to quantum
+mechanics. Nonetheless we can try, in the spirit of Liouville integrability, consider
+a system to be integrable if it posses a maximal set of conserved quantities 
+(operators commuting with a Hamiltonian) of cardinality
+equal to the dimension of Hilbert space. Unfortunately, this simple criterion fails immediately,
+because by the spectral theorem, Hermitian Hamiltonians can be diagonalized and such
+maximal set can be built from projectors on its eigenstates i.e.\ \( Q_{n} = \ketbra{n}{n}\).
+Therefore every system could be called integrable, even though existence of these projector
+operators do not prevent thermalization of physical observables~\autocite{DAlessio2016}.
+Shortcomings of this definition can be remedied by requiring the conserved quantities
+to be local (or, as recently discovered, quasilocal), that is acting in a nontrivial way
+only on some subspace of Hilbert space. As projection operators are in general very nonlocal,
+they are rejected by this constraint. Moreover, we require the number of (quasi)local conserved
+charges to be extensive, that is scaling with the system size. This allows for 
+separation between integrable systems and nonintegrable ones, where this number in nonextensive.
+As mentioned in the Introduction, this definition is sufficient for considerations in this
+thesis.
+
+For informational purposes we shall now list some other possible approaches to the problem at
+hand. Mathematical physicists like to say that a system is integrable if it is exactly
+solvable, that means a full set of eigenstates can be constructed explicitly. A variety
+of techniques can be used in order to achieve that, for example Fourier transform for
+noninteracting models, and quantum inverse scattering method for one dimensional 
+models~\autocite{Faddeev1996,Korepin1993,Ilievski2014}. There is also an approach
+to integrability based on non-diffractive scattering, as it leads directly 
+to non-ergodicity~\autocite{Sutherland2004}. Last but not least, an interesting
+viewpoint originates from the Berry-Tabor conjecture~\autocite{Berry1977} about the
+distribution of energy levels spacings in quantum systems with integrable classical counterparts.
+We can take a set of normalized energies~\(\set{e_i}\) with mean spacing equal to unity,
+and define \(s_i = e_{i+1}-e_i\), for which we are looking for an universal probability
+distribution \(P(s)\) such that for random choice of \(i\), probability of having
+\(s \leq s_i \leq s+\mathrm{d}s\) is \(P(s)\mathrm{ds}\). It was shown to be a Poisson
+distribution~\autocite{Ott2002}
+\begin{equation}
+    P(s) = \exp(-s)
+\end{equation}
+This result holds also for most integrable systems without classical limit, but it can fail,
+usually due to extra symmetries of Hamiltonian and resulting degeneracies~\autocite{DAlessio2016}.
+Conversely, in chaotic systems Random Matrix Theory predicts emergence of the so-called Wigner-Dyson
+statistic. If we consider \(2\cross 2\) Hamiltonians with entries being random numbers from suitable
+Gaussian distribution, the energy level spacing distribution is of the form~\autocite{DAlessio2016}
+\begin{equation}
+    P(s) = A_{\beta} \omega^{\beta} \exp\left[-B_{\beta} \omega^2\right]
+\end{equation}
+where \(\beta = 1\) if time-reversal symmetry is present and \(\beta = 2\) otherwise.
+Constants \(A_{\beta}\) and \(B_{\beta}\) can be fixed by normalization and setting mean energy level
+spacing. Remarkably, one can generalize this results to larger matrices by drawing
+them from suitable Gaussian distribution~\autocite{Alhassid2000}
+\begin{equation}
+    P(H) \propto \exp\left[-\frac{\beta}{2a^2}\tr\left(H^2\right)\right] =
+    \exp\left[-\frac{\beta}{2a^2}\sum_{ij} H_{ij}H_{ji}\right]
+    \label{eq:GOE}
+\end{equation}
+As previously, \(\beta = 1\) for systems with time-reversal invariance, that is
+\(H_{ij}\in \RR\) and \(H_{ij} = H_{ji}\), whereas \(\beta = 2\) for systems without it,
+that is \(H_{ij} \in \CC\) and \(H_{ij} = H_{ji}^{\ast}\). In the former case we have
+the so-called Gaussian Orthogonal Ensemble (GOE) and in the latter Gaussian Unitary Ensemble (GUE).
+As matrices from either GOE or GUE must be invariant under orthogonal and unitary transformation
+respectively, the equation~\eqref{eq:GOE} is quite natural, as \(\tr\left(H^2\right)\) in 
+invariant~\autocite{DAlessio2016}. A comparison between Poisson and GOE distributions
+is shown in Figure~\ref{fig:spacing}. Another interesting difference between integrability and
+chaos becomes visible, namely repulsion of energy levels, manifested as vanishing probability
+for \(s=0\) in GOE. One could take this as a definition of integrability, however it is probably
+more desirable to consider this as a consequence rather than definition.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1.0\textwidth,trim={0.03cm 0.03cm 0.03cm 0.03cm},clip]{Figures/spacing.pdf}
+    \caption{(Left panel) Distribution of 250000 single-particle level spacings in an integrable system
+    --- rectangular box with fine-tuned sides. (Right panel) Distribution of 50000 single-particle
+    level spacings in an nonintegrable system shown in the inset. Sourced from~\autocite{DAlessio2016,Rudnick2008}.
+     }
+    \label{fig:spacing}
+\end{figure}
+
+As in classical mechanics, one may ask a question about the fate of an integrable system
+under influence of a weak perturbation. So far, we do not have a conclusive answer to this
+question, at least not in form that would be analogous to the KAM theorem. There are results
+that show existence of residual quasiconserved quantities, thus hinting towards a
+quantum KAM theorem~\autocite{Brandino2015}. However, it has been also reported that
+arbitrarily small perturbation, in thermodynamic limit leads to quantum chaos and restoring
+of generic dynamics~\autocite{LeBlond2021}. Therefore, as of now, the question of behavior
+on the border between integrable and chaotic regimes is still an open problem.
