@@ -2,7 +2,7 @@
 \thispagestyle{chapterBeginStyle}
 We want to prove equation~\eqref{eq:integrated spectral function}, which gives
 a recipe for numerical calculation of integrated spectral function for arbitrary observable \(A\).
-Our starting point is the definition of spectral function as stated in Definition~\ref{def:spectral function}:
+Our starting point is the definition of spectral function as stated in Definition~\ref{def:spectral function}
 \begin{align}
         S(\omega) &=  \lim _{\varepsilon \to 0^+} \frac{1}{2 \pi} \int_{-\infty}^{\infty} \mathrm{d} t 
         \; e^{i \omega t-|t| \varepsilon}\hs{A(t)}{A} = \lim _{\varepsilon \to 0^+} \frac{1}{2 \pi}
@@ -22,7 +22,7 @@ Our starting point is the definition of spectral function as stated in Definitio
         \to 0^+} \int_{-\infty}^{\infty} \mathrm{d} t \; e^{i \omega t-|t| 
         \varepsilon}e^{i (E_m-E_n) t}}_{\mathcal{I}}\label{eq:spectral function simplified}
 \end{align}
-Let us now deal with the integral \(\mathcal{I}\):
+Let us now deal with the integral \(\mathcal{I}\)
 \begin{align}
     \mathcal{I} &= \lim _{\varepsilon \to 0^+} \int_{-\infty}^{\infty} \mathrm{d} t \; 
     e^{ i (E_m-E_n+\omega)t -|t| \varepsilon} = \lim _{\varepsilon \to 0^+} 
@@ -39,22 +39,22 @@ Let us now deal with the integral \(\mathcal{I}\):
     =\lim _{\varepsilon \to 0^+} \frac{2\varepsilon}{(E_m-E_n+\omega)^2 +\varepsilon^2}
 \end{align}
 Obtained results is a limit of the so called Poisson kernel. This happens to be
-a representations of Dirac delta in form of a limit of a sequence of functions~\autocite{byron1992mathematics}:
+a representations of Dirac delta in form of a limit of a sequence of functions~\autocite{byron1992mathematics}
 \begin{equation}
     \lim _{\varepsilon \to 0^+} \frac{1}{\pi} \frac{\varepsilon}{x^2 +\varepsilon^2} = \delta(x) 
 \end{equation}
-Thus we get:
+Thus we get
 \begin{equation}
     \mathcal{I} = \lim _{\varepsilon \to 0^+} \frac{2\varepsilon}{(E_m-E_n+\omega)^2 +\varepsilon^2}
     = 2\pi \delta(E_m-E_n+\omega)
 \end{equation}
-Inserting this results into equation~\eqref{eq:spectral function simplified} we get:
+Inserting this results into equation~\eqref{eq:spectral function simplified} we get
 \begin{align}
     S(\omega) &= \frac{1}{\dimension} \frac{1}{2 \pi}\sum_{n,m} \abs{A_{mn}}^2  
     \lim _{\varepsilon \to 0^+} \int_{-\infty}^{\infty} \mathrm{d} t \; e^{i \omega t-|t| 
     \varepsilon}e^{i (E_m-E_n) t} = \frac{1}{\dimension}\sum_{n,m} \abs{A_{mn}}^2 \delta(E_m-E_n+\omega)
 \end{align}
-We are now ready to compute the integrated spectral function:
+We are now ready to compute the integrated spectral function
 \begin{align}
     I(\omega) &= \int_{-\omega}^{\omega} \mathrm{d}\omega^{\prime} S(\omega^{\prime}) =
     \frac{1}{\dimension}\sum_{n,m} \abs{A_{mn}}^2 \int_{-\omega}^{\omega} \mathrm{d}\omega^{\prime} 

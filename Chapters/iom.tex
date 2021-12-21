@@ -15,12 +15,16 @@ The aim of this chapter is to provide a pedagogical introduction to the topic,
 so all derivations will be presented in full detail, together with a simple proof of correctness for the algorithm.
 The importance of (Q)LIOMs will be made clear by invoking the concept of spectral function and Mazur bound.
 Examples of application of this algorithm to the XXZ model will conclude this chapter.
+
+The algorithm introduced in this chapter was implemented in C++ and with the of Armadillo
+library~\autocite{Sanderson2016,Sanderson2018}.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Preliminaries\label{sec:prelim}}
 \paragraph{Space of observables}Consider the vector space \(\mathcal{V}_L\) of traceless and translationally invariant
-observables, acting on a Hilbert space of dimension \(\dimension\). We can define an inner product on this space:
+observables, acting on a Hilbert space of dimension \(\dimension\). We can define an inner product on this space
 \begin{definition}[Hilbert-Schmidt product]
-  Let \(A,B \in \mathcal{V_L}\). The Hilbert-Schmidt product of \(A\) and \(B\) is:
+  Let \(A,B \in \mathcal{V_L}\). The Hilbert-Schmidt product of \(A\) and \(B\) is
   \begin{equation}
     \hs{A}{B} = \frac{1}{\dimension}\tr(A^{\dagger}B) = \frac{1}{\dimension} \sum_{mn} A_{nm}B_{nm}^{\ast}
   \end{equation}
@@ -32,7 +36,7 @@ Presented definitions are correct, as we work only with finite dimensional Hilbe
 the trace is an linear operation. We require the operators to be traceless, because they have zero 
 overlap with the identity, \(\left(A|\Id\right)=\frac{1}{D}\tr(A) = 0\).
 Recall from statistical physics, that an average of an observable \(A\) over a canonical ensemble
-in a finite temperature is given by:
+in a finite temperature is given by
 \begin{equation}
   \langle A \rangle_{\beta} = \frac{\tr(\mathrm{e}^{-\beta H}A)}{\tr(\mathrm{e}^{-\beta H})}
 \end{equation}
@@ -43,7 +47,7 @@ limit of averaging over a suitable ensemble (either canonical or grand canonical
 Now, consider a subspace \(\mathcal{V}_L^m\) of \(m\)-local operators and a direct sum
 \(\mathcal{V}_L^M = \bigoplus_{m = 1}^M \mathcal{V}_L^m\) being a subspace of operators supported on up to \(M\) sites.
 We also define a basis of \(\mathcal{V}_L^M\) consisting of operators \(O_s\in \mathcal{V}_L^M\)
-satisfying the following properties:
+satisfying the following properties
 \begin{align}
    & \hs{O_s}{O_{t}} = \delta_{st} \tag{\text{orthonormality}}                                    \nonumber{}\\
    & \big(\forall A \in \mathcal{V}_L^M\big) \big(A = \sum_s \hs{O_s}{A} O_s\big) \tag{\text{completeness}}   \nonumber{}\\
@@ -54,15 +58,15 @@ satisfying the following properties:
 
 \paragraph{Locality} We begin with a definition of integral of motion in quantum mechanics.
 \begin{definition}
-  Let \(H\) be a Hamiltonian operator. Then, any observable \(O\) commuting with the Hamiltonian:
+  Let \(H\) be a Hamiltonian operator. Then, any observable \(A\) commuting with the Hamiltonian
   \begin{equation*}
-    \comm{H}{O} = 0
+    \comm{H}{A} = 0
   \end{equation*}
   is an \textbf{integral of motion}.\label{def:iom}
 \end{definition}
-It is easy to see, that there are many such observables. Let us consider the following:
+It is easy to see, that there are many such observables. Let us consider the following
 \begin{example}
-  Take \(H\) to be any Hamiltonian operator. By spectral theorem, it can be written in diagonal form:
+  Take \(H\) to be any Hamiltonian operator. By spectral theorem, it can be written in diagonal form
   \begin{equation*}
     H = \sum_n E_n \ketbra{n}{n}
   \end{equation*}
@@ -126,13 +130,13 @@ with increasing support.
 In Section~\ref{sec:algorithm}, a more precise definition of locality and quasilocality will be stated.
 
 \paragraph{Noncommutativity}In the case of XXZ model the Hamiltonian preserves total \(z\)-component of spin,
-or in other words, it commutes with the total spin operator of the form:
+or in other words, it commutes with the total spin operator of the form
 \begin{equation}
   \Sz_{tot} = \sum_{j = 1}^{L} \Sz_j
   \label{eq:magnetization}
 \end{equation}
 The resulting \(U(1)\) symmetry allows us to decompose the full Hilbert space into parts consisting of states with the same total \(z\)-component
-of spin. In more mathematical terms, we have the following:
+of spin. In more mathematical terms, we have the following
 \begin{equation*}
   \mathcal{H} = \bigoplus_{j = 0}^{L} \mathcal{H}_j \text{, where } \big(\forall \ket{\psi} \in \mathcal{H}_j \big) \big(\Sz_{tot} \ket{\psi} = \frac{1}{2}(2j-L) \ket{\psi} \big)
 \end{equation*}
@@ -157,7 +161,7 @@ This forces us to remain in full Hilbert space and restricts system sizes that w
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{(Q)LIOMs finding algorithm\label{sec:algorithm}}
-We now introduce a finite time averaging of an operator \(A\in \mathcal{V}_L^M\), employing the Heisenberg picture~\autocite{Mierzejewski2015Approx}:
+We now introduce a finite time averaging of an operator \(A\in \mathcal{V}_L^M\), employing the Heisenberg picture~\autocite{Mierzejewski2015Approx}
 \begin{align}
   \bar{A}^{\tau} = & \frac{1}{\tau} \int_0^{\tau} \mathrm{d}t\, A_{H}(t) = \frac{1}{\tau} \int_0^{\tau} \mathrm{d}t\, \mathrm{e}^{i H t}A \mathrm{e}^{-i H t}
   =\sum_{m,n} \frac{1}{\tau} \int_0^{\tau} \mathrm{d}t\, \mathrm{e}^{i E_m t}\ket{m} \matrixel{m}{A}{n}\bra{n}  \mathrm{e}^{-i E_n t} = \nonumber{}           \\
@@ -169,7 +173,7 @@ We now introduce a finite time averaging of an operator \(A\in \mathcal{V}_L^M\)
 \end{align}
 What this procedure does is essentially a cut off (cf. Figure~\ref{fig:cutoff}) for matrix elements determined by the value of \(E_m-E_n\) in relation
 to the averaging time \(\tau{}\). However, this expression is quite complicated and therefore we replace it with a simplified time
-averaging (henceforth time averaging):
+averaging (henceforth time averaging)
 \begin{definition}[Simplified time averaging]
   \begin{equation}
     \bar{A}^{\tau} \equiv \sum_{m,n} \theta\left(\frac{1}{\tau} - \abs{E_m-E_n}\right) A_{mn} \ketbra{m}{n}
@@ -179,7 +183,7 @@ averaging (henceforth time averaging):
   where \(\theta{}\) is the Heaviside step function, is the time averaged version of operator \(A\).
 \end{definition}
 Going to the infinite time limit we obtain the time averaging
-from~\textcite{Mierzejewski2015a}:
+from~\textcite{Mierzejewski2015a}
 \begin{equation}
   \bar{A} = \lim_{\tau \to \infty} \bar{A}^{\tau} = \sum_{ \substack{m,n\\E_m=E_n} } A_{mn} \ketbra{m}{n}
   \label{eq:inf time avg}
@@ -225,7 +229,7 @@ These two facts reveal an interesting interpretation of the time averaging, name
 thought of as an orthogonal projection in the vector space \(\mathcal{V}_L\). The involutive character of this operation explains,
 why we can consider \(\bar{A}^{\tau}\) time independent in the time window \(\left(0,\tau\right)\).
 
-Let us now calculate the commutator of time-averaged operator with the Hamiltonian:
+Let us now calculate the commutator of time-averaged operator with the Hamiltonian
 \begin{align}
   \comm{H}{\bar{A}^{\tau}} & = \sum_n \sum_{k,p} E_n \theta_{kp}^{\tau} A_{kp} \comm{ \ketbra{n}{n}}{ \ketbra{k}{p}} \nonumber         \\
                            & = \sum_{k,p} \left(E_k-E_p\right) \theta_{kp}^{\tau} A_{kp} \ketbra{k}{p} \xrightarrow{\tau \to \infty} 0 \label{eq:time averaged commutator}
@@ -249,7 +253,7 @@ will be shown in Section~\ref{sec:example}. Next, we find time averages of all b
 This matrix is Hermitian by design. However, the models we usually
 consider posses time-reversal symmetry, and so we may assume that it is real and symmetric.
 The spectral theorem then guarantees existence of an orthogonal matrix \(U\) that
-diagonalizes it. In other words, \(D = UK^{\tau}U^{T}\) is diagonal and we have the following relations:
+diagonalizes it. In other words, \(D = UK^{\tau}U^{T}\) is diagonal and we have the following relations
 \begin{align}
   &\sum_{s, t} U_{n s} K_{s t}^{\tau} U_{t m}^{T}=\delta_{nm} \lambda_{n} \in
    \RR,\;\;\; \lambda_n \text{ --- eigenvalue of }K^{\tau} \label{eq:property diag} \\
@@ -258,7 +262,7 @@ diagonalizes it. In other words, \(D = UK^{\tau}U^{T}\) is diagonal and we have 
   & U K^{\tau} = D U \implies \sum_s U_{ns} K_{st}^{\tau} = \sum_s  \delta_{ns} \lambda_s U_{st} = \lambda_n U_{nt}\label{eq:property}
 \end{align} 
 With the help of the \(U\) matrix (eigenvectors of \(K^{\tau}\)) we can define a new set of rotated operators that
-are time-independent in the window \(\left(0,\tau\right)\):
+are time-independent in the window \(\left(0,\tau\right)\)
 \begin{equation}
   Q_n = \sum_s U_{ns}\bar{O}_{s}^{\tau}\label{eq:new operators}
 \end{equation} 
@@ -269,7 +273,7 @@ Operators \(Q_n\) are orthogonal, i.e. \(\hs{Q_n}{Q_m} \propto \delta_{nm}\)
 \end{proposition}
 \begin{proof}
   Let \(Q_n,Q_m\) be two operators defined as in~\eqref{eq:new operators}.
-  Their orthogonality can be shown by direct calculation:
+  Their orthogonality can be shown by direct calculation
   \begin{align*}
     \hs{Q_n}{Q_m} &= \sum_{s,t} U_{ns} {\hs{\bar{O_s}^{\tau}}{\bar{O_t}^{\tau}}} U_{tm}^{T} 
     = \sum_{t} \left(\sum_{s}U_{ns} K_{st}^{\tau}\right)  U_{tm}^{T} \\ 
@@ -292,7 +296,7 @@ This corollary provides us with a lower bound on spectrum of matrix \(K^{\tau}\)
 Let us now examine the support of \(Q_n\). Making use of basis definition~\eqref{eq:basis},
 Proposition~\ref{prop:projection}, and properties~\eqref{eq:property diag},
 \eqref{eq:propery ortho},\eqref{eq:property}, we can decompose it into a part supported
-on up to \(M\) sites and a nonlocal part:
+on up to \(M\) sites and a nonlocal part
 \begin{align}
   Q_n &=  \sum_s \hs{O_s}{Q_n}O_s + Q_s^{\perp} = \sum_{s,t} U_{n t}\hs{O_{s}}{\bar{O}_{t}^{\tau}}
   O_{s}+Q_{n}^{\perp} \nonumber \\
@@ -304,7 +308,7 @@ on up to \(M\) sites and a nonlocal part:
 \end{align}
 Now we are ready to derive central result, stating why this actually algorithm works. 
 Combining the fact that \(\hs{Q_n}{Q_n} = \lambda_n \) (see proof of 
-Proposition~\ref{prop:orthogonality}) with~\eqref{eq:decomposition} we obtain:
+Proposition~\ref{prop:orthogonality}) with~\eqref{eq:decomposition} we obtain
 \begin{align}
   \lambda_n &= \hs{Q_n}{Q_n} = \hs{Q_n^M + Q_n^{\perp}}{Q_n^M + Q_n^{\perp}} = \hs{Q_n^M}{Q_n^M} +
    \hs{Q_n^{\perp}}{Q_n^{\perp}} + \underbrace{2 \hs{Q_n^M}{Q_n^{\perp}}}_{=0 \text{ (cf.~\eqref{eq:basis})}} \nonumber \\
@@ -350,7 +354,7 @@ norm approaches unity. In thermodynamic limit we obtain a strictly conserved
 quantity that is \textit{quasilocal}. This discussion motivates a concrete definition
 of quasilocality~\footnote{Some authors refer to this condition as \textit{pseudolocality},
 while reserving the name \textit{quasilocality} for a stronger condition. For details
-see~\textcite{Ilievski2016a}.}~\autocite{Mierzejewski2020b}:
+see~\textcite{Ilievski2016a}.}~\autocite{Mierzejewski2020b}
 \begin{definition}[Quasilocality]
 A conserved operator \(Q\in \mathcal{V}_L\) is called quasilocal, if for some \(M\in \NN\)
 there exist a local operator \(A \in \mathcal{V}_L^M \), such that
@@ -376,7 +380,7 @@ a short summary on support of \(Q_n\):
 \paragraph{Proof of corectness}
 Suppose we have an operator \(\mathcal{V}_L^M \ni A = \sum_s u_s O_s \), where \(u_s \in \RR \) for all \(s\).
 We can identify this operator from \(\mathcal{V}_L^M\) with a vector \( \bm{u} \in \RR^{\dim{\mathcal{V}_L^M}}\). Using this picture,
-the stiffness of \(A\) can be calculated as follows:
+the stiffness of \(A\) can be calculated as follows
 \begin{equation}
   \hs{\bar{A}}{\bar{A}} = \sum_{s,t} u_s \hs{\bar{O}_s}{\bar{O}_t} u_t = \sum_{s,t} u_s K_{st} u_t = 
    \bm{u}^{T} K \bm{u}  
@@ -389,9 +393,9 @@ it has larger projection on a local basis.
 But can we be sure, that the maximal eigenvalue obtained from the algorithm corresponds
 to the `best' possible integral of motion? To put it another way, if the procedure detects
 neither local nor quasilocal integrals of motion, does that necessarily mean they do not exist
-for a given system? The answer to this question lies within the subsequent:
+for a given system? The answer to this question lies within the subsequent
 \begin{proposition}
-Let \(\lambda \) be the maximal eigenvalue of \(K\). Then the following equality holds:
+Let \(\lambda \) be the maximal eigenvalue of \(K\). Then the following equality holds
 \begin{equation*}
   \lambda = \max_{  \substack{\bm{v}\in \RR^{\dim{\mathcal{V}_L^M}}\\\norm{v} = 1}  }{\bm{v}^{T} K \bm{v}}
 \end{equation*}
@@ -424,7 +428,7 @@ evolution. An obvious choice would be to calculate its autocorrelation function
 via the Heisenberg picture i.e.\ \(A(t) = \exp\left(i H t\right) A
 \exp\left(-i H t\right)\). However, this quantity is rather unpleasant to work with.
 Instead, we shall investigate the Fourier transform of autocorrelation function, formally
-defined as:
+defined as
 \begin{definition}[Spectral function]  
   \begin{equation*}
   S(\omega) =  \lim _{\varepsilon \to 0^+} \frac{1}{2 \pi} \int_{-\infty}^{\infty} \mathrm{d} t 
@@ -435,7 +439,7 @@ defined as:
 The limit in the definition is present in order to ensure proper convergence of the integral
 and \(\omega{}\) corresponds to \(\frac{1}{\tau}\) from earlier discussion.
 To connect this quantity with numerical calculations and to smoothen out any fluctuations, we
-can once again integrate it, but this time over a finite frequency window:
+can once again integrate it, but this time over a finite frequency window
 \begin{equation}
   I(\omega) = \int_{-\omega}^{\omega} \mathrm{d}\omega^{\prime} \; S(\omega^{\prime}) = 
   \frac{1}{\dimension} \sum_{m,n} \theta\left(\omega - |E_m-E_n|\right) A_{mn}^2
@@ -452,7 +456,7 @@ normalized to unity, we have this two important limits
 \end{align}
 
 For frequencies small (long times) in comparison with system's characteristic energy
-scale, spectral function of an observable \(A \in \mathcal{V}_L^M\) attains the following approximation:
+scale, spectral function of an observable \(A \in \mathcal{V}_L^M\) attains the following approximation
 \begin{equation}
   S(\omega \ll  J) \simeq  D_{A} \delta(\omega)
   \label{eq:spectral approximation}
@@ -461,7 +465,7 @@ where \(D_A = \lim_{\omega\to 0^+} I(\omega) = \hs{\bar{A}}{\bar{A}}\) is the st
 Let us now imagine that we have a complete set of orthogonal (Q)LIOMs 
 \(\hs{Q_{n}}{Q_{m}} \propto \delta_{nm}\). It was shown 
 by~\textcite{Mazur1969,Suzuki1971} that the stiffness \(D_{A}\) of arbitrary observable \(A\) has its origin
-in the projections on these \(Q_{n}\):
+in the projections on these \(Q_{n}\)
 \begin{equation}
   D_A = \sum_{n} D_{n} = \sum_{n} \frac{\hs{A}{Q_{n}}^2}
   {\hs{Q_{n}}{Q_{n}}}
@@ -481,7 +485,7 @@ a very useful lower bound for stiffness, called the \textit{Mazur bound}. We wil
 of this bound for the case of one (Q)LIOM, in the spirit of a more modern discussion from~\textcite{Ilievski2016a}.
 \begin{proposition}[Mazur bound for a single (Q)LIOM]
   Let \(A\in \mathcal{V}_L^M\) be an arbitrary observable and \(Q\) be a (quasi)local conserved quantity. Then the following inequality
-  holds:
+  holds
   \begin{equation*}
     D_{A} = \hs{\bar{A}}{\bar{A}} \geq \frac{\hs{A}{Q}^2}{\hs{Q}{Q}} > 0
   \end{equation*}
@@ -492,7 +496,7 @@ of this bound for the case of one (Q)LIOM, in the spirit of a more modern discus
   We define a new observable \(\mathcal{A} = \bar{A} - \alpha Q\) for \(\alpha \in \RR\).
   Obviously, square of the norm of this quantity is positive i.e. \(\norm*{\mathcal{A}}^2 = 
   \tr(\mathcal{A}\mathcal{A})/\dimension \geq 0\). On the other hand, we can carry out an
-  explicit computation of the norm:
+  explicit computation of the norm
   \begin{align*}
   \norm*{\mathcal{A}}^2 &= \hs{\bar{A}-\alpha Q}{\bar{A}-\alpha Q} = \hs{\bar{A}}{\bar{A}} - 
   \hs{\bar{A}}{Q} - \alpha \hs{Q}{\bar{A}} + \alpha^2 \hs{Q}{Q} \\
@@ -511,7 +515,7 @@ of this bound for the case of one (Q)LIOM, in the spirit of a more modern discus
 \end{proof}
 It is perhaps worth noting, that the derivation Mazur bound for a single (Q)LIOM is almost equivalent to the proof of
 the Cauchy-Schwarz inequality, found in any linear algebra textbook. By following exactly the same procedure, 
-we can easily generalize this results to a set of orthogonal conserved quantities \(\{Q_{n}\}\):
+we can easily generalize this results to a set of orthogonal conserved quantities \(\{Q_{n}\}\)
 \begin{equation}
   D_A = \hs{\bar{A}}{\bar{A}} \geq \sum_{n} \frac{\hs{A}{Q_n}^2}{\hs{Q_n}{Q_n}}
 \end{equation}
@@ -519,8 +523,7 @@ we can easily generalize this results to a set of orthogonal conserved quantitie
 We have already seen that Mazur inequality turns into an equality, if the set \(\{Q_n\}\) is complete. However,
 up until a few years ago, it was not clear how to systematically identify such a complete set in interacting models.
 This have changed with the work of~\textcite{Mierzejewski2015a}, where the algorithm described in details
-in Section~\ref{sec:algorithm} was first proposed. We will now show that the following proposition holds~\autocite{Mierzejewski2015Approx}:
-
+in Section~\ref{sec:algorithm} was first proposed. We will now show that the following proposition holds~\autocite{Mierzejewski2015Approx}
 \begin{proposition}[Saturation of Mazur bound]
   The set \(\{Q_n\}\) of (Q)LIOMs obtained from the algorithm in Section~\ref{sec:algorithm} is complete,
   that is it saturates the Mazur bound. 
@@ -530,17 +533,17 @@ in Section~\ref{sec:algorithm} was first proposed. We will now show that the fol
   Consider once again an arbitrary observable \(\mathcal{V}_L^M \ni A = \sum_n a_n O_n,\; 
   (\forall n) (a_n \in \RR)\). We are interested in computing its stiffness \(D_A = \hs{\bar{A}}{\bar{A}}\), 
   where \(\bar{A} = \sum_n a_n \bar{O}_n\). Inverting the relation~\eqref{eq:new operators}, we can write 
-  \(\bar{O}_n = \sum_s U_{ns}^T Q_s = \sum_s U_{sn} Q_s\) and thus the following:
+  \(\bar{O}_n = \sum_s U_{ns}^T Q_s = \sum_s U_{sn} Q_s\) and thus the following
   \begin{equation*}
     \bar{A} = \sum_n a_n \bar{O}_n = \sum_n a_n \sum_s U_{sn} Q_s =
     \sum_s \underbrace{\left(\sum_n a_n U_{sn}\right)}_{v_s} Q_s = \sum_s v_s Q_s
   \end{equation*}
-  Now, let us express the overlap \(\hs{\bar{A}}{Q_k}\) in two ways:
+  Now, let us express the overlap \(\hs{\bar{A}}{Q_k}\) in two ways
   \begin{enumerate}
     \item \(\hs{\bar{A}}{Q_k} = \sum_s v_s \underbrace{\hs{Q_s}{Q_k}}_{=\lambda_s \delta_{sk}} = v_k \lambda_k\)
     \item \(\hs{\bar{A}}{Q_k} = \hs{A}{\bar{Q_k}} = \hs{A}{Q_k}\)
   \end{enumerate}
-  We are finally ready to make a direct calculation of stiffness of \(A\):
+  We are finally ready to make a direct calculation of stiffness of \(A\)
   \begin{align*}
     D_A = \hs{\bar{A}}{\bar{A}} &= \sum_{sk} v_s v_k \hs{Q_s}{Q_k} = \sum_{sk} v_s v_k \delta_{sk} \lambda_{k} = 
     \sum_{\substack{s\\\lambda_s > 0}} v_s^2 \lambda_s \\
@@ -554,7 +557,7 @@ We will finish this section with an example of an application of Mazur bound.
   We consider the topic of ballistic linear response~\autocite{Ilievski2016a}. Let \(J\) be an extensive current,
   for example the spin current. From Kubo linear response theory
   we have the following well-known expression for the real (non-dissipative) part of dynamical
-  spin conductivity~\autocite{Zotos1996}:
+  spin conductivity~\autocite{Zotos1996}
   \begin{equation}
     \sigma'(\omega) = 2 \pi D_J \delta(\omega) + \sigma_J^{reg}(\omega)
   \label{eq:conductivity}
@@ -609,7 +612,7 @@ considerations we will base on the work of~\textcite{Mierzejewski2015a}.
 
 Having chosen a concrete model, we can now give an explicit definition of a basis
 of a space of \(m\)-local observables \(\mathcal{V}_L^m\). It is composed of operators
-of the form:
+of the form
 \begin{equation}
   O_{\underline{s},j}=\sigma_{j}^{s_{1}} \sigma_{j+1}^{s_{2}} \cdots 
   \sigma_{j+m-1}^{s_{m}}
@@ -623,7 +626,7 @@ In the expression above we have \(\sigma_j^z \equiv 2 S^z_j\),
  operator. The index \(j\) indicates first site of the support.
 As a matter of mathematical precision, the notation for \(O_{\underline{s},j}\) used here 
 (and frequently in physics literature) is a bit of simplification. It is important to remember
-that because of embedding~\eqref{eq:embedding}, there are tensor products between \(\sigma_j\)'s, i.e.\ we have the following:
+that because of embedding~\eqref{eq:embedding}, there are tensor products between \(\sigma_j\)'s, i.e.\ we have the following
 \begin{equation}
   O_{\underline{s},j}= \underbrace{\Id_{2\cross 2} \otimes \cdots
        \otimes \Id_{2\cross 2}}_{j-1} \otimes \; \sigma_{j}^{s_{1}} \otimes \sigma_{j+1}^{s_{2}} \otimes
@@ -670,33 +673,33 @@ investigate the known case of energy current in Spin\(-1/2\) XXZ model~\autocite
 and see whether it is detected or not. For the sake of completeness, derivation of
 spin energy current for the general XYZ model will be presented, following the definitions in \textcite{Zotos1997}.
 We start with the general XYZ Hamiltonian with periodic boundary conditions~\eqref{eq:XYZ}.
-It is easy to see that this Hamiltonian can be represented as a sum of operators supported on two consecutive sites:
+It is easy to see that this Hamiltonian can be represented as a sum of operators supported on two consecutive sites
 \begin{equation}
   H_{XYZ} = \sum_{k=1}^L h_{k,k+1}
 \end{equation}
 where \(h_{k,k+1} = J_{x} \Sx_{k}\Sx_{k+1} + J_{y} \Sy_{k}\Sy_{k+1} + J_{z} \Sz_{k}\Sz_{k+1} \) and periodic boundary conditions
 require that \(h_{L,L+1} = h_{L,1}\). The energy operator is a conserved quantity, thus the time evolution of its local density
-is given by the discrete continuity equation:
+is given by the discrete continuity equation
 \begin{equation}
   \dv{h_{k,k+1}(t)}{t} + \div{j_{k}^{E}(t)} = 0
   \label{eq:discrete continuity}
 \end{equation}
 where \(\div{j_{k}^E(t)} \equiv j_{k+1}^E(t) - j_{k}^E(t)\) is the discrete divergence of spin energy current density and \(h_{i,i+1}(t) = \mathrm{e}^{i H_{XYZ}t} h_{i,i+1} \mathrm{e}^{-i H_{XYZ} t}\).
 On the other hand, time evolution of an arbitrary operator is determined
-by the Heisenberg equation:
+by the Heisenberg equation
 \begin{equation}
   \dv{h_{k,k+1}(t)}{t} = i \comm{H_{XYZ}}{h_{k,k+1}(t)}
   \label{eq:heisenberg equation}
 \end{equation}
 Combining equations~\eqref{eq:discrete continuity} and~\eqref{eq:heisenberg equation} we obtain the defining equations for
-the spin energy current density:
+the spin energy current density
 \begin{equation}
   j_{k+1}^E - j_{k}^E = - i \comm{H_{XYZ}}{h_{k,k+1}} = i \comm{h_{k,k+1}}{H_{XYZ}} = i \sum_{r=1}^L \comm{h_{k,k+1}}{h_{r,r+1}}
   \label{eq:energy current defining equation}
 \end{equation}
 Similar equations can be written for any operator being a sum of local operators such as
 the total spin operator or particle number operator in fermionic models. Detailed solution to equation~\eqref{eq:energy current defining equation}
-is shown in Appendix~\ref{app:spin energy current derivation}. For the XXZ model we get the following expression:
+is shown in Appendix~\ref{app:spin energy current derivation}. For the XXZ model we get the following expression
 \begin{align*}
   j_k^E & = i \Big( \underbrace{2J \Sm_{k-1}\Sz_k \Sp_{k+1} + J \Delta \Sz_{k-1}\Sp_k \Sm_{k+1} + J\Delta \Sp_{k-1}\Sm_k\Sz_{k+1}}_{O_k}                                  \\
         & - \underbrace{\left(2J \Sp_{k-1}\Sz_k \Sm_{k+1} + J\Delta \Sz_{k-1}\Sm_k \Sp_{k+1} + J\Delta \Sm_{k-1}\Sp_{k} \Sz_{k+1} \right)}_{O_k^{\dagger}}\Big) \nonumber \\
@@ -704,7 +707,7 @@ is shown in Appendix~\ref{app:spin energy current derivation}. For the XXZ model
 \end{align*}
 Thus we see that it is an imaginary operator. Moreover, it is also a commuting operator
 because it consists of a sum of equal number of \(\Sp{}\) and \(\Sm{}\). 
-Obtaining the energy current operator is now simply the matter of summing over all the lattice sites:
+Obtaining the energy current operator is now simply the matter of summing over all the lattice sites
 \begin{equation}
   J^E = \sum_{k=1}^L j_k^E
   \label{eq:energy current}
@@ -720,7 +723,7 @@ spectral function is proportional to Dirac delta.
   limit. Calculations performed for \(\Delta=1.0\) and \(\Delta=0.5\).}\label{fig: current integrable}
 \end{figure}
 After restricting our algorithm to the case of imaginary
-operators, we obtain the following:
+operators, we obtain the following
 \begin{equation}
     J^E = \sum_{k=1}^L i\left[\beta_1 \left(\Sm_{k-1}\Sz_{k}\Sp_{k+1}\right) + \beta_2 \left(\Sz_{k-1}\Sp_{k}\Sm_{k+1}+\Sp_{k-1}\Sm_{k}\Sz_{k+1}\right)\right] + \text{H.c.}
 \end{equation}
@@ -752,7 +755,7 @@ For the case of \(\Delta=1.0\), the XXZ model reduces to the isotropic Heisenber
 possessing \(SU(2)\) symmetry.
 As a consequence of this symmetry, conservation of total magnetization 
 (\(\Sz_{tot}\) operator~\eqref{eq:magnetization}) implies the conservation of analogously defined \(\Sx_{tot}\)
-and \(\Sy_{tot}\) and therefore the following quantity:
+and \(\Sy_{tot}\) and therefore the following quantity
 \begin{equation}
     \hat{O}_{1} =  \frac{1}{\sqrt{L}}\sum_{j=1}^{L} \Sp_{j} + \text{H.c.}
     \label{eq:delta 1.0}
@@ -777,7 +780,7 @@ of parameter \(\Delta\), that is \(UH_{XXZ}(\Delta)U = -H_{XXZ}(-\Delta)\). It f
 that if \(Q\) is a conserved quantity for \(\Delta\), then \(\tilde{Q} = UQU\) is a conserved
 quantity for \(-\Delta\). This the reason why we present numerical results only for even 
 values of \(L\). For \(\Delta=0.5\) the action
-of this operator produces a simple factor of \((-1)^i\) and the operator of interest reads:
+of this operator produces a simple factor of \((-1)^i\) and the operator of interest reads
 \begin{equation}
   \hat{O}_{2} =\frac{1}{\sqrt{L}} \sum_{j=1}^{L} {(-1)}^j \left( \Sp_{j}\Sp_{j+1}\Sp_{j+2}\right) + \text{H.c.}
   \label{eq:delta 0.5}

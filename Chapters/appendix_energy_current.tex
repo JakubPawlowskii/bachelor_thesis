@@ -4,7 +4,7 @@
 Equation~\eqref{eq:energy current defining equation} is
 conceptually simple, yet quite tedious to solve due to the amount of commutators present. Luckily, leveraging commutator properties
 to our advantage will allow us to simplify the calculations. Let us begin with inserting the definition of \(h_{k,k+1}\) into 
-equation~\eqref{eq:energy current defining equation}:
+equation~\eqref{eq:energy current defining equation}
 \begin{align*}
     \comm{h_{k,k+1}}{h_{r,r+1}} =& \comm{J_{x} \Sx_{k}\Sx_{k+1} + J_{x} \Sy_{k}\Sy_{k+1} + J_{z} \Sz_{k}\Sz_{k+1}}{J_{x} \Sx_{r}\Sx_{r+1} + J_{x} \Sy_{r}\Sy_{r+1} + J_{z} \Sz_{r}\Sz_{r+1}}\\
     =& J_{x} J_{y}\comm{\Sx_{k}\Sx_{k+1}}{\Sy_{r}\Sy_{r+1}} + J_{x} J_{z}\comm{\Sx_{k}\Sx_{k+1}}{\Sz_{r}\Sz_{r+1}} + J_{y} J_{x}\comm{\Sy_{k}\Sy_{k+1}}{\Sx_{r}\Sx_{r+1}}\\
@@ -18,12 +18,12 @@ By inspection it becomes clear that out of six terms present, only three will ne
     \left( \Sy_r \comm{\Sx_{k}}{\Sy_{r+1}} + \comm{\Sx_{k}}{\Sy_{r}} \Sy_{r+1} \right)\Sx_{k+1} \Big)\\
     =& i J_x J_y \Big( \delta_{k+1,r+1} \Sx_k \Sy_r \Sz_{k+1} + \delta_{k+1,r} \Sx_k \Sz_{k+1} \Sy_{r+1} + \delta_{k,r+1} \Sy_r \Sz_k \Sx_{k+1} +\delta_{k,r} \Sz_k \Sy_{r+1} \Sx_{k+1}\Big)
 \end{align*}
-Carrying out the calculation of remaining two non-trivial commutators, we arrive at the following equations:
+Carrying out the calculation of remaining two non-trivial commutators, we arrive at the following equations
 \begin{align*}
     J_{z} J_{x}\comm{\Sz_{k}\Sz_{k+1}}{\Sx_{r}\Sx_{r+1}} =& i J_z J_x \Big( \delta_{k+1,r+1} \Sx_r \Sz_k \Sy_{r+1} + \delta_{k+1,r} \Sz_k \Sy_{r} \Sx_{r+1} + \delta_{k,r+1} \Sx_r \Sy_{r+1} \Sz_{k+1} +\delta_{k,r} \Sy_r \Sz_{k+1} \Sx_{r+1}\Big)\\ 
     J_{y} J_{z}\comm{\Sy_{k}\Sy_{k+1}}{\Sz_{r}\Sz_{r+1}} =& i J_y J_z \Big( \delta_{k+1,r+1} \Sy_k \Sz_r \Sx_{k+1} + \delta_{k,r+1} \Sz_r \Sx_{k} \Sy_{k+1} + \delta_{k+1,r} \Sy_k \Sx_{k+1} \Sz_{r+1} +\delta_{k,r} \Sx_k \Sz_{r+1} \Sy_{k+1}\Big) 
 \end{align*}
-Next step requires us to evaluate the sum over lattice sites to get rid of the Kronecker \(\delta{}\)'s. As before, one of the three parts of calculations is provided in full detail:
+Next step requires us to evaluate the sum over lattice sites to get rid of the Kronecker \(\delta{}\)'s. As before, one of the three parts of calculations is provided in full detail
 \begin{align*}
     &i\sum_{r=1}^{L}  J_{x} J_{y}\comm{\Sx_{k}\Sx_{k+1}}{\Sy_{r}\Sy_{r+1}} + i\sum_{r=1}^{L} J_{x} J_{y}\comm{\Sy_{k}\Sy_{k+1}}{\Sx_{r}\Sx_{r+1}} = \\
     & - J_x J_y \Big( \cancel{\Sx_k \Sy_k \Sz_{k+1}} +  \Sx_k \Sz_{k+1} \Sy_{k+2} + \Sy_{k-1} \Sz_k \Sx_{k+1} +\bcancel{\Sz_k \Sy_{k+1} \Sx_{k+1}}\Big)\\
@@ -38,7 +38,7 @@ Next step requires us to evaluate the sum over lattice sites to get rid of the K
     &i\sum_{r=1}^{L}  J_{y} J_{z}\comm{\Sy_{k}\Sy_{k+1}}{\Sz_{r}\Sz_{r+1}} + i\sum_{r=1}^{L} J_{y} J_{z}\comm{\Sz_{k}\Sz_{k+1}}{\Sy_{r}\Sy_{r+1}} = \\
     &= J_y J_z \Big( \Sz_k \Sx_{k+1} \Sy_{k+2} - \Sy_k \Sx_{k+1} \Sz_{k+2} - \left(\Sz_{k-1}\Sx_k \Sy_{k+1} - \Sy_{k-1}\Sx_{k}\Sz_{k+1}\right) \Big)
 \end{align*}
-What now remains is to collect these parts and see that we finally arrive at the equation for the energy current density:
+What now remains is to collect these parts and see that we finally arrive at the equation for the energy current density
 \begin{align}
     j_k^E &= J_x J_y \left(\Sy_{k-1}\Sz_k \Sx_{k+1} - \Sx_{k-1}\Sz_{k}\Sy_{k+1}\right) \nonumber \\
     &+ J_x J_z \left(\Sx_{k-1}\Sy_k \Sz_{k+1} - \Sz_{k-1}\Sy_{k}\Sx_{k+1}\right) \nonumber \\
@@ -49,7 +49,7 @@ What now remains is to collect these parts and see that we finally arrive at the
 which is precisely the expression from~\textcite{Zotos1997}. 
 However, in this work we are interested in the XXZ model with the Hamiltonian~\eqref{eq:XXZ}. To this end,
 we need to set \(J_x, J_z = 2J\), \(J_z = \Delta \) and substitute \(\Sx_k = \frac{\Sp_k + \Sm_k}{2}\), \(\Sy_k = \frac{\Sp_k-\Sm_k}{2i}\).
-After some more lengthy calculations, we finally arrive at the desired form of energy current density operator:
+After some more lengthy calculations, we finally arrive at the desired form of energy current density operator
 \begin{align}
     j_k^E &= i \Big( \underbrace{2J \Sm_{k-1}\Sz_k \Sp_{k+1} + J \Delta \Sz_{k-1}\Sp_k \Sm_{k+1} + J\Delta \Sp_{k-1}\Sm_k\Sz_{k+1}}_{O_k} \nonumber \\
     &- \underbrace{\left(2J \Sp_{k-1}\Sz_k \Sm_{k+1} + J\Delta \Sz_{k-1}\Sm_k \Sp_{k+1} + J\Delta \Sm_{k-1}\Sp_{k} \Sz_{k+1} \right)}_{O_k^{\dagger}}\Big) \nonumber \\

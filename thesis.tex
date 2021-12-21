@@ -447,7 +447,8 @@
 \newcommand{\Sy}{S^{y}}
 
 
-\newcommand{\hs}[2]{\left(#1 \middle| #2\right)}
+% \newcommand{\hs}[2]{\left(#1 \middle| #2\right)}
+\newcommand{\hs}[2]{(#1 | #2)}
 \newcommand{\dimension}{\mathcal{D}}
 \newcommand{\ua}{\uparrow}
 \newcommand{\da}{\downarrow}
@@ -480,6 +481,17 @@
 %   \color{chaptergrey}}
 \makeatother
 
+\newcommand*{\blankpage}{%
+\vspace*{\fill}
+{\centering This page is intentionally left blank.\par}
+\vspace{\fill}}
+\makeatletter
+\renewcommand*{\cleardoublepage}{\clearpage\if@twoside \ifodd\c@page\else
+\blankpage
+\thispagestyle{empty}
+\newpage
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
 
 
 % ***************************************************************************************************
