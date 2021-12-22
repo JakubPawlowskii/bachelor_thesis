@@ -1,8 +1,8 @@
 \chapter{Derivation of integrated spectral function\label{app:spectral}}
 \thispagestyle{chapterBeginStyle}
 We want to prove equation~\eqref{eq:integrated spectral function}, which gives
-a recipe for numerical calculation of integrated spectral function for arbitrary observable \(A\).
-Our starting point is the definition of spectral function as stated in Definition~\ref{def:spectral function}
+a recipe for the numerical calculation of the integrated spectral function for an arbitrary observable \(A\).
+Our starting point is the definition of the spectral function as stated in Definition~\ref{def:spectral function}
 \begin{align}
         S(\omega) &=  \lim _{\varepsilon \to 0^+} \frac{1}{2 \pi} \int_{-\infty}^{\infty} \mathrm{d} t 
         \; e^{i \omega t-|t| \varepsilon}\hs{A(t)}{A} = \lim _{\varepsilon \to 0^+} \frac{1}{2 \pi}
@@ -38,8 +38,8 @@ Let us now deal with the integral \(\mathcal{I}\)
     \frac{2\varepsilon}{(E_m-E_n+\omega -i \varepsilon)(E_m-E_n+\omega +i \varepsilon)}
     =\lim _{\varepsilon \to 0^+} \frac{2\varepsilon}{(E_m-E_n+\omega)^2 +\varepsilon^2}
 \end{align}
-Obtained results is a limit of the so called Poisson kernel. This happens to be
-a representations of Dirac delta in form of a limit of a sequence of functions~\autocite{byron1992mathematics}
+The obtained result is a limit of the so-called Poisson kernel. This happens to be
+a representations of Dirac delta in the form of a limit of a sequence of functions~\autocite{byron1992mathematics}
 \begin{equation}
     \lim _{\varepsilon \to 0^+} \frac{1}{\pi} \frac{\varepsilon}{x^2 +\varepsilon^2} = \delta(x) 
 \end{equation}
@@ -48,7 +48,7 @@ Thus we get
     \mathcal{I} = \lim _{\varepsilon \to 0^+} \frac{2\varepsilon}{(E_m-E_n+\omega)^2 +\varepsilon^2}
     = 2\pi \delta(E_m-E_n+\omega)
 \end{equation}
-Inserting this results into equation~\eqref{eq:spectral function simplified} we get
+Inserting this result into equation~\eqref{eq:spectral function simplified} we get
 \begin{align}
     S(\omega) &= \frac{1}{\dimension} \frac{1}{2 \pi}\sum_{n,m} \abs{A_{mn}}^2  
     \lim _{\varepsilon \to 0^+} \int_{-\infty}^{\infty} \mathrm{d} t \; e^{i \omega t-|t| 

@@ -1,7 +1,7 @@
 \chapter{Integrals of motion\label{chap:iom}}
 \thispagestyle{chapterBeginStyle}
 
-The problem of our interest is systematic classification of all local and quasilocal integrals of
+The problem of our interest is the systematic classification of all local and quasilocal integrals of
 motion (LIOMs and QLIOMs) supported on up to \( M \in \NN \) sites in a model given by 1-D tight-binding Hamiltonian \(H\). 
 To this end, we employ the algorithm first proposed in~\textcite{Mierzejewski2015a}. It allows us to classify integrals
 of motions for a given system size \(L\). After doing so for accessible values of \(L\), we then carry out finite size scaling
@@ -32,10 +32,10 @@ observables, acting on a Hilbert space of dimension \(\dimension\). We can defin
   i.e.\ \(H\ket{n} = E_n \ket{n}\).
   Moreover, we define the Hilbert-Schmidt norm of an operator to be \(\norm{A} = \sqrt{\hs{A}{A}}\).
 \end{definition}
-Presented definitions are correct, as we work only with finite dimensional Hilbert spaces and taking
-the trace is an linear operation. We require the operators to be traceless, because they have zero 
+The presented definitions are correct, as we work only with finite dimensional Hilbert spaces and taking
+the trace is a linear operation. We require the operators to be traceless, because they have zero 
 overlap with the identity, \(\left(A|\Id\right)=\frac{1}{D}\tr(A) = 0\).
-Recall from statistical physics, that an average of an observable \(A\) over a canonical ensemble
+Recall from statistical physics, that the average of an observable \(A\) over a canonical ensemble
 in a finite temperature is given by
 \begin{equation}
   \langle A \rangle_{\beta} = \frac{\tr(\mathrm{e}^{-\beta H}A)}{\tr(\mathrm{e}^{-\beta H})}
@@ -56,7 +56,7 @@ satisfying the following properties
 \end{align}
 
 
-\paragraph{Locality} We begin with a definition of integral of motion in quantum mechanics.
+\paragraph{Locality} We begin with a definition of an integral of motion in quantum mechanics.
 \begin{definition}
   Let \(H\) be a Hamiltonian operator. Then, any observable \(A\) commuting with the Hamiltonian
   \begin{equation*}
@@ -64,20 +64,20 @@ satisfying the following properties
   \end{equation*}
   is an \textbf{integral of motion}.\label{def:iom}
 \end{definition}
-It is easy to see, that there are many such observables. Let us consider the following
+It is easy to see that there are many such observables. Let us consider the following
 \begin{example}
   Take \(H\) to be any Hamiltonian operator. By spectral theorem, it can be written in diagonal form
   \begin{equation*}
     H = \sum_n E_n \ketbra{n}{n}
   \end{equation*}
-  Then a set of projection operators \(P_n = \ketbra{n}{n}\) is a family of IOMs.
-  However, eigenstates of a Hamiltonian are in general very nonlocal.\label{ex: projectors}
+  Then the set of projection operators \(P_n = \ketbra{n}{n}\) is a family of IOMs.
+  However, the eigenstates of a Hamiltonian are in general very nonlocal.\label{ex: projectors}
 \end{example}
-However, as it will become evident in Section~\ref{sec:spectral function} on spectral function, nonlocal operators are not important in the
-thermodynamic limit and we are only interested in the so called local (or quasilocal) integrals of motion.
+However, as it will become evident in Section~\ref{sec:spectral function} on spectral functions, nonlocal operators are not important in the
+thermodynamic limit and we are only interested in the so-called local (or quasilocal) integrals of motion.
 A working intuition behind local operators is perhaps best seen in Figure~\ref{fig:1D chain}. They can be thought of as
-being different from identity only on \(m\) consecutive sites. XXZ Hamiltonian defined by equation~\eqref{eq:XXZ} is an
-example of 2-local operator. On the other hand, quasilocal operator can be represented as a convergent sum of operators
+being different from identity only on \(m\) consecutive sites. The XXZ Hamiltonian defined by equation~\eqref{eq:XXZ} is an
+example of 2-local operator. On the other hand, a quasilocal operator can be represented as a convergent sum of operators
 with increasing support.
 \begin{figure}[!htbp]
   \centering
@@ -129,7 +129,7 @@ with increasing support.
 \end{figure}
 In Section~\ref{sec:algorithm}, a more precise definition of locality and quasilocality will be stated.
 
-\paragraph{Noncommutativity}In the case of XXZ model the Hamiltonian preserves total \(z\)-component of spin,
+\paragraph{Noncommutativity}In the case of XXZ model, the Hamiltonian preserves total \(z\)-component of spin,
 or in other words, it commutes with the total spin operator of the form
 \begin{equation}
   \Sz_{tot} = \sum_{j = 1}^{L} \Sz_j
@@ -154,9 +154,9 @@ observables and express them in the Hamiltonian eigenbasis. If the operator in q
 commuting IOM, we can restrict ourselves to the fixed spin subspace and thus greatly reduce
 computational complexity, allowing us to investigate larger systems. Such operators, for example
 spin energy current, have already been studied~\autocite{Mierzejewski2015Approx}. Therefore,
-the main focus of this work is the investigation of existence and properties of much less known
+the main focus of this work is the investigation of the existence and properties of much less known
 noncommuting IOMs, which do not posses the \(U(1)\) symmetry of Hamiltonian. 
-This forces us to remain in full Hilbert space and restricts system sizes that we are able to check.
+This forces us to remain in the full Hilbert space and restricts system sizes that we are able to check.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -171,7 +171,7 @@ We now introduce a finite time averaging of an operator \(A\in \mathcal{V}_L^M\)
   \mathrm{e}^{i\left(E_m-E_n\right)\tau/2}\times \frac{\sin{\left(\left(E_m-E_n\right)\tau\right)}}{\tau\left(E_m-E_n\right)}
   \label{eq:time_avg}
 \end{align}
-What this procedure does is essentially a cut off (cf. Figure~\ref{fig:cutoff}) for matrix elements determined by the value of \(E_m-E_n\) in relation
+What this procedure does is essentially a cut-off (cf. Figure~\ref{fig:cutoff}) for matrix elements determined by the value of \(E_m-E_n\) in relation
 to the averaging time \(\tau{}\). However, this expression is quite complicated and therefore we replace it with a simplified time
 averaging (henceforth time averaging)
 \begin{definition}[Simplified time averaging]
@@ -180,21 +180,21 @@ averaging (henceforth time averaging)
     = \sum_{m,n} \theta_{mn}^{\tau} A_{mn} \ketbra{m}{n}
     \label{def:simple time avg}
   \end{equation}
-  where \(\theta{}\) is the Heaviside step function, is the time averaged version of operator \(A\).
+  where \(\theta{}\) is the Heaviside step function.
 \end{definition}
-Going to the infinite time limit we obtain the time averaging
+Going to the infinite time limit, we obtain the time averaging
 from~\textcite{Mierzejewski2015a}
 \begin{equation}
   \bar{A} = \lim_{\tau \to \infty} \bar{A}^{\tau} = \sum_{ \substack{m,n\\E_m=E_n} } A_{mn} \ketbra{m}{n}
   \label{eq:inf time avg}
 \end{equation}
 The quantity \(\hs{\bar{A}}{\bar{A}}\) is called the stiffness of operator \(A\) and corresponds to the infinite time limit
-of its autocorrelation function. In order to carry out the time averaging we need to express the operator
-in the basis of energy eigenstates and thus we need to perform exact diagonalization of the Hamiltonian.
+of its autocorrelation function. To carry out the time averaging, we need to express the operator
+in the basis of energy eigenstates and thus we need to perform an exact diagonalization of the Hamiltonian.
 This is one of the main limiting factors of this procedure.
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.9\textwidth]{Figures/cutoff_flat.pdf}
+  \includegraphics[width=0.8\textwidth]{Figures/cutoff_small.png}
   \caption{Illustration of averaging procedure as defined by equation~\eqref{def:simple time avg}
   for \(\tau = 1/2\). The sum
   of matrix elements is restricted by the theta function to the region between the two red lines. 
@@ -202,11 +202,11 @@ This is one of the main limiting factors of this procedure.
   Matrix elements in panel (a) are calculated for integrable XXZ model~\eqref{eq:XXZ} with \(\Delta = 1\) and in
   panel (b) for the perturbed XXZ model~\eqref{eq:HXXZ perturbed} with \(\Delta = 1\) and perturbation strength
   \(\alpha = 0.1\). Broadening of distribution of matrix elements is the reason why we need finite time averaging
-  for investingating nonintegrable systems.}
+  for investigating nonintegrable systems.}
   \label{fig:cutoff}
 \end{figure}
 Observing that \({\left(\theta_{mn}^{\tau}\right)}^2 = \theta_{mn}^{\tau}\) and \({\left(\bar{A}^{\tau}\right)}_{mn} =
-\theta_{mn}^{\tau} A_{mn}\) we can easily show some crucial properties of the time averaging:
+\theta_{mn}^{\tau} A_{mn}\) we can easily show some crucial properties of time averaging:
 \begin{proposition}
   For any \(A,B \in \mathcal{V}_L\)
   \begin{equation*}
@@ -225,34 +225,34 @@ Observing that \({\left(\theta_{mn}^{\tau}\right)}^2 = \theta_{mn}^{\tau}\) and 
     \overline{\left(\bar{A}^{\tau}\right)}_{mn}^{\tau} & = {\left(\theta_{mn}^{\tau}\right)}^2 A_{mn} = \theta_{mn}^{\tau} A_{mn} = \left(\bar{A}^{\tau}\right)_{mn}
   \end{align*}  
 \end{proof}
-These two facts reveal an interesting interpretation of the time averaging, namely that it can be
+These two facts reveal an interesting interpretation of the time averaging, namely, that it can be
 thought of as an orthogonal projection in the vector space \(\mathcal{V}_L\). The involutive character of this operation explains,
 why we can consider \(\bar{A}^{\tau}\) time independent in the time window \(\left(0,\tau\right)\).
 
-Let us now calculate the commutator of time-averaged operator with the Hamiltonian
+Let us now calculate the commutator of a time-averaged operator with the Hamiltonian
 \begin{align}
   \comm{H}{\bar{A}^{\tau}} & = \sum_n \sum_{k,p} E_n \theta_{kp}^{\tau} A_{kp} \comm{ \ketbra{n}{n}}{ \ketbra{k}{p}} \nonumber         \\
                            & = \sum_{k,p} \left(E_k-E_p\right) \theta_{kp}^{\tau} A_{kp} \ketbra{k}{p} \xrightarrow{\tau \to \infty} 0 \label{eq:time averaged commutator}
 \end{align}
 The last limit follows directly from equation~\eqref{eq:inf time avg}. We can see that the infinite time averaging procedure
 creates an integral of motion, i.e. \(\comm{H}{\bar{A}} = 0\). Nonetheless, it is not enough to just time average a
-local operator in order to get a local integral of motion, because in general \(A\in \mathcal{V}_L^M  \nRightarrow \bar{A} 
+local operator to get a local integral of motion, because in general \(A\in \mathcal{V}_L^M  \nRightarrow \bar{A} 
 \in \mathcal{V}_L^M\), that is the truncation of matrix elements modifies the support of an operator.
 One possible approach to checking its locality would be to
 express this operator in the basis defined in~\eqref{eq:basis}. If for some \(M\) we have \(\bar{A}\in \mathcal{V}_L^M\),
 then it is local. Second possibility is that it can be written as a convergent series of operators from \(\mathcal{V}_L^m\) with
-increasing \(m\) --- then it is quasilocal. Otherwise it is a generic nonlocal quantity. But can we do better than this
+increasing \(m\) --- then it is quasilocal. Otherwise, it is a generic nonlocal quantity. But can we do better than this
 direct approach?
 
 We begin our journey towards the answer to this question by fixing \(0\leq M \leq L/2\) and constructing a basis \(\{O_s\}\) of \(\mathcal{V}_L^M\). How to actually perform such construction
-will be shown in Section~\ref{sec:example}. Next, we find time averages of all basis operators and build a matrix
+will be shown in Section~\ref{sec:example}. Next, we find the time averages of all basis operators and build a matrix
 \begin{equation}
   K^{\tau}_{st} = \hs{\bar{O_s}^{\tau}}{\bar{O_t}^{\tau}}
   \label{eq:stiffness matrix}
 \end{equation}
 This matrix is Hermitian by design. However, the models we usually
 consider posses time-reversal symmetry, and so we may assume that it is real and symmetric.
-The spectral theorem then guarantees existence of an orthogonal matrix \(U\) that
+The spectral theorem then guarantees the existence of an orthogonal matrix \(U\) that
 diagonalizes it. In other words, \(D = UK^{\tau}U^{T}\) is diagonal and we have the following relations
 \begin{align}
   &\sum_{s, t} U_{n s} K_{s t}^{\tau} U_{t m}^{T}=\delta_{nm} \lambda_{n} \in
@@ -284,16 +284,16 @@ The last two equalities, marked with \(\triangleq \), follow from properties~\eq
 and~\eqref{eq:propery ortho} respectively. We can learn something more
 about the eigenvalues of \(K^{\tau}\) matrix from a simple corollary to Proposition~\ref{prop:orthogonality}.
 \begin{corollary}
-  \(K^{\tau}\) is a positive semi-definite matrix.\label{corr:psd}
+  \(K^{\tau}\) is a positive semidefinite matrix.\label{corr:psd}
 \end{corollary}
 \begin{proof}
-Let \(Q_n\) be defined as in~\eqref{eq:new operators}. Then, from the defining properties of inner product we have that
+Let \(Q_n\) be defined as in~\eqref{eq:new operators}. Then, from the defining properties of the inner product we have that
 \(\hs{Q_n}{Q_n} \geq 0\). However, we also have that \(\hs{Q_n}{Q_n} = \lambda_n\). Combining these two equations, we get
-that \(\left(\forall n\right) \left(\lambda_n \geq 0\right)\). Therefore \(K^{\tau}\) is a positive semi-definite matrix.
+that \(\left(\forall n\right) \left(\lambda_n \geq 0\right)\). Therefore \(K^{\tau}\) is a positive semidefinite matrix.
 \end{proof}
-This corollary provides us with a lower bound on spectrum of matrix \(K^{\tau}\). 
+This corollary provides us with a lower bound on the spectrum of matrix \(K^{\tau}\). 
 
-Let us now examine the support of \(Q_n\). Making use of basis definition~\eqref{eq:basis},
+Let us now examine the support of \(Q_n\). Making use of the basis definition~\eqref{eq:basis},
 Proposition~\ref{prop:projection}, and properties~\eqref{eq:property diag},
 \eqref{eq:propery ortho},\eqref{eq:property}, we can decompose it into a part supported
 on up to \(M\) sites and a nonlocal part
@@ -306,7 +306,7 @@ on up to \(M\) sites and a nonlocal part
   \lambda_{n} U_{n s} O_{s}+Q_{n}^{\perp} = Q_{n}^{M}+Q_{n}^{\perp}
   \label{eq:decomposition}
 \end{align}
-Now we are ready to derive central result, stating why this actually algorithm works. 
+Now we are ready to derive the central result, stating why this actually algorithm works. 
 Combining the fact that \(\hs{Q_n}{Q_n} = \lambda_n \) (see proof of 
 Proposition~\ref{prop:orthogonality}) with~\eqref{eq:decomposition} we obtain
 \begin{align}
@@ -316,7 +316,7 @@ Proposition~\ref{prop:orthogonality}) with~\eqref{eq:decomposition} we obtain
   \lambda_n^2 \sum_{s,t} U_{ns} \hs{O_s}{O_t} U_{tn}^{T} + \norm{Q_n^{\perp}}^2  \nonumber \\
   &=\lambda_n^2 + \norm{Q_n^{\perp}}^2
 \end{align}
-Rearranging the above equality we get that \(\lambda_n - \lambda_n^2 = \norm{Q_n^{\perp}}^2 \geq 0\), which together with
+Rearranging the above equality, we get that \(\lambda_n - \lambda_n^2 = \norm{Q_n^{\perp}}^2 \geq 0\), which together with
 Corollary~\ref{corr:psd} gives \(\lambda_n \in \left[0,1\right]\). 
 
 From now on, we shall restrict our considerations to the case \(\tau \to \infty \), 
@@ -332,23 +332,23 @@ Consequently, we finally arrive at a classification scheme for the support of \(
   \label{def:classification}
 \end{definition}
 The procedure outlined above works for a fixed system size \(L\).
-To asses the character of an integral of motion, we need to examine how \(\lambda_n\) 
+To assess the character of an integral of motion, we need to examine how \(\lambda_n\) 
 behaves in the thermodynamic limit. To achieve this, we execute this algorithm for a 
 few accessible values of \(L\) and then proceed with finite size scaling.
 However, in this thesis we will examine both the \(L\to \infty \) case and \(L = 14\)
-case, because that is largest system size for exact diagonalization that we were able to achieve.
+case, because that is the largest system size for exact diagonalization that we were able to achieve.
 
-It is important not to loose the physical interpretation of these results amidst all the formal development.
+It is important not to loose the physical interpretation of these results amidst the formal development.
 Operator \(Q_n = \sum_s U_{ns}\bar{O}_{s} = Q_n^M + Q_n^{\perp} \) is always an integral of motion, 
 because it is a linear combination of infinite-time averaged operators (cf.~\eqref{eq:time averaged commutator}).
 However, the time averaging procedure expands the support of initially local basis operators \(O_s\).
-In actual computations we are using the basis of operators supported on up to \(M\) sites at all times, therefore the operators
+In actual computation we are using the basis of operators supported on up to \(M\) sites at all times, therefore the operators
 obtained from the eigenvectors of \(K\) matrix is the \(Q_n^M\) operator. If \(\lambda_n = 1\), then
 \(\norm*{Q_n^{\perp}} = 0 \implies Q_n^{\perp} = 0\) and \(Q_n = Q_n^M\). Hence, \(Q_n^M\) operator, which
 structure we know, is strictly conserved. On the other hand, if \(\lambda_n \in (0,1) \), then
 \(\norm*{Q_n^{\perp}} > 0 \implies Q_n^{\perp} \neq 0\) and \(Q_n \neq Q_n^M\). This means that the operator
 that we really get from the algorithm is not a conserved quantity. It is an local approximation, or equivalently
-a projection of true quasilocal integral of motion \(Q_n\) on a basis supported on up to \(M\) sites. Moreover, we can 
+a projection of the true quasilocal integral of motion \(Q_n\) on a basis supported on up to \(M\) sites. Moreover, we can 
 construct a convergent series of operators with increasing support and system size, such that their
 norm approaches unity. In thermodynamic limit we obtain a strictly conserved
 quantity that is \textit{quasilocal}. This discussion motivates a concrete definition
@@ -377,7 +377,7 @@ a short summary on support of \(Q_n\):
   \label{eq:summary of support}
 \end{align}
 
-\paragraph{Proof of corectness}
+\paragraph{Proof of correctness}
 Suppose we have an operator \(\mathcal{V}_L^M \ni A = \sum_s u_s O_s \), where \(u_s \in \RR \) for all \(s\).
 We can identify this operator from \(\mathcal{V}_L^M\) with a vector \( \bm{u} \in \RR^{\dim{\mathcal{V}_L^M}}\). Using this picture,
 the stiffness of \(A\) can be calculated as follows
@@ -385,12 +385,12 @@ the stiffness of \(A\) can be calculated as follows
   \hs{\bar{A}}{\bar{A}} = \sum_{s,t} u_s \hs{\bar{O}_s}{\bar{O}_t} u_t = \sum_{s,t} u_s K_{st} u_t = 
    \bm{u}^{T} K \bm{u}  
 \end{equation} 
-Thus, a problem in quantum mechanics is reduced to a problem in linear algebra.
+Thus, the problem in quantum mechanics is reduced to the problem in linear algebra.
 Because all eigenvalues of \(K\) matrix are real, we can sort the corresponding operators
- (defined with columns of \(U\) matrix, i.e.\;eigenvectors of \(K\)) by their magnitude.
+ (defined by columns of \(U\) matrix, i.e.\;eigenvectors of \(K\)) by their magnitude.
 We then say that the larger the eigenvalue, the `better' the integral of motion is, i.e.\
 it has larger projection on a local basis.
-But can we be sure, that the maximal eigenvalue obtained from the algorithm corresponds
+But can we be sure that the maximal eigenvalue obtained from the algorithm corresponds
 to the `best' possible integral of motion? To put it another way, if the procedure detects
 neither local nor quasilocal integrals of motion, does that necessarily mean they do not exist
 for a given system? The answer to this question lies within the subsequent
@@ -427,7 +427,7 @@ evolution. An obvious choice would be to calculate its autocorrelation function
 \((A(t)|A)\), where the time dependence of \(A(t)\) is understood
 via the Heisenberg picture i.e.\ \(A(t) = \exp\left(i H t\right) A
 \exp\left(-i H t\right)\). However, this quantity is rather unpleasant to work with.
-Instead, we shall investigate the Fourier transform of autocorrelation function, formally
+Instead, we shall investigate the Fourier transform of the autocorrelation function, formally
 defined as
 \begin{definition}[Spectral function]  
   \begin{equation*}
@@ -436,7 +436,7 @@ defined as
   \end{equation*}
   \label{def:spectral function}
 \end{definition}
-The limit in the definition is present in order to ensure proper convergence of the integral
+The limit in the definition is present to ensure proper convergence of the integral
 and \(\omega{}\) corresponds to \(\frac{1}{\tau}\) from earlier discussion.
 To connect this quantity with numerical calculations and to smoothen out any fluctuations, we
 can once again integrate it, but this time over a finite frequency window
@@ -445,7 +445,7 @@ can once again integrate it, but this time over a finite frequency window
   \frac{1}{\dimension} \sum_{m,n} \theta\left(\omega - |E_m-E_n|\right) A_{mn}^2
   \label{eq:integrated spectral function}
 \end{equation}
-For derivation of equation~\eqref{eq:integrated spectral function} see Appendix~\ref{app:spectral}.
+For the derivation of equation~\eqref{eq:integrated spectral function} see Appendix~\ref{app:spectral}.
 It turns out that this quantity is equal to the square of Hilbert-Schmidt norm of time
 averaged operator \(\bar{A}^{\frac{1}{\omega}}\), which fits nicely within the previously
 discussed framework. Because all observables of interest are traceless and
@@ -455,7 +455,7 @@ normalized to unity, we have this two important limits
   \lim_{\omega \to 0^+ } I(\omega) &= \frac{1}{\dimension} \sum_{ \substack{m,n\\E_m=E_n} } A_{mn}^2 = \norm*{\bar{A}}^2
 \end{align}
 
-For frequencies small (long times) in comparison with system's characteristic energy
+For frequencies small (long times) in comparison with the system's characteristic energy
 scale, spectral function of an observable \(A \in \mathcal{V}_L^M\) attains the following approximation
 \begin{equation}
   S(\omega \ll  J) \simeq  D_{A} \delta(\omega)
@@ -471,7 +471,7 @@ in the projections on these \(Q_{n}\)
   {\hs{Q_{n}}{Q_{n}}}
   \label{eq:mazur equality}
 \end{equation}
-Therefore, by calculating the overlap between our observable and all the (Q)LIOMs, we can infer about the long time
+Therefore, by calculating the overlap between our observable and all (Q)LIOMs, we can infer about the long time
 behavior of its spectral function and thus its autocorrelation function. It is here that the
 importance of (Q)LIOMs becomes evident, as the overlap with generic nonlocal conserved quantities
 vanishes in the thermodynamic limit~\autocite{Zotos1997}.
@@ -494,7 +494,7 @@ of this bound for the case of one (Q)LIOM, in the spirit of a more modern discus
 
 \begin{proof}
   We define a new observable \(\mathcal{A} = \bar{A} - \alpha Q\) for \(\alpha \in \RR\).
-  Obviously, square of the norm of this quantity is positive i.e. \(\norm*{\mathcal{A}}^2 = 
+  Clearly, square of the norm of this quantity is positive i.e. \(\norm*{\mathcal{A}}^2 = 
   \tr(\mathcal{A}\mathcal{A})/\dimension \geq 0\). On the other hand, we can carry out an
   explicit computation of the norm
   \begin{align*}
@@ -513,9 +513,9 @@ of this bound for the case of one (Q)LIOM, in the spirit of a more modern discus
   The last equality follows from Definition~\refeq{def:formal quasilocal} and (quasi)locality of Q.
   \label{proof:single mazur}  
 \end{proof}
-It is perhaps worth noting, that the derivation Mazur bound for a single (Q)LIOM is almost equivalent to the proof of
-the Cauchy-Schwarz inequality, found in any linear algebra textbook. By following exactly the same procedure, 
-we can easily generalize this results to a set of orthogonal conserved quantities \(\{Q_{n}\}\)
+It is perhaps worth noting that the derivation Mazur bound for a single (Q)LIOM is almost equivalent to the proof of
+the Cauchy-Schwartz inequality, found in any linear algebra textbook. By following exactly the same procedure, 
+we can easily generalize this result to a set of orthogonal conserved quantities \(\{Q_{n}\}\)
 \begin{equation}
   D_A = \hs{\bar{A}}{\bar{A}} \geq \sum_{n} \frac{\hs{A}{Q_n}^2}{\hs{Q_n}{Q_n}}
 \end{equation}
@@ -563,7 +563,7 @@ We will finish this section with an example of an application of Mazur bound.
   \label{eq:conductivity}
   \end{equation}
 If there exists a (quasi)local conserved quantity \(Q\) such that \(\hs{J}{Q}>0\), the Mazur bound
-implies that \(D_J > 0\). Such nonzero value of spin current stiffness is an indicator of \textit{ballistic}
+implies that \(D_J > 0\). Such a nonzero value of spin current stiffness is an indicator of \textit{ballistic}
 DC transport (i.e.\ without scattering, cf. Figure~\ref{fig:spin transport}) --- \(\sigma'(0)\) diverges. 
 \end{example}
 \begin{figure}[htbp]
@@ -606,7 +606,7 @@ DC transport (i.e.\ without scattering, cf. Figure~\ref{fig:spin transport}) ---
 \section{(Q)LIOMs supported on up to \(3\) sites in the XXZ model\label{sec:example}}
 
 After explaining how and why to look for LIOMs and QLIOMs, let us now turn to a more concrete
-example of spin-\(1/2\) XXZ model on one dimensional lattice of \(L\) sites with periodic
+example of spin-\(1/2\) XXZ model on one-dimensional lattice of \(L\) sites with periodic
 boundary conditions, introduced already in Section~\ref{sec:XXZ}. In the subsequent
 considerations we will base on the work of~\textcite{Mierzejewski2015a}.
 
@@ -621,11 +621,11 @@ of the form
 In the expression above we have \(\sigma_j^z \equiv 2 S^z_j\),
 \(\sigma_j^{\pm} \equiv \sqrt{2} S_j^{\pm}\), \(\sigma^{0}_j \equiv \Id_{2\cross 2}\) and
  \(\underline{s} = \left(s_1, s_2,\ldots, s_m\right)\) where \(s_j \in \{+,-,z,0\}\) for
- \(j \in \{2,3,\ldots,m-1\}\). For first and last operator in a sequence we have 
- \(s_{1,m} \in \{+,-,z\}\), because an identity there would correspond to an \((m-1)\)-local
- operator. The index \(j\) indicates first site of the support.
+ \(j \in \{2,3,\ldots,m-1\}\). For the first and the last operator in a sequence we have 
+ \(s_{1,m} \in \{+,-,z\}\), because the identity there would correspond to an \((m-1)\)-local
+ operator. The index \(j\) indicates the first site of support.
 As a matter of mathematical precision, the notation for \(O_{\underline{s},j}\) used here 
-(and frequently in physics literature) is a bit of simplification. It is important to remember
+(and frequently in the physics literature) is a bit of simplification. It is important to remember
 that because of embedding~\eqref{eq:embedding}, there are tensor products between \(\sigma_j\)'s, i.e.\ we have the following
 \begin{equation}
   O_{\underline{s},j}= \underbrace{\Id_{2\cross 2} \otimes \cdots
@@ -635,27 +635,27 @@ that because of embedding~\eqref{eq:embedding}, there are tensor products betwee
         \label{eq:basis with tensors}
 \end{equation}
 The single site identity operators ensure that the dimension of matrix of the operator is right.
-A simple combinatorial observation shows us, that there are \(N_m = 3\cdot 4^{m-2}\cdot 2\)
-(excluding shifts i.e.\ different values of \(j\) for the same \(\underline{s}\)) operators
+A simple combinatorial observation shows us that there are \(N_m = 3\cdot 4^{m-2}\cdot 2\)
+(excluding shifts, i.e.\ different values of \(j\) for the same \(\underline{s}\)) operators
 constituting a \(m\)-local basis (for \(m = 1\) we have \(N_1 = 3\)). Moreover, they are orthonormal
 \textit{by design}, i.e.\ \(\hs{O_{\underline{s},j}}{O_{\underline{s}^{\prime}},j^{\prime}} =
 \delta_{\underline{s},\underline{s}^{\prime}}\delta_{j,j^{\prime}}\) (see Appendix~\ref{app:orthonormality} for proof).
 Fixing \(M>0\) (usually \(M<L\)), we can construct the basis of traceless operators spanning
 the space \(\mathcal{V}_L^M = \bigoplus_{m=1}^{M} \mathcal{V}_L^m\). From the properties of 
-direct sum of linear spaces we now that its cardinality is \(D_M = \sum_{m=1}^{M} N_m = 
+direct sum of linear spaces, we now see that its cardinality is \(D_M = \sum_{m=1}^{M} N_m = 
  3 \cdot 4^{M-1}\). To include all possible shifts, this value needs to multiplied by
  the number of sites \(L\). Such construction can be implemented in practice by considering
  all possible \(M\)-digit numbers written in base \(4\) (as there are \(4\) `building blocks':
   \(\sigma^{+},\sigma^{-},\sigma^{z},\Id_{2\cross 2}\)). 
 
 Having put together this basis, we can now proceed with the rest of the (Q)LIOM finding algorithm.
-However, before that it is beneficial to discuss the influence of symmetries of system in question,
+However, before that it is beneficial to discuss the influence of the symmetries of the system in question,
 the XXZ model. They allow us to decompose the matrix \(K\) 
 (cf.~\eqref{eq:stiffness matrix}) and usually reduce the computational effort. First and perhaps
 the most important one is implied by the fact already discussed in Section~\ref{sec:prelim} ---
 conservation of magnetization. We could restrict our considerations to a subspaces
 of \(\mathcal{V}_L^M\) comprised of operators such that \(\comm{S_{tot}^z}{O_{\underline{s}}} = 0\).
-Yet, we will not be able to make use of that symmetry here, as in this work we are interested 
+Yet, we will not be able to use that symmetry here, as in this work we are interested 
 in the \textit{noncommuting} operators, i.e\ precisely those that break this symmetry.
 Furthermore, the XXZ model is time-reversal invariant, so the \(K\) matrix is real and symmetric.
 Therefore, we can divide our operators into two orthogonal subspaces, either real or imaginary.
@@ -685,7 +685,7 @@ is given by the discrete continuity equation
   \label{eq:discrete continuity}
 \end{equation}
 where \(\div{j_{k}^E(t)} \equiv j_{k+1}^E(t) - j_{k}^E(t)\) is the discrete divergence of spin energy current density and \(h_{i,i+1}(t) = \mathrm{e}^{i H_{XYZ}t} h_{i,i+1} \mathrm{e}^{-i H_{XYZ} t}\).
-On the other hand, time evolution of an arbitrary operator is determined
+On the other hand, the time evolution of an arbitrary operator is determined
 by the Heisenberg equation
 \begin{equation}
   \dv{h_{k,k+1}(t)}{t} = i \comm{H_{XYZ}}{h_{k,k+1}(t)}
@@ -699,7 +699,7 @@ the spin energy current density
 \end{equation}
 Similar equations can be written for any operator being a sum of local operators such as
 the total spin operator or particle number operator in fermionic models. Detailed solution to equation~\eqref{eq:energy current defining equation}
-is shown in Appendix~\ref{app:spin energy current derivation}. For the XXZ model we get the following expression
+is shown in Appendix~\ref{app:spin energy current derivation}. For the XXZ model, we get the following expression
 \begin{align*}
   j_k^E & = i \Big( \underbrace{2J \Sm_{k-1}\Sz_k \Sp_{k+1} + J \Delta \Sz_{k-1}\Sp_k \Sm_{k+1} + J\Delta \Sp_{k-1}\Sm_k\Sz_{k+1}}_{O_k}                                  \\
         & - \underbrace{\left(2J \Sp_{k-1}\Sz_k \Sm_{k+1} + J\Delta \Sz_{k-1}\Sm_k \Sp_{k+1} + J\Delta \Sm_{k-1}\Sp_{k} \Sz_{k+1} \right)}_{O_k^{\dagger}}\Big) \nonumber \\
@@ -707,7 +707,7 @@ is shown in Appendix~\ref{app:spin energy current derivation}. For the XXZ model
 \end{align*}
 Thus we see that it is an imaginary operator. Moreover, it is also a commuting operator
 because it consists of a sum of equal number of \(\Sp{}\) and \(\Sm{}\). 
-Obtaining the energy current operator is now simply the matter of summing over all the lattice sites
+Obtaining the energy current operator is now simply the matter of summing over all lattice sites
 \begin{equation}
   J^E = \sum_{k=1}^L j_k^E
   \label{eq:energy current}
@@ -736,24 +736,24 @@ Thus, according to Definition~\ref{def:classification}, it is a local integral o
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Noncommuting (Q)LIOMs\label{subsec:noncomm qlioms}}
 Having checked the correctness of the algorithm and its implementation, we can now proceed with the
-main topic of this thesis, that is investigating the \textit{noncommuting} integrals of motion. 
+main topic of this thesis, that is, investigating the \textit{noncommuting} integrals of motion. 
 We conducted preliminary studies for small values of system size \(L\), without assuming
-translational invariance. Available resources allowed us to make unrestricted search for
- \(L \in \set{8,9,10,11,12}\). Nevertheless, noncommuting operators that maximized stiffness for given 
+translational invariance. Available resources allowed us to make an unrestricted search for
+ \(L \in \set{8,9,10,11,12}\). Nevertheless, the noncommuting operators that maximized stiffness for given 
  \(L\) and \(\Delta \) turned out to be either translationally invariant or translationally invariant with
  a sign flip (see \(\hat{O}_2\)~\eqref{eq:delta 0.5}). Therefore, we restrict our further 
 considerations to such operators only. This allowed us to quite easily obtain numerical
 results for \(L\) up to \(14\). After quite lengthy calculations, we were also able
 to obtain some results for \(L=16\).
 We will focus on two concrete cases of operators, corresponding
-to largest eigenvalues of generalized stiffness matrix for values of anisotropy
+to largest eigenvalues of the generalized stiffness matrix for values of anisotropy
 parameter \(\Delta=1.0\) and \(\Delta=0.5\) respectively. For this values of
-\( \Delta \) parameter, the many-body energy spectra exhibits massive degeneracies, because
+\( \Delta \) parameter, the many-body energy spectrum exhibits massive degeneracies, because
 eigenstates with different \(\Sz_{tot}\) correspond to the same energies~\autocite{Fagotti2014,Mierzejewski2021}.
 
 For the case of \(\Delta=1.0\), the XXZ model reduces to the isotropic Heisenberg model~\eqref{eq:XXX}
 possessing \(SU(2)\) symmetry.
-As a consequence of this symmetry, conservation of total magnetization 
+As a consequence of this symmetry, the conservation of total magnetization 
 (\(\Sz_{tot}\) operator~\eqref{eq:magnetization}) implies the conservation of analogously defined \(\Sx_{tot}\)
 and \(\Sy_{tot}\) and therefore the following quantity
 \begin{equation}
@@ -762,8 +762,8 @@ and \(\Sy_{tot}\) and therefore the following quantity
 \end{equation}
 where the prefactor is introduced for the sake of normalization. Note that
 this operator is actually the \(\Sx_{tot}\), however this form shows that \(\hat{O}_1\) 
-is an example of a real operator. If we were to consider analogously defined imaginary operator,
-we would obtain the \(\Sy_{tot}\), but due to \(SU(2)\) symmetry the results would be the same.
+is an example of a real operator. If we were to consider an analogously defined imaginary operator,
+we would obtain the \(\Sy_{tot}\), but due to \(SU(2)\) symmetry results would be the same.
 
 
 The case of \(\Delta=0.5\) is much more difficult. It was shown by~\textcite{zadnik2016} that for 
@@ -774,11 +774,11 @@ motion that do not preserve magnetization. Even though the set \(S\) is a dense 
 of the interval \([-1,1]\) i.e.\ the gapless regime of XXZ spin-\(1/2\) chain, it is not
 symmetric with respect to \(\Delta=0\). For example, considered here value of anisotropy parameter
 \(\Delta=0.5\) does not belong to this set, whereas \(\Delta=-0.5\) do. However, it can be shown
-that for even system sizes, in thermodynamic limit, there exist an unitary operator 
+that for even system sizes, in thermodynamic limit, there exists a unitary operator 
 \(U = \left(\Id_{2\cross 2}\otimes \tau^z\right)^{\otimes L/2}\), which action is equivalent to flipping the sign 
 of parameter \(\Delta\), that is \(UH_{XXZ}(\Delta)U = -H_{XXZ}(-\Delta)\). It follows then,
 that if \(Q\) is a conserved quantity for \(\Delta\), then \(\tilde{Q} = UQU\) is a conserved
-quantity for \(-\Delta\). This the reason why we present numerical results only for even 
+quantity for \(-\Delta\). This is the reason we present numerical results only for even 
 values of \(L\). For \(\Delta=0.5\) the action
 of this operator produces a simple factor of \((-1)^i\) and the operator of interest reads
 \begin{equation}
@@ -802,7 +802,7 @@ and can be found in~\autocite{Ilievski2016a,zadnik2016,Prosen2014c}.
 
 Both \(\hat{O}_1\) and \(\hat{O}_2\) are noncommuting operators, what can be seen easily from the
 fact that they consist of products of either just \(\Sp\) operators or \(\Sm\) operators. Conducting
-an analysis with the help of the algorithm we indeed find these two operators among eigenvectors
+an analysis with the help of the algorithm, we indeed find these two operators among eigenvectors
 of the generalized stiffness matrix. Corresponding eigenvalues and their thermodynamic limit
 are shown in Figure~\ref{fig: noncommuting integrable}. Comparing it with 
 Definition~\ref{def:classification} we see that \(\hat{O}_1\) is a strictly 
@@ -812,5 +812,5 @@ To further illustrate the concept of quasilocality, we can consider a projection
 of this QLIOM on a basis supported on up to \(4\) sites, which results in an operator of the form 
 \(\hat{O}_2 + \hat{\delta O}\), where \(\hat{\delta O}\) is the complicated \(4\)-local part,
 which exact form is not important. Looking at Figure~\ref{fig: noncommuting integrable} we see
-that stiffness of this new projection is larger that the old one. However, contribution 
+that stiffness of this new projection is larger than that of the old one. However, contribution 
 of \(\hat{\delta O}\) to the overall stiffness is smaller than that of \(\hat{O}_2\).
