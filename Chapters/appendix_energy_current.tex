@@ -3,7 +3,7 @@
 
 Equation~\eqref{eq:energy current defining equation} is
 conceptually simple, yet quite tedious to solve due to the number of commutators present. Luckily, leveraging the commutator properties
-to our advantage will allow us to simplify the calculations. Let us begin with inserting the definition of \(h_{k,k+1}\) into 
+to our advantage allow us to simplify the calculations. Let us begin with inserting the definition of \(h_{k,k+1}\) into 
 equation~\eqref{eq:energy current defining equation}
 \begin{align*}
     \comm{h_{k,k+1}}{h_{r,r+1}} =& \comm{J_{x} \Sx_{k}\Sx_{k+1} + J_{x} \Sy_{k}\Sy_{k+1} + J_{z} \Sz_{k}\Sz_{k+1}}{J_{x} \Sx_{r}\Sx_{r+1} + J_{x} \Sy_{r}\Sy_{r+1} + J_{z} \Sz_{r}\Sz_{r+1}}\\
@@ -48,11 +48,11 @@ What now remains is to collect these parts and see that we finally arrive at the
 \end{align}
 which is precisely the expression from~\textcite{Zotos1997}. 
 However, in this work we are interested in the XXZ model with the Hamiltonian~\eqref{eq:XXZ}. To this end,
-we need to set \(J_x, J_z = 2J\), \(J_z = \Delta \) and substitute \(\Sx_k = \frac{\Sp_k + \Sm_k}{2}\), \(\Sy_k = \frac{\Sp_k-\Sm_k}{2i}\).
+we need to set \(J_x, J_y = J\), \(J_z = J \Delta \) and substitute \(\Sx_k = \frac{\Sp_k + \Sm_k}{2}\), \(\Sy_k = \frac{\Sp_k-\Sm_k}{2i}\).
 After some more lengthy calculations, we finally arrive at the desired form of energy current density operator
 \begin{align}
-    j_k^E &= i \Big( \underbrace{2J \Sm_{k-1}\Sz_k \Sp_{k+1} + J \Delta \Sz_{k-1}\Sp_k \Sm_{k+1} + J\Delta \Sp_{k-1}\Sm_k\Sz_{k+1}}_{O_k} \nonumber \\
-    &- \underbrace{\left(2J \Sp_{k-1}\Sz_k \Sm_{k+1} + J\Delta \Sz_{k-1}\Sm_k \Sp_{k+1} + J\Delta \Sm_{k-1}\Sp_{k} \Sz_{k+1} \right)}_{O_k^{\dagger}}\Big) \nonumber \\
+    j_k^E &= i \Bigg( \underbrace{\frac{J^2}{2} \Sm_{k-1}\Sz_k \Sp_{k+1} + \frac{J^2\Delta}{2} \Sz_{k-1}\Sp_k \Sm_{k+1} + \frac{J^2\Delta}{2} \Sp_{k-1}\Sm_k\Sz_{k+1}}_{O_k} \nonumber \\
+    &- \underbrace{\left(\frac{J^2}{2} \Sp_{k-1}\Sz_k \Sm_{k+1} + \frac{J^2\Delta}{2} \Sz_{k-1}\Sm_k \Sp_{k+1} + \frac{J^2\Delta}{2} \Sm_{k-1}\Sp_{k} \Sz_{k+1} \right)}_{O_k^{\dagger}}\Bigg) \nonumber \\
     &= i\left(O_k - O_k^{\dagger}\right)
     \label{eq:final energy current density}
 \end{align}

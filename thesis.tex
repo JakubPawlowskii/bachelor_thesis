@@ -8,6 +8,7 @@
 % Styl dwustronny z domyślną wielkością czcionki 10pt oraz oddzieloną stroną tytułową (titlepage).
 % Domyślnie rodziały rozpoczynają się na stronie prawej (openright).
 \documentclass[a4paper,11pt,twoside,openright]{book}
+\renewcommand{\baselinestretch}{1.2} 
 
 % ***************************************************************************************************
 % Ustawienia języka
@@ -463,10 +464,9 @@
 
 \DeclarePairedDelimiterX\set[1]\lbrace\rbrace{\def\given{\;\delimsize\vert\;}#1}
 
-\renewcommand{\baselinestretch}{1.2} 
-
-
+\definecolor{wppt}{RGB}{0,156,158}
 \definecolor{pinegreen}{RGB}{0,128,128}
+\definecolor{pwr}{RGB}{154,52,45}
 \renewcommand*{\chapterheadstartvskip}{\vspace*{-1\baselineskip}} 
 \renewcommand*{\sectfont}{\bfseries\fontseries{bx}\selectfont}
 \makeatletter
@@ -474,7 +474,7 @@
 \renewcommand*{\chapnumfont}{
     %\usefont{T1}{jkpvos}{b}{n}
     \usefont{T1}{pzc}{b}{n}
-    \fontsize{100}{120}\color{pinegreen}\selectfont}
+    \fontsize{100}{120}\color{wppt}\selectfont}
 % default number
 % \renewcommand*{\chapnumfont}{%
 %   \usefont{T1}{\@defaultcnfont}{b}{n}\fontsize{120}{150}\selectfont% Default: 100/130

@@ -702,13 +702,13 @@ Similar equations can be written for any operator being a sum of local operators
 the total spin operator or particle number operator in fermionic models. Detailed solution to equation~\eqref{eq:energy current defining equation}
 is shown in Appendix~\ref{app:spin energy current derivation}. For the XXZ model, we get the following expression
 \begin{align*}
-  j_k^E & = i \Big( \underbrace{2J \Sm_{k-1}\Sz_k \Sp_{k+1} + J \Delta \Sz_{k-1}\Sp_k \Sm_{k+1} + J\Delta \Sp_{k-1}\Sm_k\Sz_{k+1}}_{O_k}                                  \\
-        & - \underbrace{\left(2J \Sp_{k-1}\Sz_k \Sm_{k+1} + J\Delta \Sz_{k-1}\Sm_k \Sp_{k+1} + J\Delta \Sm_{k-1}\Sp_{k} \Sz_{k+1} \right)}_{O_k^{\dagger}}\Big) \nonumber \\
-        & = i\left(O_k - O_k^{\dagger}\right)
+  j_k^E &= i \Bigg( \underbrace{\frac{J^2}{2} \Sm_{k-1}\Sz_k \Sp_{k+1} + \frac{J^2\Delta}{2} \Sz_{k-1}\Sp_k \Sm_{k+1} + \frac{J^2\Delta}{2} \Sp_{k-1}\Sm_k\Sz_{k+1}}_{O_k} \nonumber \\
+  &- \underbrace{\left(\frac{J^2}{2} \Sp_{k-1}\Sz_k \Sm_{k+1} + \frac{J^2\Delta}{2} \Sz_{k-1}\Sm_k \Sp_{k+1} + \frac{J^2\Delta}{2} \Sm_{k-1}\Sp_{k} \Sz_{k+1} \right)}_{O_k^{\dagger}}\Bigg) \nonumber \\
+  &= i\left(O_k - O_k^{\dagger}\right)
 \end{align*}
 Thus we see that it is an imaginary operator. Moreover, it is also a commuting operator
 because it consists of a sum of equal number of \(\Sp{}\) and \(\Sm{}\). 
-Obtaining the energy current operator is now simply the matter of summing over all lattice sites
+Obtaining the extensive energy current operator is now simply the matter of summing over all lattice sites
 \begin{equation}
   J^E = \sum_{k=1}^L j_k^E
   \label{eq:energy current}
