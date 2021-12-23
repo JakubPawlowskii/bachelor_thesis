@@ -67,7 +67,7 @@ phase coherence between all eigenstates~\autocite{DAlessio2016}.
 Nonetheless, it is not yet enough, as RMT misses two crucial points in order to be able to relate
 it to real systems. First, the expectation values should depend on energy and second, relaxation
 times should be observable dependent. These shortcomings were fixed in groundbreaking works
-of~\textcite{Deutsch19912046,Srednicki1994} giving rise to the \textit{Eigenstate Thermalization Hypothesis} (ETH)
+of~\textcite{Deutsch19912046,Srednicki1994}, giving rise to the \textit{Eigenstate Thermalization Hypothesis} (ETH)
 It is often stated in form of an \textit{ansatz} for matrix elements of observables expressed in
 eigenbasis of a Hamiltonian~\autocite{Srednicki1999}
 \begin{equation}
@@ -75,7 +75,7 @@ eigenbasis of a Hamiltonian~\autocite{Srednicki1999}
     \label{eq:ETH}
 \end{equation}
 where \(\bar{E} = (E_n+E_m)/2\), \(\omega=E_n-E_m\) and \(S(\bar{E})\) is the thermodynamic
-entropy an energy \(\bar{E}\). Both \(O(\bar{E})\) and \(f_{O}(\bar{E},\omega)\) are smooth
+entropy at energy \(\bar{E}\). Both \(O(\bar{E})\) and \(f_{O}(\bar{E},\omega)\) are smooth
 functions of their parameters and \(O(\bar{E})\) is equivalent to the expected value in microcanonical
 ensemble. Finally, as in RMT, \(R_{mn}\) is a random real or complex variable. At the moment it is
 unknown in general whether the ETH holds for a given observable in a given system,
@@ -95,7 +95,7 @@ and \(\bar{O}\approx \tr(O \hat{\rho})\).
 However, there exists a class of models, called \textit{integrable}\footnote{A very brief review of integrability is presented in Appendix~\ref{app:int}.},
 for which the ETH does not hold. There is no widely accepted definition of quantum
 integrability, but for our purposes it will be enough to characterize such systems by
-existence of an extensive number of (quasi-)local operators \(\set{\hat{I}_k}\) that commute with
+existence of an extensive number of (quasi)local operators \(\set{\hat{I}_k}\) that commute with
 the Hamiltonian and with each  other\footnote{For relevant definitions see Section~\ref{sec:prelim}.}.
 Just as in classical mechanics the existence of integrals of motion imposes a constraint on phase
 space available to a system, the lack of thermalization in integrable quantum systems can be
@@ -125,14 +125,14 @@ As ETH is anticipated to be valid in generic
 nonintegrable systems, so is GGE likely to describe thermalization in a generic integrable system.
 However, on the contrary to nonintegrable models, the classification of appropriate 
 conserved quantities in integrable models is in general a difficult task~\autocite{DAlessio2016}.
-This problem will be our main interest in Chapter~\ref{chap:iom}, where 
-following~\textcite{Mierzejewski2015a} we will describe in detail an algorithm allowing for
+This problem is our main interest in Chapter~\ref{chap:iom}, where 
+following~\textcite{Mierzejewski2015a} we describe in detail an algorithm allowing for
 systematic classification of all conserved quantities in a system given by a tight-binding
 Hamiltonian. As a further motivation for the search of integrals of motion, in
-Chapter~\ref{chap:iom} we will also introduce the well-known concept of Mazur 
+Chapter~\ref{chap:iom} we also introduce the well-known concept of Mazur 
 bound~\autocite{Mazur1969,Suzuki1971} and a rather new phenomenological tool for studying
 quantum many-body systems --- integrated spectral function~\autocite{Vidmar2021}. 
-As an application of the introduced methodology, we will study the energy current and
+As an application of the introduced methodology, we study the energy current and
 two \textit{noncommuting} conserved quantities in paradigmatic spin-\(1/2\) XXZ model.
 
 
@@ -148,12 +148,12 @@ no such conclusive result exists in the quantum world (for details see Appendix~
 In such weakly perturbed quantum systems, the number of conserved quantities must be nonextensive,
 so at least some of them must decay. Investigating long-time behavior of the autocorrelation functions of
 aforementioned energy current and two noncommuting observables 
-in spin-\(1/2\) XXZ model will be the subject of Chapter~\ref{chap:decay}. In case of
+in spin-\(1/2\) XXZ model is the subject of Chapter~\ref{chap:decay}. In case of
 the titular noncommuting integrals of motion, we report a novel
 result about a linear scaling of relaxation time with perturbation strength and Gaussian,
 instead of the expected exponential~\autocite{mallayya2019}, decay of relevant autocorrelation functions.
  
-The remainder of this chapter will be devoted to a short introduction
+The remainder of this chapter is be devoted to a short introduction
 to the Heisenberg model and its modification, namely the titular XXZ model.
 
 \section{Heisenberg model of magnetism\label{sec:XXZ}}
@@ -162,7 +162,7 @@ exhibit magnetic properties in reaction to an external magnetic field and those 
 magnetic moment without external field~\autocite{spalek2015}. First group consists of paramagnetic
 and diamagnetic systems. In the former, a nonzero net magnetic moment comes from alignment of
 valence electrons' spins in the direction of the external magnetic field. In the latter, we deal with
- an inductive effect in which the external field induces magnetic dipoles opposing the field that have
+an inductive effect in which the external field induces magnetic dipoles opposing the field that have
 induced them. Diamagnetism exists in all materials, however it is usually much weaker than other magnetism related
 effects and thus only detectable in the absence of them. The second group includes ferromagnets, which
 exhibit spontaneous magnetization below Curie temperature, and ferrimagnets, which are 
@@ -174,10 +174,10 @@ but opposite directions~\autocite{nolting2018theoretical}.
 There are two paradigmatic models of magnetism, namely the Heisenberg model, which describes magnetism
 of localized electrons and their magnetic moments (spins), and the Hubbard model which deals with
 magnetism of delocalized electrons, called itinerant magnetism. 
-In this chapter, we will deal with the former of two models.
-First, a physics-motivated derivation of Heisenberg model will be presented. Afterwards,
-on our way to XXZ model, we will discuss the mathematical details and various modifications
-of original model. Our review of this topic will be based on the books by~\textcite{spalek2015} and 
+In this chapter, we deal with the former of two models.
+First, a physics-motivated derivation of Heisenberg model is be presented. Afterwards,
+on our way to XXZ model, we discuss the mathematical details and various modifications
+of original model. Our review of this topic is be based on the books by~\textcite{spalek2015} and 
 thesis by~\textcite{Ng2011HeisenbergM}.
 
 \subsection{Heisenberg-Dirac exchange interaction}
@@ -209,7 +209,7 @@ Formally, this Hamiltonian acts on the space \(\mathcal{H}_1 \otimes \mathcal{H}
 However, it depends only on the spatial coordinates \(\bm{r}_1,\bm{r}_2\) and not on
 the spin coordinates, so essentially
 its action is restricted to the \(\hspac\) part of the full Hilbert space.
-This is a crucial observation that leads to the development of Heisenberg model. We will now
+This is a crucial observation that leads to the development of Heisenberg model. We shall now
 seek a way to replace this Hamiltonian by an equivalent one acting only on 
 \(\hspi\).
 
@@ -284,17 +284,17 @@ We define an operator via a formal dot product
 \end{equation}
 where subscripts refer to which electron's Hilbert space they act on. 
 Let us now examine how this operator acts on the \(\ket{\ua\ua}\) spin wave function
-\begin{align*}
+\begin{align}
     \bm{\tau}_1 \cdot \bm{\tau}_2 \ket{\ua\ua} &= 
     \left(\tau_1^x \ket{\ua}_1\right) \otimes \left(\tau^x_2 \ket{\ua}_2\right) + 
     \left(\tau_1^y \ket{\ua}_1\right) \otimes \left(\tau^y_2 \ket{\ua}_2\right) +
     \left(\tau_1^z \ket{\ua}_1\right) \otimes \left(\tau^z_2 \ket{\ua}_2\right)\nonumber\\
     &= \left( \smqty(\pmat{1}) \smqty(1\\0)\right) \otimes \left( \smqty(\pmat{1}) \smqty(1\\0)\right) +
     \left( \smqty(\pmat{2}) \smqty(1\\0)\right) \otimes \left( \smqty(\pmat{2}) \smqty(1\\0)\right)+
-    \left( \smqty(\pmat{3}) \smqty(1\\0)\right) \otimes \left( \smqty(\pmat{3}) \smqty(1\\0)\right)\\
+    \left( \smqty(\pmat{3}) \smqty(1\\0)\right) \otimes \left( \smqty(\pmat{3}) \smqty(1\\0)\right)\nonumber\\
     &= \smqty(0\\1) \otimes \smqty(0\\1) + \smqty(0\\i) \otimes \smqty(0\\i) + 
     \smqty(1\\0) \otimes \smqty(1\\0) = \ket{\ua\ua}
-\end{align*}
+\end{align}
 So \(\ket{\ua\ua}\) is an eigenvector of \(\bm{\tau}_1 \cdot \bm{\tau}_2\) with
 an eigenvalue \(1\). Carrying out such computations for the three remaining states we get
 that all symmetric states are eigenvectors with eigenvalue \(1\), whereas the
@@ -320,7 +320,7 @@ Rearranging it, replacing \(\bm{S}_i\) by \(\bm{\tau}_i/2\) and inserting approp
 of \(S\) we recreate the previously obtained result on eigenvalues of 
 \(\bm{\tau}_1\cdot\bm{\tau}_2\).
 
-\paragraph{Equivalent Hamiltonian}After this detour into the world of quantum mechanics of spin, let us return to the problem
+\paragraph{Equivalent Hamiltonian}After this detour into the quantum mechanics of spin, let us return to the problem
 at hand. We have established that triplet states and singlet state are eigenvectors of 
 \(\bm{\tau}_1 \cdot \bm{\tau}_2\) operators with eigenvalues \(1\) and \(-3\) respectively.
 Consider now the following Hamiltonian acting on \(\hspi\)
@@ -448,7 +448,7 @@ in 1931, by means of the now famous \textit{Bethe ansatz}. Even more remarkably,
 1971 expanded upon the Bethe ansatz and solved the general XYZ model in 
 one-dimension~\autocite{Baxter1971,Baxter1972}. However, these solutions, as well as the
 so far unsuccessful attempts at solving it in two and more dimensions, are notoriously difficult and
-we will not use them in this thesis. Instead, when in need of concrete computations, we will
+we do not use them in this thesis. Instead, when in need of concrete computations, we
 resort to much simpler numerical methods in the form of exact diagonalization~\autocite{Lin1990}.
 
 \begin{figure}[htbp]

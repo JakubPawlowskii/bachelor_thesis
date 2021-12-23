@@ -41,12 +41,12 @@ and examine their behavior under finite-time averaging
 As an initial check, we calculate the finite-time autocorrelation function (finite-time stiffness)
 \(\lambda^{\tau}_A = \hs{\bar{A}^{\tau}}{\bar{A}^{\tau}}\) as a function of the inverse system size.
 To relate this to the discussion of spectral functions in Section~\ref{sec:spectral function},
-we will from now on use the cutoff frequency \(\omega = \frac{1}{\tau}\), instead of the time of
+from now on we use the cutoff frequency \(\omega = \frac{1}{\tau}\), instead of the time of
 averaging \(\tau\). The perturbation should be strong enough, so that after taking the thermodynamic limit
 of the \(\omega \to 0^+\) limit, stiffness vanishes. Results are shown in Figure~\ref{fig:lioms decay}.
 We see first hints that the behavior under perturbation for commuting and noncommuting operators
-differ. For perturbation strength \(\alpha=0.2\) energy current stiffness does
-not decay in thermodynamic limit for \(\omega \to O^+\) and thus a stronger perturbation is needed.
+differ. For perturbation strength \(\alpha=0.2\), the energy current stiffness does
+not decay in thermodynamic limit for \(\omega \to 0^+\) and thus a stronger perturbation is needed.
 However, the stiffness of operators \(\hat{O}_1,\hat{O}_2\) vanish even for finite size systems
 and smaller perturbations. 
 \begin{figure}[htbp]
@@ -61,7 +61,7 @@ and smaller perturbations.
 \newcommand{\figsize}{0.8}
 \setlength{\belowcaptionskip}{0pt}
 \section{Relaxation of known (Q)LIOMs}
-To investigate how our (Q)LIOMs decay with time, we will apply the formalism of spectral functions
+To investigate how our (Q)LIOMs decay with time, we apply the formalism of spectral functions
 described in Sections~\ref{sec:spectral function}.
 Since we are interested in the low-\(\omega\) (long times) part of the integrated spectral function
 \(I(\omega)\), it is convenient to normalize it. Therefore, let us define the
@@ -76,7 +76,7 @@ This normalization of \(I(\omega)\) assures that  \(\lim_{\omega\to \infty} R_{\
 (\omega,\alpha) = 1\). However, at first we should establish a range of values of
 parameter \(\alpha\) so its small enough that \(H'\) remains a perturbation but large enough
 to be relevant for finite system sizes accessible numerically. As mentioned in previous section,
-we are looking for a vanishing of infinite-time stiffness in thermodynamic limit. Therefore, we will
+we are looking for a vanishing of infinite-time stiffness in thermodynamic limit. Therefore, we shall
 take \(\alpha\) as small as possible so that  \(\lim_{\omega\to 0^{+}} R_{\hat{A}}
 (\omega,\alpha) = 0\).
 
@@ -97,7 +97,7 @@ In the integrable parent model, it is a conserved quantity, so we have the follo
 \end{figure}
 After moving away from the integrable regime, the autocorrelation function starts to decay,
 so the \(\delta\)-peak broadens and \(R_{J^E}(\omega,\alpha=0)\) is no longer equal to one,
-but approaches zero as time increases. We will look simultaneously at two different situations,
+but approaches zero as time increases. We look simultaneously at two different situations,
 results for \(L=14\) and results extrapolated to thermodynamic limit from \(L=11,12,13,14\). 
 Figure~\ref{fig:current decay no scaling} shows \(R_{J^E}(\alpha,\omega)\) as a
 function of \(\omega\) for \(\alpha=0.3,0.4,0.5\). We immediately see the expected outcome, as the
@@ -129,7 +129,7 @@ Moreover, this relation can be reasonably well approximation by a one parameter 
 where \(\gamma \) is the fitting parameter. It implies that the relaxation of energy current
 is exponential in nature. To see this, let us calculate \(I(\omega)\) for such decay
 \(\hs{J^E(t)}{J^E} \propto \mathrm{e}^{-\abs{t}/\tau_{j}}\). Double-sided exponential has well defined Fourier
-transform, so we can drop the \(\epsilon \to 0^{+}\) limit from the integral
+transform, so we can drop the \(\varepsilon \to 0^{+}\) limit from the integral
 \begin{align}
   S(\omega) &\propto \frac{1}{2\pi} \int_{-\infty}^{\infty} \mathrm{d} t\; \mathrm{e}^{-\abs{t}/\tau_{j}} \mathrm{e}^{i \omega t} = 
   \frac{1}{2\pi} \left[\int_{-\infty}^{0} \mathrm{d} t\; \mathrm{e}^{(1/\tau_{j} + i\omega)t }
@@ -160,7 +160,6 @@ is indeed the appropriate one.
   best possible collapse of curves. (a) Results for \(L=14\). (b) Results extrapolated
    to thermodynamic limit from \(L=11,12,13,14\).}\label{fig:current decay perfect scaling}
 \end{figure}
-34
 % \renewcommand{\figsize}{0.9}
 \subsection{Relaxation of noncommuting (Q)LIOMs}
 Let us now proceed with the same analysis, but for the \(\hat{O}_1\)~\eqref{eq:delta 1.0} 
@@ -172,7 +171,7 @@ Figure~\ref{fig:O12 no scaling} shows
 We have used weaker perturbations here, because Figure~\ref{fig:lioms decay} suggested that
 it is enough to achieve the vanishing stiffness in thermodynamic limit. Indeed, this is the case
 and we observe that \(\lim_{{\omega\to 0^{+}}} R_{\mu}(\omega,\alpha) = 0\) even for finite-size systems.
-Basing on the discussion of energy current decay, the next logical step would be to rescale the
+Based on the discussion of energy current decay, the next logical step would be to rescale the
 frequency by \(\alpha^2\).
 In contrast to the energy current, we do not see any collapse (see Figure~\ref{fig:O12 quadratic scaling}).
 Therefore, noncommuting operators do not follow the same universal scaling~\eqref{eq:universal scaling current}
@@ -228,7 +227,7 @@ frequency window
     &= \erf\left(\frac{\omega\tau_{\mu}}{2}\right)
 \end{align}
 where between the first and second lines a change of variables \(x=\omega\tau_{\mu}/2\) has been made.
-We have thus obtained the desired result~\ref{eq:erf fit}. On the contrary to the case of energy
+We have thus obtained the desired result~\eqref{eq:erf fit}. On the contrary to the case of energy
 current, the scaling of decay rate is \(\frac{1}{\tau_{\mu}} \propto \alpha\). This Gaussian relaxation
 of noncommuting integrals of motion under weak perturbation is the main finding of this work.
 One may ask a question about the origin of this anomalous scaling of characteristic time
@@ -255,8 +254,8 @@ with weakly broken integrability, i.e.\ the relaxation is Gaussian in nature wit
 characteristic decay rate inversely proportional to \(\delta\). It is not the lack of
 integrability but a lack of symmetry-related degeneracy, occurring for either \(\alpha\neq 0\)
 or \(\delta\neq 0\), that leads to this anomalous scaling. Lifting of this degeneracy
-happens already in first-order perturbation theory \(\abs{E_n=E_m} \propto \alpha,\delta\)
-hence the linear scaling in linear in perturbation strength~\autocite{Mierzejewski2021}.
+happens already in first-order perturbation theory \(\abs{E_n-E_m} \propto \alpha,\delta\)
+hence the linear scaling in perturbation strength~\autocite{Mierzejewski2021}.
 \begin{figure}[ht]
   \centering
   \includegraphics[width=\figsize\textwidth]{Figures/O12_no_scaling_small.pdf}

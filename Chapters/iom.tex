@@ -9,22 +9,22 @@ to obtain information about the thermodynamic limit \(L \to \infty \). In princi
 be also applied to lattice systems in two and more dimensions, however as of now it is prevented by computational
 complexity of numerical approaches to such models.
 
-In our description and used notation, we will follow
+In our description and used notation, we follow
 the works of~\textcite{Mierzejewski2015a,Mierzejewski2015Approx,Mierzejewski2018}.
 The aim of this chapter is to provide a pedagogical introduction to the topic,
-so all derivations will be presented in full detail, together with a simple proof of correctness for the algorithm.
-The importance of (Q)LIOMs will be made clear by invoking the concept of spectral function and Mazur bound.
-Examples of application of this algorithm to the XXZ model will conclude this chapter.
+so all derivations are presented in full detail, together with a simple proof of correctness of the algorithm.
+The importance of (Q)LIOMs is be made clear by invoking the concepts of spectral functions and Mazur bound.
+Examples of application of this algorithm to the XXZ model conclude this chapter.
 
-The algorithm introduced in this chapter was implemented in C++ and with the of Armadillo
-library~\autocite{Sanderson2016,Sanderson2018}.
+The algorithm introduced in this chapter was implemented in C++ with the help of Armadillo
+linear algebra library~\autocite{Sanderson2016,Sanderson2018}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Preliminaries\label{sec:prelim}}
 \paragraph{Space of observables}Consider the vector space \(\mathcal{V}_L\) of traceless and translationally invariant
 observables, acting on a Hilbert space of dimension \(\dimension\). We can define an inner product on this space
 \begin{definition}[Hilbert-Schmidt product]
-  Let \(A,B \in \mathcal{V_L}\). The Hilbert-Schmidt product of \(A\) and \(B\) is
+  Let \(A,B \in \mathcal{V}_L\). The Hilbert-Schmidt product of \(A\) and \(B\) is
   \begin{equation}
     \hs{A}{B} = \frac{1}{\dimension}\tr(A^{\dagger}B) = \frac{1}{\dimension} \sum_{mn} A_{nm}B_{nm}^{\ast}
   \end{equation}
@@ -46,7 +46,7 @@ Therefore, the Hilbert-Schmidt inner product corresponds to the infinite tempera
 limit of averaging over a suitable ensemble (either canonical or grand canonical).
 Now, consider a subspace \(\mathcal{V}_L^m\) of \(m\)-local operators and a direct sum
 \(\mathcal{V}_L^M = \bigoplus_{m = 1}^M \mathcal{V}_L^m\) being a subspace of operators supported on up to \(M\) sites.
-We also define a basis of \(\mathcal{V}_L^M\) consisting of operators \(O_s\in \mathcal{V}_L^M\)
+We define a basis of \(\mathcal{V}_L^M\) consisting of operators \(O_s\in \mathcal{V}_L^M\)
 satisfying the following properties
 \begin{align}
    & \hs{O_s}{O_{t}} = \delta_{st} \tag{\text{orthonormality}}                                    \nonumber{}\\
@@ -149,7 +149,7 @@ Now we are ready for
   \(\comm{\Sz_{tot}}{O} = 0\), then it is called a \textbf{commuting integral of motion}.
   Otherwise, it is called a \textbf{noncommuting integral of motion}.\label{def:noncomm def}
 \end{definition}
-For the algorithm described in Section~\ref{sec:algorithm}, we will need to construct matrices of
+For the algorithm described in Section~\ref{sec:algorithm}, we need to construct matrices of
 observables and express them in the Hamiltonian eigenbasis. If the operator in question is a
 commuting IOM, we can restrict ourselves to the fixed spin subspace and thus greatly reduce
 computational complexity, allowing us to investigate larger systems. Such operators, for example
@@ -197,7 +197,7 @@ This is one of the main limiting factors of this procedure.
   \includegraphics[width=0.8\textwidth]{Figures/cutoff_small.png}
   \caption{Illustration of averaging procedure as defined by equation~\eqref{def:simple time avg}
   for \(\tau = 1/2\). The sum
-  of matrix elements is restricted by the theta function to the region between the two red lines. 
+  of matrix elements is restricted by the \(\theta{}\) function to the region between the two red lines. 
   The operator \(O\) shown here is the \(\hat{O}_1\) as defined in~\eqref{eq:delta 1.0}.
   Matrix elements in panel (a) are calculated for integrable XXZ model~\eqref{eq:XXZ} with \(\Delta = 1\) and in
   panel (b) for the perturbed XXZ model~\eqref{eq:HXXZ perturbed} with \(\Delta = 1\) and perturbation strength
@@ -335,14 +335,15 @@ The procedure outlined above works for a fixed system size \(L\).
 To assess the character of an integral of motion, we need to examine how \(\lambda_n\) 
 behaves in the thermodynamic limit. To achieve this, we execute this algorithm for a 
 few accessible values of \(L\) and then proceed with finite size scaling.
-However, in this thesis we will examine both the \(L\to \infty \) case and \(L = 14\)
-case, because that is the largest system size for exact diagonalization that we were able to achieve.
+However, in this thesis we examine both the \(L\to \infty \) case and, depending on
+operator, either \(L = 14\) or \(L = 16\)
+case, because these are the largest system size for exact diagonalization that we were able to achieve.
 
 It is important not to loose the physical interpretation of these results amidst the formal development.
 Operator \(Q_n = \sum_s U_{ns}\bar{O}_{s} = Q_n^M + Q_n^{\perp} \) is always an integral of motion, 
 because it is a linear combination of infinite-time averaged operators (cf.~\eqref{eq:time averaged commutator}).
 However, the time averaging procedure expands the support of initially local basis operators \(O_s\).
-In actual computation we are using the basis of operators supported on up to \(M\) sites at all times, therefore the operators
+In actual computation we are using the basis of operators supported on up to \(M\) sites at all times, therefore the operator
 obtained from the eigenvectors of \(K\) matrix is the \(Q_n^M\) operator. If \(\lambda_n = 1\), then
 \(\norm*{Q_n^{\perp}} = 0 \implies Q_n^{\perp} = 0\) and \(Q_n = Q_n^M\). Hence, \(Q_n^M\) operator, which
 structure we know, is strictly conserved. On the other hand, if \(\lambda_n \in (0,1) \), then
@@ -401,9 +402,9 @@ Let \(\lambda \) be the maximal eigenvalue of \(K\). Then the following equality
 \end{equation*}
 \end{proposition}
 \begin{proof}
-  Assume the converse, i.e. there exists such \(\bm{u} \in \RR^{\dim{\mathcal{V}_L^M}}\) that \(\bm{u}^T K \bm{u} > \lambda\)
-  and \(\norm{u} = 1\).
-  Let \(\{\bm{v}_n\}_n\) be a orthonormal basis consisting of eigenvectors of \(K\). We can express \(\bm{u}\) in this basis as
+  Assume the converse, i.e.\ there exists such \(\bm{u} \in \RR^{\dim{\mathcal{V}_L^M}}\) that \(\bm{u}^T K \bm{u} > \lambda\)
+  and \(\norm{\bm{u}} = 1\).
+  Let \(\set{\bm{v}_n}\) be a orthonormal basis consisting of eigenvectors of \(K\). We can express \(\bm{u}\) in this basis as
   \(\sum_n u_n \bm{v}_n\) for \(u_n \in \RR\). Then we have:
   \begin{align*}    
     \bm{u}^T K \bm{u} &= \left( \sum_n u_n \bm{v}_n^{T} \right) K  \left( \sum_m u_m \bm{v}_m \right) 
@@ -415,11 +416,11 @@ Let \(\lambda \) be the maximal eigenvalue of \(K\). Then the following equality
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Spectral function and Mazur bound\label{sec:spectral function}}
+\section{Spectral functions and Mazur bound\label{sec:spectral function}}
 
-\paragraph{Spectral function}After we have learned about local and quasilocal IOMs and how to find them, it is perhaps the 
+\paragraph{Spectral functions}After we have learned about local and quasilocal IOMs and how to find them, it is perhaps the 
 time to ask why are they actually important. To answer this question in a convincing manner we 
-will follow the discussion in~\textcite{Vidmar2021} and introduce the concept of spectral
+follow the discussion in~\textcite{Vidmar2021} and introduce the concept of spectral
 function. 
 
 Suppose that we have a real observable \(A \in \mathcal{V}_L^M\) and we are interested in studying its time
@@ -449,14 +450,14 @@ For the derivation of equation~\eqref{eq:integrated spectral function} see Appen
 It turns out that this quantity is equal to the square of Hilbert-Schmidt norm of time
 averaged operator \(\bar{A}^{\frac{1}{\omega}}\), which fits nicely within the previously
 discussed framework. Because all observables of interest are traceless and
-normalized to unity, we have this two important limits
+normalized to unity, we have these two important limits
 \begin{align}
   \lim_{\omega \to \infty } I(\omega) &= \frac{1}{\dimension}\sum_{m,n} A_{mn}^2 = \norm*{A}^2 = 1\\
   \lim_{\omega \to 0^+ } I(\omega) &= \frac{1}{\dimension} \sum_{ \substack{m,n\\E_m=E_n} } A_{mn}^2 = \norm*{\bar{A}}^2
 \end{align}
 
 For frequencies small (long times) in comparison with the system's characteristic energy
-scale, spectral function of an observable \(A \in \mathcal{V}_L^M\) attains the following approximation
+scale, spectral function of an observable \(A \in \mathcal{V}_L^M\) can be approximated as follows
 \begin{equation}
   S(\omega \ll  J) \simeq  D_{A} \delta(\omega)
   \label{eq:spectral approximation}
@@ -523,7 +524,7 @@ we can easily generalize this result to a set of orthogonal conserved quantities
 We have already seen that Mazur inequality turns into an equality, if the set \(\{Q_n\}\) is complete. However,
 up until a few years ago, it was not clear how to systematically identify such a complete set in interacting models.
 This have changed with the work of~\textcite{Mierzejewski2015a}, where the algorithm described in details
-in Section~\ref{sec:algorithm} was first proposed. We will now show that the following proposition holds~\autocite{Mierzejewski2015Approx}
+in Section~\ref{sec:algorithm} was first proposed. We shall now show that the following proposition holds~\autocite{Mierzejewski2015Approx}
 \begin{proposition}[Saturation of Mazur bound]
   The set \(\{Q_n\}\) of (Q)LIOMs obtained from the algorithm in Section~\ref{sec:algorithm} is complete,
   that is it saturates the Mazur bound. 
@@ -550,11 +551,11 @@ in Section~\ref{sec:algorithm} was first proposed. We will now show that the fol
     &= \sum_{\substack{s\\\lambda_s > 0}} v_s^2 \lambda_s^2 \frac{1}{\lambda_s} = 
     \sum_{\substack{s\\\lambda_s > 0}} \frac{\hs{A}{Q_s}^2}{\hs{Q_s}{Q_s}}
   \end{align*}
-  Therefore, the Mazur bound is saturated by our construction and the proof is concluded.
+  Therefore, the Mazur bound is saturated by our construction and the proof is completed.
 \end{proof}
-We will finish this section with an example of an application of Mazur bound. 
+We finish this section with an example of an application of Mazur bound. 
 \begin{example}
-  We consider the topic of ballistic linear response~\autocite{Ilievski2016a}. Let \(J\) be an extensive current,
+  Consider the topic of ballistic linear response~\autocite{Ilievski2016a}. Let \(J\) be an extensive current,
   for example the spin current. From Kubo linear response theory
   we have the following well-known expression for the real (non-dissipative) part of dynamical
   spin conductivity~\autocite{Zotos1996}
@@ -607,8 +608,8 @@ DC transport (i.e.\ without scattering, cf. Figure~\ref{fig:spin transport}) ---
 
 After explaining how and why to look for LIOMs and QLIOMs, let us now turn to a more concrete
 example of spin-\(1/2\) XXZ model on one-dimensional lattice of \(L\) sites with periodic
-boundary conditions, introduced already in Section~\ref{sec:XXZ}. In the subsequent
-considerations we will base on the work of~\textcite{Mierzejewski2015a}.
+boundary conditions, introduced already in Section~\ref{sec:XXZ}. The subsequent
+considerations are based on the work of~\textcite{Mierzejewski2015a}.
 
 Having chosen a concrete model, we can now give an explicit definition of a basis
 of a space of \(m\)-local observables \(\mathcal{V}_L^m\). It is composed of operators
@@ -626,7 +627,7 @@ In the expression above we have \(\sigma_j^z \equiv 2 S^z_j\),
  operator. The index \(j\) indicates the first site of support.
 As a matter of mathematical precision, the notation for \(O_{\underline{s},j}\) used here 
 (and frequently in the physics literature) is a bit of simplification. It is important to remember
-that because of embedding~\eqref{eq:embedding}, there are tensor products between \(\sigma_j\)'s, i.e.\ we have the following
+that because of embedding~\eqref{eq:embedding}, there are tensor products between \(\sigma_j\), i.e.\ we have the following
 \begin{equation}
   O_{\underline{s},j}= \underbrace{\Id_{2\cross 2} \otimes \cdots
        \otimes \Id_{2\cross 2}}_{j-1} \otimes \; \sigma_{j}^{s_{1}} \otimes \sigma_{j+1}^{s_{2}} \otimes
@@ -671,7 +672,7 @@ this thesis.
 In order to test our (Q)LIOM finding algorithm and the correctness of its implementation, we first
 investigate the known case of energy current in Spin\(-1/2\) XXZ model~\autocite*{Mierzejewski2015Approx}
 and see whether it is detected or not. For the sake of completeness, derivation of
-spin energy current for the general XYZ model will be presented, following the definitions in \textcite{Zotos1997}.
+spin energy current for the general XYZ model is be presented, following the definitions in \textcite{Zotos1997}.
 We start with the general XYZ Hamiltonian with periodic boundary conditions~\eqref{eq:XYZ}.
 It is easy to see that this Hamiltonian can be represented as a sum of operators supported on two consecutive sites
 \begin{equation}
@@ -741,7 +742,7 @@ We conducted preliminary studies for small values of system size \(L\), without 
 translational invariance. Available resources allowed us to make an unrestricted search for
  \(L \in \set{8,9,10,11,12}\). Nevertheless, the noncommuting operators that maximized stiffness for given 
  \(L\) and \(\Delta \) turned out to be either translationally invariant or translationally invariant with
- a sign flip (see \(\hat{O}_2\)~\eqref{eq:delta 0.5}). Therefore, we restrict our further 
+ a sign flip (see \(\hat{O}_2\)~\eqref{eq:delta 0.5}). Therefore, we restricted our further 
 considerations to such operators only. This allowed us to quite easily obtain numerical
 results for \(L\) up to \(14\). After quite lengthy calculations, we were also able
 to obtain some results for \(L=16\).
@@ -810,7 +811,7 @@ conserved, local integral of motion, whereas \(\hat{O}_2\) is a projection
 of a quasilocal integral of motion on a basis supported on up to \(3\) sites.
 To further illustrate the concept of quasilocality, we can consider a projection
 of this QLIOM on a basis supported on up to \(4\) sites, which results in an operator of the form 
-\(\hat{O}_2 + \hat{\delta O}\), where \(\hat{\delta O}\) is the complicated \(4\)-local part,
-which exact form is not important. Looking at Figure~\ref{fig: noncommuting integrable} we see
+\(\hat{O}_2 + \hat{\delta O}\), where \(\hat{\delta O}\) is the complicated \(4\)-local part.
+Looking at Figure~\ref{fig: noncommuting integrable} we see
 that stiffness of this new projection is larger than that of the old one. However, contribution 
 of \(\hat{\delta O}\) to the overall stiffness is smaller than that of \(\hat{O}_2\).

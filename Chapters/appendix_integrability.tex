@@ -3,7 +3,7 @@
 
 \paragraph{Classical integrability}Before jumping head first into the quantum realm, it is perhaps valuable the state
 the problem of classical integrability, and the results therein.
-We will consider this topic in the spirit of the classical discussion
+We consider this topic in the spirit of the classical discussion
 of Liouville and Arnold as presented in a monograph by~\textcite{Gutzwiller1991}.
 
 One usually begins the discussion of classical mechanics with the Lagrangian picture and then
@@ -24,7 +24,7 @@ a property that its value does not vary in time if we take as \(p\) and \(q\) so
 of equations~\eqref{eq:Hamilton equations}. This is equivalent to the following condition
 \begin{align}
     0 = \dv{}{t}F(p,q) &= \pdv{F}{p} \dv{p}{t} + \pdv{F}{q}\dv{q}{t} \nonumber{}\\
-    &= \pdv{H}{p}\dv{F}{q} - \pdv{H}{q}\dv{F}{p} = \poissonbracket{H}{F}
+    &= \pdv{H}{p}\pdv{F}{q} - \pdv{H}{q}\pdv{F}{p} = \poissonbracket{H}{F}
 \end{align}
 where \(\poissonbracket{\bullet }{\bullet }\) is the Poisson bracket.
 Vanishing of Poisson bracket with Hamiltonian is a necessary condition for \(F\)
@@ -67,7 +67,7 @@ a system with a finite number of degrees of freedom, it specifies, under some as
 that majority of the invariant tori that occupy\footnote{The more technical term is
 \textit{foliate}.} the phase space survive the influence of small perturbations. This entails
 the possibility of coexistence between chaos and regularity. Eventually, as perturbation grows,
-chaotic regions fill the phase space completely~\autocite{DAlessio2016}. We will end this part
+chaotic regions fill the phase space completely~\autocite{DAlessio2016}. We end this part
 with a quote from Arnold's book~\autocite{arnold2013mathematical} about the KAM theorem.
 \begin{quotation}
    \textit{ If an unperturbed system is nondegenerate, then for sufficiently
@@ -151,12 +151,12 @@ As previously, \(\beta = 1\) for systems with time-reversal invariance, that is
 that is \(H_{ij} \in \CC{}\) and \(H_{ij} = H_{ji}^{\ast}\). In the former case we have
 the so-called Gaussian Orthogonal Ensemble (GOE) and in the latter Gaussian Unitary Ensemble (GUE).
 As matrices from either GOE or GUE must be invariant under orthogonal and unitary transformation
-respectively, the equation~\eqref{eq:GOE} is quite natural, as \(\tr\left(H^2\right)\) in 
+respectively, the equation~\eqref{eq:GOE} is quite natural, as \(\tr\left(H^2\right)\) is such
 invariant~\autocite{DAlessio2016}. A comparison between Poisson and GOE distributions
 is shown in Figure~\ref{fig:spacing}. Another interesting difference between integrability and
 chaos becomes visible, namely, the repulsion of energy levels, manifested as a vanishing probability
 for \(s=0\) in GOE.\@ One could take this as a definition of integrability, however it is probably
-more desirable to consider this as a consequence rather than definition.
+more desirable to consider this as a consequence rather than a definition.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=1.0\textwidth,trim={0.03cm 0.03cm 0.03cm 0.03cm},clip]{Figures/spacing.pdf}
