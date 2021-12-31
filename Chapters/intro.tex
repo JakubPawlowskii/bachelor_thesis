@@ -30,7 +30,8 @@ wave function as \(\ket{\psi(t)}=\sum_{n} C_{n} \mathrm{e}^{-i E_{n} t}\ket{n}\)
     &=\sum_{n}\abs{C_{n}}^{2} O_{nn}+\sum_{n \neq m} C_{m}^{*} C_{n} 
     \mathrm{e}^{i\left(E_{m}-E_{n}\right) t} O_{m n}\label{eq:time evolution}
 \end{align}
-We immediately see that, assuming lack of degeneracy, long-time average of the off-diagonal
+where \(O_{mn} = \matrixel{m}{O}{n}\).
+We immediately see that, assuming absence of degeneracy, long-time average of the off-diagonal
 part must be equal to zero and what remains is the diagonal part.
 This is a prediction of the so-called \textit{diagonal ensemble}~\autocite{Cassidy2011}.
 It basically means that the system `remembers' its initial conditions via the constant
@@ -55,14 +56,15 @@ it the dimension of the underlying Hilbert space and \(R_{mn}\) is either a real
 variable with zero mean and unit variance. Using equation~\eqref{eq:RMT}, we can then 
 disentangle the prediction of the diagonal ensemble from the initial conditions
 \begin{equation}
-    \sum_{n}\abs{C_n}^2 A_{nn} \approx \bar{A}\sum_{n}\abs{C_n}^2 = \bar{A}
+    \sum_{n}\abs{C_n}^2 O_{nn} \approx \bar{O}\sum_{n}\abs{C_n}^2 = \bar{O}
 \end{equation}
 obtaining a result consistent with the microcanonical ensemble, albeit without energy dependence
-so equivalent to the infinite temperature limit. Furthermore, off-diagonal elements are exponentially
-small in system size, so it is enough to eliminate phase coherence between the matrix elements with
-largest contribution to the expected value for the second term in equation~\eqref{eq:time evolution}
-to vanish. This can happen on much shorter timescales that would be required for eliminating
-phase coherence between all eigenstates~\autocite{DAlessio2016}.
+so equivalent to the infinite temperature limit. 
+Furthermore, off-diagonal elements are exponentially
+small in system size, so in order for the second term in average of~\eqref{eq:time evolution}
+to vanish, it is necessary only for the matrix elements with largest contribution to the expected value to
+average to zero. This can happen on much shorter timescales that would be required for eliminating
+matrix elements between all eigenstates~\autocite{DAlessio2016}.
 
 Nonetheless, it is not yet enough, as RMT misses two crucial points in order to be able to relate
 it to real systems. First, the expectation values should depend on energy and second, relaxation
@@ -71,7 +73,7 @@ of~\textcite{Deutsch19912046,Srednicki1994}, giving rise to the \textit{Eigensta
 It is often stated in form of an \textit{ansatz} for matrix elements of observables expressed in
 eigenbasis of a Hamiltonian~\autocite{Srednicki1999}
 \begin{equation}
-    O_{mn} = O(\bar{E}) \delta_{mn} + \mathrm{e}^{S(\bar{E})/2}f_{O}(\bar{E},\omega)R_{mn}
+    O_{mn} = O(\bar{E}) \delta_{mn} + \mathrm{e}^{-S(\bar{E})/2}f_{O}(\bar{E},\omega)R_{mn}
     \label{eq:ETH}
 \end{equation}
 where \(\bar{E} = (E_n+E_m)/2\), \(\omega=E_n-E_m\) and \(S(\bar{E})\) is the thermodynamic
@@ -80,20 +82,20 @@ functions of their parameters and \(O(\bar{E})\) is equivalent to the expected v
 ensemble. Finally, as in RMT, \(R_{mn}\) is a random real or complex variable. At the moment it is
 unknown in general whether the ETH holds for a given observable in a given system,
 however it is expected to be valid for all physical observables~\autocite{DAlessio2016}. 
-Numerical clues for the validity of ETH have been found in many strongly correlated lattice models
+Numerical clues for the validity of ETH have been found in many correlated lattice models
 for example hard core bosons, interacting spin chains~\autocite{Santos2010,Rigol2010,Khatami2013,Rigol2009a},
 and fermions~\autocite{Neuenhahn2012,Rigol2009}. For more details on ETH see
-the review by~\textcite{DAlessio2016}, on which this Introduction is based.
+the review by~\textcite{DAlessio2016}, on which this part of Introduction is based.
 
 
 \paragraph{Generalized Gibbs Ensemble}In a generic system exhibiting ETH, after thermalization, the expectation values
 of observables can be calculated using a density matrix from relevant Gibbs ensembles
 (because of the equivalence of ensembles one can use either the microcanonical, canonical or
 grand canonical one).
-For example, in the grand canonical ensemble \(\hat{\rho} \propto \mathrm{e}^{(H-\mu N)/kT}\)
+For example, in the grand canonical ensemble \(\hat{\rho} \propto \mathrm{e}^{-(H-\mu N)/kT}\)
 and \(\bar{O}\approx \tr(O \hat{\rho})\).
 However, there exists a class of models, called \textit{integrable}\footnote{A very brief review of integrability is presented in Appendix~\ref{app:int}.},
-for which the ETH does not hold. There is no widely accepted definition of quantum
+for which the ETH does not hold. There is no unique definition of quantum
 integrability, but for our purposes it will be enough to characterize such systems by
 existence of an extensive number of (quasi)local operators \(\set{\hat{I}_k}\) that commute with
 the Hamiltonian and with each  other\footnote{For relevant definitions see Section~\ref{sec:prelim}.}.
@@ -145,15 +147,16 @@ observed in an experiment~\autocite{Khemani2019}). It is thus desirable to inves
 \emph{almost} integrable systems, where the integrability-breaking perturbation is small.
 In classical systems, the solution to this problem lies within the KAM theorem, however
 no such conclusive result exists in the quantum world (for details see Appendix~\ref{app:int}).
-In such weakly perturbed quantum systems, the number of conserved quantities must be nonextensive,
-so at least some of them must decay. Investigating long-time behavior of the autocorrelation functions of
+In such weakly perturbed quantum systems, the number of conserved quantities usually behaves like
+in generic nonintegrable models, so integrals of motion from parent integrable model start to decay.
+Investigating long-time behavior of the autocorrelation functions of
 aforementioned energy current and two noncommuting observables 
 in spin-\(1/2\) XXZ model is the subject of Chapter~\ref{chap:decay}. In case of
 the titular noncommuting integrals of motion, we report a novel
 result about a linear scaling of relaxation time with perturbation strength and Gaussian,
 instead of the expected exponential~\autocite{mallayya2019}, decay of relevant autocorrelation functions.
  
-The remainder of this chapter is be devoted to a short introduction
+The remainder of this chapter is devoted to a short introduction
 to the Heisenberg model and its modification, namely the titular XXZ model.
 
 \section{Heisenberg model of magnetism\label{sec:XXZ}}
@@ -177,7 +180,7 @@ magnetism of delocalized electrons, called itinerant magnetism.
 In this chapter, we deal with the former of two models.
 First, a physics-motivated derivation of Heisenberg model is be presented. Afterwards,
 on our way to XXZ model, we discuss the mathematical details and various modifications
-of original model. Our review of this topic is be based on the books by~\textcite{spalek2015} and 
+of original model. Our review of this topic is based on the books by~\textcite{spalek2015} and 
 thesis by~\textcite{Ng2011HeisenbergM}.
 
 \subsection{Heisenberg-Dirac exchange interaction}
@@ -246,14 +249,14 @@ in these states is given by
     &\expectationvalue{H_C}{\varphi} = \expectationvalue{H_C}{\spas} = E^{(s)}\\
     &\expectationvalue{H_C}{\chi} = \expectationvalue{H_C}{\spaa} = E^{(a)} 
 \end{align}
-Because \(\spas\) is symmetric with respect to \((\bm{r}_1-\bm{r}_2)\),
-we have \(E^{(s)}>E^{(a)}\). Therefore, it is energetically
-favorable for our system to pick the total wave function that is antisymmetric
-in space and symmetric in spin coordinates.
+In general we have that \(E^{(s)}\neq E^{(a)}\). We can argue that this is the case
+with Coulomb potential, because it blows up to infinity at \(\bm{r}_1 \to \bm{r}_2\),
+whereas the antisymmetric wave function vanishes at this point. It is thus energetically
+favorable for our system to pick the one of the two possible wave functions.
 
 \paragraph{Spin-spin interaction}Under the Coulomb interaction, the symmetric and antisymmetric spin wave functions are not
 directly distinguished. It is the difference between spatial parts, together with Pauli
-exclusion principle that forces the choice of a triplet state. Let us now do something
+exclusion principle that forces the choice of a given state. Let us now do something
 similar, but the other way around. We can formally recast the Coulomb Hamiltonian as a
 spin-spin interaction acting on \(\hspi\) that would distinguish
 between symmetric and antisymmetric spin wave functions and thus fix the spatial part.
@@ -277,6 +280,7 @@ which in turn leads to the following important property
     \tau^{j}\right) \nonumber \\
     i \varepsilon_{j k l} \tau^{l}+\delta_{j k} \Id_{2\cross 2} &= \tau^{j} \tau^{k}
 \end{align}
+which shall be of use in Appendix~\ref{app:orthonormality}.
 We define an operator via a formal dot product
 \begin{equation}
     \bm{\tau}_1 \cdot \bm{\tau}_2 = \tau_1^x \otimes \tau_2^x + \tau_1^y \otimes \tau_2^y +
@@ -310,14 +314,14 @@ the identity~\autocite{Woit2017}.
 The proportionality constant is equal for spin\(-s\) particles to \(s(s+1)\) and thus
 all single spin-\(1/2\) states are eigenvectors of these operators with eigenvalue \(3/4\). 
 We can also construct the square of the total spin angular momentum operator
-\(\bm{S}^2 = (\bm{S}_1 + \bm{2}_2)^2\) for which our triplet (total spin \(S=1\)) and singlet
-(total spin \(S=0\)) are eigenvectors with eigenvalue \(S(S+1)\). On the other hand, we 
+\(\bm{S}^2 = (\bm{S}_1 + \bm{S}_2)^2\) for which our triplet (total spin \(s=1\)) and singlet
+(total spin \(s=0\)) are eigenvectors with eigenvalue \(s(s+1)\). On the other hand, we 
 can calculate \(\bm{S}^2\) directly to obtain the following equation
 \begin{equation}
-    S(S+1)\Id_{2\cross 2} = \bm{S}_1^2 + \bm{S}_2^2 + 2\bm{S}_1\cdot \bm{S}_1 = \frac{3}{2}\Id_{2\cross 2} + 2\bm{S}_1\cdot\bm{S}_2
+    s(s+1)\Id_{2\cross 2} = \bm{S}_1^2 + \bm{S}_2^2 + 2\bm{S}_1\cdot \bm{S}_1 = \frac{3}{2}\Id_{2\cross 2} + 2\bm{S}_1\cdot\bm{S}_2
 \end{equation} 
 Rearranging it, replacing \(\bm{S}_i\) by \(\bm{\tau}_i/2\) and inserting appropriate values
-of \(S\) we recreate the previously obtained result on eigenvalues of 
+of \(s\) we recreate the previously obtained result on eigenvalues of 
 \(\bm{\tau}_1\cdot\bm{\tau}_2\).
 
 \paragraph{Equivalent Hamiltonian}After this detour into the quantum mechanics of spin, let us return to the problem
@@ -364,7 +368,7 @@ that only the nearest neighbor interactions are important. Moreover, \(J_{ij}\) 
 to be the same between those nearest neighbors
 \begin{equation}
     J_{ij} = \begin{cases}
-        J,\;\;\; i \textrm{ is a direct neighbor of } j\\
+        J,\;\;\; i \textrm{ is a nearest neighbor of } j\\
         0,\;\;\; \textrm{otherwise}
     \end{cases}
 \end{equation}
