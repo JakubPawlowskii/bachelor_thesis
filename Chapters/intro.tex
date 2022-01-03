@@ -68,7 +68,7 @@ matrix elements between all eigenstates~\autocite{DAlessio2016}.
 
 Nonetheless, it is not yet enough, as RMT misses two crucial points in order to be able to relate
 it to real systems. First, the expectation values should depend on energy and second, relaxation
-times should be observable dependent. These shortcomings were fixed in groundbreaking works
+times should be observable dependent. These shortcomings were fixed in ground-breaking works
 of~\textcite{Deutsch19912046,Srednicki1994}, giving rise to the \textit{Eigenstate Thermalization Hypothesis} (ETH)
 It is often stated in form of an \textit{ansatz} for matrix elements of observables expressed in
 eigenbasis of a Hamiltonian~\autocite{Srednicki1999}
@@ -188,13 +188,13 @@ thesis by~\textcite{Ng2011HeisenbergM}.
 An electron can be described by two quantities, its position in space and its spin.
 To facilitate these two degrees of freedom, we say that \(i\)-th electron's wave function
 lives in a Hilbert space which is a tensor product of spacial 
-wave functions' space and spin wave functions' space, i.e.\ \(\mathcal{H}_i \cong L^2(\RR^3)
+wave functions' space and spin wave functions' space, i.e., \(\mathcal{H}_i \cong L^2(\RR^3)
 \otimes \mathfrak{h}_i \), where \(L^2(\RR^3)\) is the usual space of square-integrable functions on
-\(\RR^3\), and \(\mathfrak{h}_i \cong \CC^2\) is a two-dimensional vector space spanned by
+\(\RR^3\), and \(\mathfrak{h}_i \cong \CC^2\) is the two-dimensional vector space spanned by
 \(\ket{\ua} = \binom{1}{0} \) and \(\ket{\da} = \binom{0}{1}\).
 The combined wave function of a composite two-particle system it then an element of
 \(\mathcal{H}_1 \otimes \mathcal{H}_2\), which can be decomposed into spacial and spin
-components, i.e\ \(\mathcal{H}_1 \otimes \mathcal{H}_2 \cong\mathcal{H}_{\mathrm{space}} 
+components, i.e., \(\mathcal{H}_1 \otimes \mathcal{H}_2 \cong\mathcal{H}_{\mathrm{space}} 
 \otimes \mathcal{H}_{\mathrm{spin}}\), where \(\mathcal{H}_{\mathrm{space}} 
 \cong L^2(\RR^3) \otimes L^2(\RR^3)\) and \(\mathcal{H}_{\mathrm{spin}} \cong
 \mathfrak{h}_1 \otimes \mathfrak{h}_2\). 
@@ -249,7 +249,7 @@ in these states is given by
     &\expectationvalue{H_C}{\varphi} = \expectationvalue{H_C}{\spas} = E^{(s)}\\
     &\expectationvalue{H_C}{\chi} = \expectationvalue{H_C}{\spaa} = E^{(a)} 
 \end{align}
-In general we have that \(E^{(s)}\neq E^{(a)}\). We can argue that this is the case
+In general, we have that \(E^{(s)}\neq E^{(a)}\). We can argue that this is the case
 with Coulomb potential, because it blows up to infinity at \(\bm{r}_1 \to \bm{r}_2\),
 whereas the antisymmetric wave function vanishes at this point. It is thus energetically
 favorable for our system to pick the one of the two possible wave functions.
@@ -374,7 +374,7 @@ to be the same between those nearest neighbors
 \end{equation}
 These assumptions reduce Heisenberg Hamiltonian to its most popular form
 \begin{equation}
-    H = -\frac{J}{2}\sum_{\langle i,j \rangle} \bm{S}_i \cdot \bm{S}_j
+    H = \frac{J}{2}\sum_{\langle i,j \rangle} \bm{S}_i \cdot \bm{S}_j
     \label{eq:canonical Heisenberg}
 \end{equation}
 where summation index \(\langle i,j \rangle\) indicates that this sum should be performed over all pairs
@@ -383,7 +383,7 @@ of nearest neighbors (with repetitions).
 \paragraph{One-dimensional lattice}From now on, we restrict our attention to the case of one-dimensional lattices and
 nearest neighbors interaction. First, let us set up the stage. We are interested in studying
 a one-dimensional chain of \(L\) spin-\(1/2\) interacting fermions with periodic boundary conditions,
-i.e.\ arranged in a circular ring. For the visualization of periodic boundary conditions in 
+i.e., arranged in a circular ring. For the visualization of periodic boundary conditions in 
 one and two-dimensional cases, see Figure~\ref{fig:pbc}.
 The underlying Hilbert space is then a \(2^L\)-dimensional
 tensor product of \(L\) single spin spaces \(\hspi = \bigotimes_{j=1}^{L}\mathfrak{h}_j\).
@@ -405,7 +405,7 @@ Hamiltonian~\eqref{eq:canonical Heisenberg} in one dimension has the following f
 where periodic boundary conditions are imposed by requiring that \(S^{\alpha}_{L+1} = 
 S^{\alpha}_{1}\). 
 Sometimes it is also called the isotropic XXX model. A characteristic property of the XXX model
-is that is posses \(SU(2)\) symmetry (rotation of spins), which causes
+is that is possess \(SU(2)\) symmetry (rotation of spins), which causes
 difficulties in numerical studies. Therefore, breaking this symmetry is often desirable.
 This can be achieved by introducing anisotropy in the form of different exchange integrals for
 different directions. The resulting model is known in literature as the XYZ model
@@ -443,15 +443,14 @@ and inserting them into~\eqref{eq:XXZ 2} yields
     S^{-}_{j}S^{+}_{j+1} \right) + J\Delta\sum_{j = 1}^{L} S^{z}_{j}S^{z}_{j+1}
     \label{eq:XXZ}
 \end{equation}
-which is the most common form of XXZ Hamiltonian. The isotropy could be restored
+which is the most common form of the XXZ Hamiltonian. The isotropy could be restored
 by setting \(\Delta = 1\). Unless stated otherwise, we will work in units such that \(J = 1\).
 
 Heisenberg model, despite its apparent simplicity, is exceedingly difficult to analyze.
 Nevertheless, the one-dimensional XXX version was diagonalized analytically by Hans~\textcite{Bethe1931} 
 in 1931, by means of the now famous \textit{Bethe ansatz}. Even more remarkably, Rodney Baxter in
 1971 expanded upon the Bethe ansatz and solved the general XYZ model in 
-one-dimension~\autocite{Baxter1971,Baxter1972}. However, these solutions, as well as the
-so far unsuccessful attempts at solving it in two and more dimensions, are notoriously difficult and
+one-dimension~\autocite{Baxter1971,Baxter1972}. However, these solutions are notoriously difficult and
 we do not use them in this thesis. Instead, when in need of concrete computations, we
 resort to much simpler numerical methods in the form of exact diagonalization~\autocite{Lin1990}.
 

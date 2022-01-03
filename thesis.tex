@@ -8,6 +8,10 @@
 % Styl dwustronny z domyślną wielkością czcionki 10pt oraz oddzieloną stroną tytułową (titlepage).
 % Domyślnie rodziały rozpoczynają się na stronie prawej (openright).
 \documentclass[a4paper,11pt,twoside,openright]{book}
+% \RequirePackage{luatex85,shellesc}
+\usepackage{luatex85}
+\usepackage{shellesc}
+
 \renewcommand{\baselinestretch}{1.2} 
 
 % ***************************************************************************************************
@@ -449,7 +453,7 @@
 
 
 \newcommand{\hs}[2]{\left(#1 \middle| #2\right)}
-% \newcommand{\hs}[2]{(#1 | #2)}
+\newcommand{\hsSmall}[2]{(#1 | #2)}
 \newcommand{\dimension}{\mathcal{D}}
 \newcommand{\ua}{\uparrow}
 \newcommand{\da}{\downarrow}

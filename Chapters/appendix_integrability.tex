@@ -1,7 +1,7 @@
 \chapter{Classical and quantum integrability\label{app:int}}
 \thispagestyle{chapterBeginStyle}
 
-\paragraph{Classical integrability}Before jumping head first into the quantum realm, it is perhaps valuable the state
+\paragraph{Classical integrability}Before jumping head-first into the quantum realm, it is perhaps valuable the state
 the problem of classical integrability, and the results therein.
 We consider this topic in the spirit of the classical discussion
 of Liouville and Arnold as presented in a monograph by~\textcite{Gutzwiller1991}.
@@ -9,29 +9,31 @@ of Liouville and Arnold as presented in a monograph by~\textcite{Gutzwiller1991}
 One usually begins the discussion of classical mechanics with the Lagrangian picture and then
 via Legendre transform moves on to the Hamiltonian picture, however we shall skip this
 for brevity and take the Hamiltonian picture as a starting point.
-A dynamical system at every given time \(t\) is described by its momentum \(p\) and
-position \(q\). If we assume our system to have \(n\) degrees of freedoms, then
-its state can be specified as a point in a \(2n\)-dimensional space (\(n\) for momenta and
-\(n\) for coordinates) called the phase space. Dynamics are governed by a function
-of \(H = H(p,q,t)\) called the Hamiltonian, which can be interpreted as the energy,
+A dynamical system at every given time \(t\) is described by its momentum \(\bm{p}\) and
+position \(\bm{q}\). If we assume our system to have \(n\) degrees of freedoms, then
+its state can be specified as a point in a \(2n\)-dimensional space (\(n\) for momenta
+\(p_1,\ldots p_n\) and \(n\) for coordinates \(q_1, \ldots, q_n\)) called the phase space. Dynamics are governed by a function
+of \(H = H(\bm{p},\bm{q},t)\) called the Hamiltonian, which can be interpreted as the energy,
 and the so-called \textit{Hamilton equations of motion}
 \begin{equation}
-    \dv{p_j}{t} = -\pdv{H}{q_j},\; \; \; \; \dv{q_j}{t} = \pdv{H}{p_j}
+    \dv{\bm{p}}{t} = -\pdv{H}{\bm{q}},\; \; \; \; \dv{\bm{q}}{t} = \pdv{H}{\bm{p}}
     \label{eq:Hamilton equations}
 \end{equation} 
-Suppose that we have another function on a phase space, say \(F=F(p,q)\), with
-a property that its value does not vary in time if we take as \(p\) and \(q\) solutions
+where \(\pdv*{H}{\bm{q}} = \left(\pdv*{H}{q_1},\ldots, \pdv*{H}{q_n}\right)\)
+and \(\pdv*{H}{\bm{p}} = \left(\pdv*{H}{p_1},\ldots, \pdv*{H}{p_n}\right)\).
+Suppose that we have another function on a phase space, say \(F=F(\bm{p},\bm{q})\), with
+a property that its value does not vary in time if we take as \(\bm{p}\) and \(\bm{q}\) solutions
 of equations~\eqref{eq:Hamilton equations}. This is equivalent to the following condition
 \begin{align}
-    0 = \dv{}{t}F(p,q) &= \pdv{F}{p} \dv{p}{t} + \pdv{F}{q}\dv{q}{t} \nonumber{}\\
-    &= \pdv{H}{p}\pdv{F}{q} - \pdv{H}{q}\pdv{F}{p} = \poissonbracket{H}{F}
+    0 = \dv{}{t}F(\bm{p},\bm{q}) &= \pdv{F}{\bm{p}}\cdot \dv{\bm{p}}{t} + \pdv{F}{\bm{q}}\cdot\dv{\bm{q}}{t} \nonumber{}\\
+    &= \pdv{H}{\bm{p}}\cdot\pdv{F}{\bm{q}} - \pdv{H}{\bm{q}}\cdot\pdv{F}{\bm{p}} = \poissonbracket{H}{F}
 \end{align}
-where \(\poissonbracket{\bullet }{\bullet }\) is the Poisson bracket.
+where \(\poissonbracket{\bullet }{\bullet }\) is the Poisson bracket and \(\cdot\) is the usual dot product.
 Vanishing of Poisson bracket with Hamiltonian is a necessary condition for \(F\)
 to be called an \textit{integral of motion}. This property has a nice geometric interpretation.
-On the one hand, the vector field \(\left(-\pdv*{H}{q},\pdv*{H}{p}\right)\) in a phase space is
-tangent to surface \(F(p,q) = const\). On the other hand, the vector field 
-\(\left(-\pdv*{F}{q},\pdv*{F}{p}\right)\) is tangent to the energy surface \(H(p,q) = E\).
+On the one hand, the vector field \(\left(-\pdv*{H}{\bm{q}},\pdv*{H}{\bm{p}}\right)\) in a phase space is
+tangent to surface \(F(\bm{p},\bm{q}) = const\). On the other hand, the vector field 
+\(\left(-\pdv*{F}{\bm{q}},\pdv*{F}{\bm{p}}\right)\) is tangent to the energy surface \(H(\bm{p},\bm{q}) = E\).
 The trajectory of a dynamical system in a phase space is then located in the intersection
 of these two surfaces.
 Let us now imagine that we have a set \(\set{F_i}_{i=1,\ldots,k}\) of such conserved
@@ -45,12 +47,12 @@ that they are in involution guarantees that this subspace has a simple internal 
 If there are at least \(n\) such conserved quantities, then a famous theorem by
 Liouville holds, which states a system with \(n\) degrees of freedom with
 \(n\) integrals of motion is integrable by quadratures.
-Then, there exists such a canonical transformation \((p,q)\to (F,\Theta)\), to the
-so-called angle-action variables, that \(H(p,q) = H(F)\) and the equations
-of motions are solved by \(F_j(t) = F_j^0\) and \({\Theta(t)}_j = \Omega_j t + \Theta_j(0)\)~\autocite{arnold2013mathematical}.
+Then, there exists such a canonical transformation \((\bm{p},\bm{q})\to (\bm{F},\bm{\Theta})\), to the
+so-called angle-action variables, that \(H(\bm{p},\bm{q}) = H(\bm{F})\) and the equations
+of motions are solved by \(\bm{F}(t) = \bm{F}(0)\) and \(\bm{\Theta}(t) = \bm{\Omega} t + \bm{\Theta}(0)\)~\autocite{arnold2013mathematical}.
 Moreover, it was proven with the help of topology that this restricted subspace
 has a shape of an \(n\)-dimensional torus, called the \textit{invariant torus}. In
-general different initial conditions correspond to different invariant tori.
+general, different initial conditions correspond to different invariant tori.
 Therefore, we see that integrability in classical mechanics has a very precise 
 definition --- differential equations governing time evolution can be solved explicitly
 with the help of action-angle variables. Then, the solutions to equations~\ref{eq:Hamilton equations}
@@ -99,9 +101,9 @@ a system to be integrable if it possesses a maximal set of conserved quantities
 (operators commuting with a Hamiltonian) of cardinality
 equal to the dimension of Hilbert space. Unfortunately, this simple criterion fails immediately,
 because by the spectral theorem, Hermitian Hamiltonians can be diagonalized and such
-maximal set can be built from projectors on its eigenstates i.e. \(Q_{n} = \ketbra{n}{n}\).
-Therefore every system could be called integrable, even though the existence of these projector
-operators do not prevent thermalization of physical observables~\autocite{DAlessio2016}.
+maximal set can be built from projectors on its eigenstates, i.e., \(Q_{n} = \ketbra{n}{n}\).
+Therefore, every system could be called integrable, even though the existence of these projector
+operators does not prevent thermalization of physical observables~\autocite{DAlessio2016}.
 Shortcomings of this definition can be remedied by requiring the conserved quantities
 to be local (or, as recently discovered, quasilocal), that is acting in a nontrivial way
 only on some subspace of Hilbert space. As the projection operators are in general very nonlocal,
@@ -122,7 +124,7 @@ to non-ergodicity)~\autocite{Sutherland2004}, or eigenstate entanglement entropy
 Last but not least, an interesting viewpoint originates from the Berry-Tabor conjecture~\autocite{Berry1977} about the
 distribution of energy levels spacings in quantum systems with integrable classical counterparts.
 We can take a set of normalized energies~\(\set{e_i}\) with mean spacing equal to unity,
-and define \(s_i = e_{i+1}-e_i\), for which we are looking for an universal probability
+and define \(s_i = e_{i+1}-e_i\), for which we are looking for a universal probability
 distribution \(P(s)\) such that for a random choice of \(i\), probability of having
 \(s \leq s_i \leq s+\mathrm{d}s\) is \(P(s)\mathrm{ds}\). It was shown to be a Poisson
 distribution~\autocite{Ott2002}
@@ -132,7 +134,7 @@ distribution~\autocite{Ott2002}
 This result holds also for most integrable systems without the classical limit, but it can fail,
 usually due to extra symmetries of Hamiltonian and the resulting degeneracies~\autocite{DAlessio2016}.
 Conversely, in chaotic systems Random Matrix Theory predicts emergence of the so-called Wigner-Dyson
-statistic. If we consider \(2\cross 2\) Hamiltonians with entries being random numbers from suitable
+statistic. If we consider \(2\cross 2\) Hamiltonian matrices with entries being random numbers from suitable
 Gaussian distribution, the energy level spacing distribution is of the form~\autocite{DAlessio2016}
 \begin{equation}
     P(s) = A_{\beta} \omega^{\beta} \exp\left[-B_{\beta} \omega^2\right]
@@ -150,21 +152,46 @@ As previously, \(\beta = 1\) for systems with time-reversal invariance, that is
 \(H_{ij}\in \RR{}\) and \(H_{ij} = H_{ji}\), whereas \(\beta = 2\) for systems without it,
 that is \(H_{ij} \in \CC{}\) and \(H_{ij} = H_{ji}^{\ast}\). In the former case we have
 the so-called Gaussian Orthogonal Ensemble (GOE) and in the latter Gaussian Unitary Ensemble (GUE).
-As matrices from either GOE or GUE must be invariant under orthogonal and unitary transformation
+As probability distribution \(P(H)\) of GOE and GUE must be invariant under orthogonal and unitary transformation
 respectively, the equation~\eqref{eq:GOE} is quite natural, as \(\tr\left(H^2\right)\) is such
 invariant~\autocite{DAlessio2016}. A comparison between Poisson and GOE distributions
 is shown in Figure~\ref{fig:spacing}. Another interesting difference between integrability and
 chaos becomes visible, namely, the repulsion of energy levels, manifested as a vanishing probability
 for \(s=0\) in GOE.\@ One could take this as a definition of integrability, however it is probably
 more desirable to consider this as a consequence rather than a definition.
+% \begin{figure}[htbp]
+%     \centering
+%     \includegraphics[width=1.0\textwidth,trim={0.03cm 0.03cm 0.03cm 0.03cm},clip]{Figures/spacing.pdf}
+%     \caption{(Left panel) Distribution of 250000 single-particle level spacings in an integrable system
+%     --- rectangular box with fine-tuned sides. (Right panel) Distribution of 50000 single-particle
+%     level spacings in an nonintegrable system shown in the inset. Sourced from~\autocite{DAlessio2016,Rudnick2008}.
+%      }\label{fig:spacing}
+% \end{figure}
+
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=1.0\textwidth,trim={0.03cm 0.03cm 0.03cm 0.03cm},clip]{Figures/spacing.pdf}
-    \caption{(Left panel) Distribution of 250000 single-particle level spacings in an integrable system
-    --- rectangular box with fine-tuned sides. (Right panel) Distribution of 50000 single-particle
-    level spacings in an nonintegrable system shown in the inset. Sourced from~\autocite{DAlessio2016,Rudnick2008}.
-     }\label{fig:spacing}
-\end{figure}
+    \begin{tikzpicture}[scale=1.3]
+      \colorlet{col1}{blue!80}
+      \colorlet{col2}{red!80}
+    
+          \draw[col1,ultra thick] plot[id=g1,domain=0:4,samples=100] function {4*exp(-x)};
+          \draw[col2,ultra thick] plot[id=g2,domain=0:4,samples=100] function {8*x*exp(-x*x)};
+          \draw[->] (0,0) -- (4.5,0) node [right] {$s$};
+            \draw[->] (0,0) -- (0.0,4.5) node [midway,rotate=90,yshift=9pt] {\(P(s)\)};
+            \draw	(0,0) node[anchor=north] {0}
+            (1,0) node[anchor=north] {1}
+            (2,0) node[anchor=north] {2}
+            (3,0) node[anchor=north] {3}
+            (4,0) node[anchor=north] {4};
+            \draw[col1,thick] (3,1) node [anchor=north] {\Large $P(s)\propto e^{-s}$};        
+            \draw[col2,thick] (2.3,3) node [anchor=north] {\Large $P(s)\propto s e^{-s^2}$};        
+    
+    \end{tikzpicture}  
+    \caption{Comparison between Poisson level spacing (blue curve) and GOE level spacing (red curve).
+    Notice the level repulsion in GOE, i.e., \(P(s)\) vanishes for \(s = 0\).}
+    \label{fig:spacing}
+  \end{figure}
+  
 
 As in classical mechanics, one may ask a question about the fate of an integrable system
 under influence of a weak perturbation. Thus far, we do not have a conclusive answer to this
