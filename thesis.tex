@@ -118,7 +118,7 @@
 % ***************************************************************************************************
 
 % Ustawienia rozmiarów stron i ich marginesów
-\usepackage[headheight=18pt, top=25mm, bottom=25mm, left=25mm, right=25mm]{geometry}
+\usepackage[headheight=18pt, top=25mm, bottom=25mm, left=25mm, right=25mm, bindingoffset=5mm]{geometry}
 % headheight		-	wysokość tytułów
 % top				-	margines górny
 % bottom			-	margines dolny
@@ -497,6 +497,12 @@
 % \if@twocolumn\hbox{}\newpage\fi\fi\fi}
 % \makeatother
 
+% \makeatletter
+% \renewcommand*\cleardoublepage{\clearpage\if@twoside
+%   \ifodd\c@page\else\hbox{}\newpage\if@twocolumn\hbox{}%
+%   \newpage\fi\fi\fi}
+% \makeatother
+
 
 % ***************************************************************************************************
 % Środowiska
@@ -556,7 +562,7 @@
 \frontmatter
 
 \begin{document}
-
+\pagenumbering{Roman}
 	\begin{titlingpage}
 		\vspace*{\fill}
 		\begin{center}
@@ -583,7 +589,6 @@
 		\vspace*{\fill}
 	\end{titlingpage}	
 
-	\pagenumbering{Roman}
 	\pagestyle{tableOfContentStyle}
 	\blankpage{}
 	% \cleardoublepage{}
@@ -636,7 +641,10 @@
 
 	\pagestyle{tableOfContentStyle}
 	\tableofcontents
-	\cleardoublepage{}
+	\newpage{}
+	\blankpage{}
+	\newpage{}
+	% \cleardoublepage{}
 	% ***************************************************************************************************
 	% Wstęp
 	% ***************************************************************************************************

@@ -6,22 +6,25 @@ conceptually simple, yet quite tedious to solve due to the number of commutators
 to our advantage allow us to simplify the calculations. Let us begin with inserting the definition of \(h_{k,k+1}\) into 
 equation~\eqref{eq:energy current defining equation}
 \begin{align}
-    \comm{h_{k,k+1}}{h_{r,r+1}} =& \comm{J_{x} \Sx_{k}\Sx_{k+1} + J_{x} \Sy_{k}\Sy_{k+1} + J_{z} \Sz_{k}\Sz_{k+1}}{J_{x} \Sx_{r}\Sx_{r+1} + J_{x} \Sy_{r}\Sy_{r+1} + J_{z} \Sz_{r}\Sz_{r+1}}\nonumber\\
-    =& J_{x} J_{y}\comm{\Sx_{k}\Sx_{k+1}}{\Sy_{r}\Sy_{r+1}} + J_{x} J_{z}\comm{\Sx_{k}\Sx_{k+1}}{\Sz_{r}\Sz_{r+1}} + J_{y} J_{x}\comm{\Sy_{k}\Sy_{k+1}}{\Sx_{r}\Sx_{r+1}}\nonumber\\
-    +& J_{y} J_{z}\comm{\Sy_{k}\Sy_{k+1}}{\Sz_{r}\Sz_{r+1}} + J_{z} J_{x}\comm{\Sz_{k}\Sz_{k+1}}{\Sx_{r}\Sx_{r+1}} + J_{z} J_{y}\comm{\Sz_{k}\Sz_{k+1}}{\Sy_{r}\Sy_{r+1}}  
+    \comm{h_{k,k+1}}{h_{r,r+1}} =& \; \comm{J_{x} \Sx_{k}\Sx_{k+1} + J_{x} \Sy_{k}\Sy_{k+1} + J_{z} \Sz_{k}\Sz_{k+1}}{J_{x} \Sx_{r}\Sx_{r+1} + J_{x} \Sy_{r}\Sy_{r+1} + J_{z} \Sz_{r}\Sz_{r+1}}\nonumber\\
+    =& \; J_{x} J_{y}\comm{\Sx_{k}\Sx_{k+1}}{\Sy_{r}\Sy_{r+1}} + J_{x} J_{z}\comm{\Sx_{k}\Sx_{k+1}}{\Sz_{r}\Sz_{r+1}} + J_{y} J_{x}\comm{\Sy_{k}\Sy_{k+1}}{\Sx_{r}\Sx_{r+1}}\nonumber\\
+    +& \; J_{y} J_{z}\comm{\Sy_{k}\Sy_{k+1}}{\Sz_{r}\Sz_{r+1}} + J_{z} J_{x}\comm{\Sz_{k}\Sz_{k+1}}{\Sx_{r}\Sx_{r+1}} + J_{z} J_{y}\comm{\Sz_{k}\Sz_{k+1}}{\Sy_{r}\Sy_{r+1}}  
 \end{align}
 By inspection, it becomes clear that out of the six terms present, only three will need to be directly evaluated as commutators of the form
 \(\comm{A}{B}\) will differ from \(\comm{B}{A}\) by a sign and index change.
 \begin{align}
-    J_{x} J_{y}\comm{\Sx_{k}\Sx_{k+1}}{\Sy_{r}\Sy_{r+1}} =& J_x J_y \Big(\Sx_k\comm{\Sx_{k+1}}{\Sy_{r}\Sy_{r+1}} + \comm{\Sx_{k}}{\Sy_{r}\Sy_{r+1}} \Sx_{k+1} \Big)\\
-    =& J_x J_y \Big( \Sx_k \left( \Sy_r \comm{\Sx_{k+1}}{\Sy_{r+1}} + \comm{\Sx_{k+1}}{\Sy_{r}} \Sy_{r+1}\right) + 
-    \left( \Sy_r \comm{\Sx_{k}}{\Sy_{r+1}} + \comm{\Sx_{k}}{\Sy_{r}} \Sy_{r+1} \right)\Sx_{k+1} \Big)\nonumber\\
-    =& i J_x J_y \Big( \delta_{k+1,r+1} \Sx_k \Sy_r \Sz_{k+1} + \delta_{k+1,r} \Sx_k \Sz_{k+1} \Sy_{r+1} + \delta_{k,r+1} \Sy_r \Sz_k \Sx_{k+1} +\delta_{k,r} \Sz_k \Sy_{r+1} \Sx_{k+1}\Big)\nonumber
+    J_{x} J_{y}\comm{\Sx_{k}\Sx_{k+1}}{\Sy_{r}\Sy_{r+1}} =& \; J_x J_y \Big(\Sx_k\comm{\Sx_{k+1}}{\Sy_{r}\Sy_{r+1}} + \comm{\Sx_{k}}{\Sy_{r}\Sy_{r+1}} \Sx_{k+1} \Big) \nonumber \\
+    =& \; J_x J_y \Big( \Sx_k \left( \Sy_r \comm{\Sx_{k+1}}{\Sy_{r+1}} + \comm{\Sx_{k+1}}{\Sy_{r}} \Sy_{r+1}\right)\nonumber\\
+    +& \left( \Sy_r \comm{\Sx_{k}}{\Sy_{r+1}} + \comm{\Sx_{k}}{\Sy_{r}} \Sy_{r+1} \right)\Sx_{k+1} \Big)\nonumber\\
+    =& \; i J_x J_y \Big( \delta_{k+1,r+1} \Sx_k \Sy_r \Sz_{k+1} + \delta_{k+1,r} \Sx_k \Sz_{k+1} \Sy_{r+1} \nonumber\\
+    +&\; \delta_{k,r+1} \Sy_r \Sz_k \Sx_{k+1} +\delta_{k,r} \Sz_k \Sy_{r+1} \Sx_{k+1}\Big)
 \end{align}
 Carrying out the calculation of the remaining two nontrivial commutators, we arrive at the following equations
 \begin{align*}
-    J_{z} J_{x}\comm{\Sz_{k}\Sz_{k+1}}{\Sx_{r}\Sx_{r+1}} =& i J_z J_x \Big( \delta_{k+1,r+1} \Sx_r \Sz_k \Sy_{r+1} + \delta_{k+1,r} \Sz_k \Sy_{r} \Sx_{r+1} + \delta_{k,r+1} \Sx_r \Sy_{r+1} \Sz_{k+1} +\delta_{k,r} \Sy_r \Sz_{k+1} \Sx_{r+1}\Big)\\ 
-    J_{y} J_{z}\comm{\Sy_{k}\Sy_{k+1}}{\Sz_{r}\Sz_{r+1}} =& i J_y J_z \Big( \delta_{k+1,r+1} \Sy_k \Sz_r \Sx_{k+1} + \delta_{k,r+1} \Sz_r \Sx_{k} \Sy_{k+1} + \delta_{k+1,r} \Sy_k \Sx_{k+1} \Sz_{r+1} +\delta_{k,r} \Sx_k \Sz_{r+1} \Sy_{k+1}\Big) 
+    J_{z} J_{x}\comm{\Sz_{k}\Sz_{k+1}}{\Sx_{r}\Sx_{r+1}} =&\; i J_z J_x \Big( \delta_{k+1,r+1} \Sx_r \Sz_k \Sy_{r+1} + \delta_{k+1,r} \Sz_k \Sy_{r} \Sx_{r+1} \\
+    +&\; \delta_{k,r+1} \Sx_r \Sy_{r+1} \Sz_{k+1} +\delta_{k,r} \Sy_r \Sz_{k+1} \Sx_{r+1}\Big)\\ 
+    J_{y} J_{z}\comm{\Sy_{k}\Sy_{k+1}}{\Sz_{r}\Sz_{r+1}} =&\; i J_y J_z \Big( \delta_{k+1,r+1} \Sy_k \Sz_r \Sx_{k+1} + \delta_{k,r+1} \Sz_r \Sx_{k} \Sy_{k+1} \\
+    +&\; \delta_{k+1,r} \Sy_k \Sx_{k+1} \Sz_{r+1} +\delta_{k,r} \Sx_k \Sz_{r+1} \Sy_{k+1}\Big) 
 \end{align*}
 Next step requires us to evaluate the sum over lattice sites to get rid of the Kronecker \(\delta{}\)'s. As before, one of the three parts of the calculations is provided in full detail
 \begin{align}
