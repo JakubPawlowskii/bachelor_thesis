@@ -1,0 +1,84 @@
+# Spin code
+
+# Parameters:
+# Hamiltonian: XXZ hamiltonian with full Hilbert space
+# t = -0.500000
+# delta = -0.500000
+# alpha = 0.000000
+# sites = 11
+# support = 3
+# O+O^+
+# commutes = 0
+# translational symmetry = 1
+# flip = 0
+#Hamiltonian diagonalized.
+1   1 100
+2   1 110
+3   1 210
+4   1 120
+5   1 101
+6   1 201
+7   1 111
+8   1 211
+9   1 311
+10   1 121
+11   1 221
+12   1 131
+13   1 331
+14   1 102
+15   1 112
+16   1 212
+17   1 122
+#17 operators generated.
+#Cleared eigenvalues and eigenvectors.
+#Correlation matrix eigenvalues: 
+-3.07139571077523e-17
+-6.44774623232414e-18
+5.6942392901789e-18
+1.90484764372825e-16
+3.00605664746941e-06
+0.00799600861031266
+0.0180419038416073
+0.0239972842603594
+0.0319981669883078
+0.0328127503671945
+0.0386154011084614
+0.0538808759551931
+0.0540822836605946
+0.0661978576213203
+0.0933449452999328
+0.148833607619941
+0.476200051881212
+#5 eigenvectors corresponding to largest eigenvalues: 
+  1                0                    0         -0.284400629                    0      4.108837423e-14    
+  2                0        -0.8663333483                    0                    0                    0    
+  3                0                    0                    0         0.6880490149     -1.122301936e-15    
+  4                0                    0                    0        -0.6880490149                    0    
+  5                0         0.4994662447                    0                    0                    0    
+  6                0                    0                    0        -0.1630599677                    0    
+  7               -1                    0                    0                    0                    0    
+  8                0                    0                    0                    0        -0.7071067812    
+  9                0                    0         0.4239408971                    0     -3.771137459e-14    
+ 10                0                    0                    0                    0                    0    
+ 11                0                    0         0.4458119607                    0      3.157930591e-14    
+ 12                0                    0         0.3863366531                    0      1.861346546e-14    
+ 13                0                    0         0.4239408971                    0     -3.784620186e-14    
+ 14                0                    0                    0         0.1630599677                    0    
+ 15                0                    0                    0                    0         0.7071067812    
+ 16                0                    0        -0.1136305224                    0     -7.238049465e-14    
+ 17                0                    0         0.4458119607                    0      3.136059676e-14    
+# Saving operator with lambda = 0.4762000519 for alpha 0.3
+# lambda test = 1
+# Saving operator with lambda = 0.4762000519 for alpha 0.5
+# lambda test = 1
+# Saving operator with lambda = 0.4762000519 for alpha 0.7
+# lambda test = 1
+# Saving operator with lambda = 0.4762000519 for alpha 0.9
+# lambda test = 1
+# Saving operator with lambda = 0.4762000519 for alpha 1.1
+# lambda test = 1
+# Saving operator with lambda = 0.4762000519 for alpha 1.3
+# lambda test = 1
+# Saving operator with lambda = 0.4762000519 for alpha 1.5
+# lambda test = 1
+Executed in 150.5 seconds

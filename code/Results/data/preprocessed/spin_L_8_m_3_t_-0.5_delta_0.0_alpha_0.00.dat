@@ -1,0 +1,110 @@
+# Spin code
+
+# Parameters:
+# Hamiltonian: XXZ hamiltonian with full Hilbert space
+# t = -0.500000
+# delta = 0.000000
+# alpha = 0.000000
+# sites = 8
+# support = 3
+# O+O^+
+# commutes = 0
+# translational symmetry = 1
+# flip = 0
+#Hamiltonian diagonalized.
+1   1 100
+2   1 110
+3   1 210
+4   1 120
+5   1 101
+6   1 201
+7   1 111
+8   1 211
+9   1 311
+10   1 121
+11   1 221
+12   1 131
+13   1 331
+14   1 102
+15   1 112
+16   1 212
+17   1 122
+#17 operators generated.
+#Cleared eigenvalues and eigenvectors.
+#Correlation matrix eigenvalues: 
+-1.37049483441284e-18
+2.32318330527656e-17
+5.1204810894049e-17
+6.06095613701329e-17
+0.0265642414530354
+0.0284899332269127
+0.0380859375
+0.0399032372965016
+0.0463785663317752
+0.05078125
+0.0821670752034984
+0.115234375
+0.123176633988277
+0.15625
+0.203125
+0.25
+0.25
+#5 eigenvectors corresponding to largest eigenvalues: 
+  1                0                    0                    0                    0         0.5930444826    
+  2    -0.9911628823        -0.1326504459                    0                    0                    0    
+  3                0                    0                    0                    0                    0    
+  4                0                    0                    0                    0                    0    
+  5                0                    0                   -1                    0                    0    
+  6                0                    0                    0                    0                    0    
+  7                0                    0                    0                    0                    0    
+  8    0.09379802982        -0.7008579953                    0        -0.7071067812                    0    
+  9                0                    0                    0                    0        -0.4800695697    
+ 10                0                    0                    0                    0                    0    
+ 11                0                    0                    0                    0      -0.008720416011    
+ 12                0                    0                    0                    0         0.1042544969    
+ 13                0                    0                    0                    0        -0.4800695697    
+ 14                0                    0                    0                    0                    0    
+ 15   -0.09379802982         0.7008579953                    0        -0.7071067812                    0    
+ 16                0                    0                    0                    0        -0.4199328121    
+ 17                0                    0                    0                    0      -0.008720416011    
+# Saving operator with lambda = 0.25 for alpha 0.05
+# lambda test = 1
+# Saving operator with lambda = 0.25 for alpha 0.1
+# lambda test = 1
+# Saving operator with lambda = 0.25 for alpha 0.2
+# lambda test = 1
+# Saving operator with lambda = 0.25 for alpha 0.3
+# lambda test = 1
+# Saving operator with lambda = 0.25 for alpha 0.4
+# lambda test = 1
+# Saving operator with lambda = 0.25 for alpha 0.5
+# lambda test = 1
+# Saving operator with lambda = 0.25 for alpha 0.6
+# lambda test = 1
+# Saving operator with lambda = 0.25 for alpha 0.6
+# lambda test = 1
+# Saving operator with lambda = 0.25 for alpha 0.7
+# lambda test = 1
+# Saving operator with lambda = 0.25 for alpha 0.8
+# lambda test = 1
+# Saving operator with lambda = 0.25 for alpha 0.8
+# lambda test = 1
+# Saving operator with lambda = 0.25 for alpha 1
+# lambda test = 1
+# Saving operator with lambda = 0.25 for alpha 1.1
+# lambda test = 1
+# Saving operator with lambda = 0.25 for alpha 1.2
+# lambda test = 1
+# Saving operator with lambda = 0.25 for alpha 1.3
+# lambda test = 1
+# Saving operator with lambda = 0.25 for alpha 1.4
+# lambda test = 1
+# Saving operator with lambda = 0.25 for alpha 1.5
+# lambda test = 1
+# Saving operator with lambda = 0.25 for alpha 1.6
+# lambda test = 1
+# Saving operator with lambda = 0.25 for alpha 1.7
+# lambda test = 1
+# Saving operator with lambda = 0.25 for alpha 1.8
+# lambda test = 1
+Executed in 2.359 seconds

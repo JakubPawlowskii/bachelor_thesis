@@ -1,0 +1,48 @@
+# Spin code
+
+# Parameters:
+# Hamiltonian: XXZ hamiltonian with full Hilbert space
+# t = -0.500000
+# delta = 1.000000
+# alpha = 0.000000
+# sites = 11
+# support = 3
+# i(O-O^+)
+# commutes = 1
+# translational symmetry = 1
+# flip = 0
+#Hamiltonian diagonalized.
+1   1 310
+2   1 301
+3   1 321
+4   1 231
+5   1 312
+#5 operators generated.
+#Cleared eigenvalues and eigenvectors.
+#Correlation matrix eigenvalues: 
+9.58095907298284e-17
+0.16759201704133
+0.181970833348808
+0.350644960092794
+1
+#5 eigenvectors corresponding to largest eigenvalues: 
+  1                0          0.831281226         0.5558520696     -2.118914747e-15                    0    
+  2                0         0.5558520696         -0.831281226      3.493584125e-15                    0    
+  3    -0.5773502692                    0     -3.338477418e-15        -0.8164965809                    0    
+  4     0.5773502692                    0     -1.662695039e-15        -0.4082482905         0.7071067812    
+  5     0.5773502692                    0     -1.659054681e-15        -0.4082482905        -0.7071067812    
+# Saving operator with lambda = 1 for alpha 0.3
+# lambda test = 1
+# Saving operator with lambda = 1 for alpha 0.5
+# lambda test = 1
+# Saving operator with lambda = 1 for alpha 0.7
+# lambda test = 1
+# Saving operator with lambda = 1 for alpha 0.9
+# lambda test = 1
+# Saving operator with lambda = 1 for alpha 1.1
+# lambda test = 1
+# Saving operator with lambda = 1 for alpha 1.3
+# lambda test = 1
+# Saving operator with lambda = 1 for alpha 1.5
+# lambda test = 1
+Executed in 56.05 seconds

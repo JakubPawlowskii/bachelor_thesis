@@ -1,0 +1,11 @@
+   0.0896  -0.0744
+  -0.0744   0.0805
+
+
+#Correlation matrix eigenvalues: 
+0.01051252006158266
+0.15960539081788044
+
+#2 eigenvectors corresponding to largest eigenvalues: 
+1    -0.7282    -0.68536    
+2    0.68536    -0.7282    

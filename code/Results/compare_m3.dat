@@ -1,0 +1,140 @@
+L =  8 ; delta =  -0.5 ; type =  s
+Translational symmetry :  0.4814892468234324
+No trans symm :  0.48149
+True
+================================
+L =  8 ; delta =  1.0 ; type =  s
+Translational symmetry :  0.9999999999999998
+No trans symm :  1.0
+True
+================================
+L =  8 ; delta =  -1.0 ; type =  s
+Error opening  /home/jakubp/Code/work/ETH/qliom_all/results_qliom/data/supp3_trans_sym/
+False
+================================
+L =  9 ; delta =  -0.5 ; type =  s
+Translational symmetry :  0.5000672482507738
+No trans symm :  0.50007
+True
+================================
+L =  9 ; delta =  1.0 ; type =  s
+Translational symmetry :  1.0
+No trans symm :  1.0
+True
+================================
+L =  9 ; delta =  -1.0 ; type =  s
+Error opening  /home/jakubp/Code/work/ETH/qliom_all/results_qliom/data/supp3/
+False
+================================
+L =  10 ; delta =  -0.5 ; type =  s
+Translational symmetry :  0.4766539883123898
+No trans symm :  0.47665
+True
+================================
+L =  10 ; delta =  1.0 ; type =  s
+Translational symmetry :  0.9999999999999989
+No trans symm :  1.0
+True
+================================
+L =  10 ; delta =  -1.0 ; type =  s
+Error opening  /home/jakubp/Code/work/ETH/qliom_all/results_qliom/data/supp3_trans_sym/
+False
+================================
+L =  11 ; delta =  -0.5 ; type =  s
+Translational symmetry :  0.4762000518812125
+No trans symm :  0.4762
+True
+================================
+L =  11 ; delta =  1.0 ; type =  s
+Translational symmetry :  1.0000000000000009
+No trans symm :  1.0
+True
+================================
+L =  11 ; delta =  -1.0 ; type =  s
+Error opening  /home/jakubp/Code/work/ETH/qliom_all/results_qliom/data/supp3/
+False
+================================
+L =  12 ; delta =  -0.5 ; type =  s
+Translational symmetry :  0.46809582638978076
+No trans symm :  0.4681
+True
+================================
+L =  12 ; delta =  1.0 ; type =  s
+Translational symmetry :  1.0000000000000016
+No trans symm :  1.0
+True
+================================
+L =  12 ; delta =  -1.0 ; type =  s
+Error opening  /home/jakubp/Code/work/ETH/qliom_all/results_qliom/data/supp3_trans_sym/
+False
+================================
+L =  8 ; delta =  -0.5 ; type =  f
+Translational symmetry :  0.19431833412655267
+No trans symm :  0.19432
+True
+================================
+L =  8 ; delta =  1.0 ; type =  f
+Translational symmetry :  0.33452070939041245
+No trans symm :  0.33452
+True
+================================
+L =  8 ; delta =  -1.0 ; type =  f
+Error opening  /home/jakubp/Code/work/ETH/qliom_all/results_qliom/data/supp3_trans_sym/
+False
+================================
+L =  9 ; delta =  -0.5 ; type =  f
+Translational symmetry :  0.1191840637864153
+No trans symm :  0.11918
+True
+================================
+L =  9 ; delta =  1.0 ; type =  f
+Translational symmetry :  0.2781254937788091
+No trans symm :  0.27813
+True
+================================
+L =  9 ; delta =  -1.0 ; type =  f
+Error opening  /home/jakubp/Code/work/ETH/qliom_all/results_qliom/data/supp3/
+False
+================================
+L =  10 ; delta =  -0.5 ; type =  f
+Translational symmetry :  0.14606796307705652
+No trans symm :  0.14607
+True
+================================
+L =  10 ; delta =  1.0 ; type =  f
+Translational symmetry :  0.24544033416299132
+No trans symm :  0.24544
+True
+================================
+L =  10 ; delta =  -1.0 ; type =  f
+Error opening  /home/jakubp/Code/work/ETH/qliom_all/results_qliom/data/supp3_trans_sym/
+False
+================================
+L =  11 ; delta =  -0.5 ; type =  f
+Translational symmetry :  0.08794108332975611
+No trans symm :  0.087941
+True
+================================
+L =  11 ; delta =  1.0 ; type =  f
+Translational symmetry :  0.22528603866730423
+No trans symm :  0.22529
+True
+================================
+L =  11 ; delta =  -1.0 ; type =  f
+Error opening  /home/jakubp/Code/work/ETH/qliom_all/results_qliom/data/supp3/
+False
+================================
+L =  12 ; delta =  -0.5 ; type =  f
+Translational symmetry :  0.10112445481279714
+No trans symm :  0.10112
+True
+================================
+L =  12 ; delta =  1.0 ; type =  f
+Translational symmetry :  0.21429623735837539
+No trans symm :  0.2143
+True
+================================
+L =  12 ; delta =  -1.0 ; type =  f
+Error opening  /home/jakubp/Code/work/ETH/qliom_all/results_qliom/data/supp3_trans_sym/
+False
+================================

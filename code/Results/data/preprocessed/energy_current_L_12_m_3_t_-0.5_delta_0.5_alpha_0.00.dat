@@ -1,0 +1,60 @@
+# Spin code
+
+# Parameters:
+# Hamiltonian: XXZ hamiltonian with full Hilbert space
+# t = -0.500000
+# delta = 0.500000
+# alpha = 0.000000
+# sites = 12
+# support = 3
+# i(O-O^+)
+# commutes = 1
+# translational symmetry = 1
+# flip = 0
+#Hamiltonian diagonalized.
+1   1 310
+2   1 301
+3   1 321
+4   1 231
+5   1 312
+#5 operators generated.
+#Cleared eigenvalues and eigenvectors.
+#Correlation matrix eigenvalues: 
+3.81639164714898e-17
+0.203081592327252
+0.34829694679386
+0.763712510599262
+0.999999999999998
+#5 eigenvectors corresponding to largest eigenvalues: 
+  1                0        -0.8858907026     -8.593888686e-15         0.4638940214                    0    
+  2                0        -0.4638940214       1.35104379e-15        -0.8858907026                    0    
+  3    -0.8164965809       4.01999312e-15        -0.5773502692      -2.99030234e-15                    0    
+  4     0.4082482905      4.039008756e-15        -0.5773502692     -2.996736834e-15         0.7071067812    
+  5     0.4082482905      4.041979663e-15        -0.5773502692     -2.991099386e-15        -0.7071067812    
+# Saving operator with lambda = 1 for alpha 0.05
+# lambda test = 1
+# Saving operator with lambda = 1 for alpha 0.1
+# lambda test = 1
+# Saving operator with lambda = 1 for alpha 0.2
+# lambda test = 1
+# Saving operator with lambda = 1 for alpha 0.3
+# lambda test = 1
+# Saving operator with lambda = 1 for alpha 0.4
+# lambda test = 1
+# Saving operator with lambda = 1 for alpha 0.5
+# lambda test = 1
+# Saving operator with lambda = 1 for alpha 0.6
+# lambda test = 1
+# Saving operator with lambda = 1 for alpha 0.6
+# lambda test = 1
+# Saving operator with lambda = 1 for alpha 0.7
+# lambda test = 1
+# Saving operator with lambda = 1 for alpha 0.8
+# lambda test = 1
+# Saving operator with lambda = 1 for alpha 0.8
+# lambda test = 1
+# Saving operator with lambda = 1 for alpha 0.9
+# lambda test = 1
+# Saving operator with lambda = 1 for alpha 1
+# lambda test = 1
+Executed in 471.5 seconds
