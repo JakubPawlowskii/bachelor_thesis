@@ -1,5 +1,6 @@
 # Local and quasi-local integrals of motion
 Program generating all local and quasi-local integrals of motion for spinless fermion model and XXZ model, that do not commute with particle number operator or total Sz operator.
+Uses [Armadillo](https://arma.sourceforge.net/) library for handling all of linear algebra.
 
 In Results folder there is some generated data so far, and some python scripts for data post-processing and plotting.
 
